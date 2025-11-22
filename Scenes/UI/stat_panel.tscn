@@ -1,0 +1,408 @@
+[gd_scene load_steps=8 format=3 uid="uid://2726ljvtct3q"]
+
+[ext_resource type="Texture2D" uid="uid://cxo6u81p07oa8" path="res://Assets/gui_assets/main_panel_2.png" id="1_pvx7h"]
+[ext_resource type="Script" uid="uid://cohlc0ajtk8di" path="res://Scripts/UI/stat_panel.gd" id="2_ld0t3"]
+[ext_resource type="Texture2D" uid="uid://qwykgegr7n1v" path="res://Assets/gui_assets/inner_panel_grey.png" id="2_vj6ne"]
+
+[sub_resource type="Gradient" id="Gradient_ld0t3"]
+colors = PackedColorArray(0.2901961, 0.2901961, 0.2901961, 1, 0.288518, 0.28851798, 0.28851798, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fyws4"]
+gradient = SubResource("Gradient_ld0t3")
+
+[sub_resource type="Gradient" id="Gradient_f24qq"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wqaui"]
+gradient = SubResource("Gradient_f24qq")
+
+[node name="Stat_Panel" type="NinePatchRect"]
+custom_minimum_size = Vector2(384, 256)
+offset_right = 384.0
+offset_bottom = 256.0
+texture = ExtResource("1_pvx7h")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+script = ExtResource("2_ld0t3")
+metadata/_edit_lock_ = true
+
+[node name="M" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="V" type="VBoxContainer" parent="M"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Stat_Grid" type="GridContainer" parent="M/V"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="Health_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Health_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Health_Points_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Health_Points_Stat_Label"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Accuracy_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Accuracy_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Accuracy"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Accuracy_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Accuracy_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Evasion_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Evasion_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Evasion"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Evasion_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Evasion_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PDR_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/PDR_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Armor"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PDR_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/PDR_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Strength_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Strength_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Strength"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Strength_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Strength_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Speed_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Speed_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Speed_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Speed_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Weight_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Weight_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Weight"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Weight_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Weight_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Damage_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Damage_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Damage_Stat_Label" type="NinePatchRect" parent="M/V/Stat_Grid"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+texture = ExtResource("2_vj6ne")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Damage_Stat_Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="H" type="HBoxContainer" parent="M/V"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Exp_Text" type="ColorRect" parent="M/V/H"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="M/V/H/Exp_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="M/V/H"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 100
+stretch_margin_top = 20
+stretch_margin_right = 100
+texture_under = SubResource("GradientTexture1D_fyws4")
+texture_progress = SubResource("GradientTexture1D_wqaui")

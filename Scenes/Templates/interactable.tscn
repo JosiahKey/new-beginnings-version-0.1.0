@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bghq5dipe8lag"]
+
+[ext_resource type="Script" uid="uid://dn7cabkeex3ed" path="res://Version_0.0.3/Scripts/interactable.gd" id="1_jmham"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpm22"]
+size = Vector2(16, 16)
+
+[node name="interactable" type="Area2D"]
+priority = 1
+script = ExtResource("1_jmham")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kpm22")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_next_level_entered"]

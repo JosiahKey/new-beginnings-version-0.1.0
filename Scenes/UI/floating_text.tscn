@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbkeigen37gno"]
+
+[ext_resource type="Script" uid="uid://d1n0atq3ydv7e" path="res://Version_0.0.3/Scripts/UI/floating_text.gd" id="1_expam"]
+
+[node name="Floating_Text" type="Marker2D"]
+process_mode = 3
+physics_interpolation_mode = 1
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_expam")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.22745098)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 4
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1

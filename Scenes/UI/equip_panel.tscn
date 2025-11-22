@@ -1,0 +1,277 @@
+[gd_scene load_steps=19 format=3 uid="uid://bo5qufg8u75ox"]
+
+[ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Version_0.0.3/Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
+[ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Version_0.0.3/Scripts/UI/equip_panel.gd" id="2_h71av"]
+[ext_resource type="Texture2D" uid="uid://dasc5kix74axp" path="res://Version_0.0.3/Assets/gui_assets/title.png" id="3_5h1u5"]
+[ext_resource type="Texture2D" uid="uid://dofgv8q22h5bv" path="res://Version_0.0.3/Assets/gui_assets/head_placehold.png" id="4_7lqjh"]
+[ext_resource type="Script" uid="uid://qfbt6s41uh2b" path="res://Version_0.0.3/Scripts/UI/equipment_item.gd" id="5_emeak"]
+[ext_resource type="Texture2D" uid="uid://di1runa1pw3a7" path="res://Version_0.0.3/Assets/gui_assets/shoulder_placehold.png" id="6_srij6"]
+[ext_resource type="Texture2D" uid="uid://dsdxc65ed3i0r" path="res://Version_0.0.3/Assets/gui_assets/neck_placehold.png" id="7_xifeu"]
+[ext_resource type="Texture2D" uid="uid://b7g2ryvi18our" path="res://Version_0.0.3/Assets/gui_assets/chest_placeholder.png" id="8_2bf2l"]
+[ext_resource type="Texture2D" uid="uid://1yhub18wkw7f" path="res://Version_0.0.3/Assets/gui_assets/mainhand_placeholder.png" id="9_555pk"]
+[ext_resource type="Texture2D" uid="uid://4d41jdqlesw8" path="res://Version_0.0.3/Assets/gui_assets/offhand_placeholder.png" id="10_26kvj"]
+[ext_resource type="Texture2D" uid="uid://lrn5iqam1xhv" path="res://Version_0.0.3/Assets/gui_assets/ring_placeholder.png" id="11_8ufpo"]
+[ext_resource type="Texture2D" uid="uid://bl6acg2vxear3" path="res://Version_0.0.3/Assets/gui_assets/waist_placeholder.png" id="12_etgwp"]
+[ext_resource type="Texture2D" uid="uid://bqspjde3vfaca" path="res://Version_0.0.3/Assets/gui_assets/legs_placeholder.png" id="13_15rjk"]
+[ext_resource type="Texture2D" uid="uid://q8me2nr2004k" path="res://Version_0.0.3/Assets/gui_assets/feet_placeholder.png" id="14_6qtr7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4ujh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpgkg"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g71uc"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jhxf"]
+draw_center = false
+
+[node name="Equip_Panel" type="NinePatchRect"]
+custom_minimum_size = Vector2(320, 448)
+offset_left = 88.0
+offset_top = 64.0
+offset_right = 408.0
+offset_bottom = 512.0
+texture = ExtResource("1_g7kbo")
+region_rect = Rect2(0, 0, 192, 192)
+patch_margin_left = 25
+patch_margin_top = 36
+patch_margin_right = 25
+patch_margin_bottom = 36
+script = ExtResource("2_h71av")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = -12.0
+offset_right = 56.0
+offset_bottom = 8.0
+grow_horizontal = 2
+texture = ExtResource("3_5h1u5")
+region_rect = Rect2(0, 2, 32, 14)
+patch_margin_left = 8
+patch_margin_top = 4
+patch_margin_right = 8
+patch_margin_bottom = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.300985, 0.33972, 0.161804, 1)
+text = "Equipment"
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -98.0
+offset_right = 38.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 24
+columns = 2
+metadata/_edit_lock_ = true
+
+[node name="Head" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_7lqjh")
+
+[node name="Head" type="PanelContainer" parent="GridContainer/Head"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Head/Head"]
+layout_mode = 2
+script = ExtResource("5_emeak")
+
+[node name="Shoulders" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_srij6")
+
+[node name="Shoulders" type="PanelContainer" parent="GridContainer/Shoulders"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpgkg")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Shoulders/Shoulders"]
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("5_emeak")
+
+[node name="Neck" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_xifeu")
+
+[node name="Neck" type="PanelContainer" parent="GridContainer/Neck"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g71uc")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Neck/Neck"]
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("5_emeak")
+
+[node name="Chest" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_2bf2l")
+
+[node name="Chest" type="PanelContainer" parent="GridContainer/Chest"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Chest/Chest"]
+layout_mode = 2
+script = ExtResource("5_emeak")
+
+[node name="Mainhand" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_555pk")
+
+[node name="Mainhand" type="PanelContainer" parent="GridContainer/Mainhand"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Mainhand/Mainhand"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Offhand" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("10_26kvj")
+
+[node name="Offhand" type="PanelContainer" parent="GridContainer/Offhand"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Offhand/Offhand"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Ring1" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_8ufpo")
+
+[node name="Ring1" type="PanelContainer" parent="GridContainer/Ring1"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Ring1/Ring1"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Ring2" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("11_8ufpo")
+
+[node name="Ring2" type="PanelContainer" parent="GridContainer/Ring2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Ring2/Ring2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Waist" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("12_etgwp")
+
+[node name="Waist" type="PanelContainer" parent="GridContainer/Waist"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Waist/Waist"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Legs" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("13_15rjk")
+
+[node name="Legs" type="PanelContainer" parent="GridContainer/Legs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Legs/Legs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")
+
+[node name="Feet" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("14_6qtr7")
+
+[node name="Feet" type="PanelContainer" parent="GridContainer/Feet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
+
+[node name="Icon" type="TextureRect" parent="GridContainer/Feet/Feet"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_emeak")

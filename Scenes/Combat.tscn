@@ -1,0 +1,377 @@
+[gd_scene load_steps=24 format=3 uid="uid://byotebi1xyoe7"]
+
+[ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Version_0.0.3/Assets/combat_forest_background.png" id="1_anr3a"]
+[ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Version_0.0.3/Scripts/UI/combat.gd" id="1_mi7to"]
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Version_0.0.3/Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
+[ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Version_0.0.3/Resources/AnimatedKnight.tres" id="3_cqrb7"]
+[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Version_0.0.3/Assets/gui_assets/combat_action.png" id="4_aqiim"]
+[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Version_0.0.3/Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
+[ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Version_0.0.3/Scenes/enemy.tscn" id="5_mi7to"]
+[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Version_0.0.3/Assets/VFX/floaty_32.png" id="6_g4qrr"]
+
+[sub_resource type="Gradient" id="Gradient_mi7to"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g4qrr"]
+gradient = SubResource("Gradient_mi7to")
+
+[sub_resource type="Gradient" id="Gradient_g4qrr"]
+offsets = PackedFloat32Array(0.0048076925, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aqiim"]
+gradient = SubResource("Gradient_g4qrr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpwsi"]
+atlas = ExtResource("5_jcjnu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itjuw"]
+atlas = ExtResource("5_jcjnu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg7yd"]
+atlas = ExtResource("5_jcjnu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhxhg"]
+atlas = ExtResource("5_jcjnu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjnp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpwsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itjuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg7yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhxhg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jcjnu"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dpwsi"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, -50, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 3.0
+color = Color(0.65941083, 0.7186916, 0.50382674, 1)
+anim_speed_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g4qrr"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_aqiim"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qsdwj"]
+gradient = SubResource("Gradient_aqiim")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jcjnu"]
+particle_flag_disable_z = true
+angle_min = -91.09999
+angle_max = 54.700012
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+gravity = Vector3(0, -100, 0)
+scale_max = 2.0
+color = Color(0.8117647, 0.16862746, 0.21568628, 1)
+color_ramp = SubResource("GradientTexture1D_qsdwj")
+anim_speed_max = 1.0
+
+[node name="Combat" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mi7to")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Background_Image" type="TextureRect" parent="."]
+offset_right = 361.0
+offset_bottom = 241.0
+texture = ExtResource("1_anr3a")
+metadata/_edit_lock_ = true
+
+[node name="Sub_Menus" type="HBoxContainer" parent="Background_Image"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -156.0
+offset_right = 384.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="HP_Bar" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
+custom_minimum_size = Vector2(32, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="Background_Image/Sub_Menus/HP_Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Health_Prog" type="TextureProgressBar" parent="Background_Image/Sub_Menus/HP_Bar/MarginContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_g4qrr")
+texture_progress = SubResource("GradientTexture1D_aqiim")
+
+[node name="Player_Panel" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background_Image/Sub_Menus/Player_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -53.0
+offset_right = 110.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+layout_mode = 2
+text = "<player name>"
+
+[node name="Combat_Hp_Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "<hp: xx/xx>"
+
+[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+layout_mode = 2
+text = "<Status: normal>"
+
+[node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+layout_mode = 2
+text = "<EXP: 1,000,000,000,000>"
+
+[node name="Action_Panel" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Actions_Container" type="VBoxContainer" parent="Background_Image/Sub_Menus/Action_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -53.0
+offset_right = 110.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+action_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_aqiim")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -11.5
+offset_right = 110.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Attack"
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+position = Vector2(-4, 12)
+sprite_frames = SubResource("SpriteFrames_qjnp5")
+autoplay = "default"
+
+[node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Player_Panel3" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background_Image/Sub_Menus/Player_Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -53.0
+offset_right = 110.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
+layout_mode = 2
+text = "<green slime>"
+
+[node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
+layout_mode = 2
+text = "<placeholder>"
+
+[node name="Enemy_Sprites" type="HBoxContainer" parent="Background_Image"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 446.0
+offset_right = 985.0
+offset_bottom = 517.0
+alignment = 2
+
+[node name="Enemy" parent="Background_Image/Enemy_Sprites" instance=ExtResource("5_mi7to")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Player" type="Control" parent="Background_Image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = 105.0
+offset_right = -252.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player_Turn_Indicator" type="GPUParticles2D" parent="Background_Image/Player"]
+visible = false
+material = SubResource("CanvasItemMaterial_jcjnu")
+position = Vector2(16, 32)
+amount = 10
+texture = ExtResource("6_g4qrr")
+lifetime = 1.34
+process_material = SubResource("ParticleProcessMaterial_dpwsi")
+
+[node name="Hit_Indicator" type="GPUParticles2D" parent="Background_Image/Player"]
+material = SubResource("CanvasItemMaterial_g4qrr")
+position = Vector2(16, 16)
+emitting = false
+amount = 7
+texture = ExtResource("6_g4qrr")
+lifetime = 1.4
+one_shot = true
+speed_scale = 3.56
+randomness = 0.31
+process_material = SubResource("ParticleProcessMaterial_jcjnu")
+
+[node name="Player_Sprite" type="AnimatedSprite2D" parent="Background_Image/Player"]
+position = Vector2(16, 16)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_cqrb7")
+animation = &"damaged"
+autoplay = "idle"
+
+[connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="animation_finished" from="Background_Image/Player/Player_Sprite" to="." method="_on_player_sprite_animation_finished"]

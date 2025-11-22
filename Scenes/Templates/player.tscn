@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvqnvqyxj217n"]
+
+[ext_resource type="Script" uid="uid://cii4fjooekrwo" path="res://Scripts/player.gd" id="1_67o87"]
+[ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="2_xqijt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c841m"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4e8i"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_67o87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.835)
+scale = Vector2(0.83, 0.83)
+shape = SubResource("CapsuleShape2D_c841m")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = ExtResource("2_xqijt")
+animation = &"attack"
+autoplay = "idle"
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_enabled = false
+metadata/_edit_lock_ = true
+
+[node name="R_highlight" type="ColorRect" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+grow_vertical = 2
+color = Color(1, 1, 0.227451, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="R_highlight" groups=["PlayerCursor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="R_highlight/Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_x4e8i")
+
+[node name="L_highlight" type="ColorRect" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(1, 1, 0.227451, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="L_highlight" groups=["PlayerCursor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="L_highlight/Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_x4e8i")
+
+[node name="U_highlight" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 0.227451, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="U_highlight" groups=["PlayerCursor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="U_highlight/Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_x4e8i")
+
+[node name="D_highlight" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 24.0
+grow_horizontal = 2
+color = Color(1, 1, 0.227451, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="D_highlight" groups=["PlayerCursor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="D_highlight/Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_x4e8i")

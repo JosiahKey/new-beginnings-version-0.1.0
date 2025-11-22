@@ -1,0 +1,157 @@
+[gd_scene load_steps=20 format=3 uid="uid://u18uhjlhb5op"]
+
+[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Version_0.0.3/Resources/AnimatedGreenSlime.tres" id="1_h7qe2"]
+[ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Version_0.0.3/Scripts/enemy.gd" id="1_ybw3w"]
+[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Version_0.0.3/Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
+[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Version_0.0.3/Assets/VFX/floaty_32.png" id="3_w7xwu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es28w"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ovw4"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4qc7"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsdwj"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nqxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es28w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ovw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4qc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsdwj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_stdli"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1wk72"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, -20, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 3.0
+color = Color(1, 1, 0.5019608, 1)
+anim_speed_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ovw4"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_l4qc7"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1wk72"]
+gradient = SubResource("Gradient_l4qc7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7nqxc"]
+particle_flag_disable_z = true
+angle_min = -91.09999
+angle_max = 54.700012
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+gravity = Vector3(0, -100, 0)
+scale_max = 2.0
+color = Color(0.8117647, 0.16862746, 0.21568628, 1)
+color_ramp = SubResource("GradientTexture1D_1wk72")
+anim_speed_max = 1.0
+
+[sub_resource type="Gradient" id="Gradient_w7xwu"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_stdli"]
+gradient = SubResource("Gradient_w7xwu")
+
+[sub_resource type="Gradient" id="Gradient_1wk72"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_es28w"]
+gradient = SubResource("Gradient_1wk72")
+
+[node name="Enemy" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 72.0
+offset_bottom = 72.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+script = ExtResource("1_ybw3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-17, 52)
+sprite_frames = SubResource("SpriteFrames_7nqxc")
+frame_progress = 0.40487847
+
+[node name="Turn_Indicator" type="GPUParticles2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_stdli")
+position = Vector2(36, 50)
+amount = 10
+texture = ExtResource("3_w7xwu")
+lifetime = 1.34
+process_material = SubResource("ParticleProcessMaterial_1wk72")
+
+[node name="Hit_Indicator" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1ovw4")
+position = Vector2(37, 61)
+emitting = false
+amount = 7
+texture = ExtResource("3_w7xwu")
+lifetime = 1.4
+one_shot = true
+speed_scale = 3.56
+randomness = 0.31
+process_material = SubResource("ParticleProcessMaterial_7nqxc")
+
+[node name="Enemy_Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 36)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_h7qe2")
+animation = &"attack"
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Enemy_Hp" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(2, 6)
+layout_mode = 1
+offset_left = 9.0
+offset_right = 63.0
+offset_bottom = 2.0
+value = 12.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_stdli")
+texture_progress = SubResource("GradientTexture1D_es28w")
+
+[connection signal="animation_finished" from="Enemy_Sprite" to="." method="_on_enemy_sprite_animation_finished"]

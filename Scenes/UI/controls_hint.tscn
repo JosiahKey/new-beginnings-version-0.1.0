@@ -1,0 +1,147 @@
+[gd_scene load_steps=2 format=3 uid="uid://2a4avmrkge65"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q6l4"]
+bg_color = Color(0.14767182, 0.14767182, 0.14767176, 0.84313726)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ControlsHint" type="CanvasLayer"]
+
+[node name="V" type="VBoxContainer" parent="."]
+offset_right = 232.0
+offset_bottom = 176.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="V"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="V/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q6l4")
+
+[node name="button_hint" type="Label" parent="V/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -11.5
+offset_right = 15.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TAB"
+
+[node name="hint" type="Label" parent="V/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "-Open Inventory"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="V"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="V/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q6l4")
+
+[node name="button_hint" type="Label" parent="V/HBoxContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -11.5
+offset_right = 28.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Arrows"
+
+[node name="hint" type="Label" parent="V/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "-Move Character"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="V"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="V/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q6l4")
+
+[node name="button_hint" type="Label" parent="V/HBoxContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -11.5
+offset_right = 8.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "'E'"
+
+[node name="hint" type="Label" parent="V/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "-Interact with '!' blocks"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="V"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="V/HBoxContainer4"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q6l4")
+
+[node name="button_hint" type="Label" parent="V/HBoxContainer4/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -11.5
+offset_right = 8.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LMB"
+
+[node name="hint" type="Label" parent="V/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "-Drag n Drop inventory items
+-Select action in combat"
