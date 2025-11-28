@@ -21,6 +21,7 @@ GameData="*res://Globals/game_data.gd"
 PlayerData="*res://Globals/player_data.gd"
 GameState="*res://Globals/game_state.gd"
 Tooltip="*res://Globals/tooltip.tscn"
+GlobalAudioStream="*res://Globals/audio_stream.gd"
 
 [display]
 

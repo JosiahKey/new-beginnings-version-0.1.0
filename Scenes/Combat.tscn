@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://byotebi1xyoe7"]
 
-[ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Version_0.0.3/Assets/combat_forest_background.png" id="1_anr3a"]
-[ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Version_0.0.3/Scripts/UI/combat.gd" id="1_mi7to"]
-[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Version_0.0.3/Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
-[ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Version_0.0.3/Resources/AnimatedKnight.tres" id="3_cqrb7"]
-[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Version_0.0.3/Assets/gui_assets/combat_action.png" id="4_aqiim"]
-[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Version_0.0.3/Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
-[ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Version_0.0.3/Scenes/enemy.tscn" id="5_mi7to"]
-[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Version_0.0.3/Assets/VFX/floaty_32.png" id="6_g4qrr"]
+[ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/combat_forest_background.png" id="1_anr3a"]
+[ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/UI/combat.gd" id="1_mi7to"]
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
+[ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="3_cqrb7"]
+[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action.png" id="4_aqiim"]
+[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
+[ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Scenes/enemy.tscn" id="5_mi7to"]
+[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
 
 [sub_resource type="Gradient" id="Gradient_mi7to"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
