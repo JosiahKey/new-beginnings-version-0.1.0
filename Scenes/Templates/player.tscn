@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvqnvqyxj217n"]
+[gd_scene load_steps=6 format=3 uid="uid://dvqnvqyxj217n"]
 
 [ext_resource type="Script" uid="uid://cii4fjooekrwo" path="res://Scripts/player.gd" id="1_67o87"]
 [ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="2_xqijt"]
+[ext_resource type="AudioStream" uid="uid://dtgxsp8il4ipd" path="res://Audio/SFX/walk.wav" id="3_xh3qn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c841m"]
 radius = 7.0
@@ -108,3 +109,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="D_highlight/Area2D"]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_x4e8i")
+
+[node name="walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xh3qn")
+volume_db = -8.18

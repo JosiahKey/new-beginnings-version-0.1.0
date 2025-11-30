@@ -5,6 +5,7 @@ var active: bool = false
 func _on_next_level_entered(body):
 	if body.is_in_group("Player"):
 		print("_on_nextlevel_entered()")
+		AudioManager.level_change()
 		SignalBus.load_area_entered.emit()
 
 func _on_area_entered(area: Area2D) -> void:

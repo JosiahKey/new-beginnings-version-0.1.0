@@ -35,9 +35,12 @@ signal enemy_encountered
 #combatui to main
 @warning_ignore("unused_signal")
 signal game_over
-#anywhere to scene transition
+#enemy interactable to scene transition
 @warning_ignore("unused_signal")
-signal scene_transition_started
+signal combat_entered
+#combat to scene transition
+@warning_ignore("unused_signal")
+signal combat_exited
 #scene transition to anywhere
 @warning_ignore("unused_signal")
 signal scene_transition_finished

@@ -29,3 +29,12 @@ func change_to_precombat_song():
 	music = get_node(precombat_song)
 	music.playing = true
 	current_song = precombat_song
+
+func pause():
+	get_node(current_song).playing = false
+
+func resume():
+	get_node(current_song).playing = true
+
+func level_change():
+	get_node("level_change").playing = true

@@ -43,6 +43,8 @@ func _physics_process(_delta):
 			player_sprite.play("idle")
 		else:
 			player_sprite.play("run")
+			if get_node("walk").playing == false:
+				get_node("walk").playing = true
 
 		# Normalize the input direction to avoid faster diagonal movement
 		if input_direction != Vector2.ZERO:

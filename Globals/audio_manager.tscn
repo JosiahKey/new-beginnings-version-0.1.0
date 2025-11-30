@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddvhjbr7660b"]
+[gd_scene load_steps=5 format=3 uid="uid://ddvhjbr7660b"]
 
 [ext_resource type="Script" uid="uid://gplncglti8au" path="res://Globals/audio_manager.gd" id="1_kho5r"]
 [ext_resource type="AudioStream" uid="uid://cdohpou0dlluv" path="res://Audio/music/untitled.mp3" id="2_gbvha"]
 [ext_resource type="AudioStream" uid="uid://dc1sqlrw8gpqk" path="res://Audio/music/pokemon-red-yellow-blue-battle-music-trainer.mp3" id="3_rpwd6"]
+[ext_resource type="AudioStream" uid="uid://cew2s8ha7w013" path="res://Audio/SFX/level_complete.wav" id="4_euhnq"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -16,3 +17,7 @@ stream = ExtResource("2_gbvha")
 process_mode = 3
 stream = ExtResource("3_rpwd6")
 volume_db = -27.461
+
+[node name="level_change" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_euhnq")
+volume_db = -4.09

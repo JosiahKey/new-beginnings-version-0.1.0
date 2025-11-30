@@ -5,7 +5,13 @@ extends NinePatchRect
 func _ready() -> void:
 	SignalBus.connect("item_equipped", Callable(self, "_update_equipped_stats"))
 	_update_equipped_items()
-	SignalBus.item_equipped.emit()
+	PlayerData.stat_data["Total_equipped_weight"] = 0
+	PlayerData.stat_data["Total_equipped_damage_min"] = 0
+	PlayerData.stat_data["Total_equipped_damage_max"] = 0
+	PlayerData.stat_data["Bonus_hp"] = 0
+	PlayerData.stat_data["Accuracy"] = 0
+	PlayerData.stat_data["Evasion"] = 0
+	PlayerData.stat_data["PDR"] = 0
 
 func _update_equipped_items():
 	for i in PlayerData.equipment_data.keys():
@@ -16,6 +22,7 @@ func _update_equipped_items():
 			grid_ref.get_node(str(i)+ "/" + str(i) + "/Icon").texture = icon_texture
 
 func _update_equipped_stats():
+	get_node("equip").playing = true
 	PlayerData.stat_data["Total_equipped_weight"] = 0
 	PlayerData.stat_data["Total_equipped_damage_min"] = 0
 	PlayerData.stat_data["Total_equipped_damage_max"] = 0

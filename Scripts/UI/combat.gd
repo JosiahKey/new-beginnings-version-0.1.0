@@ -25,10 +25,15 @@ func _ready() -> void:
 
 func combat_victory():
 	#play fanfare
+	AudioManager.pause()
+	get_node("fanfare").playing = true
+	await get_tree().create_timer(1.9).timeout
 	#victory dance
 	#reward popup
 	#press button on pupup to end combat
+	#cleanup
 	#fade out
+	#SignalBus.combat_exited.emit()
 	AudioManager.change_to_precombat_song()
 	GameState.state = ""
 	self.queue_free()
@@ -47,6 +52,7 @@ func _on_texture_button_pressed() -> void:
 		player_attack_action()
 
 func player_attack_action():
+	get_node("select").playing = true
 	player_turn_ind.visible = false
 	actions_container.visible = false
 	await get_tree().create_timer(0.7).timeout
@@ -78,7 +84,7 @@ func on_hit(damage: int):
 	##vfx 1shot
 	emitter.emitting = true
 	#sfx play
-	get_node("SFX").get_node("player_hit").playing = true
+	get_node("player_hit").playing = true
 	
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

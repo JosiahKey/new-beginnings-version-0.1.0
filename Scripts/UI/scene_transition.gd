@@ -1,11 +1,11 @@
 extends CanvasLayer
 
 func _ready() -> void:
-	SignalBus.connect('scene_transition_started', Callable(self, "fade_out"))
+	SignalBus.connect('combat_entered', Callable(self, "enter_combat"))
+	SignalBus.connect('combat_exited', Callable(self, "exit_combat"))
 
-func fade_out():
+func enter_combat():
 	#$SFX.playing = true
-	AudioManager.change_song_to_combat("pokemon")
 	self.visible = true
 	get_tree().paused = true
 	$AnimationPlayer.play('fadeout')
@@ -16,4 +16,17 @@ func fade_out():
 	self.visible = false
 	get_tree().paused = false
 	$ColorRect.visible = true
+	SignalBus.scene_transition_finished.emit()
+
+func exit_combat():
+	self.visible = true
+	get_tree().paused = true
+	$TextureRect.visible = false
+	$AnimationPlayer.play('fadeout')
+	await $AnimationPlayer.animation_finished
+	$AnimationPlayer.play_backwards('fadeout')
+	await $AnimationPlayer.animation_finished
+	self.visible = false
+	get_tree().paused = false
+	$TextureRect.visible = true
 	SignalBus.scene_transition_finished.emit()

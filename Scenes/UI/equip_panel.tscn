@@ -1,19 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://bo5qufg8u75ox"]
+[gd_scene load_steps=20 format=3 uid="uid://bo5qufg8u75ox"]
 
-[ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Version_0.0.3/Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
-[ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Version_0.0.3/Scripts/UI/equip_panel.gd" id="2_h71av"]
-[ext_resource type="Texture2D" uid="uid://dasc5kix74axp" path="res://Version_0.0.3/Assets/gui_assets/title.png" id="3_5h1u5"]
-[ext_resource type="Texture2D" uid="uid://dofgv8q22h5bv" path="res://Version_0.0.3/Assets/gui_assets/head_placehold.png" id="4_7lqjh"]
-[ext_resource type="Script" uid="uid://qfbt6s41uh2b" path="res://Version_0.0.3/Scripts/UI/equipment_item.gd" id="5_emeak"]
-[ext_resource type="Texture2D" uid="uid://di1runa1pw3a7" path="res://Version_0.0.3/Assets/gui_assets/shoulder_placehold.png" id="6_srij6"]
-[ext_resource type="Texture2D" uid="uid://dsdxc65ed3i0r" path="res://Version_0.0.3/Assets/gui_assets/neck_placehold.png" id="7_xifeu"]
-[ext_resource type="Texture2D" uid="uid://b7g2ryvi18our" path="res://Version_0.0.3/Assets/gui_assets/chest_placeholder.png" id="8_2bf2l"]
-[ext_resource type="Texture2D" uid="uid://1yhub18wkw7f" path="res://Version_0.0.3/Assets/gui_assets/mainhand_placeholder.png" id="9_555pk"]
-[ext_resource type="Texture2D" uid="uid://4d41jdqlesw8" path="res://Version_0.0.3/Assets/gui_assets/offhand_placeholder.png" id="10_26kvj"]
-[ext_resource type="Texture2D" uid="uid://lrn5iqam1xhv" path="res://Version_0.0.3/Assets/gui_assets/ring_placeholder.png" id="11_8ufpo"]
-[ext_resource type="Texture2D" uid="uid://bl6acg2vxear3" path="res://Version_0.0.3/Assets/gui_assets/waist_placeholder.png" id="12_etgwp"]
-[ext_resource type="Texture2D" uid="uid://bqspjde3vfaca" path="res://Version_0.0.3/Assets/gui_assets/legs_placeholder.png" id="13_15rjk"]
-[ext_resource type="Texture2D" uid="uid://q8me2nr2004k" path="res://Version_0.0.3/Assets/gui_assets/feet_placeholder.png" id="14_6qtr7"]
+[ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
+[ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Scripts/UI/equip_panel.gd" id="2_h71av"]
+[ext_resource type="Texture2D" uid="uid://dasc5kix74axp" path="res://Assets/gui_assets/title.png" id="3_5h1u5"]
+[ext_resource type="Texture2D" uid="uid://dofgv8q22h5bv" path="res://Assets/gui_assets/head_placehold.png" id="4_7lqjh"]
+[ext_resource type="Script" uid="uid://qfbt6s41uh2b" path="res://Scripts/UI/equipment_item.gd" id="5_emeak"]
+[ext_resource type="Texture2D" uid="uid://di1runa1pw3a7" path="res://Assets/gui_assets/shoulder_placehold.png" id="6_srij6"]
+[ext_resource type="Texture2D" uid="uid://dsdxc65ed3i0r" path="res://Assets/gui_assets/neck_placehold.png" id="7_xifeu"]
+[ext_resource type="Texture2D" uid="uid://b7g2ryvi18our" path="res://Assets/gui_assets/chest_placeholder.png" id="8_2bf2l"]
+[ext_resource type="Texture2D" uid="uid://1yhub18wkw7f" path="res://Assets/gui_assets/mainhand_placeholder.png" id="9_555pk"]
+[ext_resource type="Texture2D" uid="uid://4d41jdqlesw8" path="res://Assets/gui_assets/offhand_placeholder.png" id="10_26kvj"]
+[ext_resource type="Texture2D" uid="uid://lrn5iqam1xhv" path="res://Assets/gui_assets/ring_placeholder.png" id="11_8ufpo"]
+[ext_resource type="Texture2D" uid="uid://bl6acg2vxear3" path="res://Assets/gui_assets/waist_placeholder.png" id="12_etgwp"]
+[ext_resource type="Texture2D" uid="uid://bqspjde3vfaca" path="res://Assets/gui_assets/legs_placeholder.png" id="13_15rjk"]
+[ext_resource type="Texture2D" uid="uid://q8me2nr2004k" path="res://Assets/gui_assets/feet_placeholder.png" id="14_6qtr7"]
+[ext_resource type="AudioStream" uid="uid://cd8wy58yr4kim" path="res://Audio/SFX/equip.wav" id="15_h2ivs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4ujh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -275,3 +276,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
+
+[node name="equip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_h2ivs")
+volume_db = 1.011
