@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwlh86nqd8h0v"
-path="res://.godot/imported/slime_purple.png-a4faf4fbaaa50273e963280160a64e3e.ctex"
+uid="uid://bdo37x77t28yu"
+path="res://.godot/imported/funguy.png-c7ff634b113f70b5c8bdc4e106b8b9e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/slime_purple.png"
-dest_files=["res://.godot/imported/slime_purple.png-a4faf4fbaaa50273e963280160a64e3e.ctex"]
+source_file="res://Assets/character_assets/funguy.png"
+dest_files=["res://.godot/imported/funguy.png-c7ff634b113f70b5c8bdc4e106b8b9e4.ctex"]
 
 [params]
 

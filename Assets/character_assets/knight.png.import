@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nd5e0klyfh44"
-path="res://.godot/imported/combat_forest_background.png-1657f8b520949abea6d8e406941bae87.ctex"
+uid="uid://1ypxsc17n3ug"
+path="res://.godot/imported/knight.png-28e5fea2795b3552b09fc12ee691a652.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/combat_forest_background.png"
-dest_files=["res://.godot/imported/combat_forest_background.png-1657f8b520949abea6d8e406941bae87.ctex"]
+source_file="res://Assets/character_assets/knight.png"
+dest_files=["res://.godot/imported/knight.png-28e5fea2795b3552b09fc12ee691a652.ctex"]
 
 [params]
 

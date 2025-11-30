@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://u18uhjlhb5op"]
+[gd_scene load_steps=21 format=3 uid="uid://u18uhjlhb5op"]
 
-[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Version_0.0.3/Resources/AnimatedGreenSlime.tres" id="1_h7qe2"]
-[ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Version_0.0.3/Scripts/enemy.gd" id="1_ybw3w"]
-[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Version_0.0.3/Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
-[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Version_0.0.3/Assets/VFX/floaty_32.png" id="3_w7xwu"]
+[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Resources/AnimatedGreenSlime.tres" id="1_h7qe2"]
+[ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Scripts/enemy.gd" id="1_ybw3w"]
+[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
+[ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="3_w7xwu"]
+[ext_resource type="AudioStream" uid="uid://qwy8fmd4t6kt" path="res://Audio/SFX/enemy_hit.wav" id="5_0830c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es28w"]
 atlas = ExtResource("2_1wk72")
@@ -153,5 +154,11 @@ value = 12.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_stdli")
 texture_progress = SubResource("GradientTexture1D_es28w")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="enemy_hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_0830c")
+volume_db = -7.011
 
 [connection signal="animation_finished" from="Enemy_Sprite" to="." method="_on_enemy_sprite_animation_finished"]

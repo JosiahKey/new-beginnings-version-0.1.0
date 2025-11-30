@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdo37x77t28yu"
-path="res://.godot/imported/funguy.png-107c0f2646db352c63914b7f8b79d6f6.ctex"
+uid="uid://cqiunle4g355s"
+path="res://.godot/imported/world_tileset.png-f82a0b8ec6815db187f1b9bd815dfa5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/funguy.png"
-dest_files=["res://.godot/imported/funguy.png-107c0f2646db352c63914b7f8b79d6f6.ctex"]
+source_file="res://Assets/tile_assets/world_tileset.png"
+dest_files=["res://.godot/imported/world_tileset.png-f82a0b8ec6815db187f1b9bd815dfa5d.ctex"]
 
 [params]
 

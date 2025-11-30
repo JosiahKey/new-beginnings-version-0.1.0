@@ -61,6 +61,8 @@ func on_hit(damage):
 	sprite.play("damaged")
 	#vfx 1shot
 	emitter.emitting = true
+	#sfx play
+	get_node("SFX").get_node("enemy_hit").playing = true
 
 func _on_enemy_sprite_animation_finished() -> void:
 		sprite.play("default")

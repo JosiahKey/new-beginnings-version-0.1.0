@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccj6sdckq8vaf"
-path="res://.godot/imported/wow.png-1624cf00d39d582a0274c05330b23704.ctex"
+uid="uid://nd5e0klyfh44"
+path="res://.godot/imported/combat_forest_background.png-310a81abee9d10c97f4a611cf4387c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/wow.png"
-dest_files=["res://.godot/imported/wow.png-1624cf00d39d582a0274c05330b23704.ctex"]
+source_file="res://Assets/art_assets/combat_forest_background.png"
+dest_files=["res://.godot/imported/combat_forest_background.png-310a81abee9d10c97f4a611cf4387c81.ctex"]
 
 [params]
 

@@ -29,6 +29,7 @@ func combat_victory():
 	#reward popup
 	#press button on pupup to end combat
 	#fade out
+	AudioManager.change_to_precombat_song()
 	GameState.state = ""
 	self.queue_free()
 
@@ -76,6 +77,8 @@ func on_hit(damage: int):
 	player_spr.play("damaged")
 	##vfx 1shot
 	emitter.emitting = true
+	#sfx play
+	get_node("SFX").get_node("player_hit").playing = true
 	
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

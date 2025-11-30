@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1ypxsc17n3ug"
-path="res://.godot/imported/knight.png-f472b64305368cee1f380a5cb35bd9ab.ctex"
+uid="uid://ccj6sdckq8vaf"
+path="res://.godot/imported/wow.png-f6536f1cc0e54aa68c98651463d325bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/knight.png"
-dest_files=["res://.godot/imported/knight.png-f472b64305368cee1f380a5cb35bd9ab.ctex"]
+source_file="res://Assets/art_assets/wow.png"
+dest_files=["res://.godot/imported/wow.png-f6536f1cc0e54aa68c98651463d325bd.ctex"]
 
 [params]
 
