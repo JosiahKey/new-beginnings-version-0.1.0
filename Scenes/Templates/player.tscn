@@ -112,4 +112,4 @@ shape = SubResource("RectangleShape2D_x4e8i")
 
 [node name="walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_xh3qn")
-volume_db = -8.18
+volume_db = -3.506
