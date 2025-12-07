@@ -1,5 +1,5 @@
 extends Node
-#main to interactable
+#next level to levelmanager
 @warning_ignore("unused_signal")
 signal load_area_entered
 #interactable to item generator

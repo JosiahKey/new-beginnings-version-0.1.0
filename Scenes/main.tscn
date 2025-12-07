@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw7hxlrxq4724"]
+[gd_scene load_steps=8 format=3 uid="uid://cw7hxlrxq4724"]
 
 [ext_resource type="Script" uid="uid://dgjfxf658upag" path="res://Scripts/main.gd" id="1_b4pd7"]
 [ext_resource type="PackedScene" uid="uid://2a4avmrkge65" path="res://Scenes/UI/controls_hint.tscn" id="2_2jltt"]
 [ext_resource type="PackedScene" uid="uid://cif2nqjkhtabc" path="res://Scenes/UI/character_sheet.tscn" id="2_sadeq"]
 [ext_resource type="Script" uid="uid://cjjssbwmlkdnt" path="res://Scripts/item_generator.gd" id="3_2jltt"]
+[ext_resource type="Script" uid="uid://b27bxp0jsbk6k" path="res://Scripts/level_manager.gd" id="4_21xkr"]
+[ext_resource type="PackedScene" uid="uid://b3t2blau1p1jc" path="res://Scenes/Levels/Level1.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node2D"]
@@ -13,7 +15,10 @@ script = ExtResource("1_b4pd7")
 
 [node name="CharacterSheet" parent="." instance=ExtResource("2_sadeq")]
 
-[node name="LevelDock" type="Node2D" parent="."]
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("4_21xkr")
+
+[node name="Level1" parent="LevelManager" instance=ExtResource("5_6bp64")]
 
 [node name="item_generator" type="Node2D" parent="."]
 script = ExtResource("3_2jltt")
