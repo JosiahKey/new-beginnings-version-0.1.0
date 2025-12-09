@@ -13,7 +13,6 @@ func generate_item():
 	for i in PlayerData.inv_data.keys():
 			if PlayerData.inv_data[i]["Item"] == null:
 				PlayerData.inv_data[i]["Item"] = ItemGeneration()["item_id"]
-				print(JSON.stringify(PlayerData.inv_data))
 				SignalBus.item_collected.emit()
 				SignalBus.item_added.emit()
 				break
@@ -22,12 +21,13 @@ func ItemGeneration() -> Dictionary:
 	var new_item: Dictionary = {}
 	new_item["item_id"] = ItemDetermineType()
 	new_item["item_rarity"] = ItemDetermineRarity()
+	print(new_item["item_rarity"])
 	new_item["item_name"] = ItemDetermineName(new_item["item_id"])
 	for i in GameData.item_stats:
 		if GameData.item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
 	
-	#print(new_item)
+	print(new_item)
 	return new_item
 
 func ItemDetermineType() -> String:

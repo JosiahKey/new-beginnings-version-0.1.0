@@ -86,8 +86,6 @@ func _on_encounter_timeout() -> void:
 	randomize()
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.paused = true
-	print("timer ended")
-	print("new timer = " + str(timer.wait_time))
 	AudioManager.change_song_to_combat("pokemon")
 	SignalBus.combat_entered.emit()
 	await get_tree().create_timer(0.5).timeout
