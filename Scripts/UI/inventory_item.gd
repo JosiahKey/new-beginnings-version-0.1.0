@@ -3,7 +3,7 @@ extends TextureRect
 
 func _get_drag_data(at_position: Vector2):
 	var inv_slot = get_parent().get_name()
-	if PlayerData.inv_data[inv_slot]["Item"] != null:
+	if PlayerData.inv_data[inv_slot]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[inv_slot]["Item"]))):
 		var data: Dictionary = {}
 		data["origin_node"] = self
 		data["origin_panel"] = "Inventory_Panel"
@@ -32,6 +32,8 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		data["target_texture"] = null
 		return true
 	else:
+		if(!GameData.item_data.has(str(int(PlayerData.inv_data[target_slot]["Item"])))):
+			return false
 		data["target_item_id"] = PlayerData.inv_data[target_slot]["Item"]
 		data["target_texture"] = texture
 		if data["origin_panel"] == "Equip_Panel":

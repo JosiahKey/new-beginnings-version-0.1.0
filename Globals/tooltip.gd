@@ -5,13 +5,13 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 	@warning_ignore("unused_variable")
 	var item_id: String
 	if origin == "Inventory":
-		if PlayerData.inv_data[slot]["Item"] != null:
+		if PlayerData.inv_data[slot]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[slot]["Item"]))):
 			item_id = str(int(PlayerData.inv_data[slot]["Item"]))
 			valid = true
 		else:
 			valid = false
 	else: #origin equipment
-		if PlayerData.equipment_data[slot] != null:
+		if PlayerData.equipment_data[slot] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[slot]))):
 			item_id = str(int(PlayerData.equipment_data[slot]))
 			valid = true
 		else:

@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _update_equipped_items():
 	for i in PlayerData.equipment_data.keys():
-		if PlayerData.equipment_data[i] != null:
+		if PlayerData.equipment_data[i] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[i]))):
 			var item_name:String  = GameData.item_data[str(int(PlayerData.equipment_data[i]))]["name"]
 			var icon_texture:Texture =  load("res://Assets/item_assets/"+ item_name +".png")
 			print("TextureRect" +str(i)+ "/" + str(i) + "/Icon")
@@ -34,7 +34,7 @@ func _update_equipped_stats():
 
 
 	for i in PlayerData.equipment_data.keys():
-		if PlayerData.equipment_data[i] != null:
+		if PlayerData.equipment_data[i] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[i]))):
 			PlayerData.stat_data["Bonus_hp"] += GameData.item_data[
 									str(int(PlayerData.equipment_data[i]))]["Hp"]
 			PlayerData.stat_data["Accuracy"] += GameData.item_data[

@@ -10,12 +10,13 @@ func _input(event: InputEvent) -> void:
 		generate_item()
 
 func generate_item():
-	for i in PlayerData.inv_data.keys():
-			if PlayerData.inv_data[i]["Item"] == null:
-				PlayerData.inv_data[i]["Item"] = ItemGeneration()["item_id"]
-				SignalBus.item_collected.emit()
-				SignalBus.item_added.emit()
-				break
+	if(GameData.item_data.size() >0):
+		for i in PlayerData.inv_data.keys():
+				if PlayerData.inv_data[i]["Item"] == null:
+					PlayerData.inv_data[i]["Item"] = ItemGeneration()["item_id"]
+					SignalBus.item_collected.emit()
+					SignalBus.item_added.emit()
+					break
 
 func ItemGeneration() -> Dictionary:
 	var new_item: Dictionary = {}
