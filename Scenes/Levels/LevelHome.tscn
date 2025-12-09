@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://blwckghasknp4"]
+[gd_scene load_steps=5 format=4 uid="uid://blwckghasknp4"]
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_l12ik"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_ldwcl"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_ldwcl"]
+[ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_34ql4"]
 
 [node name="LevelHome" type="Node2D"]
 
@@ -16,3 +17,7 @@ tile_set = ExtResource("1_l12ik")
 position = Vector2(56, 40)
 scale = Vector2(2.9999988, 1)
 next_level = "Level3"
+
+[node name="HealZone" parent="." instance=ExtResource("4_34ql4")]
+position = Vector2(-64, -200)
+scale = Vector2(3.1599987, 3.6223752)

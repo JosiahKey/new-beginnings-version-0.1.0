@@ -7,6 +7,9 @@ extends CharacterBody2D
 # Movement speed
 var speed_factor = 100  # Set to 100
 
+#reference to encounter timer
+@onready var timer = $Encounter
+
 # Reference to the highlight ColorRects
 @onready var r_highlight = $R_highlight
 @onready var l_highlight = $L_highlight
@@ -17,6 +20,7 @@ var speed_factor = 100  # Set to 100
 func _ready():
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
+	timer.start()
 
 func _physics_process(_delta):
 	if GameState.state != "Combat":
@@ -38,10 +42,12 @@ func _physics_process(_delta):
 		elif input_direction.x < 0:
 			player_sprite.flip_h = true
 		
-		#Play anime
+		#Play anime && control timer
 		if input_direction == Vector2.ZERO:
 			player_sprite.play("idle")
+			timer.paused = true
 		else:
+			timer.paused = false
 			player_sprite.play("run")
 			if get_node("walk").playing == false:
 				get_node("walk").playing = true
@@ -74,3 +80,15 @@ func update_highlight_visibility(direction: Vector2):
 		d_highlight.visible = true  # Down
 	elif direction.y < 0:
 		u_highlight.visible = true  # Up
+
+
+func _on_encounter_timeout() -> void:
+	randomize()
+	timer.wait_time = randf_range(5.0, 10.0)
+	timer.paused = true
+	print("timer ended")
+	print("new timer = " + str(timer.wait_time))
+	AudioManager.change_song_to_combat("pokemon")
+	SignalBus.combat_entered.emit()
+	await get_tree().create_timer(0.5).timeout
+	SignalBus.enemy_encountered.emit()
