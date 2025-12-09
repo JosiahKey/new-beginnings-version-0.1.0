@@ -33,4 +33,4 @@ func _ready() -> void:
 	var item_data_file = FileAccess.open("res://Data/item_data2.json", FileAccess.READ)
 	var item_data_json = JSON.parse_string(item_data_file.get_as_text())
 	item_data_file.close()
-	debug_item_data = item_data_json
+	item_data = debug_item_data #item_data_json

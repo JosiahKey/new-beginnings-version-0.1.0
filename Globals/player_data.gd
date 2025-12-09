@@ -23,7 +23,7 @@ var equipment_data = {
 	"Neck": null,
 	"Shoulders": null,
 	"Chest": null,
-	"Mainhand": 10001,
+	"Mainhand": null,
 	"Offhand": null,
 	"Ring1": null,
 	"Ring2": null,
