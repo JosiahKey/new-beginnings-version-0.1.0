@@ -4,7 +4,6 @@ extends NinePatchRect
 
 func _ready() -> void:
 	SignalBus.connect("item_equipped", Callable(self, "_update_equipped_stats"))
-	_update_equipped_items()
 	PlayerData.stat_data["Total_equipped_weight"] = 0
 	PlayerData.stat_data["Total_equipped_damage_min"] = 0
 	PlayerData.stat_data["Total_equipped_damage_max"] = 0
@@ -12,6 +11,8 @@ func _ready() -> void:
 	PlayerData.stat_data["Accuracy"] = 0
 	PlayerData.stat_data["Evasion"] = 0
 	PlayerData.stat_data["PDR"] = 0
+	_update_equipped_items()
+	_update_equipped_stats()
 
 func _update_equipped_items():
 	for i in PlayerData.equipment_data.keys():

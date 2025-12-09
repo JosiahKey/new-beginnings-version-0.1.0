@@ -13,6 +13,10 @@ func _ready() -> void:
 	SignalBus.connect("equipment_updated", Callable(self, "_update_stat_panel"))
 	_update_stat_panel()
 
+func _process(_delta: float) -> void:
+	max_hp_label.text = str(int(PlayerData.stat_data["Total_hp"])) + " / " + str(
+		PlayerData.stat_data["Current_hp"])
+
 func _update_stat_panel():
 	acc_label.text = str(PlayerData.stat_data["Accuracy"])
 	eva_label.text = str(PlayerData.stat_data["Evasion"])

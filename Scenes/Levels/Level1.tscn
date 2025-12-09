@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://b3t2blau1p1jc"]
+[gd_scene load_steps=6 format=4 uid="uid://b3t2blau1p1jc"]
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_xvio3"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_bss6w"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_pi0gu"]
 [ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/enemy_interactable.tscn" id="4_bss6w"]
+[ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="5_kri6y"]
 
 [node name="Level1" type="Node2D"]
 
@@ -20,3 +21,6 @@ position = Vector2(-40, -24)
 
 [node name="enemy_interactable" parent="." instance=ExtResource("4_bss6w")]
 position = Vector2(151, -38)
+
+[node name="HealZone" parent="." instance=ExtResource("5_kri6y")]
+position = Vector2(161, 40)

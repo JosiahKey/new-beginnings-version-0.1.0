@@ -7,7 +7,7 @@ var stat_data = {
 	"Strength": 0,
 	"Bonus_hp": 0,
 	"Total_hp": 0,
-	"Current_hp": 29,
+	"Current_hp": 25,
 	"Accuracy": 0,
 	"Evasion": 0,
 	"PDR": 0,
