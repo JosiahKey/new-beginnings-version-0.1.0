@@ -13,8 +13,8 @@ func _ready() -> void:
 func _init_inventory():
 	for i in PlayerData.inv_data.keys():
 		var inv_slot_new = template_inv_slot.instantiate()
-		if PlayerData.inv_data[i]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[i]["Item"]))):
-			var item_name = GameData.item_data[str(int(PlayerData.inv_data[i]["Item"]))]["name"]
+		if PlayerData.inv_data[i]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[i]["Item"]):
+			var item_name = GameData.item_data[PlayerData.inv_data[i]["Item"]]["item_name"]
 			var icon_texture = load("res://Assets/item_assets/"+ item_name +".png")
 			inv_slot_new.get_node("Icon").set_texture(icon_texture)
 		grid_ref.add_child(inv_slot_new, true)
@@ -25,8 +25,8 @@ func _pull_inventory_data():
 	
 	for i in PlayerData.inv_data.keys():
 		var inv_slot_new = template_inv_slot.instantiate()
-		if PlayerData.inv_data[i]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[i]["Item"]))):
-			var item_name = GameData.item_data[str(int(PlayerData.inv_data[i]["Item"]))]["name"]
+		if PlayerData.inv_data[i]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[i]["Item"]):
+			var item_name = GameData.item_data[PlayerData.inv_data[i]["Item"]]["item_name"]
 			var icon_texture = load("res://Assets/item_assets/"+ item_name +".png")
 			inv_slot_new.get_node("Icon").set_texture(icon_texture)
 		grid_ref.add_child(inv_slot_new, true)

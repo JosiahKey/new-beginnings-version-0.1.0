@@ -3,21 +3,21 @@ extends Control
 func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 	var valid = false
 	@warning_ignore("unused_variable")
-	var item_id: String
+	var item_id: int
 	if origin == "Inventory":
-		if PlayerData.inv_data[slot]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[slot]["Item"]))):
-			item_id = str(int(PlayerData.inv_data[slot]["Item"]))
+		if PlayerData.inv_data[slot]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[slot]["Item"]):
+			item_id = PlayerData.inv_data[slot]["Item"]
 			valid = true
 		else:
 			valid = false
 	else: #origin equipment
-		if PlayerData.equipment_data[slot] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[slot]))):
-			item_id = str(int(PlayerData.equipment_data[slot]))
+		if PlayerData.equipment_data[slot] != null and GameData.item_data.has(PlayerData.equipment_data[slot]):
+			item_id = PlayerData.equipment_data[slot]
 			valid = true
 		else:
 			valid = false
 	if valid:
-		get_node("CanvasLayer/Tooltip/N/M/V/Item_Name").text = GameData.item_data[item_id]["name"]
+		get_node("CanvasLayer/Tooltip/N/M/V/Item_Name").text = GameData.item_data[item_id]["item_name"]
 		var ui_iterator = 1
 		for i in range(GameData.item_stats.size()):
 			var stat_name = GameData.item_stats[i]
@@ -52,7 +52,7 @@ func compare_items(item_id, stat_name, stat_value) -> int:
 	var slot = GameData.item_data[item_id]["equipmentSlot"]
 	if PlayerData.equipment_data[slot] != null:
 		var equipped_item_id = PlayerData.equipment_data[slot]
-		var equipped_item_stat_value = GameData.item_data[str(int(equipped_item_id))][stat_name]
+		var equipped_item_stat_value = GameData.item_data[equipped_item_id][stat_name]
 		stat_diff = stat_value - equipped_item_stat_value
 		if int(PlayerData.equipment_data[slot]) == int(item_id):
 			return 0

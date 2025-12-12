@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hx5fq7nebwiv"
-path="res://.godot/imported/bodyarmor.png-448b54554b59ccdb7dd50a660aef782d.ctex"
+uid="uid://ykyum14rvl2s"
+path="res://.godot/imported/bodyarmor_rare.png-00067c8038cb860ee82805f3307bfe6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/bodyarmor.png"
-dest_files=["res://.godot/imported/bodyarmor.png-448b54554b59ccdb7dd50a660aef782d.ctex"]
+source_file="res://Assets/item_assets/bodyarmor_rare.png"
+dest_files=["res://.godot/imported/bodyarmor_rare.png-00067c8038cb860ee82805f3307bfe6f.ctex"]
 
 [params]
 

@@ -3,12 +3,12 @@ extends TextureRect
 
 func _get_drag_data(at_position: Vector2):
 	var inv_slot = get_parent().get_name()
-	if PlayerData.inv_data[inv_slot]["Item"] != null and GameData.item_data.has(str(int(PlayerData.inv_data[inv_slot]["Item"]))):
+	if PlayerData.inv_data[inv_slot]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[inv_slot]["Item"]):
 		var data: Dictionary = {}
 		data["origin_node"] = self
 		data["origin_panel"] = "Inventory_Panel"
 		data["origin_item_id"] = PlayerData.inv_data[inv_slot]["Item"]
-		data["origin_equipment_type"] = GameData.item_data[str(int(PlayerData.inv_data[inv_slot]["Item"]))]["equipmentSlot"]
+		data["origin_equipment_type"] = GameData.item_data[PlayerData.inv_data[inv_slot]["Item"]]["equipmentSlot"]
 		data["origin_texture"] = texture
 
 		var drag_texture = TextureRect.new()
@@ -32,12 +32,12 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		data["target_texture"] = null
 		return true
 	else:
-		if(!GameData.item_data.has(str(int(PlayerData.inv_data[target_slot]["Item"])))):
+		if(!GameData.item_data.has(PlayerData.inv_data[target_slot]["Item"])):
 			return false
 		data["target_item_id"] = PlayerData.inv_data[target_slot]["Item"]
 		data["target_texture"] = texture
 		if data["origin_panel"] == "Equip_Panel":
-			var target_equipment_slot = GameData.item_data[str(int(PlayerData.inv_data[target_slot]["Item"]))]["equipmentSlot"]
+			var target_equipment_slot = GameData.item_data[PlayerData.inv_data[target_slot]["Item"]]["equipmentSlot"]
 			if target_equipment_slot == data["origin_equipment_type"]:
 				return true
 			else:

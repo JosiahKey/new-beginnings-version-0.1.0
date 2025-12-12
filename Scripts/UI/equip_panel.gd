@@ -16,8 +16,8 @@ func _ready() -> void:
 
 func _update_equipped_items():
 	for i in PlayerData.equipment_data.keys():
-		if PlayerData.equipment_data[i] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[i]))):
-			var item_name:String  = GameData.item_data[str(int(PlayerData.equipment_data[i]))]["name"]
+		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
+			var item_name:String  = GameData.item_data[PlayerData.equipment_data[i]]["item_name"]
 			var icon_texture:Texture =  load("res://Assets/item_assets/"+ item_name +".png")
 			print("TextureRect" +str(i)+ "/" + str(i) + "/Icon")
 			grid_ref.get_node(str(i)+ "/" + str(i) + "/Icon").texture = icon_texture
@@ -34,20 +34,20 @@ func _update_equipped_stats():
 
 
 	for i in PlayerData.equipment_data.keys():
-		if PlayerData.equipment_data[i] != null and GameData.item_data.has(str(int(PlayerData.equipment_data[i]))):
+		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
 			PlayerData.stat_data["Bonus_hp"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Hp"]
+									PlayerData.equipment_data[i]]["Hp"]
 			PlayerData.stat_data["Accuracy"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Accuracy"]
+									PlayerData.equipment_data[i]]["Accuracy"]
 			PlayerData.stat_data["Evasion"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Evasion"]
+									PlayerData.equipment_data[i]]["Evasion"]
 			PlayerData.stat_data["PDR"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["PDR"]
+									PlayerData.equipment_data[i]]["PDR"]
 			PlayerData.stat_data["Total_equipped_weight"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Weight"]
+									PlayerData.equipment_data[i]]["Weight"]
 			PlayerData.stat_data["Total_equipped_damage_min"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Damage_min"]
+									PlayerData.equipment_data[i]]["Damage_min"]
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
-									str(int(PlayerData.equipment_data[i]))]["Damage_max"]
+									PlayerData.equipment_data[i]]["Damage_max"]
 	PlayerData.stat_data["Total_hp"] = PlayerData.stat_data["Natural_hp"] + PlayerData.stat_data["Bonus_hp"]
 	SignalBus.equipment_updated.emit()

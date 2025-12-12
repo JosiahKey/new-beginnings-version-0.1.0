@@ -1,8 +1,8 @@
 extends Node
 
 var item_data = {}
-var debug_item_data = {
-	"10001": {
+var base_item_data = {
+	"10001": { #sample item for reference. overwritten on line 36
 	"name": "dagger",
 	"Damage_min": 1,
 	"Damage_max": 2,
@@ -33,4 +33,4 @@ func _ready() -> void:
 	var item_data_file = FileAccess.open("res://Data/item_data2.json", FileAccess.READ)
 	var item_data_json = JSON.parse_string(item_data_file.get_as_text())
 	item_data_file.close()
-	item_data = debug_item_data #item_data_json
+	base_item_data = item_data_json

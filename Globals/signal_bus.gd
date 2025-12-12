@@ -8,7 +8,7 @@ signal item_generated
 #itemgenerator to inventorypanel
 @warning_ignore("unused_signal")
 signal item_collected
-#inventory to equippanel
+#inventorypanel to equippanel
 @warning_ignore("unused_signal")
 signal item_equipped
 #equippanel to statpanel

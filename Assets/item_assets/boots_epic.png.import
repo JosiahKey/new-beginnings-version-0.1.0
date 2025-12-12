@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh83ci6eyeuyo"
-path="res://.godot/imported/boots.png-81ca065863b0266c704108f08252c5b7.ctex"
+uid="uid://dv5kn54d5rq4g"
+path="res://.godot/imported/boots_epic.png-68eb93307433efc50ffa1f6b046f53d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/boots.png"
-dest_files=["res://.godot/imported/boots.png-81ca065863b0266c704108f08252c5b7.ctex"]
+source_file="res://Assets/item_assets/boots_epic.png"
+dest_files=["res://.godot/imported/boots_epic.png-68eb93307433efc50ffa1f6b046f53d1.ctex"]
 
 [params]
 

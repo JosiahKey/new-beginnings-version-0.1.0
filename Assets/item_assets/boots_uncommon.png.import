@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpo43rrlwi73g"
-path="res://.godot/imported/pants.png-c1befc3784bfbed9ae4ba9bea4650da3.ctex"
+uid="uid://dh83ci6eyeuyo"
+path="res://.godot/imported/boots_uncommon.png-7eab392f8bc6cefd28a4c6e04847555f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/pants.png"
-dest_files=["res://.godot/imported/pants.png-c1befc3784bfbed9ae4ba9bea4650da3.ctex"]
+source_file="res://Assets/item_assets/boots_uncommon.png"
+dest_files=["res://.godot/imported/boots_uncommon.png-7eab392f8bc6cefd28a4c6e04847555f.ctex"]
 
 [params]
 

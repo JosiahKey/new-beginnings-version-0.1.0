@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1xpm03i3obyx"
-path="res://.godot/imported/helm.png-57f81359e0669972fdd800adc056ad7f.ctex"
+uid="uid://bb612djp5ctgb"
+path="res://.godot/imported/pants_epic.png-90f62f36916e9686cb7e6f682f86635f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/helm.png"
-dest_files=["res://.godot/imported/helm.png-57f81359e0669972fdd800adc056ad7f.ctex"]
+source_file="res://Assets/item_assets/pants_epic.png"
+dest_files=["res://.godot/imported/pants_epic.png-90f62f36916e9686cb7e6f682f86635f.ctex"]
 
 [params]
 
