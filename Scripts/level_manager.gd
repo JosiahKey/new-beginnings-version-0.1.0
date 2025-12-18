@@ -1,10 +1,14 @@
 extends Node2D
 
 @onready var Level_List:= {
-	"Level1": preload("res://Scenes/Levels/Level1.tscn"),
+	"Sidearea": preload("res://Scenes/Levels/Sidearea.tscn"),
 	"Level2": preload("res://Scenes/Levels/Level2.tscn"),
-	"Level3": preload("res://Scenes/Levels/Level3.tscn"),
-	"Level4": preload("res://Scenes/Levels/Level4.tscn")
+	"Overworld": preload("res://Scenes/Levels/Overworld.tscn"),
+	"Level4": preload("res://Scenes/Levels/Level4.tscn"),
+	"Bossarea": preload("res://Scenes/Levels/Bossarea.tscn"),
+	"Home": preload("res://Scenes/Levels/Home.tscn"),
+	"Overworld_fromhome": preload("res://Scenes/Levels/Overworld_fromhome.tscn"),
+	"Overworld_fromside": preload("res://Scenes/Levels/Overworld_fromside.tscn"),
 }
 
 func _ready() -> void:

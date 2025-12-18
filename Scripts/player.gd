@@ -1,16 +1,9 @@
 extends CharacterBody2D
 
-# handles all player input
-#can add new player inputs here 
-#and animations
+var speed_factor = 100
+var encounters_allowed: bool = true
 
-# Movement speed
-var speed_factor = 100  # Set to 100
-
-#reference to encounter timer
 @onready var timer = $Encounter
-
-# Reference to the highlight ColorRects
 @onready var r_highlight = $R_highlight
 @onready var l_highlight = $L_highlight
 @onready var u_highlight = $U_highlight
@@ -47,7 +40,8 @@ func _physics_process(_delta):
 			player_sprite.play("idle")
 			timer.paused = true
 		else:
-			timer.paused = false
+			if(encounters_allowed):
+				timer.paused = false
 			player_sprite.play("run")
 			if get_node("walk").playing == false:
 				get_node("walk").playing = true
@@ -81,6 +75,8 @@ func update_highlight_visibility(direction: Vector2):
 	elif direction.y < 0:
 		u_highlight.visible = true  # Up
 
+func allow_encounters(allowed: bool):
+	encounters_allowed = allowed
 
 func _on_encounter_timeout() -> void:
 	randomize()
