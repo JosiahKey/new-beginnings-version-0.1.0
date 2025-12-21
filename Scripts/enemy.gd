@@ -14,9 +14,9 @@ func _ready() -> void:
 	enemy_stats = {
 		"Max_hp": 10,
 		"Current_hp": 10,
-		"Damage_min": 5,
-		"Damage_max": 10,
-		"Accuracy": .5,
+		"Damage_min": 1,
+		"Damage_max": 6,
+		"Accuracy": 50,
 		"Evasion": 0.0,
 		"PDR": 0.0,
 		"EXP": 10.0
@@ -51,10 +51,8 @@ func enemy_action(action:String):
 
 func roll_to_hit() -> bool:
 	randomize()
-	var roll: float = randf_range(0.0,1.0)
-	print("roll: " + str(roll))
-	print("roll: " + str(enemy_stats["Accuracy"]))
-	if roll > enemy_stats["Accuracy"]:
+	var roll: int = randi_range(0,100)
+	if roll >= enemy_stats["Accuracy"]:
 		return false
 	else:
 		return true

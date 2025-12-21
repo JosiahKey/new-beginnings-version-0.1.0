@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://byotebi1xyoe7"]
+[gd_scene load_steps=28 format=3 uid="uid://byotebi1xyoe7"]
 
 [ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="1_anr3a"]
-[ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/UI/combat.gd" id="1_mi7to"]
+[ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/combat.gd" id="1_mi7to"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
 [ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="3_cqrb7"]
 [ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action.png" id="4_aqiim"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Scenes/enemy.tscn" id="5_mi7to"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
+[ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
 [ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="10_s7a1o"]
 [ext_resource type="AudioStream" uid="uid://dymxemro140n1" path="res://Audio/SFX/fanfare.mp3" id="11_ym1s2"]
 
@@ -451,6 +452,10 @@ autoplay = "idle"
 [node name="player_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_snhto")
 volume_db = -2.922
+
+[node name="player_miss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_khfr5")
+volume_db = -9.764
 
 [node name="select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_s7a1o")

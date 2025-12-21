@@ -13,23 +13,23 @@ var stat_data = {
 	"PDR": 0,
 	"Total_equipped_damage_min": 0,
 	"Total_equipped_damage_max": 0,
-	"Speed": 1,
-	"Total_equipped_weight": 1,
+	"Speed": 0,
+	"Total_equipped_weight": 0,
 	"Experience": 0,
 }
 
 var equipment_data = {
-	"Head": null,
-	"Neck": null,
-	"Shoulders": null,
-	"Chest": null,
-	"Mainhand": null,
-	"Offhand": null,
-	"Ring1": null,
-	"Ring2": null,
-	"Waist": null,
-	"Legs": null,
-	"Feet": null,
+	"Head": 0,
+	"Neck": 0,
+	"Shoulders": 0,
+	"Chest": 0,
+	"Mainhand": 10001,
+	"Offhand": 0,
+	"Ring1": 0,
+	"Ring2": 0,
+	"Waist": 0,
+	"Legs": 0,
+	"Feet": 0,
 }
 
 func _ready() -> void:
@@ -42,6 +42,9 @@ func _load_inv_data():
 	var inv_data_json = JSON.parse_string(inv_data_file.get_as_text())
 	inv_data_file.close()
 	inv_data = inv_data_json
+	for k in inv_data.keys():
+		inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
+
 
 func _save_inv_data():
 	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.READ)

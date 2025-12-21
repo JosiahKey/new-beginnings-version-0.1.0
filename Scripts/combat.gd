@@ -30,6 +30,7 @@ func combat_victory():
 	await get_tree().create_timer(1.9).timeout
 	#victory dance
 	#reward popup
+	SignalBus.item_generated.emit()
 	#press button on pupup to end combat
 	#cleanup
 	#fade out
@@ -72,9 +73,9 @@ func player_attack_action():
 
 func roll_to_hit() -> bool:
 	randomize()
-	var roll: float = randf_range(0.0,1.0)
+	var roll: int = randi_range(0,100)
 	if GameData.item_data.has(PlayerData.equipment_data["Mainhand"]):
-		if roll > GameData.item_data[PlayerData.equipment_data["Mainhand"]]["Accuracy"]:
+		if roll >= GameData.item_data[PlayerData.equipment_data["Mainhand"]]["Accuracy"]:
 			return false
 		else:
 			return true
@@ -85,11 +86,10 @@ func on_hit(damage: int):
 	#deal damage
 	PlayerData.stat_data["Current_hp"] -= damage
 	#update hp label
-	health_label.text = "HP: " + str(PlayerData.stat_data["Total_hp"]) + " / " + str(PlayerData.stat_data["Current_hp"])
+	health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 	#move hp bar
 	var tween = get_tree().create_tween()
 	var newhp = PlayerData.stat_data["Current_hp"]
-	print(str(newhp) + "  " + str(health_bar.value))
 	tween.tween_property(health_bar, "value", newhp, 0.5)
 	#animate floating text
 	var text = floating_text.instantiate()
@@ -104,7 +104,11 @@ func on_hit(damage: int):
 	get_node("player_hit").playing = true
 
 func on_miss():
-	pass
+	var text = floating_text.instantiate()
+	text.amount = "miss"
+	text.type = "damage"
+	player_spr.add_child(text)
+	$player_miss.playing = true
 
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

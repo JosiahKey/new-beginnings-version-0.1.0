@@ -22,8 +22,8 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 		for i in range(GameData.item_stats.size()):
 			var stat_name = GameData.item_stats[i]
 			var stat_readable = GameData.item_stats_readable[i]
-			if GameData.item_data[item_id][stat_name] != null and GameData.item_data[item_id][stat_name] != 0:
-				var stat_value = int(GameData.item_data[item_id][stat_name])
+			if GameData.item_data[item_id][stat_name] != 0:
+				var stat_value = GameData.item_data[item_id][stat_name]
 				get_node("CanvasLayer/Tooltip/N/M/V/Stat" + str(ui_iterator) + "/Stat").text = stat_readable + ": +" + str(stat_value)
 				if GameData.item_data[item_id]["equipmentSlot"] != null and origin == "Inventory":
 					var stat_diff = compare_items(item_id, stat_name, stat_value)
@@ -47,14 +47,14 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 func hide_item_popup():
 	%Tooltip.hide()
 
-func compare_items(item_id, stat_name, stat_value) -> int:
+func compare_items(item_id, stat_name, stat_value):
 	var stat_diff = 0
 	var slot = GameData.item_data[item_id]["equipmentSlot"]
-	if PlayerData.equipment_data[slot] != null:
+	if PlayerData.equipment_data[slot] != 0:
 		var equipped_item_id = PlayerData.equipment_data[slot]
 		var equipped_item_stat_value = GameData.item_data[equipped_item_id][stat_name]
 		stat_diff = stat_value - equipped_item_stat_value
-		if int(PlayerData.equipment_data[slot]) == int(item_id):
+		if PlayerData.equipment_data[slot] == item_id:
 			return 0
 	else:
 		stat_diff = stat_value

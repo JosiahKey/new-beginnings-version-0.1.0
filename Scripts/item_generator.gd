@@ -14,7 +14,7 @@ func generate_item():
 	var item_id: int = new_item.keys()[0]
 	GameData.item_data.merge(new_item)
 	for i in PlayerData.inv_data.keys():
-			if PlayerData.inv_data[i]["Item"] == null:
+			if PlayerData.inv_data[i]["Item"] == 0:
 				PlayerData.inv_data[i]["Item"] = item_id
 				SignalBus.item_collected.emit()
 				SignalBus.item_added.emit()

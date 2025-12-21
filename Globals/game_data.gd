@@ -1,6 +1,19 @@
 extends Node
 
-var item_data = {}
+var item_data = {
+	10001: { 
+	"item_rarity": "common",
+	"item_name": "dagger_common",
+	"equipmentSlot": "Mainhand",
+	"Damage_min": 1,
+	"Damage_max": 2,
+	"Accuracy": 100,
+	"Evasion": 0.0,
+	"Hp": 0,
+	"PDR": 0,
+	"Weight": 1
+	},
+}
 var base_item_data = {
 	"10001": { #sample item for reference. overwritten on line 36
 	"name": "dagger",

@@ -31,8 +31,8 @@ func _get_drag_data(at_position: Vector2):
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var target_slot = get_parent().get_name()
 	if target_slot == data["origin_equipment_type"]:
-		if PlayerData.equipment_data[target_slot] == null:
-			data["target_item_id"] = null
+		if PlayerData.equipment_data[target_slot] == 0:
+			data["target_item_id"] = 0
 			data["target_texture"] = null
 		else:
 			data["target_item_id"] = PlayerData.equipment_data[target_slot]
