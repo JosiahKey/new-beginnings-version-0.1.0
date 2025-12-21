@@ -44,6 +44,6 @@ signal combat_exited
 #scene transition to anywhere
 @warning_ignore("unused_signal")
 signal scene_transition_finished
-#healzone to 
+#enemy to combat
 @warning_ignore("unused_signal")
-signal heal_zone_entered
+signal miss_player

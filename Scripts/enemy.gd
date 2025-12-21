@@ -41,10 +41,23 @@ func ready_enemy_turn():
 func enemy_action(action:String):
 	match action:
 		"attack":
-			randomize()
 			sprite.play("attack")
 			await get_tree().create_timer(0.5).timeout
-			SignalBus.hit_player.emit(randi_range(enemy_stats["Damage_min"],enemy_stats["Damage_max"]))
+			if roll_to_hit() == true:
+				randomize()
+				SignalBus.hit_player.emit(randi_range(enemy_stats["Damage_min"],enemy_stats["Damage_max"]))
+			else:
+				SignalBus.miss_player.emit()
+
+func roll_to_hit() -> bool:
+	randomize()
+	var roll: float = randf_range(0.0,1.0)
+	print("roll: " + str(roll))
+	print("roll: " + str(enemy_stats["Accuracy"]))
+	if roll > enemy_stats["Accuracy"]:
+		return false
+	else:
+		return true
 
 func on_hit(damage):
 	#deal damage
@@ -62,7 +75,14 @@ func on_hit(damage):
 	#vfx 1shot
 	emitter.emitting = true
 	#sfx play
-	get_node("SFX").get_node("enemy_hit").playing = true
+	$enemy_hit.playing = true
+
+func on_miss():
+	var text = floating_text.instantiate()
+	text.amount = "miss"
+	text.type = "damage"
+	sprite.add_child(text)
+	$enemy_miss.playing = true
 
 func _on_enemy_sprite_animation_finished() -> void:
 		sprite.play("default")

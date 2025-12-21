@@ -10,11 +10,11 @@ extends CanvasLayer
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 var players_turn: bool = true
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameState.state = "Combat"
 	
 	SignalBus.connect("hit_player", Callable(self,"on_hit"))
+	SignalBus.connect("miss_player", Callable(self,"on_miss"))
 	SignalBus.connect("end_enemy_turn", Callable(self,"ready_player_turn"))
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	
@@ -46,10 +46,11 @@ func ready_player_turn():
 	else:
 		SignalBus.game_over.emit()
 
-func _on_texture_button_pressed() -> void:
+func _on_confirm_btn_pressed() -> void:
 	if players_turn:
 		players_turn = false
 		player_attack_action()
+		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 
 func player_attack_action():
 	get_node("select").playing = true
@@ -58,11 +59,27 @@ func player_attack_action():
 	await get_tree().create_timer(0.7).timeout
 	player_spr.play("attack")
 	await get_tree().create_timer(0.3).timeout
+	if roll_to_hit() == true:
+		randomize()
+		enemy.on_hit(randi_range(PlayerData.stat_data[
+			"Total_equipped_damage_min"],PlayerData.stat_data["Total_equipped_damage_max"]))
+		await get_tree().create_timer(0.3).timeout
+		SignalBus.start_enemy_turn.emit()
+	else:
+		enemy.on_miss()
+		await get_tree().create_timer(0.3).timeout
+		SignalBus.start_enemy_turn.emit()
+
+func roll_to_hit() -> bool:
 	randomize()
-	enemy.on_hit(randi_range(PlayerData.stat_data[
-		"Total_equipped_damage_min"],PlayerData.stat_data["Total_equipped_damage_max"]))
-	await get_tree().create_timer(0.3).timeout
-	SignalBus.start_enemy_turn.emit()
+	var roll: float = randf_range(0.0,1.0)
+	if GameData.item_data.has(PlayerData.equipment_data["Mainhand"]):
+		if roll > GameData.item_data[PlayerData.equipment_data["Mainhand"]]["Accuracy"]:
+			return false
+		else:
+			return true
+	else:
+		return false
 
 func on_hit(damage: int):
 	#deal damage
@@ -79,12 +96,22 @@ func on_hit(damage: int):
 	text.amount = damage
 	text.type = "damage"
 	player_spr.add_child(text)
-	##play damage sprite animation
+	#play damage sprite animation
 	player_spr.play("damaged")
-	##vfx 1shot
+	#vfx 1shot
 	emitter.emitting = true
 	#sfx play
 	get_node("player_hit").playing = true
-	
+
+func on_miss():
+	pass
+
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")
+
+func _on_back_pressed() -> void:
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+
+func _on_action_button_pressed() -> void:
+	if players_turn:
+		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true

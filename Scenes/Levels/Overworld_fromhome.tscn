@@ -25,4 +25,4 @@ next_level = "Sidearea"
 [node name="bossarea" parent="." instance=ExtResource("3_xwnh7")]
 position = Vector2(944, -2240)
 scale = Vector2(1.9999902, 1.9999804)
-next_level = "Level5"
+next_level = "Bossarea"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://blwckghasknp4"]
+[gd_scene load_steps=7 format=4 uid="uid://blwckghasknp4"]
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_gmux1"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_dp85m"]
+[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="3_dp85m"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_uvsdt"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/interactable.tscn" id="5_l62pr"]
@@ -13,6 +14,7 @@ tile_map_data = PackedByteArray("AAD+//n/AQADAA8AAAD9//n/AQADAA8AAAD9//r/AQADAA8
 tile_set = ExtResource("1_gmux1")
 
 [node name="Player" parent="." instance=ExtResource("2_dp85m")]
+script = ExtResource("3_dp85m")
 
 [node name="overworld" parent="." instance=ExtResource("3_uvsdt")]
 position = Vector2(56, 40)

@@ -227,12 +227,12 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+[node name="action_button" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
 layout_mode = 2
 size_flags_vertical = 3
 action_mode = 0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -245,7 +245,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -265,7 +265,7 @@ theme_override_constants/outline_size = 6
 text = "Attack"
 horizontal_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
 position = Vector2(-4, 12)
 sprite_frames = SubResource("SpriteFrames_qjnp5")
 autoplay = "default"
@@ -281,6 +281,78 @@ text = "<placeholder>"
 [node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
 layout_mode = 2
 text = "<placeholder>"
+
+[node name="Info_Panels" type="VBoxContainer" parent="Background_Image/Sub_Menus/Action_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = -44.0
+offset_right = 252.0
+offset_bottom = 102.0
+
+[node name="Confirm" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels"]
+custom_minimum_size = Vector2(248, 42)
+layout_mode = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="H" type="HBoxContainer" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="back" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "back"
+
+[node name="confirm_btn" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "confirm"
+
+[node name="Info" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels"]
+custom_minimum_size = Vector2(248, 100)
+layout_mode = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -38.5
+offset_right = 55.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
+layout_mode = 2
+text = "<damage range>"
+
+[node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
+layout_mode = 2
+text = "<chance to hit>"
+
+[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
+layout_mode = 2
+text = "<other stuff>"
 
 [node name="Player_Panel3" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
 custom_minimum_size = Vector2(256, 128)
@@ -388,5 +460,7 @@ volume_db = -6.0
 stream = ExtResource("11_ym1s2")
 volume_db = -6.0
 
-[connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Actions_Container/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button" to="." method="_on_action_button_pressed"]
+[connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/confirm_btn" to="." method="_on_confirm_btn_pressed"]
 [connection signal="animation_finished" from="Background_Image/Player/Player_Sprite" to="." method="_on_player_sprite_animation_finished"]

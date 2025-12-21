@@ -21,7 +21,7 @@ var base_item_data = {
 }
 var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Weight"]
 var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Evasion", "Hp", "PDR", "Weight"]
-var item_scaling_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR"]
+var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR"]
 
 var item_rarity_ditribution = {"common": 60,
 	"uncommon": 27,
