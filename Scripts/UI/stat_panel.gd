@@ -10,21 +10,22 @@ extends NinePatchRect
 @onready var  weight_label = $M/V/Stat_Grid/Weight_Stat_Label/stat_num
 
 func _ready() -> void:
-	SignalBus.connect("equipment_updated", Callable(self, "_update_stat_panel"))
+	SignalBus.connect("update_stat_panel", Callable(self, "_update_stat_panel"))
 	_update_stat_panel()
 
 func _process(_delta: float) -> void:
-	max_hp_label.text = str(int(PlayerData.stat_data["Total_hp"])) + " / " + str(
-		PlayerData.stat_data["Current_hp"])
+	max_hp_label.text = str(PlayerData.stat_data["Current_hp"]) + " / " + str(int(
+		PlayerData.stat_data["Total_hp"]))
 
 func _update_stat_panel():
+	PlayerData.stat_data["Total_hp"] = PlayerData.stat_data["Natural_hp"] + PlayerData.stat_data["Bonus_hp"]
 	acc_label.text = str(PlayerData.stat_data["Accuracy"]) + "%"
 	eva_label.text = str(PlayerData.stat_data["Evasion"])+ "%"
 	pdr_label.text = str(PlayerData.stat_data["PDR"])+ "%"
 	stren_label.text = str(PlayerData.stat_data["Strength"])
 	spd_label.text = str(int(PlayerData.stat_data["Speed"]))
-	max_hp_label.text = str(int(PlayerData.stat_data["Total_hp"])) + " / " + str(
-		PlayerData.stat_data["Current_hp"])
+	max_hp_label.text = str(PlayerData.stat_data["Current_hp"]) + " / " + str(int(
+		PlayerData.stat_data["Total_hp"]))
 	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"])) + " - " + str(int(
 						PlayerData.stat_data["Total_equipped_damage_max"]))
 	weight_label.text = str(int(PlayerData.stat_data["Total_equipped_weight"]))

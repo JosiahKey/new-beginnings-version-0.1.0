@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://e2io5n8exj2y"]
+
+[ext_resource type="Script" uid="uid://g7smcdatb85i" path="res://Scripts/UI/levelup.gd" id="1_xnco0"]
+[ext_resource type="Texture2D" uid="uid://d4n1uuupkdk8t" path="res://Assets/gui_assets/levelup_panel.png" id="2_rdjby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ccv0"]
+bg_color = Color(0.7930148, 0.5355503, 0.29751304, 1)
+
+[node name="Levelup" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_xnco0")
+
+[node name="N" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rdjby")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="V" type="VBoxContainer" parent="N"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -27.0
+offset_right = 66.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="N/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9315605, 0.8091925, 0.2829858, 1)
+theme_override_colors/font_shadow_color = Color(0.09803922, 0.09803922, 0.09803922, 0.40392157)
+theme_override_colors/font_outline_color = Color(0.16737917, 0.17248994, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Level Up!"
+
+[node name="StatChange" type="NinePatchRect" parent="N/V"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_rdjby")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="N/V/StatChange"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="health" type="Button" parent="N/V"]
+layout_mode = 2
+text = "Max Health"
+
+[node name="strength" type="Button" parent="N/V"]
+layout_mode = 2
+text = "Strength"
+
+[node name="speed" type="Button" parent="N/V"]
+layout_mode = 2
+text = "Speed
+"
+
+[node name="confirm" type="Button" parent="N/V"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ccv0")
+text = "CONFIRM
+"
+
+[connection signal="pressed" from="N/V/health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="N/V/strength" to="." method="_on_strength_pressed"]
+[connection signal="pressed" from="N/V/speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="N/V/confirm" to="." method="_on_confirm_pressed"]

@@ -29,8 +29,9 @@ func combat_victory():
 	get_node("fanfare").playing = true
 	await get_tree().create_timer(1.9).timeout
 	#victory dance
-	#reward popup
+	#reward popup + EXP gain animation
 	SignalBus.item_generated.emit()
+	SignalBus.levelup.emit()
 	#press button on pupup to end combat
 	#cleanup
 	#fade out

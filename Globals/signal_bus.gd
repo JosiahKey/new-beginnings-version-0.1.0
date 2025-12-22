@@ -11,9 +11,9 @@ signal item_collected
 #inventorypanel to equippanel
 @warning_ignore("unused_signal")
 signal item_equipped
-#equippanel to statpanel
+#equippanel/levelup to statpanel
 @warning_ignore("unused_signal")
-signal equipment_updated
+signal update_stat_panel
 #itemgenerator to inventory
 @warning_ignore("unused_signal")
 signal item_added
@@ -47,3 +47,6 @@ signal scene_transition_finished
 #enemy to combat
 @warning_ignore("unused_signal")
 signal miss_player
+#combat to levelup
+@warning_ignore("unused_signal")
+signal levelup

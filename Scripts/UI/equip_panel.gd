@@ -49,5 +49,4 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Damage_min"]
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_max"]
-	PlayerData.stat_data["Total_hp"] = PlayerData.stat_data["Natural_hp"] + PlayerData.stat_data["Bonus_hp"]
-	SignalBus.equipment_updated.emit()
+	SignalBus.update_stat_panel.emit()
