@@ -27,3 +27,4 @@ script = ExtResource("3_2jltt")
 [node name="SceneTransition" parent="." instance=ExtResource("5_kry3j")]
 
 [node name="Levelup" parent="." instance=ExtResource("8_344ge")]
+visible = false

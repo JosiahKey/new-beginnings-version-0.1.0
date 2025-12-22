@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byotebi1xyoe7"]
+[gd_scene load_steps=33 format=3 uid="uid://byotebi1xyoe7"]
 
 [ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="1_anr3a"]
 [ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/combat.gd" id="1_mi7to"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
 [ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Scenes/enemy.tscn" id="5_mi7to"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
+[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="9_nm52r"]
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
 [ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
 [ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="10_s7a1o"]
@@ -104,6 +105,18 @@ color = Color(0.8117647, 0.16862746, 0.21568628, 1)
 color_ramp = SubResource("GradientTexture1D_qsdwj")
 anim_speed_max = 1.0
 
+[sub_resource type="Gradient" id="Gradient_ld0t3"]
+colors = PackedColorArray(0.2901961, 0.2901961, 0.2901961, 1, 0.288518, 0.28851798, 0.28851798, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_khfr5"]
+gradient = SubResource("Gradient_ld0t3")
+
+[sub_resource type="Gradient" id="Gradient_f24qq"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nm52r"]
+gradient = SubResource("Gradient_f24qq")
+
 [node name="Combat" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_mi7to")
@@ -112,8 +125,8 @@ script = ExtResource("1_mi7to")
 anchor_mode = 0
 
 [node name="Background_Image" type="TextureRect" parent="."]
-offset_right = 361.0
-offset_bottom = 241.0
+offset_right = 1080.0
+offset_bottom = 720.0
 texture = ExtResource("1_anr3a")
 metadata/_edit_lock_ = true
 
@@ -449,6 +462,138 @@ sprite_frames = ExtResource("3_cqrb7")
 animation = &"damaged"
 autoplay = "idle"
 
+[node name="Reward" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+visible = false
+
+[node name="N" type="NinePatchRect" parent="Reward"]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="V" type="VBoxContainer" parent="Reward/N"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -16.0
+offset_right = 138.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Reward/N/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93333334, 0.5803922, 0.5686275, 1)
+theme_override_colors/font_shadow_color = Color(0.09803922, 0.09803922, 0.09803922, 0.40392157)
+theme_override_colors/font_outline_color = Color(0.16737917, 0.17248994, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Victory!"
+horizontal_alignment = 1
+
+[node name="exp_reward" type="HBoxContainer" parent="Reward/N/V"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Lvl_Text" type="ColorRect" parent="Reward/N/V/exp_reward"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="Reward/N/V/exp_reward/Lvl_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Exp_Text2" type="ColorRect" parent="Reward/N/V/exp_reward"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="Reward/N/V/exp_reward/Exp_Text2"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="expbar" type="TextureProgressBar" parent="Reward/N/V/exp_reward"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 100
+stretch_margin_top = 20
+stretch_margin_right = 100
+texture_under = SubResource("GradientTexture1D_khfr5")
+texture_progress = SubResource("GradientTexture1D_nm52r")
+
+[node name="item_reward" type="HBoxContainer" parent="Reward/N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label2" type="Label" parent="Reward/N/V/item_reward"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "GET!"
+
+[node name="TextureRect" type="TextureRect" parent="Reward/N/V/item_reward"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("9_nm52r")
+
+[node name="Label" type="Label" parent="Reward/N/V/item_reward"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="confirm_reward" type="Button" parent="Reward/N/V"]
+layout_mode = 2
+text = "Confirm"
+
 [node name="player_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_snhto")
 volume_db = -2.922
@@ -469,3 +614,4 @@ volume_db = -6.0
 [connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/confirm_btn" to="." method="_on_confirm_btn_pressed"]
 [connection signal="animation_finished" from="Background_Image/Player/Player_Sprite" to="." method="_on_player_sprite_animation_finished"]
+[connection signal="pressed" from="Reward/N/V/confirm_reward" to="." method="_on_confirm_reward_pressed"]

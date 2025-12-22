@@ -19,7 +19,7 @@ func _ready() -> void:
 		"Accuracy": 50,
 		"Evasion": 0.0,
 		"PDR": 0.0,
-		"EXP": 10.0
+		"EXP": 50.0
 	}
 	hp_bar.max_value = enemy_stats["Max_hp"]
 	hp_bar.value = enemy_stats["Current_hp"]
@@ -34,9 +34,8 @@ func ready_enemy_turn():
 		enemy_turn_ind.visible = false
 		SignalBus.end_enemy_turn.emit()
 	else:
-		PlayerData.stat_data["Experience"] += enemy_stats["EXP"]
 		self.visible = false
-		SignalBus.combat_victory.emit()
+		SignalBus.combat_victory.emit(enemy_stats["EXP"])
 
 func enemy_action(action:String):
 	match action:

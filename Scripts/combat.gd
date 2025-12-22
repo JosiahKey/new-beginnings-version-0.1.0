@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var health_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
+@onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
 @onready var health_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var player_turn_ind :GPUParticles2D = $Background_Image/Player/Player_Turn_Indicator
@@ -17,28 +18,29 @@ func _ready() -> void:
 	SignalBus.connect("miss_player", Callable(self,"on_miss"))
 	SignalBus.connect("end_enemy_turn", Callable(self,"ready_player_turn"))
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
+	SignalBus.connect("update_reward_item", Callable(self, "update_reward_item"))
 	
 	health_bar.max_value = PlayerData.stat_data["Total_hp"]
 	health_bar.value = PlayerData.stat_data["Current_hp"]
-	health_label.text = "HP: " + str(PlayerData.stat_data["Total_hp"]) + " / " + str(PlayerData.stat_data["Current_hp"])
+	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
+	exp_bar.value = PlayerData.stat_data["Experience"]
+	health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 	ready_player_turn()
 
-func combat_victory():
+func combat_victory(experience: float):
 	#play fanfare
 	AudioManager.pause()
 	get_node("fanfare").playing = true
-	await get_tree().create_timer(1.9).timeout
+	await get_tree().create_timer(1).timeout
 	#victory dance
 	#reward popup + EXP gain animation
+	$Reward.visible = true
+	var exptween = get_tree().create_tween()
+	var newexp = PlayerData.stat_data["Experience"] + experience
+	exptween.tween_property(exp_bar, "value", newexp, 1)
 	SignalBus.item_generated.emit()
-	SignalBus.levelup.emit()
-	#press button on pupup to end combat
-	#cleanup
-	#fade out
-	#SignalBus.combat_exited.emit()
-	AudioManager.change_to_precombat_song()
-	GameState.state = ""
-	self.queue_free()
+	PlayerData.stat_data["Experience"] += experience
+	SignalBus.update_stat_panel.emit()
 
 func ready_player_turn():
 	if PlayerData.stat_data["Current_hp"] > 0:
@@ -89,9 +91,9 @@ func on_hit(damage: int):
 	#update hp label
 	health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 	#move hp bar
-	var tween = get_tree().create_tween()
+	var hptween = get_tree().create_tween()
 	var newhp = PlayerData.stat_data["Current_hp"]
-	tween.tween_property(health_bar, "value", newhp, 0.5)
+	hptween.tween_property(health_bar, "value", newhp, 0.5)
 	#animate floating text
 	var text = floating_text.instantiate()
 	text.amount = damage
@@ -111,6 +113,11 @@ func on_miss():
 	player_spr.add_child(text)
 	$player_miss.playing = true
 
+func update_reward_item(item_id):
+	var item_name = GameData.item_data[item_id]["item_name"]
+	$Reward/N/V/item_reward/TextureRect.texture = load("res://Assets/item_assets/"+ item_name +".png")
+	$Reward/N/V/item_reward/Label.text = GameData.item_data[item_id]["item_name"]
+
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")
 
@@ -120,3 +127,16 @@ func _on_back_pressed() -> void:
 func _on_action_button_pressed() -> void:
 	if players_turn:
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
+
+func _on_confirm_reward_pressed() -> void:
+	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
+		PlayerData.stat_data["Level"] += 1
+		PlayerData.stat_data["Exp_to_next_level"] = PlayerData.stat_data["Level"] * log(PlayerData.stat_data["Level"])
+		SignalBus.levelup.emit()
+	$Reward.visible = false
+	AudioManager.change_to_precombat_song()
+	GameState.state = ""
+	#fade out
+	#SignalBus.combat_exited.emit()
+	#cleanup
+	self.queue_free()

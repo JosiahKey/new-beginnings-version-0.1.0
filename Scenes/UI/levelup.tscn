@@ -7,7 +7,6 @@
 bg_color = Color(0.7930148, 0.5355503, 0.29751304, 1)
 
 [node name="Levelup" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_xnco0")
 
 [node name="N" type="NinePatchRect" parent="."]

@@ -50,3 +50,6 @@ signal miss_player
 #combat to levelup
 @warning_ignore("unused_signal")
 signal levelup
+#itemgen to combat
+@warning_ignore("unused_signal")
+signal update_reward_item
