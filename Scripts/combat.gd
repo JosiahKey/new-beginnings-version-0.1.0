@@ -65,8 +65,8 @@ func player_attack_action():
 	await get_tree().create_timer(0.3).timeout
 	if roll_to_hit() == true:
 		randomize()
-		enemy.on_hit(randi_range(PlayerData.stat_data[
-			"Total_equipped_damage_min"],PlayerData.stat_data["Total_equipped_damage_max"]))
+		enemy.on_hit(randi_range(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.stat_data["Strength"],
+								PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.stat_data["Strength"]))
 		await get_tree().create_timer(0.3).timeout
 		SignalBus.start_enemy_turn.emit()
 	else:
@@ -131,7 +131,7 @@ func _on_action_button_pressed() -> void:
 func _on_confirm_reward_pressed() -> void:
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
 		PlayerData.stat_data["Level"] += 1
-		PlayerData.stat_data["Exp_to_next_level"] = PlayerData.stat_data["Level"] * log(PlayerData.stat_data["Level"])
+		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * log(PlayerData.stat_data["Exp_to_next_level"])))
 		SignalBus.levelup.emit()
 	$Reward.visible = false
 	AudioManager.change_to_precombat_song()
