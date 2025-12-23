@@ -2,7 +2,6 @@ extends Control
 
 func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 	var valid = false
-	@warning_ignore("unused_variable")
 	var item_id: int
 	if origin == "Inventory":
 		if PlayerData.inv_data[slot]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[slot]["Item"]):

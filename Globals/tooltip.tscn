@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1e5lgthdfb6k"]
 
-[ext_resource type="Script" uid="uid://b5m11kflkrm5x" path="res://Version_0.0.3/Globals/tooltip.gd" id="1_gghw2"]
-[ext_resource type="Texture2D" uid="uid://deu3iyrmwwioh" path="res://Version_0.0.3/Assets/gui_assets/tooltip.png" id="2_eni05"]
+[ext_resource type="Script" uid="uid://b5m11kflkrm5x" path="res://Globals/tooltip.gd" id="1_gghw2"]
+[ext_resource type="Texture2D" uid="uid://deu3iyrmwwioh" path="res://Assets/gui_assets/tooltip.png" id="2_eni05"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohlwv"]
 draw_center = false
