@@ -15,6 +15,7 @@ layer = 3
 
 [node name="Tooltip" type="NinePatchRect" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 z_index = 4
 texture_filter = 1
 custom_minimum_size = Vector2(320, 192)

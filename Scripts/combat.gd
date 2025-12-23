@@ -85,26 +85,45 @@ func roll_to_hit() -> bool:
 	else:
 		return false
 
+func roll_to_evade() -> bool:
+	randomize()
+	var roll: int = randi_range(0,100)
+	if roll >= PlayerData.stat_data["Evasion"]:
+		return false
+	else:
+		return true
+
+
 func on_hit(damage: int):
-	#deal damage
-	PlayerData.stat_data["Current_hp"] -= damage
-	#update hp label
-	health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
-	#move hp bar
-	var hptween = get_tree().create_tween()
-	var newhp = PlayerData.stat_data["Current_hp"]
-	hptween.tween_property(health_bar, "value", newhp, 0.5)
-	#animate floating text
-	var text = floating_text.instantiate()
-	text.amount = damage
-	text.type = "damage"
-	player_spr.add_child(text)
-	#play damage sprite animation
-	player_spr.play("damaged")
-	#vfx 1shot
-	emitter.emitting = true
-	#sfx play
-	get_node("player_hit").playing = true
+	if(roll_to_evade()):
+		var text = floating_text.instantiate()
+		text.amount = "EVADED"
+		text.type = "damage"
+		player_spr.add_child(text)
+		$player_miss.playing = true
+	else:
+		#midigate damage
+		damage = damage * (1 -PlayerData.stat_data["PDR"]/100)
+		if(damage < 0): damage = 0
+		#deal damage
+		PlayerData.stat_data["Current_hp"] -= damage
+		#update hp label
+		health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
+		#move hp bar
+		var hptween = get_tree().create_tween()
+		var newhp = PlayerData.stat_data["Current_hp"]
+		hptween.tween_property(health_bar, "value", newhp, 0.5)
+		#animate floating text
+		var text = floating_text.instantiate()
+		text.amount = damage
+		text.type = "damage"
+		player_spr.add_child(text)
+		#play damage sprite animation
+		player_spr.play("damaged")
+		#vfx 1shot
+		emitter.emitting = true
+		#sfx play
+		get_node("player_hit").playing = true
 
 func on_miss():
 	var text = floating_text.instantiate()

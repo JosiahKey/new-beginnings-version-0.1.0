@@ -17,8 +17,8 @@ func _ready() -> void:
 		"Damage_min": 1,
 		"Damage_max": 6,
 		"Accuracy": 50,
-		"Evasion": 0.0,
-		"PDR": 0.0,
+		"Evasion": 5,
+		"PDR": 0,
 		"EXP": 50.0
 	}
 	hp_bar.max_value = enemy_stats["Max_hp"]
@@ -56,23 +56,40 @@ func roll_to_hit() -> bool:
 	else:
 		return true
 
+func roll_to_evade() -> bool:
+	var roll: int = randi_range(0,100)
+	if roll >= enemy_stats["Evasion"]:
+		return false
+	else:
+		return true
+
 func on_hit(damage):
-	#deal damage
-	enemy_stats["Current_hp"] -= damage
-	#move hp bar
-	var tween = get_tree().create_tween()
-	tween.tween_property(hp_bar, "value", enemy_stats["Current_hp"], 0.5)
-	#animate floating text
-	var text = floating_text.instantiate()
-	text.amount = damage
-	text.type = "damage"
-	sprite.add_child(text)
-	#play damage sprite animation
-	sprite.play("damaged")
-	#vfx 1shot
-	emitter.emitting = true
-	#sfx play
-	$enemy_hit.playing = true
+	if roll_to_evade():
+		var text = floating_text.instantiate()
+		text.amount = "EVADED"
+		text.type = "damage"
+		sprite.add_child(text)
+		$enemy_miss.playing = true
+	else:
+		#midigate damage
+		damage = damage * (1 - enemy_stats["PDR"]/100)
+		if(damage < 0): damage = 0
+		#deal damage
+		enemy_stats["Current_hp"] -= damage
+		#move hp bar
+		var tween = get_tree().create_tween()
+		tween.tween_property(hp_bar, "value", enemy_stats["Current_hp"], 0.5)
+		#animate floating text
+		var text = floating_text.instantiate()
+		text.amount = damage
+		text.type = "damage"
+		sprite.add_child(text)
+		#play damage sprite animation
+		sprite.play("damaged")
+		#vfx 1shot
+		emitter.emitting = true
+		#sfx play
+		$enemy_hit.playing = true
 
 func on_miss():
 	var text = floating_text.instantiate()

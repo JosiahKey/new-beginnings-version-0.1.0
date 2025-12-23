@@ -10,7 +10,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):
-		print("_on_test_axited()")
 		in_range = false
 
 func _input(event: InputEvent) -> void:

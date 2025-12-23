@@ -19,7 +19,6 @@ func _update_equipped_items():
 		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
 			var item_name:String  = GameData.item_data[PlayerData.equipment_data[i]]["item_name"]
 			var icon_texture:Texture =  load("res://Assets/item_assets/"+ item_name +".png")
-			print("TextureRect" +str(i)+ "/" + str(i) + "/Icon")
 			grid_ref.get_node(str(i)+ "/" + str(i) + "/Icon").texture = icon_texture
 
 func _update_equipped_stats():

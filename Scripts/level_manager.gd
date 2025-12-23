@@ -15,7 +15,6 @@ func _ready() -> void:
 	SignalBus.connect("load_area_entered", Callable(self, "load_level"))
 
 func load_level(next_level: String) -> void:
-	print("_on_nextlevel_entered()")
 	if(get_child_count()>0):
 		get_child(0).queue_free()
 	call_deferred("add_child", Level_List[next_level].instantiate())
