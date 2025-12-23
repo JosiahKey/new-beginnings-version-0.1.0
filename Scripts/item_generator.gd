@@ -31,6 +31,7 @@ func ItemGeneration() -> Dictionary:
 	for i in GameData.item_stats:
 		if GameData.base_item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
+	new_item = RandomizeStats(new_item)
 	var item_rarity_id = ItemDetermineRarityId(new_item["item_id"], new_item["item_rarity"])
 	new_item.erase("item_id")
 	new_item_dict[item_rarity_id] = new_item
@@ -55,6 +56,23 @@ func ItemDetermineRarity() -> String:
 		else:
 			rarity_roll -=GameData.item_rarity_ditribution[i]
 	return new_item_rarity
+
+func RandomizeStats(item: Dictionary) -> Dictionary:
+	if item["equipmentSlot"] == "Mainhand":
+		return item
+	var result: Dictionary = item
+	var stats_deleted = 0
+	if(item["item_rarity"] == "common"): stats_deleted = 2
+	if(item["item_rarity"] == "uncommon"): stats_deleted = randi_range(1,2)
+	if(item["item_rarity"] == "rare"): stats_deleted = randi_range(0,1)
+	while(stats_deleted > 0):
+		var random_stat = GameData.item_randomized_stats[randi_range(0, GameData.item_randomized_stats.size()-1)]
+		if item[random_stat] !=0:
+			item[random_stat] = 0
+			stats_deleted -= 1
+			print(random_stat + "  statsdeleted: " + str(stats_deleted))
+	print(result)
+	return result
 
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	var stat_value: float

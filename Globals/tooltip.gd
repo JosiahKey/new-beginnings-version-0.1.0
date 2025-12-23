@@ -1,5 +1,11 @@
 extends Control
 
+var custom = load("res://Assets/gui_assets/cursor_forbidden.png")
+
+func _ready() -> void:
+	Input.set_custom_mouse_cursor(custom, Input.CURSOR_FORBIDDEN)
+	Input.set_custom_mouse_cursor(custom, Input.CURSOR_CAN_DROP)
+
 func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 	var valid = false
 	var item_id: int
@@ -16,6 +22,7 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 		else:
 			valid = false
 	if valid:
+		clear_text()
 		get_node("CanvasLayer/Tooltip/M/V/Item_Name").text = GameData.item_data[item_id]["item_name"]
 		var ui_iterator = 1
 		for i in range(GameData.item_stats.size()):
@@ -46,6 +53,18 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 
 func hide_item_popup():
 	%Tooltip.hide()
+
+func clear_text():
+	$CanvasLayer/Tooltip/M/V/Stat1/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat1/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat2/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat2/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat3/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat3/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat4/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat4/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat5/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat5/Diff.text = ""
 
 func compare_items(item_id, stat_name, stat_value):
 	var stat_diff = 0
