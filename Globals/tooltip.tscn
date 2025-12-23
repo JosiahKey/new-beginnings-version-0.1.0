@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1e5lgthdfb6k"]
+[gd_scene load_steps=3 format=3 uid="uid://d1e5lgthdfb6k"]
 
 [ext_resource type="Script" uid="uid://b5m11kflkrm5x" path="res://Globals/tooltip.gd" id="1_gghw2"]
 [ext_resource type="Texture2D" uid="uid://deu3iyrmwwioh" path="res://Assets/gui_assets/tooltip.png" id="2_eni05"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohlwv"]
-draw_center = false
 
 [node name="Popups" type="Control"]
 layout_mode = 3
@@ -14,15 +11,11 @@ offset_bottom = 200.0
 script = ExtResource("1_gghw2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="Tooltip" type="PopupPanel" parent="CanvasLayer"]
+[node name="Tooltip" type="NinePatchRect" parent="CanvasLayer"]
 unique_name_in_owner = true
-oversampling_override = 1.0
-size = Vector2i(328, 200)
-visible = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_ohlwv")
-
-[node name="N" type="NinePatchRect" parent="CanvasLayer/Tooltip"]
+z_index = 4
 texture_filter = 1
 custom_minimum_size = Vector2(320, 192)
 offset_right = 328.0
@@ -33,7 +26,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="M" type="MarginContainer" parent="CanvasLayer/Tooltip/N"]
+[node name="M" type="MarginContainer" parent="CanvasLayer/Tooltip"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,10 +38,10 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="V" type="VBoxContainer" parent="CanvasLayer/Tooltip/N/M"]
+[node name="V" type="VBoxContainer" parent="CanvasLayer/Tooltip/M"]
 layout_mode = 2
 
-[node name="Item_Name" type="Label" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Item_Name" type="Label" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
@@ -64,10 +57,10 @@ text = "<item name>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stat1" type="HBoxContainer" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Stat1" type="HBoxContainer" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat1"]
+[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -75,7 +68,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "test"
 
-[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat1"]
+[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -86,17 +79,17 @@ theme_override_constants/outline_size = 2
 text = "test"
 horizontal_alignment = 2
 
-[node name="Stat2" type="HBoxContainer" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Stat2" type="HBoxContainer" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat2"]
+[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 
-[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat2"]
+[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat2"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
@@ -105,17 +98,17 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 horizontal_alignment = 2
 
-[node name="Stat3" type="HBoxContainer" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Stat3" type="HBoxContainer" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat3"]
+[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 
-[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat3"]
+[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat3"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
@@ -124,17 +117,17 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 horizontal_alignment = 2
 
-[node name="Stat4" type="HBoxContainer" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Stat4" type="HBoxContainer" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat4"]
+[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 
-[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat4"]
+[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat4"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
@@ -143,17 +136,17 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 horizontal_alignment = 2
 
-[node name="Stat5" type="HBoxContainer" parent="CanvasLayer/Tooltip/N/M/V"]
+[node name="Stat5" type="HBoxContainer" parent="CanvasLayer/Tooltip/M/V"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat5"]
+[node name="Stat" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 
-[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/N/M/V/Stat5"]
+[node name="Diff" type="Label" parent="CanvasLayer/Tooltip/M/V/Stat5"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.7850271, 0.7349965, 0.6009196, 1)
