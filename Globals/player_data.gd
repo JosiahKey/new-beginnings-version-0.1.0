@@ -28,7 +28,7 @@ var equipment_data = {
 	"Mainhand": 10001,
 	"Offhand": 0,
 	"Ring1": 0,
-	"Ring2": 0,
+	"Arms": 0,
 	"Waist": 0,
 	"Legs": 0,
 	"Feet": 0,

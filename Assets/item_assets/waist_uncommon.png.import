@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd14k2m7inlfu"
-path="res://.godot/imported/Arms.png-535da84f987910e998c969017461b48f.ctex"
+uid="uid://b3yhp15kbaneh"
+path="res://.godot/imported/waist_uncommon.png-284a63a67b776fed0b0c4a87410d2967.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/Arms.png"
-dest_files=["res://.godot/imported/Arms.png-535da84f987910e998c969017461b48f.ctex"]
+source_file="res://Assets/item_assets/waist_uncommon.png"
+dest_files=["res://.godot/imported/waist_uncommon.png-284a63a67b776fed0b0c4a87410d2967.ctex"]
 
 [params]
 

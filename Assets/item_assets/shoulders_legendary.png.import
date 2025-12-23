@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csawwmfmt35tg"
-path="res://.godot/imported/Ring1.png-cba69e8b223037b34be2afacb1b578b6.ctex"
+uid="uid://ccu07oxk6emv5"
+path="res://.godot/imported/shoulders_legendary.png-03c80c148aa917125f9d19d882a24165.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/Ring1.png"
-dest_files=["res://.godot/imported/Ring1.png-cba69e8b223037b34be2afacb1b578b6.ctex"]
+source_file="res://Assets/item_assets/shoulders_legendary.png"
+dest_files=["res://.godot/imported/shoulders_legendary.png-03c80c148aa917125f9d19d882a24165.ctex"]
 
 [params]
 

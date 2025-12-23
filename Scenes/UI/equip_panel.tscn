@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bo5qufg8u75ox"]
+[gd_scene load_steps=21 format=3 uid="uid://bo5qufg8u75ox"]
 
 [ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
 [ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Scripts/UI/equip_panel.gd" id="2_h71av"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1yhub18wkw7f" path="res://Assets/gui_assets/mainhand_placeholder.png" id="9_555pk"]
 [ext_resource type="Texture2D" uid="uid://4d41jdqlesw8" path="res://Assets/gui_assets/offhand_placeholder.png" id="10_26kvj"]
 [ext_resource type="Texture2D" uid="uid://lrn5iqam1xhv" path="res://Assets/gui_assets/ring_placeholder.png" id="11_8ufpo"]
+[ext_resource type="Texture2D" uid="uid://drfy0vk2vbxov" path="res://Assets/gui_assets/arms_placeholder.png" id="12_57vyr"]
 [ext_resource type="Texture2D" uid="uid://bl6acg2vxear3" path="res://Assets/gui_assets/waist_placeholder.png" id="12_etgwp"]
 [ext_resource type="Texture2D" uid="uid://bqspjde3vfaca" path="res://Assets/gui_assets/legs_placeholder.png" id="13_15rjk"]
 [ext_resource type="Texture2D" uid="uid://q8me2nr2004k" path="res://Assets/gui_assets/feet_placeholder.png" id="14_6qtr7"]
@@ -209,18 +210,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Ring2" type="TextureRect" parent="GridContainer"]
+[node name="Arms" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
-texture = ExtResource("11_8ufpo")
+texture = ExtResource("12_57vyr")
 
-[node name="Ring2" type="PanelContainer" parent="GridContainer/Ring2"]
+[node name="Arms" type="PanelContainer" parent="GridContainer/Arms"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Ring2/Ring2"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Arms/Arms"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4

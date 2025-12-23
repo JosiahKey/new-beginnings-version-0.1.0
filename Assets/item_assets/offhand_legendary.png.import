@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkk0aln6iccs"
-path="res://.godot/imported/Offhand.png-f90a7178e22477cce7ccdcef9a42a313.ctex"
+uid="uid://doafbltgcs3vh"
+path="res://.godot/imported/offhand_legendary.png-31750a86020c19033358a7b44e3bac1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/Offhand.png"
-dest_files=["res://.godot/imported/Offhand.png-f90a7178e22477cce7ccdcef9a42a313.ctex"]
+source_file="res://Assets/item_assets/offhand_legendary.png"
+dest_files=["res://.godot/imported/offhand_legendary.png-31750a86020c19033358a7b44e3bac1c.ctex"]
 
 [params]
 

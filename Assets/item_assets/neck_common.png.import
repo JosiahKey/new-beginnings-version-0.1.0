@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8qidmr1slwos"
-path="res://.godot/imported/Waist.png-13a0f782508a79f6847b88abaa3f1644.ctex"
+uid="uid://ntnkp2hu5un8"
+path="res://.godot/imported/neck_common.png-da616bc909514d0f2f94bb46507134dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/item_assets/Waist.png"
-dest_files=["res://.godot/imported/Waist.png-13a0f782508a79f6847b88abaa3f1644.ctex"]
+source_file="res://Assets/item_assets/neck_common.png"
+dest_files=["res://.godot/imported/neck_common.png-da616bc909514d0f2f94bb46507134dd.ctex"]
 
 [params]
 
