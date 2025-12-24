@@ -6,8 +6,8 @@
 [ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="3_cqrb7"]
 [ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action.png" id="4_aqiim"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
-[ext_resource type="PackedScene" uid="uid://u18uhjlhb5op" path="res://Scenes/enemy.tscn" id="5_mi7to"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
+[ext_resource type="Texture2D" uid="uid://dhrxutin3pvtc" path="res://Assets/gui_assets/combat_action_disabled.png" id="6_nm52r"]
 [ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="9_nm52r"]
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
 [ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
@@ -198,9 +198,13 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+[node name="Name" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
 layout_mode = 2
-text = "<player name>"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Sir Knight The Valorous"
 
 [node name="Combat_Hp_Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
 layout_mode = 2
@@ -210,13 +214,13 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "<hp: xx/xx>"
 
-[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
+[node name="EXP" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
 layout_mode = 2
-text = "<Status: normal>"
-
-[node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Player_Panel/VBoxContainer"]
-layout_mode = 2
-text = "<EXP: 1,000,000,000,000>"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "<exp: xx/xx>"
 
 [node name="Action_Panel" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
 custom_minimum_size = Vector2(256, 128)
@@ -242,8 +246,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="action_button" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 action_mode = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
@@ -284,17 +290,45 @@ position = Vector2(-4, 12)
 sprite_frames = SubResource("SpriteFrames_qjnp5")
 autoplay = "default"
 
-[node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+[node name="action_button2" type="Button" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
-text = "<placeholder>"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+action_mode = 0
 
-[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
-layout_mode = 2
-text = "<placeholder>"
+[node name="NinePatchRect" type="NinePatchRect" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_nm52r")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
-[node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
-layout_mode = 2
-text = "<placeholder>"
+[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -11.5
+offset_right = 110.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Heal"
+horizontal_alignment = 1
 
 [node name="Info_Panels" type="VBoxContainer" parent="Background_Image/Sub_Menus/Action_Panel"]
 visible = false
@@ -356,17 +390,13 @@ offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
+[node name="damage" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
 layout_mode = 2
 text = "<damage range>"
 
-[node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
+[node name="hit_chance" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
 layout_mode = 2
 text = "<chance to hit>"
-
-[node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer"]
-layout_mode = 2
-text = "<other stuff>"
 
 [node name="Player_Panel3" type="NinePatchRect" parent="Background_Image/Sub_Menus"]
 custom_minimum_size = Vector2(256, 128)
@@ -391,21 +421,21 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
+[node name="Label1" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
 layout_mode = 2
-text = "<green slime>"
+text = "Green Slime"
 
 [node name="Label2" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
 layout_mode = 2
-text = "<placeholder>"
+text = "."
 
 [node name="Label3" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
 layout_mode = 2
-text = "<placeholder>"
+text = "."
 
 [node name="Label4" type="Label" parent="Background_Image/Sub_Menus/Player_Panel3/VBoxContainer"]
 layout_mode = 2
-text = "<placeholder>"
+text = "."
 
 [node name="Enemy_Sprites" type="HBoxContainer" parent="Background_Image"]
 layout_mode = 0
@@ -414,11 +444,6 @@ offset_top = 446.0
 offset_right = 985.0
 offset_bottom = 517.0
 alignment = 2
-
-[node name="Enemy" parent="Background_Image/Enemy_Sprites" instance=ExtResource("5_mi7to")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
 
 [node name="Player" type="Control" parent="Background_Image"]
 layout_mode = 1

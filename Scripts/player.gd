@@ -12,6 +12,7 @@ var speed_factor = 100
 func _ready():
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
+	timer.wait_time = randf_range(5.0, 10.0)
 	timer.start()
 
 func _physics_process(_delta):

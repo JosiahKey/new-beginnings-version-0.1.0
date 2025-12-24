@@ -115,6 +115,5 @@ stream = ExtResource("3_xh3qn")
 volume_db = -3.506
 
 [node name="Encounter" type="Timer" parent="."]
-wait_time = 3.0
 
 [connection signal="timeout" from="Encounter" to="." method="_on_encounter_timeout"]

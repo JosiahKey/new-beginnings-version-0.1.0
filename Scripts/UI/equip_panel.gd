@@ -42,8 +42,8 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Evasion"]
 			PlayerData.stat_data["PDR"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["PDR"]
-			PlayerData.stat_data["Total_equipped_weight"] += GameData.item_data[
-									PlayerData.equipment_data[i]]["Weight"]
+			#PlayerData.stat_data["Total_equipped_weight"] += GameData.item_data[
+									#PlayerData.equipment_data[i]]["Weight"]
 			PlayerData.stat_data["Total_equipped_damage_min"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_min"]
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[

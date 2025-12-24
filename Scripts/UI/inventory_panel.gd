@@ -31,7 +31,6 @@ func _pull_inventory_data():
 			inv_slot_new.get_node("Icon").set_texture(icon_texture)
 		grid_ref.add_child(inv_slot_new, true)
 
-
 func _push_inventory_data():
 	var ui_data: Dictionary = {}
 	for c in grid_ref.get_children():

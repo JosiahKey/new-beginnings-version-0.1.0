@@ -19,10 +19,14 @@ func _ready() -> void:
 		"Accuracy": 50,
 		"Evasion": 5,
 		"PDR": 0,
+		"Speed": 1,
 		"EXP": 50.0
 	}
 	hp_bar.max_value = enemy_stats["Max_hp"]
 	hp_bar.value = enemy_stats["Current_hp"]
+
+func get_stats() -> Dictionary:
+	return enemy_stats
 
 func ready_enemy_turn():
 	if enemy_stats["Current_hp"] > 0:

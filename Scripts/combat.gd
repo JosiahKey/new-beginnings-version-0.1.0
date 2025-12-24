@@ -2,17 +2,25 @@ extends CanvasLayer
 
 @onready var health_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
 @onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
+@onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
 @onready var health_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var player_turn_ind :GPUParticles2D = $Background_Image/Player/Player_Turn_Indicator
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
-@onready var enemy := $Background_Image/Enemy_Sprites/Enemy
 @onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/Actions_Container
+@onready var damage_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/damage
+@onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
+@onready var enemy_res := preload("res://Scenes/Enemies/GreenSlime.tscn")
+var enemy: Node
 var players_turn: bool = true
+var action_points = PlayerData.stat_data["Speed"]
 
 func _ready() -> void:
 	GameState.state = "Combat"
+	
+	$Background_Image/Enemy_Sprites.add_child(enemy_res.instantiate())
+	enemy = $Background_Image/Enemy_Sprites.get_child(0)
 	
 	SignalBus.connect("hit_player", Callable(self,"on_hit"))
 	SignalBus.connect("miss_player", Callable(self,"on_miss"))
@@ -20,6 +28,9 @@ func _ready() -> void:
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	SignalBus.connect("update_reward_item", Callable(self, "update_reward_item"))
 	
+	damage_label.text = "Damage: "+ str(PlayerData.stat_data["Total_equipped_damage_min"]) + "-" + str(PlayerData.stat_data["Total_equipped_damage_max"])
+	hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
+	exp_label.text = "EXP: " + str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
 	health_bar.max_value = PlayerData.stat_data["Total_hp"]
 	health_bar.value = PlayerData.stat_data["Current_hp"]
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
@@ -67,12 +78,15 @@ func player_attack_action():
 		randomize()
 		enemy.on_hit(randi_range(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.stat_data["Strength"],
 								PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.stat_data["Strength"]))
-		await get_tree().create_timer(0.3).timeout
-		SignalBus.start_enemy_turn.emit()
 	else:
 		enemy.on_miss()
-		await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.3).timeout
+	if(action_points > enemy.get_stats()["Speed"]):
+		action_points -= 5
+		player_attack_action()
+	else:
 		SignalBus.start_enemy_turn.emit()
+		action_points = PlayerData.stat_data["Speed"]
 
 func roll_to_hit() -> bool:
 	randomize()
