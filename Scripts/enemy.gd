@@ -61,6 +61,7 @@ func roll_to_hit() -> bool:
 		return true
 
 func roll_to_evade() -> bool:
+	randomize()
 	var roll: int = randi_range(0,100)
 	if roll >= enemy_stats["Evasion"]:
 		return false

@@ -4,7 +4,6 @@ extends Node
 var current_song: String = ""
 var precombat_song: String = ""
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music = get_node("untitled")
 	music.playing = true

@@ -69,9 +69,11 @@ offset_bottom = 320.0
 [node name="SFX_open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qfcpp")
 volume_db = -16.359
+bus = &"SFX"
 
 [node name="SFX_close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_b05b2")
 volume_db = -9.933
+bus = &"SFX"
 
 [connection signal="pressed" from="MenuRect/MenuClose" to="." method="_on_menu_close_pressed"]

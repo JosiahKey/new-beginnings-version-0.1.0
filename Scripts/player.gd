@@ -12,6 +12,7 @@ var speed_factor = 100 + PlayerData.stat_data["Speed"]
 func _ready():
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
+	randomize()
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.start()
 

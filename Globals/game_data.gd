@@ -1,19 +1,19 @@
 extends Node
 
 var item_data = {
-	10001: { 
+	10002: {
 	"item_rarity": "common",
-	"item_name": "dagger_common",
-	"equipmentSlot": "Offhand",
+	"item_name": "sword_common",
+	"equipmentSlot": "Mainhand",
 	"Damage_min": 1,
-	"Damage_max": 2,
-	"Accuracy": 0,
-	"Evasion": 0.0,
-	"Strength": 0.0,
-	"Speed": 0.0,
+	"Damage_max": 4,
+	"Accuracy": 95,
+	"Evasion": 0,
 	"Hp": 0,
 	"PDR": 0,
-	"Weight": 0
+	"Strength": 0,
+	"Speed": 0,
+	"Weight": 0,
 	},
 }
 var base_item_data = {
@@ -39,11 +39,11 @@ var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Ev
 var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 
-var item_rarity_ditribution = {"common": 60,
-	"uncommon": 27,
-	"rare": 9,
-	"epic": 3,
-	"legendary": 1}
+var item_rarity_ditribution = {"common": 85.0,
+	"uncommon": 10.0,
+	"rare": 3.0,
+	"epic": 1.8,
+	"legendary": 0.2}
 
 func _ready() -> void:
 	var item_data_file = FileAccess.open("res://Data/item_data2.json", FileAccess.READ)
