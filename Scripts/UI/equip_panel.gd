@@ -4,6 +4,8 @@ extends NinePatchRect
 
 func _ready() -> void:
 	SignalBus.connect("item_equipped", Callable(self, "_update_equipped_stats"))
+	SignalBus.connect("highlight_slot", Callable(self, "highlight_slot"))
+	SignalBus.connect("unhighlight_slot", Callable(self, "unhighlight_slot"))
 	PlayerData.stat_data["Total_equipped_weight"] = 0
 	PlayerData.stat_data["Total_equipped_damage_min"] = 0
 	PlayerData.stat_data["Total_equipped_damage_max"] = 0
@@ -30,6 +32,8 @@ func _update_equipped_stats():
 	PlayerData.stat_data["Accuracy"] = 0
 	PlayerData.stat_data["Evasion"] = 0
 	PlayerData.stat_data["PDR"] = 0
+	PlayerData.stat_data["Strength"] = 0
+	PlayerData.stat_data["Speed"] = 0
 
 
 	for i in PlayerData.equipment_data.keys():
@@ -42,6 +46,10 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Evasion"]
 			PlayerData.stat_data["PDR"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["PDR"]
+			PlayerData.stat_data["Strength"] += GameData.item_data[
+									PlayerData.equipment_data[i]]["Strength"]
+			PlayerData.stat_data["Speed"] += GameData.item_data[
+									PlayerData.equipment_data[i]]["Speed"]
 			#PlayerData.stat_data["Total_equipped_weight"] += GameData.item_data[
 									#PlayerData.equipment_data[i]]["Weight"]
 			PlayerData.stat_data["Total_equipped_damage_min"] += GameData.item_data[
@@ -49,3 +57,9 @@ func _update_equipped_stats():
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_max"]
 	SignalBus.update_stat_panel.emit()
+
+func highlight_slot(slot: String):
+	get_node("GridContainer/" + slot + "/" + slot + "/Highlight").visible = true
+
+func unhighlight_slot(slot: String):
+	get_node("GridContainer/" + slot + "/" + slot + "/Highlight").visible = false

@@ -91,13 +91,10 @@ func player_attack_action():
 func roll_to_hit() -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if GameData.item_data.has(PlayerData.equipment_data["Mainhand"]):
-		if roll >= GameData.item_data[PlayerData.equipment_data["Mainhand"]]["Accuracy"]:
-			return false
-		else:
-			return true
-	else:
+	if roll >= PlayerData.stat_data["Accuracy"]:
 		return false
+	else:
+		return true
 
 func roll_to_evade() -> bool:
 	randomize()

@@ -1,5 +1,6 @@
 extends TextureRect
 #this is sperate from equipment item so that we can deal with consumables and stackables later
+var highlighted_item_slot := ""
 
 func _get_drag_data(at_position: Vector2):
 	var inv_slot = get_parent().get_name()
@@ -10,7 +11,10 @@ func _get_drag_data(at_position: Vector2):
 		data["origin_item_id"] = PlayerData.inv_data[inv_slot]["Item"]
 		data["origin_equipment_type"] = GameData.item_data[PlayerData.inv_data[inv_slot]["Item"]]["equipmentSlot"]
 		data["origin_texture"] = texture
-
+		
+		highlighted_item_slot = GameData.item_data[data["origin_item_id"]]["equipmentSlot"]
+		SignalBus.highlight_slot.emit(highlighted_item_slot)
+		
 		var drag_texture = TextureRect.new()
 		drag_texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		drag_texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -64,6 +68,10 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	PlayerData.inv_data[target_equipment_type]["Item"] = data["origin_item_id"]
 	texture = data["origin_texture"]
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not event.is_pressed():
+		if highlighted_item_slot != "":
+			SignalBus.unhighlight_slot.emit(highlighted_item_slot)
 
 func _on_mouse_entered() -> void:
 	Tooltip.item_popup(Rect2i(Vector2i(global_position), Vector2i(size)), get_parent().get_name(), "Inventory")

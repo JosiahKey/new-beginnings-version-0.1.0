@@ -24,6 +24,8 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 	if valid:
 		clear_text()
 		get_node("CanvasLayer/Tooltip/M/V/Item_Name").text = GameData.item_data[item_id]["item_name"]
+		get_node("CanvasLayer/Tooltip/M/V/Item_Name").add_theme_color_override("font_color", Color(get_name_color(GameData.item_data[item_id]["item_rarity"])))
+		get_node("CanvasLayer/Tooltip/M/V/Item_Slot").text = "Equipment Slot: " + GameData.item_data[item_id]["equipmentSlot"]
 		var ui_iterator = 1
 		for i in range(GameData.item_stats.size()):
 			var stat_name = GameData.item_stats[i]
@@ -65,6 +67,22 @@ func clear_text():
 	$CanvasLayer/Tooltip/M/V/Stat4/Diff.text = ""
 	$CanvasLayer/Tooltip/M/V/Stat5/Stat.text = ""
 	$CanvasLayer/Tooltip/M/V/Stat5/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat6/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat6/Diff.text = ""
+
+func get_name_color(item_rarity: String) -> Color:
+	if(item_rarity == "common"):
+		return Color("673f11ff")
+	if(item_rarity == "uncommon"):
+		return Color("c9c9c6ff")
+	if(item_rarity == "rare"):
+		return Color("1e5ed2ff")
+	if(item_rarity == "epic"):
+		return Color("007647ff")
+	if(item_rarity == "legendary"):
+		return Color("b7152fff")
+	else:
+		return Color("000000ff")
 
 func compare_items(item_id, stat_name, stat_value):
 	var stat_diff = 0

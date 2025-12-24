@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bo5qufg8u75ox"]
+[gd_scene load_steps=22 format=3 uid="uid://bo5qufg8u75ox"]
 
 [ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
 [ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Scripts/UI/equip_panel.gd" id="2_h71av"]
 [ext_resource type="Texture2D" uid="uid://dasc5kix74axp" path="res://Assets/gui_assets/title.png" id="3_5h1u5"]
 [ext_resource type="Texture2D" uid="uid://dofgv8q22h5bv" path="res://Assets/gui_assets/head_placehold.png" id="4_7lqjh"]
 [ext_resource type="Script" uid="uid://qfbt6s41uh2b" path="res://Scripts/UI/equipment_item.gd" id="5_emeak"]
+[ext_resource type="Texture2D" uid="uid://bh7alwqxs6sft" path="res://Assets/gui_assets/equipment_highlight.png" id="6_cet54"]
 [ext_resource type="Texture2D" uid="uid://di1runa1pw3a7" path="res://Assets/gui_assets/shoulder_placehold.png" id="6_srij6"]
 [ext_resource type="Texture2D" uid="uid://dsdxc65ed3i0r" path="res://Assets/gui_assets/neck_placehold.png" id="7_xifeu"]
 [ext_resource type="Texture2D" uid="uid://b7g2ryvi18our" path="res://Assets/gui_assets/chest_placeholder.png" id="8_2bf2l"]
@@ -112,6 +113,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
 layout_mode = 2
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Head/Head"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Shoulders" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("6_srij6")
@@ -127,6 +133,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jpgkg")
 layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
+
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Shoulders/Shoulders"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
 
 [node name="Neck" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -144,6 +155,11 @@ layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Neck/Neck"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Chest" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("8_2bf2l")
@@ -158,6 +174,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
 [node name="Icon" type="TextureRect" parent="GridContainer/Chest/Chest"]
 layout_mode = 2
 script = ExtResource("5_emeak")
+
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Chest/Chest"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
 
 [node name="Mainhand" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -176,6 +197,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Mainhand/Mainhand"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Offhand" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("10_26kvj")
@@ -192,6 +218,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
+
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Offhand/Offhand"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
 
 [node name="Ring1" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -210,6 +241,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Ring1/Ring1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Arms" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("12_57vyr")
@@ -226,6 +262,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
+
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Arms/Arms"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
 
 [node name="Waist" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
@@ -244,6 +285,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Waist/Waist"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Legs" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("13_15rjk")
@@ -261,6 +307,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Legs/Legs"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
+
 [node name="Feet" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("14_6qtr7")
@@ -277,6 +328,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
+
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Feet/Feet"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_cet54")
 
 [node name="equip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_h2ivs")

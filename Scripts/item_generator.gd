@@ -58,16 +58,20 @@ func ItemDetermineRarity() -> String:
 	return new_item_rarity
 
 func RandomizeStats(item: Dictionary) -> Dictionary:
-	if item["equipmentSlot"] == "Mainhand":
-		return item
 	var result: Dictionary = item
 	var stats_deleted = 0
-	if(item["item_rarity"] == "common"): stats_deleted = 2
-	if(item["item_rarity"] == "uncommon"): stats_deleted = randi_range(1,2)
-	if(item["item_rarity"] == "rare"): stats_deleted = randi_range(0,1)
+	var item_stats = []
+	for i in GameData.item_randomized_stats:
+		if item[i] != 0:
+			item_stats.append(i)
+	print(item_stats)
+	if(item["item_rarity"] == "common"): stats_deleted = 3
+	if(item["item_rarity"] == "uncommon"): stats_deleted = randi_range(2,3)
+	if(item["item_rarity"] == "rare"): stats_deleted = randi_range(1,2)
+	if(item["item_rarity"] == "epic"): stats_deleted = randi_range(0,1)
 	while(stats_deleted > 0):
-		var random_stat = GameData.item_randomized_stats[randi_range(0, GameData.item_randomized_stats.size()-1)]
-		if item[random_stat] !=0:
+		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
+		if item[random_stat] !=0 and random_stat != "Accuracy":
 			item[random_stat] = 0
 			stats_deleted -= 1
 			print(random_stat + "  statsdeleted: " + str(stats_deleted))

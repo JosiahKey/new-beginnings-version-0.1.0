@@ -4,14 +4,16 @@ var item_data = {
 	10001: { 
 	"item_rarity": "common",
 	"item_name": "dagger_common",
-	"equipmentSlot": "Mainhand",
+	"equipmentSlot": "Offhand",
 	"Damage_min": 1,
 	"Damage_max": 2,
-	"Accuracy": 100,
+	"Accuracy": 0,
 	"Evasion": 0.0,
+	"Strength": 0.0,
+	"Speed": 0.0,
 	"Hp": 0,
 	"PDR": 0,
-	"Weight": 1
+	"Weight": 0
 	},
 }
 var base_item_data = {
@@ -32,10 +34,10 @@ var base_item_data = {
 	"legendaryMulti": 5
   },
 }
-var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR"] #Weight
-var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Evasion", "Hp", "Armor", "Weight"]
-var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR"]
-var item_randomized_stats = ["Evasion", "Hp", "PDR"]
+var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"] #Weight
+var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Evasion", "Hp", "Armor", "Strength", "Speed"] #"Weight"
+var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR", "Strength", "Speed"]
+var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 
 var item_rarity_ditribution = {"common": 60,
 	"uncommon": 27,

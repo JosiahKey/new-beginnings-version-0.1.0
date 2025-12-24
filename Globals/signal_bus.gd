@@ -53,3 +53,9 @@ signal levelup
 #itemgen to combat
 @warning_ignore("unused_signal")
 signal update_reward_item
+#inventoryitem to equippanel
+@warning_ignore("unused_signal")
+signal highlight_slot
+#inventoryitem to equippanel
+@warning_ignore("unused_signal")
+signal unhighlight_slot

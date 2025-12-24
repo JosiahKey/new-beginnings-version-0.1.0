@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed_factor = 100
+var speed_factor = 100 + PlayerData.stat_data["Speed"]
 
 @onready var timer = $Encounter
 @onready var r_highlight = $R_highlight
@@ -16,6 +16,7 @@ func _ready():
 	timer.start()
 
 func _physics_process(_delta):
+	speed_factor = 100 + PlayerData.stat_data["Speed"] * 2
 	if GameState.state != "Combat":
 		var input_direction = Vector2.ZERO
 
