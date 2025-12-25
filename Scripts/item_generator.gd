@@ -32,7 +32,7 @@ func ItemGeneration() -> Dictionary:
 		if GameData.base_item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
 	new_item = RandomizeStats(new_item)
-	var item_rarity_id = ItemDetermineRarityId(new_item["item_id"], new_item["item_rarity"])
+	var item_rarity_id = ItemDetermineUniqueId(new_item)
 	new_item.erase("item_id")
 	new_item_dict[item_rarity_id] = new_item
 	return new_item_dict
@@ -72,11 +72,14 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 	while(stats_deleted > 0):
 		randomize()
 		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
-		if stats_deleted == item_stats.size():
+		if stats_deleted == item_stats.size(): #have at least 1 stat
 			stats_deleted -= 1
-		elif item[random_stat] !=0 and random_stat != "Accuracy":
-			item[random_stat] = 0
-			stats_deleted -= 1
+		elif item[random_stat] !=0:
+			if random_stat == "Accuracy" and item["equipmentSlot"] == "Mainhand":
+				pass
+			else:
+				item[random_stat] = 0
+				stats_deleted -= 1
 	return result
 
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
@@ -87,18 +90,18 @@ func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 		stat_value = GameData.base_item_data[item_id][stat]
 	return stat_value
 
-func ItemDetermineRarityId(new_item_type:String, rarity: String) -> int:
+func ItemDetermineUniqueId(item :Dictionary) -> int:
 	#if item is uncommon or higher, generate new id
-	var new_item_type_int = int(new_item_type)
+	var new_item_type_int = int(item["item_id"])
 	var item_rarities: Array = GameData.item_rarity_ditribution.keys()
-	if(rarity != "common"):
+	if(item["item_rarity"] != "common"):
 		for i in item_rarities:
 			new_item_type_int += 1000
-			if rarity == i:
+			if item["item_rarity"] == i:
 				break
-		return new_item_type_int
-	else:
-		return int(new_item_type)
+	while(GameData.item_data.has(new_item_type_int)):
+		new_item_type_int += 1
+	return new_item_type_int
 
 func ItemDetermineName(base_item_id: String, rarity: String) -> String:
 	var item_name: String
