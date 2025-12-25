@@ -76,7 +76,7 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 			stats_deleted -= 1
 		elif item[random_stat] !=0:
 			if random_stat == "Accuracy" and item["equipmentSlot"] == "Mainhand":
-				pass
+				pass #always have accuracy on mainhand
 			else:
 				item[random_stat] = 0
 				stats_deleted -= 1
@@ -91,7 +91,6 @@ func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	return stat_value
 
 func ItemDetermineUniqueId(item :Dictionary) -> int:
-	#if item is uncommon or higher, generate new id
 	var new_item_type_int = int(item["item_id"])
 	var item_rarities: Array = GameData.item_rarity_ditribution.keys()
 	if(item["item_rarity"] != "common"):

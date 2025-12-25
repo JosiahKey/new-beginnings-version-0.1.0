@@ -34,7 +34,12 @@ func _update_equipped_stats():
 	PlayerData.stat_data["PDR"] = 0
 	PlayerData.stat_data["Strength"] = 0
 	PlayerData.stat_data["Speed"] = 0
-
+	
+	#no mainhand equipped
+	if PlayerData.equipment_data["Mainhand"] == 0:
+		PlayerData.stat_data["Total_equipped_damage_min"] = 1
+		PlayerData.stat_data["Total_equipped_damage_max"] = 1
+		PlayerData.stat_data["Accuracy"] = 100
 
 	for i in PlayerData.equipment_data.keys():
 		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
@@ -56,6 +61,8 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Damage_min"]
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_max"]
+			if PlayerData.stat_data["Total_equipped_damage_min"] > PlayerData.stat_data["Total_equipped_damage_max"]:
+				PlayerData.stat_data["Total_equipped_damage_max"] = PlayerData.stat_data["Total_equipped_damage_min"]
 	SignalBus.update_stat_panel.emit()
 
 func highlight_slot(slot: String):

@@ -51,6 +51,11 @@ func combat_victory(experience: float):
 	exptween.tween_property(exp_bar, "value", newexp, 1)
 	SignalBus.item_generated.emit()
 	PlayerData.stat_data["Experience"] += experience
+	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
+		PlayerData.stat_data["Level"] += 1
+		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * log(PlayerData.stat_data["Exp_to_next_level"])))
+		SignalBus.levelup.emit()
+	$Reward/N/V/exp_reward/Lvl_Text/stat_label.text = "Level " + str(PlayerData.stat_data["Level"])
 	SignalBus.update_stat_panel.emit()
 
 func ready_player_turn():
@@ -159,10 +164,6 @@ func _on_action_button_pressed() -> void:
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
 func _on_confirm_reward_pressed() -> void:
-	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
-		PlayerData.stat_data["Level"] += 1
-		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * log(PlayerData.stat_data["Exp_to_next_level"])))
-		SignalBus.levelup.emit()
 	$Reward.visible = false
 	AudioManager.change_to_precombat_song()
 	GameState.state = ""
