@@ -60,6 +60,7 @@ func combat_victory(experience: float):
 
 func ready_player_turn():
 	if PlayerData.stat_data["Current_hp"] > 0:
+		action_points = PlayerData.stat_data["Speed"]
 		actions_container.visible = true
 		player_turn_ind.visible = true
 		players_turn = true
@@ -119,7 +120,7 @@ func on_hit(damage: int):
 		$player_miss.playing = true
 	else:
 		#midigate damage
-		damage = damage * (1 -PlayerData.stat_data["PDR"]/100)
+		damage = roundi(float(damage) * (1.0 - float(PlayerData.stat_data["PDR"])/100.0))
 		if(damage < 0): damage = 0
 		#deal damage
 		PlayerData.stat_data["Current_hp"] -= damage

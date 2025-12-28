@@ -3,11 +3,11 @@ extends Node
 var inv_data = {}
 
 var stat_data = {
-	"Natural_hp": 10,
+	"Natural_hp": 20,
 	"Strength": 0,
 	"Bonus_hp": 0,
 	"Total_hp": 0,
-	"Current_hp": 10,
+	"Current_hp": 20,
 	"Accuracy": 0,
 	"Evasion": 0,
 	"PDR": 0,

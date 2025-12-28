@@ -15,7 +15,7 @@ func _on_area_exited(area: Area2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
 		if in_range and !collected:
-			SignalBus.item_generated.emit("Armor")
+			SignalBus.item_generated.emit("Weapon")
 			collected = true
 			$TextureRect.visible = false
 			$AudioStreamPlayer2D.playing = true

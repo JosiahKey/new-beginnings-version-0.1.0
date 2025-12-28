@@ -64,8 +64,9 @@ func _update_equipped_stats():
 		PlayerData.stat_data["Total_equipped_damage_max"] = 1
 		PlayerData.stat_data["Accuracy"] = 100
 	#if weapon has no damage
-	if PlayerData.stat_data["Total_equipped_damage_min"] == 0 and PlayerData.stat_data["Total_equipped_damage_max"] == 0:
+	if PlayerData.stat_data["Total_equipped_damage_min"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_min"] = 1
+	if PlayerData.stat_data["Total_equipped_damage_max"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_max"] = 1
 	SignalBus.update_stat_panel.emit()
 
