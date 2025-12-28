@@ -45,8 +45,23 @@ var item_rarity_ditribution = {"common": 85.0,
 	"epic": 1.8,
 	"legendary": 0.2}
 
+var enemy_data = {
+		10001: {
+		"enemy_name": "GreenSlime",
+		"Max_hp": 10,
+		"Current_hp": 10,
+		"Damage_min": 1,
+		"Damage_max": 6,
+		"Accuracy": 50,
+		"Evasion": 5,
+		"PDR": 0,
+		"Speed": 1,
+		"EXP": 50.0
+		},
+	}
+
 func _ready() -> void:
-	var item_data_file = FileAccess.open("res://Data/item_data2.json", FileAccess.READ)
+	var item_data_file = FileAccess.open("res://Data/item_data.json", FileAccess.READ)
 	var item_data_json = JSON.parse_string(item_data_file.get_as_text())
 	item_data_file.close()
 	base_item_data = item_data_json

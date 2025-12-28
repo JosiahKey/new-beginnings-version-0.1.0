@@ -7,10 +7,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
-		generate_item()
+		generate_item("Mainhand")
 
-func generate_item():
-	var new_item = ItemGeneration()
+func generate_item(slot: String = ""):
+	var new_item = ItemGeneration(slot)
 	var item_id: int = new_item.keys()[0]
 	GameData.item_data.merge(new_item)
 	SignalBus.update_reward_item.emit(item_id)
@@ -21,10 +21,10 @@ func generate_item():
 				SignalBus.item_added.emit()
 				break
 
-func ItemGeneration() -> Dictionary:
+func ItemGeneration(slot: String = "") -> Dictionary:
 	var new_item: Dictionary = {}
 	var new_item_dict: Dictionary = {}
-	new_item["item_id"] = ItemDetermineType()
+	new_item["item_id"] = ItemDetermineType(slot)
 	new_item["item_rarity"] = ItemDetermineRarity()
 	new_item["item_name"] = ItemDetermineName(new_item["item_id"], new_item["item_rarity"])
 	new_item["equipmentSlot"] = GameData.base_item_data[new_item["item_id"]]["equipmentSlot"]
@@ -37,12 +37,21 @@ func ItemGeneration() -> Dictionary:
 	new_item_dict[item_rarity_id] = new_item
 	return new_item_dict
 
-func ItemDetermineType() -> String:
+func ItemDetermineType(slot: String = "") -> String:
 	var new_item_type: String
 	var item_types: Array = GameData.base_item_data.keys()
-	randomize()
-	new_item_type = item_types[randi() % item_types.size()]
-	return new_item_type
+	if slot == "":
+		randomize()
+		new_item_type = item_types[randi() % item_types.size()]
+		return new_item_type
+	else:
+		var specified_item_type: Array = []
+		for i in GameData.base_item_data.keys():
+			if GameData.base_item_data[i]["equipmentSlot"] == slot:
+				specified_item_type.append(i)
+		randomize()
+		new_item_type = item_types[randi() % specified_item_type.size()]
+		return new_item_type
 
 func ItemDetermineRarity() -> String:
 	var new_item_rarity: String

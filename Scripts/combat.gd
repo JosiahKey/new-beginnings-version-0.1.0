@@ -11,7 +11,7 @@ extends CanvasLayer
 @onready var damage_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/damage
 @onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
-@onready var enemy_res := preload("res://Scenes/Enemies/PurpleSlime.tscn")
+@onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var enemy: Node
 var players_turn: bool = true
 var action_points = PlayerData.stat_data["Speed"]

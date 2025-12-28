@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdwvpob8we7mh"]
 
-[ext_resource type="Script" uid="uid://ur3y8lg6l072" path="res://Version_0.0.3/Scripts/enemy_interactable.gd" id="1_4hee5"]
-[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Version_0.0.3/Resources/AnimatedGreenSlime.tres" id="2_20jok"]
+[ext_resource type="Script" uid="uid://ur3y8lg6l072" path="res://Scripts/enemy_interactable.gd" id="1_4hee5"]
+[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Resources/green_slime.tres" id="2_20jok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpm22"]
 size = Vector2(16, 16)
