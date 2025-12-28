@@ -49,8 +49,10 @@ func ItemDetermineType(slot: String = "") -> String:
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["equipmentSlot"] == slot:
 				specified_item_type.append(i)
+				print(i)
 		randomize()
-		new_item_type = item_types[randi() % specified_item_type.size()]
+		new_item_type = specified_item_type[randi() % specified_item_type.size()]
+		print("------" + new_item_type)
 		return new_item_type
 
 func ItemDetermineRarity() -> String:

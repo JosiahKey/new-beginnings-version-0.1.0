@@ -26,7 +26,7 @@ var base_item_data = {
 	"Hp": 0,
 	"PDR": 0,
 	"Weight": 1,
-	"equipmentSlot": "Mainhand",
+	"equipmentSlot": "Offhand",
 	"commonMulti": 10,
 	"uncommonMulti": 2,
 	"rareMulti": 3,

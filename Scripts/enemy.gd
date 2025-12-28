@@ -15,7 +15,7 @@ func _ready() -> void:
 		"Max_hp": 10,
 		"Current_hp": 10,
 		"Damage_min": 1,
-		"Damage_max": 6,
+		"Damage_max": 3,
 		"Accuracy": 50,
 		"Evasion": 5,
 		"PDR": 0,
