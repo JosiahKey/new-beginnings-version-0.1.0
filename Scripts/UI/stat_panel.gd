@@ -24,12 +24,12 @@ func _update_stat_panel():
 	acc_label.text = str(PlayerData.stat_data["Accuracy"]) + "%"
 	eva_label.text = str(PlayerData.stat_data["Evasion"])+ "%"
 	pdr_label.text = str(PlayerData.stat_data["PDR"])+ "%"
-	stren_label.text = str(PlayerData.stat_data["Strength"])
-	spd_label.text = str(int(PlayerData.stat_data["Speed"]))
+	stren_label.text = str(PlayerData.get_total_stength())
+	spd_label.text = str(PlayerData.get_total_speed())
 	max_hp_label.text = str(PlayerData.stat_data["Current_hp"]) + " / " + str(int(
 		PlayerData.stat_data["Total_hp"]))
-	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.stat_data["Strength"])) + " - " + str(int(
-						PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.stat_data["Strength"]))
+	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + " - " + str(int(
+						PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.get_total_stength()))
 	weight_label.text = str(int(PlayerData.stat_data["Total_equipped_weight"]))
 	exp_bar_label.text = str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]

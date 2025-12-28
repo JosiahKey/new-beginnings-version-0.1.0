@@ -4,8 +4,11 @@ var inv_data = {}
 
 var stat_data = {
 	"Natural_hp": 20,
-	"Strength": 0,
 	"Bonus_hp": 0,
+	"Strength": 0,
+	"Bonus_strength": 0,
+	"Speed": 0,
+	"Bonus_speed": 0,
 	"Total_hp": 0,
 	"Current_hp": 20,
 	"Accuracy": 0,
@@ -13,7 +16,6 @@ var stat_data = {
 	"PDR": 0,
 	"Total_equipped_damage_min": 0,
 	"Total_equipped_damage_max": 0,
-	"Speed": 0,
 	"Total_equipped_weight": 0,
 	"Experience": 0,
 	"Exp_to_next_level": 100,
@@ -37,7 +39,14 @@ var equipment_data = {
 func _ready() -> void:
 	_load_inv_data()
 	stat_data["Total_hp"] = stat_data["Natural_hp"] + stat_data["Bonus_hp"]
-	
+
+func get_total_stength() -> int:
+	var total = stat_data["Strength"] + stat_data["Bonus_strength"]
+	return total
+
+func get_total_speed() -> int:
+	var total = stat_data["Speed"] + stat_data["Bonus_speed"]
+	return total
 
 func _load_inv_data():
 	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.READ)

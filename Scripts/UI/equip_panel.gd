@@ -32,8 +32,8 @@ func _update_equipped_stats():
 	PlayerData.stat_data["Accuracy"] = 0
 	PlayerData.stat_data["Evasion"] = 0
 	PlayerData.stat_data["PDR"] = 0
-	PlayerData.stat_data["Strength"] = 0
-	PlayerData.stat_data["Speed"] = 0
+	PlayerData.stat_data["Bonus_strength"] = 0
+	PlayerData.stat_data["Bonus_speed"] = 0
 
 	for i in PlayerData.equipment_data.keys():
 		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
@@ -45,9 +45,9 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Evasion"]
 			PlayerData.stat_data["PDR"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["PDR"]
-			PlayerData.stat_data["Strength"] += GameData.item_data[
+			PlayerData.stat_data["Bonus_strength"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Strength"]
-			PlayerData.stat_data["Speed"] += GameData.item_data[
+			PlayerData.stat_data["Bonus_speed"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Speed"]
 			#PlayerData.stat_data["Total_equipped_weight"] += GameData.item_data[
 									#PlayerData.equipment_data[i]]["Weight"]
