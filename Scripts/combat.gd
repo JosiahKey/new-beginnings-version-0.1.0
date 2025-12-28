@@ -28,7 +28,9 @@ func _ready() -> void:
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	SignalBus.connect("update_reward_item", Callable(self, "update_reward_item"))
 	
-	damage_label.text = "Damage: "+ str(PlayerData.stat_data["Total_equipped_damage_min"]) + "-" + str(PlayerData.stat_data["Total_equipped_damage_max"])
+	damage_label.text = "Damage: "+ str(
+		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.stat_data["Strength"]) + "-" + str(
+		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.stat_data["Strength"])
 	hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
 	exp_label.text = "EXP: " + str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
 	health_bar.max_value = PlayerData.stat_data["Total_hp"]
