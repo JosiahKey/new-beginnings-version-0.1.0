@@ -96,7 +96,8 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	var stat_value: float
 	if GameData.item_scaling_stats.has(stat):
-		stat_value = GameData.base_item_data[item_id][stat] * GameData.base_item_data[item_id][item_rarity + "Multi"]
+		stat_value = ceili(GameData.base_item_data[item_id][stat] *\
+		randf_range(1.0, GameData.base_item_data[item_id][item_rarity + "Multi"]))
 	else:
 		stat_value = GameData.base_item_data[item_id][stat]
 	return stat_value

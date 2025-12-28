@@ -39,8 +39,8 @@ var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Ev
 var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 
-var item_rarity_ditribution = {"common": 85.0,
-	"uncommon": 10.0,
+var item_rarity_ditribution = {"common": 80.0,
+	"uncommon": 15.0,
 	"rare": 3.0,
 	"epic": 1.8,
 	"legendary": 0.2}
