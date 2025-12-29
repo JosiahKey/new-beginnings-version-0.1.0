@@ -72,11 +72,11 @@ func ready_player_turn():
 func _on_confirm_btn_pressed() -> void:
 	if players_turn:
 		players_turn = false
+		get_node("select").playing = true
 		player_attack_action()
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 
 func player_attack_action():
-	get_node("select").playing = true
 	player_turn_ind.visible = false
 	actions_container.visible = false
 	await get_tree().create_timer(0.7).timeout

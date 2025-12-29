@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
-		generate_item("Weapon")
+		generate_item("")
 
 func generate_item(type: String = ""):
 	var new_item = ItemGeneration(type)
@@ -82,6 +82,7 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 			if item[i] != 0:
 				item_stats.append(i)
 				item[i] = 0
+	var total_number_of_stats = item_stats.size()
 	randomize()
 	if(item["item_rarity"] == "common"):
 		if(item["Type"] == "Weapon"): maximum_stats = randi_range(0,1)
@@ -89,16 +90,18 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 	if(item["item_rarity"] == "uncommon"): maximum_stats = randi_range(1,2)
 	if(item["item_rarity"] == "rare"): maximum_stats = randi_range(2,3)
 	if(item["item_rarity"] == "epic"): maximum_stats = randi_range(3,4)
+	if(item["item_rarity"] == "legendary"): maximum_stats = randi_range(5,6)
 	while(maximum_stats > 0):
 		randomize()
 		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
-		if maximum_stats >= item_stats.size(): #limit max stats to number of available stats
+		if maximum_stats > total_number_of_stats: #limit max stats to number of available stats
 			maximum_stats -= 1
 			print("too many stats, -1 max stats")
 		else:
 			item[random_stat] = ceili(GameData.base_item_data[item["item_id"]][random_stat] *\
 			randf_range(1.0, GameData.base_item_data[item["item_id"]][item["item_rarity"] + "Multi"]))
 			maximum_stats -= 1
+			item_stats.erase(random_stat)
 			print(random_stat + " remaining stats:" + str(maximum_stats))
 	return result
 
