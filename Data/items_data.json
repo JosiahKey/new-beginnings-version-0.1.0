@@ -97,8 +97,8 @@
   "10006": {
 	"name": "hammer",
 	"Damage_min": 5,
-	"Damage_max": 5,
-	"Accuracy": 85,
+	"Damage_max": 4,
+	"Accuracy": 80,
 	"Evasion": 0,
 	"Hp": 5,
 	"PDR": 2,

@@ -22,6 +22,11 @@ func _ready() -> void:
 		"Speed": 1,
 		"EXP": 50.0
 	}
+	
+	enemy_stats = GameData.enemy_data["10002"]
+	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
+	sprite.play("default")
+	
 	hp_bar.max_value = enemy_stats["Max_hp"]
 	hp_bar.value = enemy_stats["Current_hp"]
 

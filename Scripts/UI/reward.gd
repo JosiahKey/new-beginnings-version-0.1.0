@@ -18,4 +18,5 @@ func update_reward_item(item_id):
 				ui_iterator += 1
 
 func _on_confirm_reward_pressed() -> void:
+		get_tree().paused = false
 		visible = false

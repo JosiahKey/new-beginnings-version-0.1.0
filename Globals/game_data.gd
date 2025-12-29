@@ -35,3 +35,7 @@ func _ready() -> void:
 	var item_data_json = JSON.parse_string(item_data_file.get_as_text())
 	item_data_file.close()
 	base_item_data = item_data_json
+	var enemy_data_file = FileAccess.open("res://Data/enemy_data.json", FileAccess.READ)
+	var enemy_data_json = JSON.parse_string(enemy_data_file.get_as_text())
+	enemy_data_file.close()
+	enemy_data = enemy_data_json

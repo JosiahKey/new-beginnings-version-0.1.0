@@ -16,4 +16,5 @@ func game_over():
 	add_child(game_over_scene.instantiate())
 
 func show_reward():
+	get_tree().paused = true
 	$Reward.visible = true
