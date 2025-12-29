@@ -28,6 +28,7 @@ func ItemGeneration(type: String = "") -> Dictionary:
 	new_item["item_rarity"] = ItemDetermineRarity()
 	new_item["item_name"] = ItemDetermineName(new_item["item_id"], new_item["item_rarity"])
 	new_item["equipmentSlot"] = GameData.base_item_data[new_item["item_id"]]["equipmentSlot"]
+	new_item["Type"] = GameData.base_item_data[new_item["item_id"]]["Type"]
 	for i in GameData.item_stats:
 		if GameData.base_item_data[new_item["item_id"]][i] != null:
 			new_item[i] = ItemDetermineStats(new_item["item_id"], new_item["item_rarity"], i)
@@ -49,10 +50,8 @@ func ItemDetermineType(type: String = "") -> String:
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["Type"] == type:
 				specified_item_type.append(i)
-				print(i)
 		randomize()
 		new_item_type = specified_item_type[randi() % specified_item_type.size()]
-		print("------" + new_item_type)
 		return new_item_type
 
 func ItemDetermineRarity() -> String:
@@ -70,27 +69,37 @@ func ItemDetermineRarity() -> String:
 
 func RandomizeStats(item: Dictionary) -> Dictionary:
 	var result: Dictionary = item
-	var stats_deleted = 0
+	var maximum_stats = 0
 	var item_stats = []
-	for i in GameData.item_randomized_stats:
-		if item[i] != 0:
-			item_stats.append(i)
+	if(item["Type"] == "Weapon"):
+		for i in GameData.weapon_randomized_stats:
+			if item[i] != 0:
+				item_stats.append(i)
+				item[i] = 0
+		print(item_stats)
+	else:
+		for i in GameData.item_randomized_stats:
+			if item[i] != 0:
+				item_stats.append(i)
+				item[i] = 0
 	randomize()
-	if(item["item_rarity"] == "common"): stats_deleted = 3
-	if(item["item_rarity"] == "uncommon"): stats_deleted = randi_range(2,3)
-	if(item["item_rarity"] == "rare"): stats_deleted = randi_range(1,2)
-	if(item["item_rarity"] == "epic"): stats_deleted = randi_range(0,1)
-	while(stats_deleted > 0):
+	if(item["item_rarity"] == "common"):
+		if(item["Type"] == "Weapon"): maximum_stats = randi_range(0,1)
+		else: maximum_stats = 1
+	if(item["item_rarity"] == "uncommon"): maximum_stats = randi_range(1,2)
+	if(item["item_rarity"] == "rare"): maximum_stats = randi_range(2,3)
+	if(item["item_rarity"] == "epic"): maximum_stats = randi_range(3,4)
+	while(maximum_stats > 0):
 		randomize()
 		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
-		if stats_deleted == item_stats.size(): #have at least 1 stat
-			stats_deleted -= 1
-		elif item[random_stat] !=0:
-			if random_stat == "Accuracy" and item["equipmentSlot"] == "Mainhand":
-				pass #always have accuracy on mainhand
-			else:
-				item[random_stat] = 0
-				stats_deleted -= 1
+		if maximum_stats >= item_stats.size(): #limit max stats to number of available stats
+			maximum_stats -= 1
+			print("too many stats, -1 max stats")
+		else:
+			item[random_stat] = ceili(GameData.base_item_data[item["item_id"]][random_stat] *\
+			randf_range(1.0, GameData.base_item_data[item["item_id"]][item["item_rarity"] + "Multi"]))
+			maximum_stats -= 1
+			print(random_stat + " remaining stats:" + str(maximum_stats))
 	return result
 
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:

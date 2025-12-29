@@ -38,6 +38,7 @@ var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR"
 var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Evasion", "Hp", "Armor", "Strength", "Speed"] #"Weight"
 var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
+var weapon_randomized_stats = ["Evasion", "Hp", "PDR", "Strength", "Speed"]
 
 var item_rarity_ditribution = {"common": 80.0,
 	"uncommon": 15.0,
