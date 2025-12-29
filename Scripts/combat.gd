@@ -26,7 +26,7 @@ func _ready() -> void:
 	SignalBus.connect("miss_player", Callable(self,"on_miss"))
 	SignalBus.connect("end_enemy_turn", Callable(self,"ready_player_turn"))
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
-	SignalBus.connect("update_reward_item", Callable(self, "update_reward_item"))
+
 	
 	damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
@@ -151,11 +151,6 @@ func on_miss():
 	player_spr.add_child(text)
 	$player_miss.playing = true
 
-func update_reward_item(item_id):
-	var item_name = GameData.item_data[item_id]["item_name"]
-	$Reward/N/V/item_reward/TextureRect.texture = load("res://Assets/item_assets/"+ item_name +".png")
-	$Reward/N/V/item_reward/Label.text = GameData.item_data[item_id]["item_name"]
-
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")
 
@@ -166,11 +161,11 @@ func _on_action_button_pressed() -> void:
 	if players_turn:
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
-func _on_confirm_reward_pressed() -> void:
-	$Reward.visible = false
-	AudioManager.change_to_precombat_song()
-	GameState.state = ""
-	#fade out
-	#SignalBus.combat_exited.emit()
-	#cleanup
-	self.queue_free()
+func _on_reward_visibility_changed() -> void:
+	if $Reward.visible == false:
+		AudioManager.change_to_precombat_song()
+		GameState.state = ""
+		#fade out
+		#SignalBus.combat_exited.emit()
+		#cleanup
+		self.queue_free()

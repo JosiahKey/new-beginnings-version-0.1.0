@@ -19,3 +19,4 @@ func _input(event: InputEvent) -> void:
 			collected = true
 			$TextureRect.visible = false
 			$AudioStreamPlayer2D.playing = true
+			SignalBus.reward.emit()

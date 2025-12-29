@@ -59,3 +59,6 @@ signal highlight_slot
 #inventoryitem to equippanel
 @warning_ignore("unused_signal")
 signal unhighlight_slot
+#chest to main
+@warning_ignore("unused_signal")
+signal reward

@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb7luid6qkj5q"]
+
+[ext_resource type="Script" uid="uid://h6i72uii1lk6" path="res://Scripts/UI/combat_reward.gd" id="1_uyyed"]
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_dtlc1"]
+[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="3_3dm5n"]
+
+[sub_resource type="Gradient" id="Gradient_ld0t3"]
+colors = PackedColorArray(0.2901961, 0.2901961, 0.2901961, 1, 0.288518, 0.28851798, 0.28851798, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_khfr5"]
+gradient = SubResource("Gradient_ld0t3")
+
+[sub_resource type="Gradient" id="Gradient_f24qq"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nm52r"]
+gradient = SubResource("Gradient_f24qq")
+
+[node name="Reward" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+visible = false
+script = ExtResource("1_uyyed")
+
+[node name="N" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dtlc1")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="V" type="VBoxContainer" parent="N"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -16.0
+offset_right = 138.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="N/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93333334, 0.5803922, 0.5686275, 1)
+theme_override_colors/font_shadow_color = Color(0.09803922, 0.09803922, 0.09803922, 0.40392157)
+theme_override_colors/font_outline_color = Color(0.16737917, 0.17248994, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Victory!"
+horizontal_alignment = 1
+
+[node name="exp_reward" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Lvl_Text" type="ColorRect" parent="N/V/exp_reward"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="N/V/exp_reward/Lvl_Text"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Exp_Text2" type="ColorRect" parent="N/V/exp_reward"]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.09019608, 0.14901961, 0.07058824, 1)
+
+[node name="stat_label" type="Label" parent="N/V/exp_reward/Exp_Text2"]
+z_as_relative = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="expbar" type="TextureProgressBar" parent="N/V/exp_reward"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 100
+stretch_margin_top = 20
+stretch_margin_right = 100
+texture_under = SubResource("GradientTexture1D_khfr5")
+texture_progress = SubResource("GradientTexture1D_nm52r")
+
+[node name="item_reward" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label2" type="Label" parent="N/V/item_reward"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "GET!"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_3dm5n")
+
+[node name="Label" type="Label" parent="N/V/item_reward"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="confirm_reward" type="Button" parent="N/V"]
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="pressed" from="N/V/confirm_reward" to="." method="_on_confirm_reward_pressed"]

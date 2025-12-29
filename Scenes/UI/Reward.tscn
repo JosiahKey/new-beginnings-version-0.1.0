@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkfc1qsx443uo"]
+
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="1_kjnfn"]
+[ext_resource type="Script" uid="uid://duyo5rwjf7p2i" path="res://Scripts/UI/reward.gd" id="1_l4iwl"]
+[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="2_l4iwl"]
+
+[node name="Reward" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+visible = false
+script = ExtResource("1_l4iwl")
+
+[node name="N" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kjnfn")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="V" type="VBoxContainer" parent="N"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -16.0
+offset_right = 138.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item_reward" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_l4iwl")
+
+[node name="Label" type="Label" parent="N/V/item_reward"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="item_stat1" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_stat2" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_stat3" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_stat4" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_stat5" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_stat6" type="Label" parent="N/V"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confirm_reward" type="Button" parent="N/V"]
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="pressed" from="N/V/confirm_reward" to="." method="_on_confirm_reward_pressed"]

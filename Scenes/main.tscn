@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw7hxlrxq4724"]
+[gd_scene load_steps=10 format=3 uid="uid://cw7hxlrxq4724"]
 
 [ext_resource type="Script" uid="uid://dgjfxf658upag" path="res://Scripts/main.gd" id="1_b4pd7"]
 [ext_resource type="PackedScene" uid="uid://2a4avmrkge65" path="res://Scenes/UI/controls_hint.tscn" id="2_2jltt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ikkksxg1qr5" path="res://Scenes/Levels/Overworld.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://e2io5n8exj2y" path="res://Scenes/UI/levelup.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://dkfc1qsx443uo" path="res://Scenes/UI/Reward.tscn" id="9_ynf5e"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b4pd7")
@@ -28,3 +29,5 @@ script = ExtResource("3_2jltt")
 
 [node name="Levelup" parent="." instance=ExtResource("8_344ge")]
 visible = false
+
+[node name="Reward" parent="." instance=ExtResource("9_ynf5e")]

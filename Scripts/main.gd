@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	SignalBus.connect("enemy_encountered", Callable(self, "start_combat"))
+	SignalBus.connect("reward", Callable(self, "show_reward"))
 	SignalBus.connect("game_over", Callable(self, "game_over"))
 
 func start_combat():
@@ -13,3 +14,6 @@ func start_combat():
 func game_over():
 	get_tree().paused = true
 	add_child(game_over_scene.instantiate())
+
+func show_reward():
+	$Reward.visible = true

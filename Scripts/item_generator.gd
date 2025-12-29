@@ -76,7 +76,6 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 			if item[i] != 0:
 				item_stats.append(i)
 				item[i] = 0
-		print(item_stats)
 	else:
 		for i in GameData.item_randomized_stats:
 			if item[i] != 0:
@@ -96,13 +95,11 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
 		if maximum_stats > total_number_of_stats: #limit max stats to number of available stats
 			maximum_stats -= 1
-			print("too many stats, -1 max stats")
 		else:
 			item[random_stat] = ceili(GameData.base_item_data[item["item_id"]][random_stat] *\
 			randf_range(1.0, GameData.base_item_data[item["item_id"]][item["item_rarity"] + "Multi"]))
 			maximum_stats -= 1
 			item_stats.erase(random_stat)
-			print(random_stat + " remaining stats:" + str(maximum_stats))
 	return result
 
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
