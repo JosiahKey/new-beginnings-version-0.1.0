@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://osfy0ficvlx0" path="res://Scripts/heal_zone.gd" id="1_dqdgl"]
 [ext_resource type="AudioStream" uid="uid://cew2s8ha7w013" path="res://Audio/SFX/level_complete.wav" id="2_3fpay"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3fpay"]
-radius = 27.073973
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fpay"]
 
 [node name="HealZone" type="Area2D"]
 script = ExtResource("1_dqdgl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3fpay")
+shape = SubResource("RectangleShape2D_3fpay")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_3fpay")
