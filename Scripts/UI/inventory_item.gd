@@ -31,6 +31,7 @@ func _get_drag_data(at_position: Vector2):
 		
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var target_slot = get_parent().get_name()
+	print(target_slot)
 	if PlayerData.inv_data[target_slot]["Item"] == 0:
 		data["target_item_id"] = 0
 		data["target_texture"] = null

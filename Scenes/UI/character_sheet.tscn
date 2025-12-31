@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cif2nqjkhtabc"]
+[gd_scene load_steps=13 format=3 uid="uid://cif2nqjkhtabc"]
 
 [ext_resource type="Script" uid="uid://d1qelusemg7m0" path="res://Scripts/UI/gui.gd" id="1_8t5v5"]
 [ext_resource type="Texture2D" uid="uid://cxo6u81p07oa8" path="res://Assets/gui_assets/main_panel_2.png" id="2_o555f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://j2w1ian5e7pq" path="res://Scenes/UI/inventory_panel.tscn" id="7_0xlvb"]
 [ext_resource type="PackedScene" uid="uid://bo5qufg8u75ox" path="res://Scenes/UI/equip_panel.tscn" id="8_8hch5"]
 [ext_resource type="PackedScene" uid="uid://2726ljvtct3q" path="res://Scenes/UI/stat_panel.tscn" id="9_7w82k"]
+[ext_resource type="PackedScene" uid="uid://0a68ksx71shm" path="res://Scenes/UI/trash.tscn" id="10_f1t0a"]
 [ext_resource type="AudioStream" uid="uid://f8o8n7u4u2wy" path="res://Audio/SFX/pause.wav" id="10_qfcpp"]
 [ext_resource type="AudioStream" uid="uid://jcu3o3spkgew" path="res://Audio/SFX/close-back.wav" id="11_b05b2"]
 
@@ -65,6 +66,13 @@ offset_left = 488.0
 offset_top = 64.0
 offset_right = 872.0
 offset_bottom = 320.0
+
+[node name="trash" parent="MenuRect" instance=ExtResource("10_f1t0a")]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 446.0
+offset_right = 938.0
+offset_bottom = 500.0
 
 [node name="SFX_open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qfcpp")
