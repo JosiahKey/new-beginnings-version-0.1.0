@@ -23,7 +23,7 @@ func _ready() -> void:
 		"EXP": 50.0
 	}
 	
-	enemy_stats = GameData.enemy_data["10001"]
+	enemy_stats = GameData.enemy_data["10002"]
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
 	sprite.play("default")
 	

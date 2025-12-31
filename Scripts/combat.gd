@@ -26,7 +26,7 @@ func _ready() -> void:
 	SignalBus.connect("miss_player", Callable(self,"on_miss"))
 	SignalBus.connect("end_enemy_turn", Callable(self,"ready_player_turn"))
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
-
+	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 
 	
 	damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
@@ -48,17 +48,25 @@ func combat_victory(experience: float):
 	#victory dance
 	#reward popup + EXP gain animation
 	$Reward.visible = true
+	SignalBus.item_generated.emit()
+	check_for_levelup(experience)
+	SignalBus.update_stat_panel.emit()
+
+func check_for_levelup(experience: float = 0.0):
+	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	var exptween = get_tree().create_tween()
 	var newexp = PlayerData.stat_data["Experience"] + experience
-	exptween.tween_property(exp_bar, "value", newexp, 1)
-	SignalBus.item_generated.emit()
 	PlayerData.stat_data["Experience"] += experience
+	
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
 		PlayerData.stat_data["Level"] += 1
 		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * log(PlayerData.stat_data["Exp_to_next_level"])))
+		exptween.tween_property(exp_bar, "value", exp_bar.max_value, 1.5).set_ease(Tween.EASE_OUT)
+		await exptween.finished
 		SignalBus.levelup.emit()
+	else:
+		exptween.tween_property(exp_bar, "value", newexp, 1.5).set_ease(Tween.EASE_OUT)
 	$Reward/N/V/exp_reward/Lvl_Text/stat_label.text = "Level " + str(PlayerData.stat_data["Level"])
-	SignalBus.update_stat_panel.emit()
 
 func ready_player_turn():
 	if PlayerData.stat_data["Current_hp"] > 0:

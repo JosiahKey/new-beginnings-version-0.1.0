@@ -146,6 +146,7 @@ size_flags_vertical = 8
 text = "epic_axe"
 
 [node name="confirm_reward" type="Button" parent="N/V"]
+visible = false
 layout_mode = 2
 text = "Confirm"
 

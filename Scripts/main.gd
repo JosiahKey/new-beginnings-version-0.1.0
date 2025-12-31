@@ -18,3 +18,7 @@ func game_over():
 func show_reward():
 	get_tree().paused = true
 	$Reward.visible = true
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("hidehint"):
+		$ControlsHint.visible = !$ControlsHint.visible

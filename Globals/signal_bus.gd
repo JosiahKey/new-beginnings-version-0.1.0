@@ -62,3 +62,6 @@ signal unhighlight_slot
 #chest to main
 @warning_ignore("unused_signal")
 signal reward
+#levelup ui to combat(reward)
+@warning_ignore("unused_signal")
+signal check_for_levelup

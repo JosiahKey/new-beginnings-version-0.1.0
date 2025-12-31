@@ -1,6 +1,20 @@
 extends Node
 
-var item_data = {}
+var item_data = {
+	66666: { "item_rarity": "legendary", 
+	"item_name": "sword_legendary", 
+	"equipmentSlot": "Mainhand", 
+	"Type": "Weapon", 
+	"Damage_min": 100.0, 
+	"Damage_max": 200.0, 
+	"Accuracy": 100.0, 
+	"Evasion": 0, 
+	"Hp": 0, 
+	"PDR": 0, 
+	"Strength": 0, 
+	"Speed": 0.0 
+	}
+}
 var base_item_data = {}
 
 var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"] #Weight
