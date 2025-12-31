@@ -70,6 +70,10 @@ func _update_equipped_stats():
 	if PlayerData.stat_data["Total_equipped_damage_max"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_max"] = 1
 	SignalBus.update_stat_panel.emit()
+	
+	#if current hp is higher than new hp max
+	if PlayerData.stat_data["Current_hp"] > PlayerData.stat_data["Total_hp"]:
+		PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 
 func highlight_slot(slot: String):
 	get_node("GridContainer/" + slot + "/" + slot + "/Highlight").visible = true

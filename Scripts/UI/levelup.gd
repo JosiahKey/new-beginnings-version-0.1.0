@@ -26,21 +26,15 @@ func _on_speed_pressed() -> void:
 	choice = "Speed"
 
 func _on_confirm_pressed() -> void:
+	PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 	if choice == "Health":
 		PlayerData.stat_data["Natural_hp"] += 5
 		PlayerData.stat_data["Current_hp"] += 5
-		SignalBus.update_stat_panel.emit()
-		SignalBus.check_for_levelup.emit()
-		visible = false
 	if choice == "Strength":
 		PlayerData.stat_data["Strength"] += 1
-		SignalBus.update_stat_panel.emit()
-		SignalBus.check_for_levelup.emit()
-		visible = false
 	if choice == "Speed":
 		PlayerData.stat_data["Speed"] += 1
-		SignalBus.update_stat_panel.emit()
-		SignalBus.check_for_levelup.emit()
-		visible = false
-	else:
-		pass
+
+	SignalBus.update_stat_panel.emit()
+	SignalBus.check_for_levelup.emit()
+	visible = false
