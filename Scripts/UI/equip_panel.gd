@@ -35,6 +35,12 @@ func _update_equipped_stats():
 	PlayerData.stat_data["Bonus_strength"] = 0
 	PlayerData.stat_data["Bonus_speed"] = 0
 
+#no mainhand equipped
+	if PlayerData.equipment_data["Mainhand"] == 0:
+		PlayerData.stat_data["Total_equipped_damage_min"] = 1
+		PlayerData.stat_data["Total_equipped_damage_max"] = 1
+		PlayerData.stat_data["Accuracy"] = 100
+
 	for i in PlayerData.equipment_data.keys():
 		if PlayerData.equipment_data[i] != null and GameData.item_data.has(PlayerData.equipment_data[i]):
 			PlayerData.stat_data["Bonus_hp"] += GameData.item_data[
@@ -58,11 +64,6 @@ func _update_equipped_stats():
 			if PlayerData.stat_data["Total_equipped_damage_min"] > PlayerData.stat_data["Total_equipped_damage_max"]:
 				PlayerData.stat_data["Total_equipped_damage_max"] = PlayerData.stat_data["Total_equipped_damage_min"]
 	
-	#no mainhand equipped
-	if PlayerData.equipment_data["Mainhand"] == 0:
-		PlayerData.stat_data["Total_equipped_damage_min"] = 1
-		PlayerData.stat_data["Total_equipped_damage_max"] = 1
-		PlayerData.stat_data["Accuracy"] = 100
 	#if weapon has no damage
 	if PlayerData.stat_data["Total_equipped_damage_min"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_min"] = 1

@@ -8,10 +8,10 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	
 	#update data of the origin
 	if data["origin_panel"] == "Inventory_Panel":
-		PlayerData.inv_data[origin_slot]["Item"] = data["target_item_id"]
+		PlayerData.inv_data[origin_slot]["Item"] = 0
 	else:
-		PlayerData.equipment_data[origin_slot] = data["target_item_id"]
+		PlayerData.equipment_data[origin_slot] = 0
 		SignalBus.item_equipped.emit()
 	
 	#update origin text
-	data["origin_node"].texture = data["target_texture"]
+	data["origin_node"].texture = null

@@ -120,7 +120,6 @@ func roll_to_evade() -> bool:
 	else:
 		return true
 
-
 func on_hit(damage: int):
 	if(roll_to_evade()):
 		var text = floating_text.instantiate()
@@ -167,6 +166,10 @@ func _on_back_pressed() -> void:
 
 func _on_action_button_pressed() -> void:
 	if players_turn:
+		damage_label.text = "Damage: "+ str(
+		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
+		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
+		hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
 func _on_reward_visibility_changed() -> void:
