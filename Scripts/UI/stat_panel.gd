@@ -1,6 +1,6 @@
 extends NinePatchRect
 
-@onready var  max_hp_label = $M/V/Stat_Grid/Health_Points_Stat_Label/stat_num
+@onready var  max_hp_label = $M/V/Stat_Grid/Health_Points_Bar/stat_num
 @onready var  acc_label = $M/V/Stat_Grid/Accuracy_Stat_Label/stat_num
 @onready var  eva_label = $M/V/Stat_Grid/Evasion_Stat_Label/stat_num
 @onready var  pdr_label = $M/V/Stat_Grid/PDR_Stat_Label/stat_num
@@ -10,6 +10,8 @@ extends NinePatchRect
 @onready var  weight_label = $M/V/Stat_Grid/Weight_Stat_Label/stat_num
 @onready var  exp_bar = $M/V/H/Exp_Bar
 @onready var  exp_bar_label = $M/V/H/Exp_Bar/exp_bar_label
+@onready var  hp_bar = $M/V/Stat_Grid/Health_Points_Bar
+@onready var  lvl_label = $M/V/H/Level/Label
 
 func _ready() -> void:
 	SignalBus.connect("update_stat_panel", Callable(self, "_update_stat_panel"))
@@ -34,3 +36,6 @@ func _update_stat_panel():
 	exp_bar_label.text = str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
+	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
+	hp_bar.value = PlayerData.stat_data["Current_hp"]
+	lvl_label.text = str(PlayerData.stat_data["Level"])
