@@ -9,6 +9,9 @@ extends Node2D
 	"Home": preload("res://Scenes/Levels/Home.tscn"),
 	"Overworld_fromhome": preload("res://Scenes/Levels/Overworld_fromhome.tscn"),
 	"Overworld_fromside": preload("res://Scenes/Levels/Overworld_fromside.tscn"),
+	"Overworld2": preload("res://Scenes/Levels/Overworld2.tscn"),
+	"Overworld2_fromboss": preload("res://Scenes/Levels/Overworld2_fromboss.tscn"),
+	"Overworld_fromtop": preload("res://Scenes/Levels/Overworld_fromtop.tscn"),
 }
 
 func _ready() -> void:

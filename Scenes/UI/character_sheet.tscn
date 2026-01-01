@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://jcu3o3spkgew" path="res://Audio/SFX/close-back.wav" id="11_b05b2"]
 
 [node name="CharacterSheet" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_8t5v5")
 
 [node name="MenuRect" type="NinePatchRect" parent="."]

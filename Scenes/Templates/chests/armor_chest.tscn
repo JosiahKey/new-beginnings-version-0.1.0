@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpm22"]
 size = Vector2(16, 16)
 
-[node name="interactable" type="Area2D"]
+[node name="armor_chest" type="Area2D"]
 priority = 1
 script = ExtResource("1_jmham")
 

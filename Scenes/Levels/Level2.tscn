@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_svn12"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_ls5ny"]
-[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/interactable.tscn" id="3_smuj1"]
+[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/chests/armor_chest.tscn" id="3_smuj1"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_v153m"]
 
 [node name="Level2" type="Node2D"]

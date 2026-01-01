@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cddtx7h1vp3ce" path="res://Assets/art_assets/backgorund.png" id="1_k1gaw"]
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="2_wcb25"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_bgy3h"]
-[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/interactable.tscn" id="3_gpvrs"]
+[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/chests/armor_chest.tscn" id="3_gpvrs"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="4_jiuxo"]
 
 [node name="Level4" type="Node2D"]
