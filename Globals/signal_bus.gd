@@ -17,7 +17,7 @@ signal update_stat_panel
 #itemgenerator to inventory
 @warning_ignore("unused_signal")
 signal item_added
-#enemy to player stats
+#enemy to combat
 @warning_ignore("unused_signal")
 signal hit_player
 #player to enemy
@@ -65,3 +65,9 @@ signal reward
 #levelup ui to combat(reward)
 @warning_ignore("unused_signal")
 signal check_for_levelup
+#combatant to combat_engine
+@warning_ignore("unused_signal")
+signal turn_start
+#combatant to combat_engine
+@warning_ignore("unused_signal")
+signal turn_finished

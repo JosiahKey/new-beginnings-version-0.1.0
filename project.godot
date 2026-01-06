@@ -26,6 +26,7 @@ PlayerData="*res://Globals/player_data.gd"
 GameState="*res://Globals/game_state.gd"
 Tooltip="*res://Globals/tooltip.tscn"
 AudioManager="*res://Globals/audio_manager.tscn"
+CombatData="*res://Globals/combat_data.gd"
 
 [display]
 

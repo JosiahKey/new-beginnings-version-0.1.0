@@ -22,7 +22,7 @@
 	"Accuracy": 65,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 1,
+	"Speed": 2,
 	"EXP": 5000,
 	"Difficulty": 2,
 	"Biome": "Plains"
@@ -36,7 +36,7 @@
 	"Accuracy": 0,
 	"Evasion": 0,
 	"PDR": 0,
-	"Speed": 0,
+	"Speed": 3,
 	"EXP": 0,
 	"Difficulty": 1,
 	"Biome": "Any"

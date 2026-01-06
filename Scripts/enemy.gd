@@ -10,20 +10,10 @@ extends Control
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
-	
-	enemy_stats = {
-		"Max_hp": 10,
-		"Current_hp": 10,
-		"Damage_min": 1,
-		"Damage_max": 3,
-		"Accuracy": 65,
-		"Evasion": 5,
-		"PDR": 0,
-		"Speed": 1,
-		"EXP": 50.0
-	}
-	
+
 	enemy_stats = GameData.enemy_data["10002"]
+	name = CombatData.add_combatant(enemy_stats)
+
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
 	sprite.play("default")
 	
@@ -35,6 +25,7 @@ func get_stats() -> Dictionary:
 	return enemy_stats
 
 func ready_enemy_turn():
+	SignalBus.turn_start.emit()
 	if enemy_stats["Current_hp"] > 0:
 		await get_tree().create_timer(0.5).timeout
 		enemy_turn_ind.visible = true
@@ -52,30 +43,23 @@ func enemy_action(action:String):
 		"attack":
 			sprite.play("attack")
 			await get_tree().create_timer(0.5).timeout
-			if roll_to_hit() == true:
+			if roll_stat("Accuracy") == true:
 				randomize()
 				SignalBus.hit_player.emit(randi_range(enemy_stats["Damage_min"],enemy_stats["Damage_max"]))
 			else:
 				SignalBus.miss_player.emit()
+	SignalBus.turn_finished.emit()
 
-func roll_to_hit() -> bool:
+func roll_stat(stat: String) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if roll >= enemy_stats["Accuracy"]:
-		return false
-	else:
-		return true
-
-func roll_to_evade() -> bool:
-	randomize()
-	var roll: int = randi_range(0,100)
-	if roll >= enemy_stats["Evasion"]:
+	if roll >= enemy_stats[stat]:
 		return false
 	else:
 		return true
 
 func on_hit(damage):
-	if roll_to_evade():
+	if roll_stat("Evasion"):
 		var text = floating_text.instantiate()
 		text.amount = "EVADED"
 		text.type = "damage"
