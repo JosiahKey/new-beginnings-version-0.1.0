@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://bw34lpj7x80oq"]
+
+[ext_resource type="Texture2D" uid="uid://dkfhmmb1ktcca" path="res://Assets/character_assets/djinn-bandit-Sheet.png" id="1_jpsv7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofiw7"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(192, 42, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_867vi"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(240, 42, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_han2c"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(0, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2a01"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(48, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc0h3"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(96, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2v4f"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(144, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7jr1"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(192, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6i0q"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(240, 84, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1t6n"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(48, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5flf"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(96, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilfhm"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(144, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktxwl"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(192, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pahrm"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(192, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4k2c"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(192, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtsv4"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(144, 126, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yhop"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(0, 0, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xl3d"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(48, 0, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs1vl"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(96, 0, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1ei0"]
+atlas = ExtResource("1_jpsv7")
+region = Rect2(144, 0, 48, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibgit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofiw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_867vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_han2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2a01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc0h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2v4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7jr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6i0q")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1t6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5flf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilfhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktxwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pahrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4k2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtsv4")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yhop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xl3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs1vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1ei0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy_Sprite" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ibgit")
+animation = &"damaged"
+autoplay = "idle"
+frame = 6
+frame_progress = 1.0
+metadata/_edit_lock_ = true

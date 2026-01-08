@@ -11,10 +11,12 @@ extends Control
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
 
+	GameData.generate_enemy()
 	enemy_stats = GameData.enemy_data["10002"]
 	name = CombatData.add_combatant(enemy_stats)
 
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
+	#sprite.sprite_frames = load("res://Resources/djinn_bandit.tres")
 	sprite.play("default")
 	
 	hp_bar.max_value = enemy_stats["Max_hp"]
@@ -25,7 +27,7 @@ func get_stats() -> Dictionary:
 	return enemy_stats
 
 func ready_enemy_turn():
-	SignalBus.turn_start.emit()
+	SignalBus.turn_start.emit(name)
 	if enemy_stats["Current_hp"] > 0:
 		await get_tree().create_timer(0.5).timeout
 		enemy_turn_ind.visible = true
@@ -33,7 +35,6 @@ func ready_enemy_turn():
 		enemy_action("attack")
 		await get_tree().create_timer(0.8).timeout
 		enemy_turn_ind.visible = false
-		SignalBus.end_enemy_turn.emit()
 	else:
 		self.visible = false
 		SignalBus.combat_victory.emit(enemy_stats["EXP"])

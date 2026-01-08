@@ -7,15 +7,19 @@ var action_queue = []
 
 func _ready() -> void:
 	SignalBus.connect("turn_start", Callable(self, "pop_and_requeue"))
-	enemies.add_child(enemy_res.instantiate())
 
+	generate_enemies()
 	roll_initiative()
-	pop_and_requeue()
+	print(action_queue)
+	pop_and_requeue("enemy1")
+	SignalBus.turn_finished.emit()
+	print(action_queue)
 
 func enqueue(action: Callable):
 	action_queue.push_back(action)
 
-func pop_and_requeue():
+func pop_and_requeue(_combatant: String = ""):
+	print(_combatant)
 	await SignalBus.turn_finished
 	var action = action_queue.front()
 	if !action_queue.is_empty():
@@ -40,3 +44,6 @@ func roll_initiative():
 			enqueue(Callable(player, "ready_player_turn"))
 		else:
 			enqueue(Callable(enemies.get_node(t), "ready_enemy_turn"))
+
+func generate_enemies():
+	enemies.add_child(enemy_res.instantiate())

@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
-var players_turn: bool = true
+var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
 func _ready() -> void:
@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 
+	SignalBus.connect("turn_start", Callable(self, "player_turn"))
 	
 	damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
@@ -62,26 +63,29 @@ func check_for_levelup(experience: float = 0.0):
 
 
 func _on_confirm_btn_pressed() -> void:
-	#if players_turn:
-	players_turn = false
 	get_node("select").playing = true
 	$Background_Image/Player.player_attack_action()
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	players_turn = false
 
 
-func _on_player_sprite_animation_finished() -> void:
-	player_spr.play("idle")
+func player_turn(combatant: String = ""):
+	if combatant == "Player":
+		players_turn = true
+		actions_container.visible = true
+	else:
+		actions_container.visible = false
 
 func _on_back_pressed() -> void:
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 
 func _on_action_button_pressed() -> void:
-	#if players_turn:
-	damage_label.text = "Damage: "+ str(
-	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
-	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
-	hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
+	if players_turn== true:
+		damage_label.text = "Damage: "+ str(
+		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
+		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
+		hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
+		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:

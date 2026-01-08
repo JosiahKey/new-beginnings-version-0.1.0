@@ -38,6 +38,9 @@ window/stretch/mode="viewport"
 
 Player=""
 PlayerCursor=""
+Any="any biome"
+Plains="plains biome"
+Woods="woods biome"
 
 [input]
 

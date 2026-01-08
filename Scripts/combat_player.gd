@@ -12,21 +12,12 @@ func _ready() -> void:
 	SignalBus.connect("end_enemy_turn", Callable(self,"ready_player_turn"))
 
 func ready_player_turn():
-	SignalBus.turn_start.emit()
+	SignalBus.turn_start.emit(name)
+	player_spr.play("idle")
 	if PlayerData.stat_data["Current_hp"] > 0:
-		#signal to ui --> actions_container.visible = true
 		player_turn_ind.visible = true
 	else:
 		SignalBus.game_over.emit()
-
-func _on_confirm_btn_pressed() -> void:
-	#audio sfx
-	get_node("select").playing = true
-	#this can handle selecting different actions in the future
-	player_attack_action()
-	#signal to ui --> 
-	#!!!#actions_container.visible = true
-	player_turn_ind.visible = false
 
 func player_attack_action():
 	await get_tree().create_timer(0.7).timeout
@@ -36,7 +27,12 @@ func player_attack_action():
 		pass#!!!#on_hit(target enemy, damage calculation)
 	else:
 		pass#!!!#on_miss(target enemey)
-	await get_tree().create_timer(0.3).timeout
+	player_finish_turn()
+
+func player_finish_turn():
+	await player_spr.animation_finished
+	player_turn_ind.visible = false
+	player_spr.play("idle")
 	SignalBus.turn_finished.emit()
 
 func roll_stat(stat: String) -> bool:
