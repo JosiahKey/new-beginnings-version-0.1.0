@@ -145,8 +145,11 @@ process_material = SubResource("ParticleProcessMaterial_7nqxc")
 position = Vector2(36, 36)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("4_otuam")
-animation = &"damaged"
-autoplay = "idle"
+animation = &"attack"
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="Enemy_Hp" type="TextureProgressBar" parent="."]

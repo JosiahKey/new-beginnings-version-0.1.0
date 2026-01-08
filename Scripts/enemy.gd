@@ -15,8 +15,8 @@ func _ready() -> void:
 	enemy_stats = GameData.enemy_data["10002"]
 	name = CombatData.add_combatant(enemy_stats)
 
-	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
-	#sprite.sprite_frames = load("res://Resources/djinn_bandit.tres")
+	#sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
+	sprite.sprite_frames = load("res://Resources/djinn_bandit.tres")
 	sprite.play("default")
 	
 	hp_bar.max_value = enemy_stats["Max_hp"]
