@@ -40,7 +40,9 @@ var enemy_data = {
 		"Evasion": 5,
 		"PDR": 0,
 		"Speed": 1,
-		"EXP": 50.0
+		"EXP": 50.0,
+		"Difficulty": 1,
+		"Biome": "Plains"
 		},
 	}
 
@@ -53,3 +55,20 @@ func _ready() -> void:
 	var enemy_data_json = JSON.parse_string(enemy_data_file.get_as_text())
 	enemy_data_file.close()
 	enemy_data = enemy_data_json
+
+func generate_enemy() -> Dictionary:
+	var result: Dictionary = {}
+	var enemies_in_biome: Array = []
+	for e in enemy_data:
+		if enemy_data[e]["Biome"] == GameState.biome or\
+									enemy_data[e]["Biome"] =="Any":
+			enemies_in_biome.append(e)
+	print(enemies_in_biome)
+	var random_enemy_index: int = 0
+	randomize()
+	random_enemy_index = randi_range(0, enemies_in_biome.size()-1)
+	print(random_enemy_index)
+	result = enemy_data[enemies_in_biome[random_enemy_index]]
+	print(enemies_in_biome[random_enemy_index])
+	print(result)
+	return result

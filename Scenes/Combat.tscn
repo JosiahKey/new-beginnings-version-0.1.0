@@ -486,7 +486,7 @@ stream = ExtResource("9_snhto")
 volume_db = -2.922
 bus = &"SFX"
 
-[node name="player_miss" type="AudioStreamPlayer" parent="Combat/Background_Image/Player"]
+[node name="player_miss" type="AudioStreamPlayer" parent="Combat/Background_Image/Player" groups=["Plains"]]
 stream = ExtResource("10_khfr5")
 volume_db = -9.764
 bus = &"SFX"
