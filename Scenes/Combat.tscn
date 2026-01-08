@@ -432,10 +432,10 @@ text = "."
 
 [node name="Enemy_Sprites" type="HBoxContainer" parent="Combat/Background_Image"]
 layout_mode = 0
-offset_left = 591.0
-offset_top = 446.0
-offset_right = 985.0
-offset_bottom = 517.0
+offset_left = 550.0
+offset_top = 325.0
+offset_right = 1050.0
+offset_bottom = 525.0
 alignment = 2
 
 [node name="Player" type="Control" parent="Combat/Background_Image"]

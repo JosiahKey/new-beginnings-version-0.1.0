@@ -5,8 +5,9 @@ extends Control
 @onready var emitter := $Hit_Indicator
 @onready var enemy_turn_ind := $Turn_Indicator
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
-
 @onready var enemy_stats: Dictionary = {}
+
+var half_y = 0
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
@@ -15,6 +16,9 @@ func _ready() -> void:
 	enemy_stats = GameData.generate_enemy()
 	name = CombatData.add_combatant(enemy_stats)
 
+	var sprite_size = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size()
+	half_y = sprite_size.y /2
+	print("size: " + str(half_y))
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
 	sprite.play("default")
 	
@@ -22,10 +26,14 @@ func _ready() -> void:
 	hp_bar.value = enemy_stats["Max_hp"]
 	enemy_stats["Current_hp"] = enemy_stats["Max_hp"]
 
+func _process(_delta: float) -> void:
+	set_position(Vector2( position.x , (-half_y+150)))
+
 func get_stats() -> Dictionary:
 	return enemy_stats
 
 func ready_enemy_turn():
+	sprite.play("default")
 	SignalBus.turn_start.emit(name)
 	if enemy_stats["Current_hp"] > 0:
 		await get_tree().create_timer(0.5).timeout
@@ -33,6 +41,7 @@ func ready_enemy_turn():
 		await get_tree().create_timer(1).timeout
 		enemy_action("attack")
 		await get_tree().create_timer(0.8).timeout
+		sprite.play("default")
 		enemy_turn_ind.visible = false
 	else:
 		self.visible = false

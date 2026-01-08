@@ -9,6 +9,10 @@ func _ready() -> void:
 	SignalBus.connect("turn_start", Callable(self, "pop_and_requeue"))
 
 	generate_enemies()
+	generate_enemies()
+	generate_enemies()
+	generate_enemies()
+	generate_enemies()
 	roll_initiative()
 	print(action_queue)
 	pop_and_requeue("enemy1")
@@ -46,4 +50,5 @@ func roll_initiative():
 			enqueue(Callable(enemies.get_node(t), "ready_enemy_turn"))
 
 func generate_enemies():
-	enemies.add_child(enemy_res.instantiate())
+	var new_node := enemy_res.instantiate()
+	enemies.add_child(new_node)

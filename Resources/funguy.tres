@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://djc7v4p3wejnx"]
+
+[ext_resource type="Texture2D" uid="uid://bdo37x77t28yu" path="res://Assets/character_assets/funguy.png" id="1_t0ur5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thk8u"]
+atlas = ExtResource("1_t0ur5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mymyv"]
+atlas = ExtResource("1_t0ur5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5qeo"]
+atlas = ExtResource("1_t0ur5")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thk8u")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mymyv")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5qeo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
