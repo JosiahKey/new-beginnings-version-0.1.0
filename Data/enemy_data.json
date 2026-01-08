@@ -140,7 +140,7 @@
 	"Biome": "Mountains"
   },
   "10011": {
-	"enemy_name": "dark_knight",
+	"enemy_name": "demon_slime",
 	"Max_hp": 1000,
 	"Current_hp": 1000,
 	"Damage_min": 10,
