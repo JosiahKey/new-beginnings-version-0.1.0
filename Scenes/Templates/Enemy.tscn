@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Scripts/enemy.gd" id="1_ybw3w"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="3_w7xwu"]
-[ext_resource type="SpriteFrames" uid="uid://dja4ofuwhpc06" path="res://Resources/djinn_bandit.tres" id="4_otuam"]
 [ext_resource type="AudioStream" uid="uid://qwy8fmd4t6kt" path="res://Audio/SFX/enemy_hit.wav" id="5_0830c"]
 [ext_resource type="AudioStream" uid="uid://bnhrhh0tahxb3" path="res://Audio/SFX/miss.wav" id="6_ghaa6"]
 
@@ -85,6 +84,8 @@ color = Color(0.8117647, 0.16862746, 0.21568628, 1)
 color_ramp = SubResource("GradientTexture1D_1wk72")
 anim_speed_max = 1.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jubjs"]
+
 [sub_resource type="Gradient" id="Gradient_w7xwu"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
@@ -144,11 +145,8 @@ process_material = SubResource("ParticleProcessMaterial_7nqxc")
 [node name="Enemy_Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(36, 36)
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("4_otuam")
-animation = &"attack"
+sprite_frames = SubResource("SpriteFrames_jubjs")
 autoplay = "default"
-frame = 6
-frame_progress = 1.0
 flip_h = true
 metadata/_edit_lock_ = true
 
@@ -156,8 +154,9 @@ metadata/_edit_lock_ = true
 custom_minimum_size = Vector2(2, 6)
 layout_mode = 1
 offset_left = 9.0
+offset_top = -40.0
 offset_right = 63.0
-offset_bottom = 2.0
+offset_bottom = -34.0
 value = 12.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_stdli")
