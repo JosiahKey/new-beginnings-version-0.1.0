@@ -12,11 +12,10 @@ func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
 
 	GameData.generate_enemy()
-	enemy_stats = GameData.enemy_data["10002"]
+	enemy_stats = GameData.generate_enemy()
 	name = CombatData.add_combatant(enemy_stats)
 
-	#sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
-	sprite.sprite_frames = load("res://Resources/djinn_bandit.tres")
+	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
 	sprite.play("default")
 	
 	hp_bar.max_value = enemy_stats["Max_hp"]
