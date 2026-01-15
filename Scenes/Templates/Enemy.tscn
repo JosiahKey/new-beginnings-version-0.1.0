@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://u18uhjlhb5op"]
+[gd_scene load_steps=26 format=3 uid="uid://u18uhjlhb5op"]
 
 [ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Scripts/enemy.gd" id="1_ybw3w"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
@@ -6,42 +6,6 @@
 [ext_resource type="SpriteFrames" uid="uid://djc7v4p3wejnx" path="res://Resources/funguy.tres" id="4_otuam"]
 [ext_resource type="AudioStream" uid="uid://qwy8fmd4t6kt" path="res://Audio/SFX/enemy_hit.wav" id="5_0830c"]
 [ext_resource type="AudioStream" uid="uid://bnhrhh0tahxb3" path="res://Audio/SFX/miss.wav" id="6_ghaa6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_es28w"]
-atlas = ExtResource("2_1wk72")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ovw4"]
-atlas = ExtResource("2_1wk72")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4qc7"]
-atlas = ExtResource("2_1wk72")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qsdwj"]
-atlas = ExtResource("2_1wk72")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7nqxc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_es28w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ovw4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l4qc7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qsdwj")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_stdli"]
 particles_animation = true
@@ -97,19 +61,67 @@ colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_es28w"]
 gradient = SubResource("Gradient_1wk72")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otuam"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofiw7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_867vi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_han2c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es28w"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ovw4"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4qc7"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsdwj"]
+atlas = ExtResource("2_1wk72")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nqxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es28w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ovw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4qc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsdwj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
 script = ExtResource("1_ybw3w")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-17, 52)
-sprite_frames = SubResource("SpriteFrames_7nqxc")
-frame_progress = 0.40487847
 
 [node name="Turn_Indicator" type="GPUParticles2D" parent="."]
 visible = false
@@ -154,6 +166,35 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_stdli")
 texture_progress = SubResource("GradientTexture1D_es28w")
 
+[node name="Button" type="Button" parent="Enemy_Hp"]
+custom_minimum_size = Vector2(64, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_otuam")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ofiw7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_867vi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_han2c")
+
+[node name="Container" type="Control" parent="Enemy_Hp/Button"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Selector" type="AnimatedSprite2D" parent="Enemy_Hp/Button/Container" groups=["selector"]]
+visible = false
+position = Vector2(10, 0)
+sprite_frames = SubResource("SpriteFrames_7nqxc")
+autoplay = "default"
+
 [node name="enemy_hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_0830c")
 volume_db = -7.011
@@ -163,3 +204,5 @@ bus = &"SFX"
 stream = ExtResource("6_ghaa6")
 volume_db = -10.816
 bus = &"SFX"
+
+[connection signal="pressed" from="Enemy_Hp/Button" to="." method="_on_button_pressed"]

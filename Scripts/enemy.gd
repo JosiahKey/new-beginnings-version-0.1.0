@@ -6,7 +6,9 @@ extends Control
 @onready var enemy_turn_ind := $Turn_Indicator
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_stats: Dictionary = {}
+@onready var selector:= $Enemy_Hp/Button/Container/Selector
 
+var selected = false
 var half_y = 0
 
 func _ready() -> void:
@@ -16,7 +18,7 @@ func _ready() -> void:
 	enemy_stats = GameData.generate_enemy()
 	name = CombatData.add_combatant(enemy_stats)
 
-	var sprite_size = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size()
+	var sprite_size = sprite.sprite_frames.get_frame_texture("default", 0).get_size()
 	half_y = sprite_size.y /2
 	print("size: " + str(half_y))
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
@@ -104,3 +106,12 @@ func on_miss():
 
 func _on_enemy_sprite_animation_finished() -> void:
 		sprite.play("default")
+
+
+func _on_button_pressed() -> void:
+	var nodes = get_tree().get_nodes_in_group("selector")
+	for n in nodes:
+		n.visible = false
+		n.set("selected", false)
+	selector.visible = true
+	selected = true
