@@ -4,9 +4,12 @@ extends Node2D
 @onready var player = $Combat/Background_Image/Player
 @onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var action_queue = []
+var selected_enemy: Control
 
 func _ready() -> void:
 	SignalBus.connect("turn_start", Callable(self, "pop_and_requeue"))
+	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
+	SignalBus.connect("combat_action", Callable(self, "combat_action"))
 
 	generate_enemies()
 	generate_enemies()
@@ -52,3 +55,10 @@ func roll_initiative():
 func generate_enemies():
 	var new_node := enemy_res.instantiate()
 	enemies.add_child(new_node)
+
+func select_enemy(enemy: Control):
+	selected_enemy = enemy
+
+func combat_action(method: String, arg: Variant):
+	if arg != null:
+		Callable(selected_enemy, method).call(arg)

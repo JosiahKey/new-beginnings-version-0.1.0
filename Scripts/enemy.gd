@@ -8,7 +8,6 @@ extends Control
 @onready var enemy_stats: Dictionary = {}
 @onready var selector:= $Enemy_Hp/Button/Container/Selector
 
-var selected = false
 var half_y = 0
 
 func _ready() -> void:
@@ -114,4 +113,4 @@ func _on_button_pressed() -> void:
 		n.visible = false
 		n.set("selected", false)
 	selector.visible = true
-	selected = true
+	SignalBus.enemy_selected.emit(self)

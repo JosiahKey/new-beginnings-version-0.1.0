@@ -24,9 +24,9 @@ func player_attack_action():
 	player_spr.play("attack")
 	await get_tree().create_timer(0.3).timeout
 	if roll_stat("Accuracy") == true:
-		pass#!!!#on_hit(target enemy, damage calculation)
+		SignalBus.combat_action.emit("on_hit", 10)
 	else:
-		pass#!!!#on_miss(target enemey)
+		SignalBus.combat_action.emit("on_hit", 10)
 	player_finish_turn()
 
 func player_finish_turn():

@@ -71,3 +71,9 @@ signal turn_start
 #combatant to combat_engine
 @warning_ignore("unused_signal")
 signal turn_finished
+#combatant to combat_engine
+@warning_ignore("unused_signal")
+signal combat_action
+#enemy to combat_engine
+@warning_ignore("unused_signal")
+signal enemy_selected
