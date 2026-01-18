@@ -77,3 +77,6 @@ signal combat_action
 #enemy to combat_engine
 @warning_ignore("unused_signal")
 signal enemy_selected
+#enemy to player
+@warning_ignore("unused_signal")
+signal action_resolved

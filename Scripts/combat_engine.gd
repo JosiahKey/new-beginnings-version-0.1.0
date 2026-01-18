@@ -11,16 +11,15 @@ func _ready() -> void:
 	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 	SignalBus.connect("combat_action", Callable(self, "combat_action"))
 
-	generate_enemies()
-	generate_enemies()
-	generate_enemies()
-	generate_enemies()
-	generate_enemies()
+	generate_combatants()
+	generate_combatants()
+	generate_combatants()
+	generate_combatants()
+	generate_combatants()
 	roll_initiative()
-	print(action_queue)
+
 	pop_and_requeue("enemy1")
 	SignalBus.turn_finished.emit()
-	print(action_queue)
 
 func enqueue(action: Callable):
 	action_queue.push_back(action)
@@ -43,7 +42,7 @@ func roll_initiative():
 			turn_order.push_front(i)
 		elif CombatData.combatants_data[i]["Speed"] <= CombatData.combatants_data\
 														[turn_order.front()]["Speed"]:
-			turn_order.push_front(i)
+			turn_order.push_back(i)
 		else:
 			turn_order.push_front(i)
 	for t in turn_order:
@@ -52,13 +51,19 @@ func roll_initiative():
 		else:
 			enqueue(Callable(enemies.get_node(t), "ready_enemy_turn"))
 
-func generate_enemies():
+func generate_combatants():
 	var new_node := enemy_res.instantiate()
 	enemies.add_child(new_node)
+	selected_enemy = new_node
 
 func select_enemy(enemy: Control):
 	selected_enemy = enemy
 
 func combat_action(method: String, arg: Variant):
-	if arg != null:
-		Callable(selected_enemy, method).call(arg)
+	var target_spd = CombatData.combatants_data[selected_enemy.name]["Speed"]
+	var num_of_actions = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
+	print(num_of_actions)
+	
+	for n in num_of_actions:
+		if arg != null:
+			Callable(selected_enemy, method).call(arg)

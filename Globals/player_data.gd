@@ -7,7 +7,7 @@ var stat_data = {
 	"Bonus_hp": 0,
 	"Strength": 0,
 	"Bonus_strength": 0,
-	"Speed": 0,
+	"Speed": 10,
 	"Bonus_speed": 0,
 	"Total_hp": 0,
 	"Current_hp": 20,

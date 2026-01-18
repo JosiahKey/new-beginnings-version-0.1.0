@@ -26,7 +26,7 @@ func player_attack_action():
 	if roll_stat("Accuracy") == true:
 		SignalBus.combat_action.emit("on_hit", 10)
 	else:
-		SignalBus.combat_action.emit("on_hit", 10)
+		SignalBus.combat_action.emit("on_miss", 10)
 	player_finish_turn()
 
 func player_finish_turn():
@@ -69,6 +69,8 @@ func on_hit(damage: int):
 		emitter.emitting = true
 		#sfx play
 		get_node("player_hit").playing = true
+		await player_spr.animation_finished
+		player_spr.play("idle")
 
 func on_miss():
 	var text = floating_text.instantiate()

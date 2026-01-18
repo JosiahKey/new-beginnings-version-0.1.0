@@ -96,7 +96,7 @@ func on_hit(damage):
 		#sfx play
 		$enemy_hit.playing = true
 
-func on_miss():
+func on_miss(_damage):
 	var text = floating_text.instantiate()
 	text.amount = "miss"
 	text.type = "damage"
