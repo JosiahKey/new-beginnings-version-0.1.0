@@ -21,11 +21,16 @@ func _ready() -> void:
 	pop_and_requeue("enemy1")
 	SignalBus.turn_finished.emit()
 
+func _process(_delta: float) -> void:
+	if PlayerData.stat_data["Current_hp"] <= 0:
+		SignalBus.game_over.emit()
+	if CombatData.number_of_enemies == 0:
+		SignalBus.combat_victory.emit(CombatData.reward_data[0])
+
 func enqueue(action: Callable):
 	action_queue.push_back(action)
 
 func pop_and_requeue(_combatant: String = ""):
-	print(_combatant)
 	await SignalBus.turn_finished
 	var action = action_queue.front()
 	if !action_queue.is_empty():
@@ -62,7 +67,6 @@ func select_enemy(enemy: Control):
 func combat_action(method: String, arg: Variant):
 	var target_spd = CombatData.combatants_data[selected_enemy.name]["Speed"]
 	var num_of_actions = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
-	print(num_of_actions)
 	
 	for n in num_of_actions:
 		if arg != null:

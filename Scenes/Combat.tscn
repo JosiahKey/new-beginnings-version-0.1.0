@@ -108,6 +108,7 @@ color_ramp = SubResource("GradientTexture1D_qsdwj")
 anim_speed_max = 1.0
 
 [node name="Combat" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_cy1ba")
 
 [node name="Combat" type="CanvasLayer" parent="."]
@@ -432,10 +433,10 @@ text = "."
 
 [node name="Enemy_Sprites" type="HBoxContainer" parent="Combat/Background_Image"]
 layout_mode = 0
-offset_left = 550.0
-offset_top = 325.0
-offset_right = 1050.0
-offset_bottom = 525.0
+offset_left = 544.0
+offset_top = 457.0
+offset_right = 1025.0
+offset_bottom = 519.0
 alignment = 2
 
 [node name="Player" type="Control" parent="Combat/Background_Image"]

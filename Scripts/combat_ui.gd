@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var health_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
+@onready var hp_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
 @onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
 @onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
-@onready var health_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
+@onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var player_turn_ind :GPUParticles2D = $Background_Image/Player/Player_Turn_Indicator
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
@@ -20,20 +20,21 @@ func _ready() -> void:
 
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 
-	SignalBus.connect("turn_start", Callable(self, "player_turn"))
+	SignalBus.connect("turn_start", Callable(self, "toggle_action_ui"))
+	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	
 	damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
 		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
 	hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
 	exp_label.text = "EXP: " + str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
-	health_bar.max_value = PlayerData.stat_data["Total_hp"]
-	health_bar.value = PlayerData.stat_data["Current_hp"]
+	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
+	hp_bar.value = PlayerData.stat_data["Current_hp"]
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
-	health_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
+	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 
-func combat_victory(experience: float):
+func combat_victory(experience: int):
 	#play fanfare
 	AudioManager.pause()
 	get_node("fanfare").playing = true
@@ -66,10 +67,15 @@ func _on_confirm_btn_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_attack_action()
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
 	players_turn = false
 
+func update_hp():
+	var tween = get_tree().create_tween()
+	tween.tween_property(hp_bar, "value", PlayerData.stat_data["Current_hp"], 0.5)
+	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 
-func player_turn(combatant: String = ""):
+func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
 		players_turn = true
 		actions_container.visible = true

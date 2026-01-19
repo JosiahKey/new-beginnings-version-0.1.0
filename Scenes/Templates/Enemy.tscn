@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://xutvpgfnrtd" path="res://Scripts/enemy.gd" id="1_ybw3w"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="2_1wk72"]
+[ext_resource type="SpriteFrames" uid="uid://dja4ofuwhpc06" path="res://Resources/djinn_bandit.tres" id="3_otuam"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="3_w7xwu"]
-[ext_resource type="SpriteFrames" uid="uid://djc7v4p3wejnx" path="res://Resources/funguy.tres" id="4_otuam"]
 [ext_resource type="AudioStream" uid="uid://qwy8fmd4t6kt" path="res://Audio/SFX/enemy_hit.wav" id="5_0830c"]
 [ext_resource type="AudioStream" uid="uid://bnhrhh0tahxb3" path="res://Audio/SFX/miss.wav" id="6_ghaa6"]
 
@@ -120,7 +120,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 2
-size_flags_vertical = 8
 script = ExtResource("1_ybw3w")
 
 [node name="Turn_Indicator" type="GPUParticles2D" parent="."]
@@ -145,7 +144,7 @@ process_material = SubResource("ParticleProcessMaterial_7nqxc")
 
 [node name="Enemy_Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("4_otuam")
+sprite_frames = ExtResource("3_otuam")
 autoplay = "default"
 flip_h = true
 

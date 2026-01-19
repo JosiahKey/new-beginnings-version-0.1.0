@@ -8,18 +8,15 @@ extends Control
 @onready var enemy_stats: Dictionary = {}
 @onready var selector:= $Enemy_Hp/Button/Container/Selector
 
-var half_y = 0
+var dead_flag = false
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
 
-	GameData.generate_enemy()
 	enemy_stats = GameData.generate_enemy()
 	name = CombatData.add_combatant(enemy_stats)
+	enemy_stats = CombatData.combatants_data[name]
 
-	var sprite_size = sprite.sprite_frames.get_frame_texture("default", 0).get_size()
-	half_y = sprite_size.y /2
-	print("size: " + str(half_y))
 	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
 	sprite.play("default")
 	
@@ -27,16 +24,10 @@ func _ready() -> void:
 	hp_bar.value = enemy_stats["Max_hp"]
 	enemy_stats["Current_hp"] = enemy_stats["Max_hp"]
 
-func _process(_delta: float) -> void:
-	set_position(Vector2( position.x , (-half_y+150)))
-
-func get_stats() -> Dictionary:
-	return enemy_stats
-
 func ready_enemy_turn():
 	sprite.play("default")
-	SignalBus.turn_start.emit(name)
-	if enemy_stats["Current_hp"] > 0:
+	if CombatData.combatants_data[name]["Current_hp"] > 0:
+		SignalBus.turn_start.emit(name)
 		await get_tree().create_timer(0.5).timeout
 		enemy_turn_ind.visible = true
 		await get_tree().create_timer(1).timeout
@@ -46,7 +37,13 @@ func ready_enemy_turn():
 		enemy_turn_ind.visible = false
 	else:
 		self.visible = false
-		SignalBus.combat_victory.emit(enemy_stats["EXP"])
+		SignalBus.turn_start.emit(name)
+		SignalBus.turn_finished.emit()
+		if dead_flag == false:
+			CombatData.number_of_enemies -= 1
+			CombatData.add_reward(enemy_stats["EXP"], 1)
+		dead_flag = true
+		print(str(CombatData.number_of_enemies))
 
 func enemy_action(action:String):
 	match action:

@@ -14,10 +14,7 @@ func _ready() -> void:
 func ready_player_turn():
 	SignalBus.turn_start.emit(name)
 	player_spr.play("idle")
-	if PlayerData.stat_data["Current_hp"] > 0:
-		player_turn_ind.visible = true
-	else:
-		SignalBus.game_over.emit()
+	player_turn_ind.visible = true
 
 func player_attack_action():
 	await get_tree().create_timer(0.7).timeout
@@ -57,7 +54,7 @@ func on_hit(damage: int):
 		#deal damage
 		PlayerData.stat_data["Current_hp"] -= damage
 		#update hp label
-		#!!!# signal to ui to update hp bars
+		SignalBus.player_hp_changed.emit()
 		#animate floating text
 		var text = floating_text.instantiate()
 		text.amount = damage
