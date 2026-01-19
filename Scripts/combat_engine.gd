@@ -59,9 +59,9 @@ func roll_initiative():
 func generate_combatants():
 	randomize()
 	var rand = randi_range(1,3)
+	var new_node := enemy_res.instantiate()
 	for r in rand:
-		var new_node := enemy_res.instantiate()
-		enemies.add_child(new_node)
+		enemies.add_child(new_node.duplicate(DUPLICATE_SCRIPTS), true)
 		selected_enemy = new_node
 
 func select_enemy(enemy: Control):

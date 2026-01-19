@@ -109,7 +109,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="Control"]
+[node name="enemy1" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 8
