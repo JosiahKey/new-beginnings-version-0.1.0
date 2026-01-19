@@ -5,16 +5,14 @@ extends Node2D
 @onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var action_queue = []
 var selected_enemy: Control
+var combat_finished = false
 
 func _ready() -> void:
 	SignalBus.connect("turn_start", Callable(self, "pop_and_requeue"))
 	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 	SignalBus.connect("combat_action", Callable(self, "combat_action"))
+	SignalBus.connect('combat_exited', Callable(self, "clean_up"))
 
-	generate_combatants()
-	generate_combatants()
-	generate_combatants()
-	generate_combatants()
 	generate_combatants()
 	roll_initiative()
 
@@ -25,7 +23,9 @@ func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
 		SignalBus.game_over.emit()
 	if CombatData.number_of_enemies == 0:
-		SignalBus.combat_victory.emit(CombatData.reward_data[0])
+		if !combat_finished:
+			SignalBus.combat_victory.emit(CombatData.reward_data[0])
+			combat_finished = true
 
 func enqueue(action: Callable):
 	action_queue.push_back(action)
@@ -57,9 +57,12 @@ func roll_initiative():
 			enqueue(Callable(enemies.get_node(t), "ready_enemy_turn"))
 
 func generate_combatants():
-	var new_node := enemy_res.instantiate()
-	enemies.add_child(new_node)
-	selected_enemy = new_node
+	randomize()
+	var rand = randi_range(1,3)
+	for r in rand:
+		var new_node := enemy_res.instantiate()
+		enemies.add_child(new_node)
+		selected_enemy = new_node
 
 func select_enemy(enemy: Control):
 	selected_enemy = enemy
@@ -68,6 +71,17 @@ func combat_action(method: String, arg: Variant):
 	var target_spd = CombatData.combatants_data[selected_enemy.name]["Speed"]
 	var num_of_actions = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
 	
+	if selected_enemy.visible == false:
+		for e in enemies.get_children():
+			if e.visible == true:
+				selected_enemy = e
+	
 	for n in num_of_actions:
 		if arg != null:
 			Callable(selected_enemy, method).call(arg)
+
+func clean_up():
+	action_queue = []
+	selected_enemy = null
+	combat_finished = false
+	self.queue_free()

@@ -34,6 +34,7 @@ func player_finish_turn():
 
 func roll_stat(stat: String) -> bool:
 	randomize()
+	print(PlayerData.stat_data)
 	var roll: int = randi_range(0,100)
 	if roll >= PlayerData.stat_data[stat]:
 		return false

@@ -2,7 +2,6 @@ extends CanvasLayer
 
 func _ready() -> void:
 	SignalBus.connect('combat_entered', Callable(self, "enter_combat"))
-	SignalBus.connect('combat_exited', Callable(self, "exit_combat"))
 
 func enter_combat():
 	#$SFX.playing = true

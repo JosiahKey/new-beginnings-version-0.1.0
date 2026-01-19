@@ -35,6 +35,8 @@ func _ready() -> void:
 	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
 
 func combat_victory(experience: int):
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
 	#play fanfare
 	AudioManager.pause()
 	get_node("fanfare").playing = true
@@ -98,6 +100,6 @@ func _on_reward_visibility_changed() -> void:
 		AudioManager.change_to_precombat_song()
 		GameState.state = ""
 		#fade out
-		#SignalBus.combat_exited.emit()
+		SignalBus.combat_exited.emit()
 		#cleanup
 		self.queue_free()

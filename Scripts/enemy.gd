@@ -92,6 +92,10 @@ func on_hit(damage):
 		emitter.emitting = true
 		#sfx play
 		$enemy_hit.playing = true
+		#check if dead
+		if CombatData.combatants_data[name]["Current_hp"] <= 0:
+			await get_tree().create_timer(0.5).timeout
+			self.visible = false
 
 func on_miss(_damage):
 	var text = floating_text.instantiate()
