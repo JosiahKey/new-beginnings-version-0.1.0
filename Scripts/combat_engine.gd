@@ -68,17 +68,12 @@ func select_enemy(enemy: Control):
 	selected_enemy = enemy
 
 func combat_action(method: String, arg: Variant):
-	var target_spd = CombatData.combatants_data[selected_enemy.name]["Speed"]
-	var num_of_actions = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
-	
 	if selected_enemy.visible == false:
 		for e in enemies.get_children():
 			if e.visible == true:
 				selected_enemy = e
-	
-	for n in num_of_actions:
-		if arg != null:
-			Callable(selected_enemy, method).call(arg)
+	if arg != null:
+		Callable(selected_enemy, method).call(arg)
 
 func clean_up():
 	action_queue = []

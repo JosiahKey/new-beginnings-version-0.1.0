@@ -5,6 +5,8 @@ extends Control
 @onready var emitter: GPUParticles2D = $Hit_Indicator
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 var player_stats: Dictionary = PlayerData.stat_data
+var action_points = 0
+var target_spd = 0
 
 func _ready() -> void:
 	SignalBus.connect("hit_player", Callable(self,"on_hit"))
@@ -17,16 +19,20 @@ func ready_player_turn():
 	player_turn_ind.visible = true
 
 func player_attack_action():
-	await get_tree().create_timer(0.7).timeout
-	player_spr.play("attack")
-	await get_tree().create_timer(0.3).timeout
+	var target_enemy = CombatData.selected_enemy
+	target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
+	action_points = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
 	
-	print(CombatData.combatants_data[CombatData.selected_enemy])
 	
-	if roll_stat("Accuracy") == true:
-		SignalBus.combat_action.emit("on_hit", roll_damage())
-	else:
-		SignalBus.combat_action.emit("on_miss", 0)
+	for a in action_points:
+		await get_tree().create_timer(0.7).timeout
+		player_spr.play("attack")
+		await get_tree().create_timer(0.3).timeout
+		SignalBus.enemy_selected.emit(target_enemy)
+		if roll_stat("Accuracy") == true:
+			SignalBus.combat_action.emit("on_hit", roll_damage())
+		else:
+			SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
 func player_finish_turn():

@@ -43,6 +43,9 @@ func ready_enemy_turn():
 			CombatData.number_of_enemies -= 1
 			CombatData.add_reward(enemy_stats["EXP"], 1)
 		dead_flag = true
+	
+	if selector.visible == true:
+		SignalBus.enemy_selected.emit(self)
 
 func enemy_action(action:String):
 	match action:

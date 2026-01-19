@@ -1,7 +1,7 @@
 extends Node
 
 var number_of_enemies = 0
-var selected_enemy: String
+var selected_enemy: Control
 var combatants_data: Dictionary = {
 	"player" : PlayerData.stat_data,
 	#"enemy1" : data generated from enemy.gd init
@@ -27,7 +27,7 @@ func add_combatant(new_combatant: Dictionary) -> String:
 	return new_id
 
 func select_enemy(enemy: Control):
-	selected_enemy = enemy.name
+	selected_enemy = enemy
 
 func clear_data():
 	combatants_data = {"player" : PlayerData.stat_data,}
