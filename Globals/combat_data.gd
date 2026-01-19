@@ -1,11 +1,14 @@
 extends Node
 
 var number_of_enemies = 0
-
+var selected_enemy: String
 var combatants_data: Dictionary = {
 	"player" : PlayerData.stat_data,
 	#"enemy1" : data generated from enemy.gd init
 }
+
+func _ready() -> void:
+	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 
 var reward_data: Array = [0,0,0,0,0,0] #[exp, loot1, loot2, etc...]
 
@@ -22,6 +25,9 @@ func add_combatant(new_combatant: Dictionary) -> String:
 	var new_dict: Dictionary = {new_id : new_combatant.duplicate()}
 	combatants_data.merge(new_dict)
 	return new_id
+
+func select_enemy(enemy: Control):
+	selected_enemy = enemy.name
 
 func clear_data():
 	combatants_data = {"player" : PlayerData.stat_data,}

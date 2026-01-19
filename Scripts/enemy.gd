@@ -43,7 +43,6 @@ func ready_enemy_turn():
 			CombatData.number_of_enemies -= 1
 			CombatData.add_reward(enemy_stats["EXP"], 1)
 		dead_flag = true
-		print(str(CombatData.number_of_enemies))
 
 func enemy_action(action:String):
 	match action:
@@ -94,7 +93,7 @@ func on_hit(damage):
 		$enemy_hit.playing = true
 		#check if dead
 		if CombatData.combatants_data[name]["Current_hp"] <= 0:
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(1.0).timeout
 			self.visible = false
 
 func on_miss(_damage):
@@ -106,7 +105,6 @@ func on_miss(_damage):
 
 func _on_enemy_sprite_animation_finished() -> void:
 		sprite.play("default")
-
 
 func _on_button_pressed() -> void:
 	var nodes = get_tree().get_nodes_in_group("selector")

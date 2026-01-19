@@ -20,10 +20,13 @@ func player_attack_action():
 	await get_tree().create_timer(0.7).timeout
 	player_spr.play("attack")
 	await get_tree().create_timer(0.3).timeout
+	
+	print(CombatData.combatants_data[CombatData.selected_enemy])
+	
 	if roll_stat("Accuracy") == true:
-		SignalBus.combat_action.emit("on_hit", 10)
+		SignalBus.combat_action.emit("on_hit", roll_damage())
 	else:
-		SignalBus.combat_action.emit("on_miss", 10)
+		SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
 func player_finish_turn():
@@ -32,9 +35,14 @@ func player_finish_turn():
 	player_spr.play("idle")
 	SignalBus.turn_finished.emit()
 
+func roll_damage() -> int:
+	randomize()
+	return randi_range(\
+	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength(),\
+	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
+
 func roll_stat(stat: String) -> bool:
 	randomize()
-	print(PlayerData.stat_data)
 	var roll: int = randi_range(0,100)
 	if roll >= PlayerData.stat_data[stat]:
 		return false
