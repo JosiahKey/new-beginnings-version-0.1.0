@@ -7,7 +7,6 @@ extends Control
 @onready var selector: AnimatedSprite2D
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 
-
 var dead_flag = false
 
 func _ready() -> void:
@@ -23,7 +22,7 @@ func init():
 	print(CombatData.combatants_data[str(name)]["enemy_name"])
 	sprite.sprite_frames = load("res://Resources/" + CombatData.combatants_data[str(name)]["enemy_name"] + ".tres")
 	sprite.play("default")
-	
+	SignalBus.enemy_selected.emit(self)
 	hp_bar.max_value = CombatData.combatants_data[name]["Max_hp"]
 	hp_bar.value = CombatData.combatants_data[name]["Max_hp"]
 	CombatData.combatants_data[name]["Current_hp"] = CombatData.combatants_data[name]["Max_hp"]
@@ -114,9 +113,4 @@ func _on_enemy_sprite_animation_finished() -> void:
 		sprite.play("default")
 
 func _on_button_pressed() -> void:
-	var nodes = get_tree().get_nodes_in_group("selector")
-	for n in nodes:
-		n.visible = false
-		n.set("selected", false)
-	selector.visible = true
 	SignalBus.enemy_selected.emit(self)

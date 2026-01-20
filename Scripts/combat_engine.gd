@@ -83,4 +83,5 @@ func clean_up():
 	action_queue = []
 	selected_enemy = null
 	combat_finished = false
+	CombatData.clear_data()
 	self.queue_free()
