@@ -19,7 +19,7 @@ func add_reward(experience: int, loot: int):
 			r = loot
 			break
 
-func add_combatant(new_combatant: Dictionary) -> String:
+func add_combatant(new_combatant: Dictionary) -> String: #takes generate enemy as input
 	number_of_enemies += 1
 	var new_id: String = "enemy" + str(number_of_enemies)
 	var new_dict: Dictionary = {new_id : new_combatant.duplicate()}

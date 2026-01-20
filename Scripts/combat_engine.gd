@@ -41,7 +41,7 @@ func clear():
 	action_queue.clear()
 
 func roll_initiative():
-	var turn_order = []
+	var turn_order = [] 
 	for i in CombatData.combatants_data.keys():
 		if turn_order.is_empty():
 			turn_order.push_front(i)
@@ -60,9 +60,13 @@ func generate_combatants():
 	randomize()
 	var rand = randi_range(1,3)
 	var new_node := enemy_res.instantiate()
+	var enemy_stats = GameData.generate_enemy()
 	for r in rand:
-		enemies.add_child(new_node.duplicate(DUPLICATE_SCRIPTS), true)
+		CombatData.add_combatant(enemy_stats)
+		enemies.add_child(new_node.duplicate(), true)
 		selected_enemy = new_node
+	for c in enemies.get_children():
+		c.init()
 
 func select_enemy(enemy: Control):
 	selected_enemy = enemy

@@ -1,28 +1,32 @@
 extends Control
 
-@onready var sprite := $Enemy_Sprite
-@onready var hp_bar: TextureProgressBar = $Enemy_Hp
-@onready var emitter := $Hit_Indicator
-@onready var enemy_turn_ind := $Turn_Indicator
+@onready var sprite : AnimatedSprite2D
+@onready var hp_bar: TextureProgressBar
+@onready var emitter : GPUParticles2D
+@onready var enemy_turn_ind : GPUParticles2D
+@onready var selector: AnimatedSprite2D
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
-@onready var enemy_stats: Dictionary = {}
-@onready var selector:= $Enemy_Hp/Button/Container/Selector
+
 
 var dead_flag = false
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
+	
+	sprite = get_node("Enemy_Sprite")
+	hp_bar = get_node("Enemy_Hp")
+	emitter = get_node("Hit_Indicator")
+	enemy_turn_ind = get_node("Turn_Indicator")
+	selector = get_node("Enemy_Hp/Button/Container/Selector")
 
-	enemy_stats = GameData.generate_enemy()
-	name = CombatData.add_combatant(enemy_stats)
-	enemy_stats = CombatData.combatants_data[name]
-
-	sprite.sprite_frames = load("res://Resources/" + enemy_stats["enemy_name"] + ".tres")
+func init():
+	print(CombatData.combatants_data[str(name)]["enemy_name"])
+	sprite.sprite_frames = load("res://Resources/" + CombatData.combatants_data[str(name)]["enemy_name"] + ".tres")
 	sprite.play("default")
 	
-	hp_bar.max_value = enemy_stats["Max_hp"]
-	hp_bar.value = enemy_stats["Max_hp"]
-	enemy_stats["Current_hp"] = enemy_stats["Max_hp"]
+	hp_bar.max_value = CombatData.combatants_data[name]["Max_hp"]
+	hp_bar.value = CombatData.combatants_data[name]["Max_hp"]
+	CombatData.combatants_data[name]["Current_hp"] = CombatData.combatants_data[name]["Max_hp"]
 
 func ready_enemy_turn():
 	sprite.play("default")
@@ -41,7 +45,7 @@ func ready_enemy_turn():
 		SignalBus.turn_finished.emit()
 		if dead_flag == false:
 			CombatData.number_of_enemies -= 1
-			CombatData.add_reward(enemy_stats["EXP"], 1)
+			CombatData.add_reward(CombatData.combatants_data[name]["EXP"], 1)
 		dead_flag = true
 	
 	if selector.visible == true:
@@ -54,7 +58,7 @@ func enemy_action(action:String):
 			await get_tree().create_timer(0.5).timeout
 			if roll_stat("Accuracy") == true:
 				randomize()
-				SignalBus.hit_player.emit(randi_range(enemy_stats["Damage_min"],enemy_stats["Damage_max"]))
+				SignalBus.hit_player.emit(randi_range(CombatData.combatants_data[name]["Damage_min"],CombatData.combatants_data[name]["Damage_max"]))
 			else:
 				SignalBus.miss_player.emit()
 	SignalBus.turn_finished.emit()
@@ -62,7 +66,7 @@ func enemy_action(action:String):
 func roll_stat(stat: String) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if roll >= enemy_stats[stat]:
+	if roll >= CombatData.combatants_data[name][stat]:
 		return false
 	else:
 		return true
@@ -76,13 +80,13 @@ func on_hit(damage):
 		$enemy_miss.playing = true
 	else:
 		#midigate damage
-		damage = damage * (1 - enemy_stats["PDR"]/100)
+		damage = damage * (1 - CombatData.combatants_data[name]["PDR"]/100)
 		if(damage < 0): damage = 0
 		#deal damage
-		enemy_stats["Current_hp"] -= damage
+		CombatData.combatants_data[name]["Current_hp"] -= damage
 		#move hp bar
 		var tween = get_tree().create_tween()
-		tween.tween_property(hp_bar, "value", enemy_stats["Current_hp"], 0.5)
+		tween.tween_property(hp_bar, "value", CombatData.combatants_data[name]["Current_hp"], 0.5)
 		#animate floating text
 		var text = floating_text.instantiate()
 		text.amount = damage
