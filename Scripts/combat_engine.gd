@@ -48,9 +48,7 @@ func roll_initiative():
 	var turn_order: Array[Array] = []
 	for c in CombatData.combatants_data.keys():
 		turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
-	print("start" + str(turn_order))
 	turn_order.sort_custom(sort_descending)
-	print("finish" + str(turn_order))
 	
 	for t in turn_order:
 		if t[0] == "player":
@@ -65,10 +63,12 @@ func roll_initiative():
 	SignalBus.turn_finished.emit()
 
 func generate_combatants():
-	randomize()
-	var rand = randi_range(1,3)
 	var new_node := enemy_res.instantiate()
 	var enemy_stats = GameData.generate_enemy()
+	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
+	print(GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]])
+	randomize()
+	var rand = randi_range(1,max_enemies)
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies.add_child(new_node.duplicate(), true)

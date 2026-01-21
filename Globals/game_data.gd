@@ -46,6 +46,8 @@ var enemy_data = {
 		},
 	}
 
+var biome_data = {}
+
 func _ready() -> void:
 	var item_data_file = FileAccess.open("res://Data/items_data.json", FileAccess.READ)
 	var item_data_json = JSON.parse_string(item_data_file.get_as_text())
@@ -55,17 +57,27 @@ func _ready() -> void:
 	var enemy_data_json = JSON.parse_string(enemy_data_file.get_as_text())
 	enemy_data_file.close()
 	enemy_data = enemy_data_json
+	var biome_data_file = FileAccess.open("res://Data/biome_data.json", FileAccess.READ)
+	var biome_data_json = JSON.parse_string(biome_data_file.get_as_text())
+	biome_data_file.close()
+	biome_data = biome_data_json
 
 func generate_enemy() -> Dictionary:
 	var result: Dictionary = {}
 	var enemies_in_biome: Array = []
-	for e in enemy_data:
-		if enemy_data[e]["Biome"] == GameState.biome or\
-									enemy_data[e]["Biome"] =="Any":
-			enemies_in_biome.append(e)
+	for biome in biome_data:
+		if biome == GameState.biome:
+			for enemies in biome_data[biome]:
+				if(biome_data[biome][enemies] != 0):
+					enemies_in_biome.append(enemies)
 
 	var random_enemy_index: int = 0
 	randomize()
 	random_enemy_index = randi_range(0, enemies_in_biome.size()-1)
-	result = enemy_data[enemies_in_biome[random_enemy_index]]
+	var enemy_name = enemies_in_biome[random_enemy_index]
+	for f in enemy_data:
+		if enemy_data[f]["enemy_name"] == enemy_name:
+			result = enemy_data[f]
+			print(f)
+	
 	return result

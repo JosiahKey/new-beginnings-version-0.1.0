@@ -23,7 +23,6 @@ func player_attack_action():
 	target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
 	action_points = ceili(float(PlayerData.stat_data["Speed"] - target_spd) / 5.0)
 	if(action_points <= 0): action_points = 1
-	print("player action points in player_action() = " + str(action_points))
 	for a in action_points:
 		await get_tree().create_timer(0.7).timeout
 		player_spr.play("attack")
