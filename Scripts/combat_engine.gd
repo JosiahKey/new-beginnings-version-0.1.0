@@ -16,9 +16,6 @@ func _ready() -> void:
 	generate_combatants()
 	roll_initiative()
 
-	pop_and_requeue("enemy1")
-	SignalBus.turn_finished.emit()
-
 func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
 		SignalBus.game_over.emit()
@@ -40,21 +37,32 @@ func pop_and_requeue(_combatant: String = ""):
 func clear():
 	action_queue.clear()
 
+func sort_descending(a, b):
+	if a[0] == "player" and a[1] == b[1]:
+		return true
+	elif a[1] > b[1]:
+		return true
+	return false
+
 func roll_initiative():
-	var turn_order = [] 
-	for i in CombatData.combatants_data.keys():
-		if turn_order.is_empty():
-			turn_order.push_front(i)
-		elif CombatData.combatants_data[i]["Speed"] <= CombatData.combatants_data\
-														[turn_order.front()]["Speed"]:
-			turn_order.push_back(i)
-		else:
-			turn_order.push_front(i)
+	var turn_order: Array[Array] = []
+	for c in CombatData.combatants_data.keys():
+		turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
+	print("start" + str(turn_order))
+	turn_order.sort_custom(sort_descending)
+	print("finish" + str(turn_order))
+	
 	for t in turn_order:
-		if t == "player":
+		if t[0] == "player":
 			enqueue(Callable(player, "ready_player_turn"))
 		else:
-			enqueue(Callable(enemies.get_node(t), "ready_enemy_turn"))
+			enqueue(Callable(enemies.get_node(t[0]), "ready_enemy_turn"))
+	
+	for t in turn_order:
+		if t[0] != "player":
+			pop_and_requeue(t[0])
+			break
+	SignalBus.turn_finished.emit()
 
 func generate_combatants():
 	randomize()

@@ -8,7 +8,7 @@
 	"Accuracy": 65,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 1,
+	"Speed": 2,
 	"EXP": 50,
 	"Difficulty": 1,
 	"Biome": "Plains"
@@ -22,7 +22,7 @@
 	"Accuracy": 65,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 2,
+	"Speed": 3,
 	"EXP": 100,
 	"Difficulty": 2,
 	"Biome": "Plains"
@@ -36,7 +36,7 @@
 	"Accuracy": 65,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 3,
+	"Speed": 4,
 	"EXP": 50,
 	"Difficulty": 1,
 	"Biome": "Any"
@@ -81,7 +81,7 @@
 	"Speed": 5,
 	"EXP": 50,
 	"Difficulty": 1,
-	"Biome": "Plains"
+	"Biome": ""
   },
   "10007": {
 	"enemy_name": "shade",
@@ -109,7 +109,7 @@
 	"Speed": 1,
 	"EXP": 50,
 	"Difficulty": 2,
-	"Biome": "Plains"
+	"Biome": ""
   },
   "10009": {
 	"enemy_name": "werewolf",

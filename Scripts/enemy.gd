@@ -19,7 +19,6 @@ func _ready() -> void:
 	selector = get_node("Enemy_Hp/Button/Container/Selector")
 
 func init():
-	print(CombatData.combatants_data[str(name)]["enemy_name"])
 	sprite.sprite_frames = load("res://Resources/" + CombatData.combatants_data[str(name)]["enemy_name"] + ".tres")
 	sprite.play("default")
 	SignalBus.enemy_selected.emit(self)
