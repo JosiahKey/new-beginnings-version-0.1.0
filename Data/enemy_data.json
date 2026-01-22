@@ -23,7 +23,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 2,
-	"EXP": 200,
+	"EXP": 500,
 	"Difficulty": 2,
 	"Biome": "Plains"
   },
@@ -37,7 +37,7 @@
 	"Evasion": 10,
 	"PDR": 0,
 	"Speed": 6,
-	"EXP": 100,
+	"EXP": 150,
 	"Difficulty": 1,
 	"Biome": "Any"
   },
@@ -65,7 +65,7 @@
 	"Evasion": 0,
 	"PDR": 0,
 	"Speed": 1,
-	"EXP": 200,
+	"EXP": 1000,
 	"Difficulty": 1,
 	"Biome": "Any"
   },
@@ -79,7 +79,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 8,
-	"EXP": 500,
+	"EXP": 1000,
 	"Difficulty": 1,
 	"Biome": ""
   },
@@ -93,7 +93,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 3,
-	"EXP": 3000,
+	"EXP": 3500,
 	"Difficulty": 2,
 	"Biome": "Ruins"
   },

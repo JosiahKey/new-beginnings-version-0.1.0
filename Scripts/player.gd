@@ -14,7 +14,7 @@ func _ready():
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
 	#randomize()
-	timer.wait_time = 3.0#randf_range(5.0, 10.0)
+	timer.wait_time = 2.5#randf_range(5.0, 10.0)
 	timer.start()
 
 func _physics_process(_delta):
@@ -96,5 +96,5 @@ func _on_encounter_timeout() -> void:
 
 func pause_player():
 	randomize()
-	timer.wait_time = randf_range(5.0, 10.0)
+	timer.wait_time = randf_range(6.0, 10.0)
 	timer.paused = true

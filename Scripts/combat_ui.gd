@@ -97,7 +97,7 @@ func _on_action_button_pressed() -> void:
 
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:
-		AudioManager.change_to_precombat_song()
+		AudioManager.change_song_to_combat("untitled")
 		GameState.state = ""
 		#fade out
 		SignalBus.combat_exited.emit()
