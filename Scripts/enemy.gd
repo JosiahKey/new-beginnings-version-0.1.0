@@ -82,8 +82,8 @@ func roll_stat(stat: String) -> bool:
 func on_hit(damage):
 	if roll_stat("Evasion"):
 		var text = floating_text.instantiate()
-		text.amount = "EVADED"
-		text.type = "damage"
+		text.amount = "Evaded"
+		text.type = "evade"
 		sprite.add_child(text)
 		$enemy_miss.playing = true
 	else:
@@ -122,7 +122,7 @@ func on_hit(damage):
 func on_miss(_damage):
 	var text = floating_text.instantiate()
 	text.amount = "miss"
-	text.type = "damage"
+	text.type = "miss"
 	sprite.add_child(text)
 	$enemy_miss.playing = true
 

@@ -31,7 +31,7 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 			var stat_name = GameData.item_stats[i]
 			var stat_readable = GameData.item_stats_readable[i]
 			if GameData.item_data[item_id][stat_name] != 0:
-				var stat_value = GameData.item_data[item_id][stat_name]
+				var stat_value = int(GameData.item_data[item_id][stat_name])
 				get_node("CanvasLayer/Tooltip/M/V/Stat" + str(ui_iterator) + "/Stat").text = stat_readable + ": +" + str(stat_value)
 				if GameData.item_data[item_id]["equipmentSlot"] != null and origin == "Inventory":
 					var stat_diff = compare_items(item_id, stat_name, stat_value)

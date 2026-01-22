@@ -18,22 +18,22 @@ func _ready() -> void:
 	_update_stat_panel()
 
 func _process(_delta: float) -> void:
-	max_hp_label.text = str(PlayerData.stat_data["Current_hp"]) + " / " + str(int(
+	max_hp_label.text = str(int(PlayerData.stat_data["Current_hp"]))+ " / " + str(int(
 		PlayerData.stat_data["Total_hp"]))
 
 func _update_stat_panel():
 	PlayerData.stat_data["Total_hp"] = PlayerData.stat_data["Natural_hp"] + PlayerData.stat_data["Bonus_hp"]
-	acc_label.text = str(PlayerData.stat_data["Accuracy"]) + "%"
-	eva_label.text = str(PlayerData.stat_data["Evasion"])+ "%"
-	pdr_label.text = str(PlayerData.stat_data["PDR"])+ "%"
+	acc_label.text = str(int(PlayerData.stat_data["Accuracy"])) + "%"
+	eva_label.text = str(int(PlayerData.stat_data["Evasion"])) + "%"
+	pdr_label.text = str(int(PlayerData.stat_data["PDR"])) + "%"
 	stren_label.text = str(PlayerData.get_total_stength())
 	spd_label.text = str(PlayerData.get_total_speed())
-	max_hp_label.text = str(PlayerData.stat_data["Current_hp"]) + " / " + str(int(
+	max_hp_label.text = str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(
 		PlayerData.stat_data["Total_hp"]))
 	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + " - " + str(int(
 						PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.get_total_stength()))
 	weight_label.text = str(int(PlayerData.stat_data["Total_equipped_weight"]))
-	exp_bar_label.text = str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
+	exp_bar_label.text = str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]

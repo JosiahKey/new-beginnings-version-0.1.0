@@ -28,17 +28,17 @@ func _ready() -> void:
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	
 	damage_label.text = "Damage: "+ str(
-		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
-		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
-	hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
-	exp_label.text = "EXP: " + str(PlayerData.stat_data["Experience"]) + " / " + str(PlayerData.stat_data["Exp_to_next_level"])
+		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + "-" + str(
+		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()))
+	hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
+	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
-	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
-	armor_label.text = "Armor: " + str(PlayerData.stat_data["PDR"]) + "%"
-	evasion_label.text = "Evasion: " + str(PlayerData.stat_data["Evasion"]) + "%"
+	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
+	armor_label.text = "Armor: " + str(int(PlayerData.stat_data["PDR"])) + "%"
+	evasion_label.text = "Evasion: " + str(int(PlayerData.stat_data["Evasion"])) + "%"
 
 func combat_victory(experience: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
@@ -81,7 +81,7 @@ func _on_confirm_btn_pressed() -> void:
 func update_hp():
 	var tween = get_tree().create_tween()
 	tween.tween_property(hp_bar, "value", PlayerData.stat_data["Current_hp"], 0.5)
-	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
+	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
 
 func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
@@ -98,7 +98,7 @@ func _on_action_button_pressed() -> void:
 		damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
 		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
-		hit_label.text = "Chance to hit: " + str(PlayerData.stat_data["Accuracy"]) + "%"
+		hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
 func _on_reward_visibility_changed() -> void:
