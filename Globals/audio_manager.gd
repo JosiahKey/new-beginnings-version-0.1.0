@@ -10,6 +10,10 @@ func _ready() -> void:
 	current_song = "untitled"
 	precombat_song = "untitled"
 
+func _process(_delta: float) -> void:
+	if music.playing == false and GameState.state == "":
+		music.playing = true
+
 func change_precombat_song(song: String):
 	get_node(current_song).playing = false
 	music = get_node(song)

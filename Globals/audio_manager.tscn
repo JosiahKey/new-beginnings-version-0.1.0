@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddvhjbr7660b"]
+[gd_scene load_steps=6 format=3 uid="uid://ddvhjbr7660b"]
 
 [ext_resource type="Script" uid="uid://gplncglti8au" path="res://Globals/audio_manager.gd" id="1_kho5r"]
 [ext_resource type="AudioStream" uid="uid://3dwa6v2pnrs6" path="res://Audio/music/exploration.wav" id="2_euhnq"]
 [ext_resource type="AudioStream" uid="uid://dd577r08s7w3r" path="res://Audio/music/battle.ogg" id="3_euhnq"]
 [ext_resource type="AudioStream" uid="uid://cew2s8ha7w013" path="res://Audio/SFX/level_complete.wav" id="4_euhnq"]
+[ext_resource type="AudioStream" uid="uid://bwpl4hecp1rs8" path="res://Audio/music/boss_theme.wav" id="4_lm0o0"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -18,7 +19,13 @@ bus = &"Music"
 [node name="pokemon" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("3_euhnq")
-volume_db = -18.934
+volume_db = -20.86
+bus = &"Music"
+
+[node name="boss" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_lm0o0")
+volume_db = -14.119
 bus = &"Music"
 
 [node name="level_change" type="AudioStreamPlayer" parent="."]

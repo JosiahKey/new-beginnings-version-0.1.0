@@ -13,5 +13,6 @@ func update_reward_item(item_id):
 	btn.visible = true
 
 func _on_confirm_reward_pressed() -> void:
+		AudioManager.change_to_precombat_song()
 		visible = false
 		btn.visible = false

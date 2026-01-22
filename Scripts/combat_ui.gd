@@ -41,6 +41,7 @@ func combat_victory(experience: int):
 	AudioManager.pause()
 	get_node("fanfare").playing = true
 	await get_tree().create_timer(1).timeout
+	print("end of await")
 	#victory dance
 	#reward popup + EXP gain animation
 	$Reward.visible = true
@@ -97,7 +98,7 @@ func _on_action_button_pressed() -> void:
 
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:
-		AudioManager.change_song_to_combat("untitled")
+		print("exit combat")
 		GameState.state = ""
 		#fade out
 		SignalBus.combat_exited.emit()
