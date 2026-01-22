@@ -83,3 +83,6 @@ signal action_resolved
 #combatplayer to combatui
 @warning_ignore("unused_signal")
 signal player_hp_changed
+#enemy_interactable to player
+@warning_ignore("unused_signal")
+signal player_paused

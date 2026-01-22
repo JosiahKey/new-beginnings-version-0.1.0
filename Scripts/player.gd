@@ -10,6 +10,7 @@ var speed_factor = 100 + PlayerData.get_total_speed()
 @onready var player_sprite = $AnimatedSprite2D
 
 func _ready():
+	SignalBus.connect("player_paused", Callable(self, "pause_player"))
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
 	#randomize()
@@ -37,12 +38,12 @@ func _physics_process(_delta):
 		elif input_direction.x < 0:
 			player_sprite.flip_h = true
 		
-		#Play anime && control timer
+		#Play anime
 		if input_direction == Vector2.ZERO:
 			player_sprite.play("idle")
 			timer.paused = true
 		else:
-			timer.paused = false
+			
 			player_sprite.play("run")
 			if get_node("walk").playing == false:
 				get_node("walk").playing = true
@@ -67,20 +68,33 @@ func update_highlight_visibility(direction: Vector2):
 	u_highlight.visible = false
 	d_highlight.visible = false
 
+	# control direction && control timer
 	if direction.x > 0:
 		r_highlight.visible = true  # Right
+		timer.paused = false
 	elif direction.x < 0:
 		l_highlight.visible = true  # Left
+		timer.paused = false
 	elif direction.y > 0:
 		d_highlight.visible = true  # Down
+		timer.paused = false
 	elif direction.y < 0:
 		u_highlight.visible = true  # Up
+		timer.paused = false
+	else:
+		timer.paused = true
 
 func _on_encounter_timeout() -> void:
 	randomize()
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.paused = true
 	AudioManager.change_song_to_combat("pokemon")
+	print("player combat timer expired")
 	SignalBus.combat_entered.emit()
 	await get_tree().create_timer(0.5).timeout
-	SignalBus.enemy_encountered.emit()
+	SignalBus.enemy_encountered.emit("normal")
+
+func pause_player():
+	randomize()
+	timer.wait_time = randf_range(5.0, 10.0)
+	timer.paused = true

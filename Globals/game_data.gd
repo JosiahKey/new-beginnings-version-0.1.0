@@ -67,17 +67,18 @@ func generate_enemy() -> Dictionary:
 	var enemies_in_biome: Array = []
 	for biome in biome_data:
 		if biome == GameState.biome:
+			print(biome)
 			for enemies in biome_data[biome]:
 				if(biome_data[biome][enemies] != 0):
 					enemies_in_biome.append(enemies)
 
 	var random_enemy_index: int = 0
 	randomize()
+	print(str(enemies_in_biome))
 	random_enemy_index = randi_range(0, enemies_in_biome.size()-1)
 	var enemy_name = enemies_in_biome[random_enemy_index]
 	for f in enemy_data:
 		if enemy_data[f]["enemy_name"] == enemy_name:
 			result = enemy_data[f]
-			print(f)
 	
 	return result

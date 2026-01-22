@@ -66,9 +66,14 @@ func generate_combatants():
 	var new_node := enemy_res.instantiate()
 	var enemy_stats = GameData.generate_enemy()
 	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
-	print(GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]])
 	randomize()
-	var rand = randi_range(1,max_enemies)
+	var rand = 0
+	print(max_enemies)
+	if max_enemies == 1:
+		rand = 1
+	else:
+		rand = randi_range(2,max_enemies)
+	
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies.add_child(new_node.duplicate(), true)

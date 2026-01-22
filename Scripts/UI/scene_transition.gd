@@ -4,6 +4,7 @@ func _ready() -> void:
 	SignalBus.connect('combat_entered', Callable(self, "enter_combat"))
 
 func enter_combat():
+	print("combat entered")
 	#$SFX.playing = true
 	self.visible = true
 	get_tree().paused = true

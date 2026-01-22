@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdwvpob8we7mh"]
+[gd_scene load_steps=3 format=3 uid="uid://bdwvpob8we7mh"]
 
 [ext_resource type="Script" uid="uid://ur3y8lg6l072" path="res://Scripts/enemy_interactable.gd" id="1_4hee5"]
-[ext_resource type="SpriteFrames" uid="uid://pesj6qtuh75c" path="res://Resources/green_slime.tres" id="2_20jok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpm22"]
 size = Vector2(16, 16)
@@ -12,7 +11,6 @@ script = ExtResource("1_4hee5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
-sprite_frames = ExtResource("2_20jok")
 autoplay = "default"
 flip_h = true
 

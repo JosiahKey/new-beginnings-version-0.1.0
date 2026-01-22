@@ -8,6 +8,7 @@ extends Control
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 
 var dead_flag = false
+var action_points = 0
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
@@ -52,22 +53,30 @@ func ready_enemy_turn():
 func enemy_action(action:String):
 	match action:
 		"attack":
-			sprite.play("attack")
-			await get_tree().create_timer(0.5).timeout
-			if roll_stat("Accuracy") == true:
-				randomize()
-				SignalBus.hit_player.emit(randi_range(CombatData.combatants_data[name]["Damage_min"],CombatData.combatants_data[name]["Damage_max"]))
-			else:
-				SignalBus.miss_player.emit()
+			var target_spd = PlayerData.get_total_speed()
+			action_points = 1 + floori(float(CombatData.combatants_data[name]["Speed"]- target_spd) / 5.0)
+			if(action_points <= 0): action_points = 1
+			for a in action_points:
+				sprite.play("attack")
+				await get_tree().create_timer(0.5).timeout
+				if roll_stat("Accuracy") == true:
+					randomize()
+					SignalBus.hit_player.emit(randi_range(CombatData.combatants_data[name]["Damage_min"],CombatData.combatants_data[name]["Damage_max"]))
+				else:
+					SignalBus.miss_player.emit()
+				await get_tree().create_timer(0.5).timeout
+	sprite.play("default")
 	SignalBus.turn_finished.emit()
 
 func roll_stat(stat: String) -> bool:
 	randomize()
-	var roll: int = randi_range(0,100)
-	if roll >= CombatData.combatants_data[name][stat]:
-		return false
-	else:
+	var roll: int = randi_range(1,100)
+	print("enemy" + stat + "roll: " + str(roll))
+	print("less than this to succeed: " + str(CombatData.combatants_data[name][stat]))
+	if roll <= CombatData.combatants_data[name][stat]:
 		return true
+	else:
+		return false
 
 func on_hit(damage):
 	if roll_stat("Evasion"):
@@ -100,6 +109,8 @@ func on_hit(damage):
 		if CombatData.combatants_data[name]["Current_hp"] <= 0:
 			await get_tree().create_timer(1.0).timeout
 			self.visible = false
+		await sprite.animation_finished
+		sprite.play("default")
 
 func on_miss(_damage):
 	var text = floating_text.instantiate()
