@@ -54,7 +54,7 @@ func enemy_action(action:String):
 	match action:
 		"attack":
 			var target_spd = PlayerData.get_total_speed()
-			action_points = 1 + floori(float(CombatData.combatants_data[name]["Speed"]- target_spd) / 5.0)
+			action_points = 1 + floori(float(CombatData.combatants_data[name]["Speed"]- target_spd) / 4.0)
 			if(action_points <= 0): action_points = 1
 			for a in action_points:
 				sprite.play("attack")

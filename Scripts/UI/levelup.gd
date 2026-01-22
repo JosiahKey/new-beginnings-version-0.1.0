@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		visible = true
 
 func _on_health_pressed() -> void:
-	label.text = "Max Health\n+5"
+	label.text = "Max Health\n+50"
 	choice = "Health"
 
 func _on_strength_pressed() -> void:
@@ -28,8 +28,8 @@ func _on_speed_pressed() -> void:
 func _on_confirm_pressed() -> void:
 	PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 	if choice == "Health":
-		PlayerData.stat_data["Natural_hp"] += 5
-		PlayerData.stat_data["Current_hp"] += 5
+		PlayerData.stat_data["Natural_hp"] += 50
+		PlayerData.stat_data["Current_hp"] += 50
 	if choice == "Strength":
 		PlayerData.stat_data["Strength"] += 1
 	if choice == "Speed":

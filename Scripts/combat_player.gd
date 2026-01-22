@@ -21,7 +21,7 @@ func ready_player_turn():
 func player_attack_action():
 	var target_enemy = CombatData.selected_enemy
 	target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
-	action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 5.0)
+	action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
 	
 	if(action_points <= 0): action_points = 1
 	for a in action_points:
@@ -44,8 +44,8 @@ func player_finish_turn():
 func roll_damage() -> int:
 	randomize()
 	return randi_range(\
-	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength(),\
-	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
+	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
+	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
 
 func roll_stat(stat: String) -> bool:
 	randomize()
