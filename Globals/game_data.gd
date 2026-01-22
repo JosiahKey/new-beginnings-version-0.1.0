@@ -10,7 +10,7 @@ var item_data = {
 	"Accuracy": 100.0, 
 	"Evasion": 0, 
 	"Hp": 0, 
-	"PDR": 0, 
+	"PDR": 20, 
 	"Strength": 0, 
 	"Speed": 0.0 
 	}

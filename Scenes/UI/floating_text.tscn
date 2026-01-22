@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbkeigen37gno"]
 
-[ext_resource type="Script" uid="uid://d1n0atq3ydv7e" path="res://Version_0.0.3/Scripts/UI/floating_text.gd" id="1_expam"]
+[ext_resource type="Script" uid="uid://d1n0atq3ydv7e" path="res://Scripts/UI/floating_text.gd" id="1_expam"]
 
 [node name="Floating_Text" type="Marker2D"]
 process_mode = 3

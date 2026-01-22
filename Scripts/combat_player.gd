@@ -64,7 +64,13 @@ func on_hit(damage: int):
 		$player_miss.playing = true
 	else:
 		#midigate damage
+		var mitigation = damage - roundi(float(damage) * (1.0 - float(PlayerData.stat_data["PDR"])/100.0))
 		damage = roundi(float(damage) * (1.0 - float(PlayerData.stat_data["PDR"])/100.0))
+		if mitigation > 0:
+			var text2 = floating_text.instantiate()
+			text2.amount = mitigation
+			text2.type = "block"
+			player_spr.add_child(text2)
 		if(damage < 0): damage = 0
 		#deal damage
 		PlayerData.stat_data["Current_hp"] -= damage

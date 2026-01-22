@@ -88,7 +88,13 @@ func on_hit(damage):
 		$enemy_miss.playing = true
 	else:
 		#midigate damage
+		var mitigation = damage - damage * (1 - CombatData.combatants_data[name]["PDR"]/100)
 		damage = damage * (1 - CombatData.combatants_data[name]["PDR"]/100)
+		if mitigation > 0:
+			var text = floating_text.instantiate()
+			text.amount = mitigation
+			text.type = "block"
+			sprite.add_child(text)
 		if(damage < 0): damage = 0
 		#deal damage
 		CombatData.combatants_data[name]["Current_hp"] -= damage
@@ -96,10 +102,10 @@ func on_hit(damage):
 		var tween = get_tree().create_tween()
 		tween.tween_property(hp_bar, "value", CombatData.combatants_data[name]["Current_hp"], 0.5)
 		#animate floating text
-		var text = floating_text.instantiate()
-		text.amount = damage
-		text.type = "damage"
-		sprite.add_child(text)
+		var text2 = floating_text.instantiate()
+		text2.amount = damage
+		text2.type = "damage"
+		sprite.add_child(text2)
 		#play damage sprite animation
 		sprite.play("damaged")
 		#vfx 1shot

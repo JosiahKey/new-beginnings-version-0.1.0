@@ -37,8 +37,8 @@ func _ready() -> void:
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
 	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
-	armor_label.text = "Armor: " + str(PlayerData.stat_data["PDR"] + "%")
-	evasion_label.text = "Evasion: " + str(PlayerData.stat_data["Evasion"] + "%")
+	armor_label.text = "Armor: " + str(PlayerData.stat_data["PDR"]) + "%"
+	evasion_label.text = "Evasion: " + str(PlayerData.stat_data["Evasion"]) + "%"
 
 func combat_victory(experience: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
