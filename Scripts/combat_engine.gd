@@ -68,7 +68,6 @@ func generate_combatants():
 	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
 	randomize()
 	var rand = 0
-	print(max_enemies)
 	if max_enemies == 1:
 		rand = 1
 	else:

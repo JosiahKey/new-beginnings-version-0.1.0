@@ -12,6 +12,7 @@ var action_points = 0
 
 func _ready() -> void:
 	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
+	SignalBus.num_enemies_changed.emit()
 	
 	sprite = get_node("Enemy_Sprite")
 	hp_bar = get_node("Enemy_Hp")
@@ -44,6 +45,7 @@ func ready_enemy_turn():
 		SignalBus.turn_finished.emit()
 		if dead_flag == false:
 			CombatData.number_of_enemies -= 1
+			SignalBus.num_enemies_changed.emit()
 			CombatData.add_reward(CombatData.combatants_data[name]["EXP"], 1)
 		dead_flag = true
 	
@@ -71,8 +73,7 @@ func enemy_action(action:String):
 func roll_stat(stat: String) -> bool:
 	randomize()
 	var roll: int = randi_range(1,100)
-	print("enemy" + stat + "roll: " + str(roll))
-	print("less than this to succeed: " + str(CombatData.combatants_data[name][stat]))
+	print("enemy" + stat + "roll: " + str(roll) + "/ " + str(CombatData.combatants_data[name][stat]))
 	if roll <= CombatData.combatants_data[name][stat]:
 		return true
 	else:

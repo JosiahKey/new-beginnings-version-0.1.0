@@ -89,7 +89,6 @@ func _on_encounter_timeout() -> void:
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.paused = true
 	AudioManager.change_song_to_combat("pokemon")
-	print("player combat timer expired")
 	SignalBus.combat_entered.emit()
 	await get_tree().create_timer(0.5).timeout
 	SignalBus.enemy_encountered.emit("normal")

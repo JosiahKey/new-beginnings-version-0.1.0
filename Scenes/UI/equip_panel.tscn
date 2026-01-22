@@ -93,17 +93,18 @@ offset_right = 38.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 150
-theme_override_constants/v_separation = 24
+theme_override_constants/h_separation = 145
+theme_override_constants/v_separation = 15
 columns = 2
 metadata/_edit_lock_ = true
 
 [node name="Head" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("4_7lqjh")
 
 [node name="Head" type="PanelContainer" parent="GridContainer/Head"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
@@ -119,6 +120,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Shoulders" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("6_srij6")
 
@@ -130,6 +132,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpgkg")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Shoulders/Shoulders"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
@@ -140,6 +143,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Neck" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("7_xifeu")
 
@@ -151,6 +155,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g71uc")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Neck/Neck"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
@@ -161,6 +166,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Chest" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("8_2bf2l")
 
@@ -172,6 +178,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Chest/Chest"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 script = ExtResource("5_emeak")
 
@@ -181,6 +188,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Mainhand" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("9_555pk")
 
@@ -192,7 +200,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Mainhand/Mainhand"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -203,6 +211,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Offhand" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("10_26kvj")
 
@@ -214,7 +223,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Offhand/Offhand"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -225,6 +234,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Ring1" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("11_8ufpo")
 
@@ -236,7 +246,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Ring1/Ring1"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -247,6 +257,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Arms" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("12_57vyr")
 
@@ -258,7 +269,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Arms/Arms"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -269,6 +280,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Waist" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("12_etgwp")
 
@@ -280,7 +292,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Waist/Waist"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -291,6 +303,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Legs" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("13_15rjk")
 
@@ -302,7 +315,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Legs/Legs"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
@@ -313,6 +326,7 @@ layout_mode = 2
 texture = ExtResource("6_cet54")
 
 [node name="Feet" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("14_6qtr7")
 
@@ -324,7 +338,7 @@ offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
 [node name="Icon" type="TextureRect" parent="GridContainer/Feet/Feet"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")

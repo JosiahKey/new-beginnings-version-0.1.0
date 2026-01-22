@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
 @onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
 @onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
+@onready var armor_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Armor
+@onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var player_turn_ind :GPUParticles2D = $Background_Image/Player/Player_Turn_Indicator
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
@@ -12,6 +14,7 @@ extends CanvasLayer
 @onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
+@onready var enemy_info := $Background_Image/Sub_Menus/Enemy_Panel/V
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
@@ -22,6 +25,7 @@ func _ready() -> void:
 	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 
 	SignalBus.connect("turn_start", Callable(self, "toggle_action_ui"))
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
+	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	
 	damage_label.text = "Damage: "+ str(
 		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
@@ -33,6 +37,8 @@ func _ready() -> void:
 	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
 	exp_bar.value = PlayerData.stat_data["Experience"]
 	hp_label.text = "HP: " + str(PlayerData.stat_data["Current_hp"]) + " / " + str(PlayerData.stat_data["Total_hp"])
+	armor_label.text = "Armor: " + str(PlayerData.stat_data["PDR"] + "%")
+	evasion_label.text = "Evasion: " + str(PlayerData.stat_data["Evasion"] + "%")
 
 func combat_victory(experience: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
@@ -41,7 +47,6 @@ func combat_victory(experience: int):
 	AudioManager.pause()
 	get_node("fanfare").playing = true
 	await get_tree().create_timer(1).timeout
-	print("end of await")
 	#victory dance
 	#reward popup + EXP gain animation
 	$Reward.visible = true
@@ -98,9 +103,18 @@ func _on_action_button_pressed() -> void:
 
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:
-		print("exit combat")
 		GameState.state = ""
 		#fade out
 		SignalBus.combat_exited.emit()
 		#cleanup
 		self.queue_free()
+
+func update_enemy_info():
+	var enemies = []
+	for i in enemy_info.get_children():
+		i.text = ""
+	for e in enemy_sprites_container.get_children():
+		if e.visible == true:
+			enemies.append(CombatData.combatants_data[e.name]["enemy_name"])
+	for i in range(0,enemies.size()):
+		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]

@@ -1,6 +1,7 @@
 extends TextureRect
 #this is sperate from equipment item so that we can deal with consumables and stackables later
 var highlighted_item_slot := ""
+var current_slot = ""
 
 func _get_drag_data(at_position: Vector2):
 	var inv_slot = get_parent().get_name()
@@ -72,9 +73,19 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not event.is_pressed():
 		if highlighted_item_slot != "":
 			SignalBus.unhighlight_slot.emit(highlighted_item_slot)
+	#if event.is_action_released("Autoequip"):
+		#if current_slot != "":
+			#var origin_item_id = PlayerData.inv_data[current_slot]["Item"]
+			#var origin_equip_type = GameData.item_data[origin_item_id]["equipmentSlot"]
+			#var equipped_item_id = PlayerData.equipment_data[origin_equip_type]
+			#this is for ctrl + LMB to auto equip items 
+			#but tis going to be hard to implement
+			#mainly to swap the textures
 
 func _on_mouse_entered() -> void:
 	Tooltip.item_popup(Rect2i(Vector2i(global_position), Vector2i(size)), get_parent().get_name(), "Inventory")
+	current_slot = get_parent().get_name()
 
 func _on_mouse_exited() -> void:
 	Tooltip.hide_item_popup()
+	current_slot = ""

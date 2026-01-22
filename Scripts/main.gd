@@ -10,7 +10,6 @@ func _ready() -> void:
 	SignalBus.connect("game_over", Callable(self, "game_over"))
 
 func start_combat(type):
-	print("enemy encountered")
 	if type == "normal":
 		add_child(combat_scene.instantiate())
 	elif type == "Boss":
