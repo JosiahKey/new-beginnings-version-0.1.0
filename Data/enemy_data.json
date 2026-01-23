@@ -73,34 +73,34 @@
 	"Accuracy": 75,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 8,
-	"EXP": 1000,
+	"Speed": 10,
+	"EXP": 500,
 	"Loot": 1
   },
   "10007": {
 	"enemy_name": "shade",
 	"Max_hp": 150,
 	"Current_hp": 150,
-	"Damage_min": 30,
+	"Damage_min": 40,
 	"Damage_max": 50,
-	"Accuracy": 75,
-	"Evasion": 5,
+	"Accuracy": 65,
+	"Evasion": 15,
 	"PDR": 0,
 	"Speed": 3,
-	"EXP": 3500,
+	"EXP": 1000,
 	"Loot": 1
   },
   "10008": {
 	"enemy_name": "red_ogre",
 	"Max_hp": 400,
 	"Current_hp": 400,
-	"Damage_min": 20,
+	"Damage_min": 30,
 	"Damage_max": 80,
 	"Accuracy": 70,
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 9,
-	"EXP": 10000,
+	"EXP": 3000,
 	"Loot": 3
   },
   "10009": {
@@ -126,7 +126,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 2,
-	"EXP": 4000,
+	"EXP": 2000,
 	"Loot": 2
   },
   "10011": {
