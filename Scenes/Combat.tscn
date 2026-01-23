@@ -44,7 +44,7 @@ radial_accel_min = -2.2351742e-06
 radial_accel_max = -2.2351742e-06
 scale_min = 2.0
 scale_max = 3.0
-color = Color(0.65941083, 0.7186916, 0.50382674, 1)
+color = Color(0.78431374, 0.38431373, 0.49803922, 1)
 anim_speed_max = 1.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g4qrr"]

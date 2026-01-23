@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://e2io5n8exj2y"]
+[gd_scene load_steps=6 format=3 uid="uid://e2io5n8exj2y"]
 
 [ext_resource type="Script" uid="uid://g7smcdatb85i" path="res://Scripts/UI/levelup.gd" id="1_xnco0"]
 [ext_resource type="Texture2D" uid="uid://d4n1uuupkdk8t" path="res://Assets/gui_assets/levelup_panel.png" id="2_rdjby"]
@@ -7,7 +7,10 @@
 bg_color = Color(0.37651217, 0.3442383, 0.14591482, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ccv0"]
-bg_color = Color(0.7930148, 0.5355503, 0.29751304, 1)
+bg_color = Color(0.6627451, 0.43529412, 0.21960784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdjby"]
+bg_color = Color(0.7921569, 0.5372549, 0.29803923, 1)
 
 [node name="Levelup" type="CanvasLayer"]
 script = ExtResource("1_xnco0")
@@ -83,9 +86,7 @@ grow_vertical = 2
 theme_override_constants/line_spacing = -7
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 18
-text = "Choose
-A
-Reward"
+text = "Choose"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -108,6 +109,7 @@ text = "Speed
 [node name="confirm" type="Button" parent="N/V"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4ccv0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rdjby")
 text = "CONFIRM
 "
 

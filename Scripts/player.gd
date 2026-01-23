@@ -25,12 +25,18 @@ func _physics_process(_delta):
 		# Check for input and set the input direction
 		if Input.is_action_pressed("move_up"):
 			input_direction.y -= 1
+			timer.paused = false
 		if Input.is_action_pressed("move_down"):
 			input_direction.y += 1
+			timer.paused = false
 		if Input.is_action_pressed("move_left"):
 			input_direction.x -= 1
+			timer.paused = false
 		if Input.is_action_pressed("move_right"):
 			input_direction.x += 1
+			timer.paused = false
+		else:
+			timer.paused = false
 		
 		#Flip Sprite
 		if input_direction.x > 0:
@@ -59,7 +65,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 		# Update highlight visibility based on input direction
-		update_highlight_visibility(input_direction)
+		#update_highlight_visibility(input_direction)
 
 # Function to update the visibility of the highlight ColorRects
 func update_highlight_visibility(direction: Vector2):
@@ -71,18 +77,12 @@ func update_highlight_visibility(direction: Vector2):
 	# control direction && control timer
 	if direction.x > 0:
 		r_highlight.visible = true  # Right
-		timer.paused = false
 	elif direction.x < 0:
 		l_highlight.visible = true  # Left
-		timer.paused = false
 	elif direction.y > 0:
 		d_highlight.visible = true  # Down
-		timer.paused = false
 	elif direction.y < 0:
 		u_highlight.visible = true  # Up
-		timer.paused = false
-	else:
-		timer.paused = true
 
 func _on_encounter_timeout() -> void:
 	randomize()

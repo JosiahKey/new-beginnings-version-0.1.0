@@ -51,7 +51,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 		# Update highlight visibility based on input direction
-		update_highlight_visibility(input_direction)
+		#update_highlight_visibility(input_direction)
 
 # Function to update the visibility of the highlight ColorRects
 func update_highlight_visibility(direction: Vector2):

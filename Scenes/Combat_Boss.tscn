@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://kubrcp262ngk"]
+[gd_scene load_steps=26 format=3 uid="uid://kubrcp262ngk"]
 
 [ext_resource type="Script" uid="uid://b6il1p7psq2ex" path="res://Scripts/combat_engine.gd" id="1_6fqac"]
 [ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/combat_ui.gd" id="2_bo86c"]
-[ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="3_g6b7o"]
+[ext_resource type="Texture2D" uid="uid://djr8ua8ilrs16" path="res://Assets/art_assets/battleback_Boss.png" id="3_6fqac"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="4_m4mlb"]
 [ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action_normal.png" id="5_ooosc"]
-[ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="6_cjblw"]
-[ext_resource type="Texture2D" uid="uid://dhrxutin3pvtc" path="res://Assets/gui_assets/combat_action_disabled.png" id="7_w6sab"]
+[ext_resource type="Texture2D" uid="uid://crtvhfoao7ixs" path="res://Assets/gui_assets/combat_action_pressed.png" id="6_6fqac"]
+[ext_resource type="Texture2D" uid="uid://biimfctegb3ig" path="res://Assets/gui_assets/combat_action_hover.png" id="7_bo86c"]
 [ext_resource type="Script" uid="uid://by2hs38c3a488" path="res://Scripts/combat_player.gd" id="8_ioqr7"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="9_6wy26"]
 [ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="10_64ip1"]
@@ -28,42 +28,6 @@ colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_aqiim"]
 gradient = SubResource("Gradient_g4qrr")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpwsi"]
-atlas = ExtResource("6_cjblw")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_itjuw"]
-atlas = ExtResource("6_cjblw")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bg7yd"]
-atlas = ExtResource("6_cjblw")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhxhg"]
-atlas = ExtResource("6_cjblw")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qjnp5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dpwsi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_itjuw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bg7yd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nhxhg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jcjnu"]
 particles_animation = true
@@ -121,7 +85,7 @@ anchor_mode = 0
 [node name="Background_Image" type="TextureRect" parent="Combat"]
 offset_right = 1080.0
 offset_bottom = 720.0
-texture = ExtResource("3_g6b7o")
+texture = ExtResource("3_6fqac")
 metadata/_edit_lock_ = true
 
 [node name="Sub_Menus" type="HBoxContainer" parent="Combat/Background_Image"]
@@ -256,25 +220,15 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="action_button" type="Button" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+[node name="action_button" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 action_mode = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ooosc")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+texture_normal = ExtResource("5_ooosc")
+texture_pressed = ExtResource("6_6fqac")
+texture_hover = ExtResource("7_bo86c")
 
 [node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
 layout_mode = 1
@@ -296,30 +250,15 @@ theme_override_constants/outline_size = 6
 text = "Attack"
 horizontal_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button"]
-position = Vector2(-4, 12)
-sprite_frames = SubResource("SpriteFrames_qjnp5")
-autoplay = "default"
-
-[node name="action_button2" type="Button" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+[node name="action_button2" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 action_mode = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_w6sab")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+texture_normal = ExtResource("5_ooosc")
+texture_pressed = ExtResource("6_6fqac")
+texture_hover = ExtResource("7_bo86c")
 
 [node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2"]
 layout_mode = 1
@@ -334,11 +273,39 @@ offset_right = 110.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "Heal"
+horizontal_alignment = 1
+
+[node name="action_button3" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container"]
+custom_minimum_size = Vector2(220, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("5_ooosc")
+texture_pressed = ExtResource("6_6fqac")
+texture_hover = ExtResource("7_bo86c")
+
+[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -11.5
+offset_right = 110.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Attack All"
 horizontal_alignment = 1
 
 [node name="Info_Panels" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel"]
@@ -540,8 +507,5 @@ stream = ExtResource("15_wyd8u")
 volume_db = -6.0
 bus = &"SFX"
 
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button" to="Combat" method="_on_action_button_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/back" to="Combat" method="_on_back_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/confirm_btn" to="Combat" method="_on_confirm_btn_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]
 [connection signal="visibility_changed" from="Combat/Reward" to="Combat" method="_on_reward_visibility_changed"]

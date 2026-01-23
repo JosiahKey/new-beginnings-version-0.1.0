@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var label:= $N/V/StatChange/Label
-var choice := "none"
+var choice := "Health"
 
 func  _ready() -> void:
 	SignalBus.connect("levelup", Callable(self, "levelup"))

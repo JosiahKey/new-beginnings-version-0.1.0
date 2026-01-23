@@ -29,8 +29,8 @@ func _ready() -> void:
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	
 	damage_label.text = "Damage: "+ str(
-		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + "-" + str(
-		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()))
+		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()*10)) + "-" + str(
+		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()*10))
 	hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
@@ -64,13 +64,12 @@ func check_for_levelup(experience: float = 0.0):
 	
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
 		PlayerData.stat_data["Level"] += 1
-		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * (PlayerData.stat_data["Level"] ** 2)-(600 * PlayerData.stat_data["Level"])))
-		print(PlayerData.stat_data["Exp_to_next_level"])
+		PlayerData.stat_data["Exp_to_next_level"] = float(int(600 * (PlayerData.stat_data["Level"] ** 2)-(600 * PlayerData.stat_data["Level"])))
 		exptween.tween_property(exp_bar, "value", exp_bar.max_value, 1.5).set_ease(Tween.EASE_OUT)
 		await exptween.finished
 		SignalBus.levelup.emit()
 	else:
-		exptween.tween_property(exp_bar, "value", newexp, 1.5).set_ease(Tween.EASE_OUT)
+		exptween.tween_property(exp_bar, "value", newexp, 1.0).set_ease(Tween.EASE_OUT)
 	$Reward/N/V/exp_reward/Lvl_Text/stat_label.text = "Level " + str(PlayerData.stat_data["Level"])
 	
 	await exptween.finished
@@ -102,8 +101,8 @@ func _on_back_pressed() -> void:
 func _on_action_button_pressed() -> void:
 	if players_turn== true:
 		damage_label.text = "Damage: "+ str(
-		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + "-" + str(
-		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()))
+		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()*10)) + "-" + str(
+		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()*10))
 		hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
