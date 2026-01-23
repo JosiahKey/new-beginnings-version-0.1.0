@@ -100,8 +100,8 @@ func _on_back_pressed() -> void:
 func _on_action_button_pressed() -> void:
 	if players_turn== true:
 		damage_label.text = "Damage: "+ str(
-		PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()) + "-" + str(
-		PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength())
+		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())) + "-" + str(
+		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()))
 		hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
