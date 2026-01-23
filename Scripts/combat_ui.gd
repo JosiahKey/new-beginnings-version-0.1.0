@@ -20,6 +20,7 @@ var action_points = PlayerData.get_total_speed()
 
 func _ready() -> void:
 	GameState.state = "Combat"
+	$Background_Image.texture = load("res://Assets/art_assets/battleback_"+ GameState.biome +".png")
 
 	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
 	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 

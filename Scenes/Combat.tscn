@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://byotebi1xyoe7"]
 
-[ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="1_anr3a"]
 [ext_resource type="Script" uid="uid://b6il1p7psq2ex" path="res://Scripts/combat_engine.gd" id="1_cy1ba"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
 [ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/combat_ui.gd" id="2_wpely"]
 [ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="3_cqrb7"]
+[ext_resource type="Texture2D" uid="uid://bwx7wrm3vius4" path="res://Assets/art_assets/battleback_Plains.png" id="3_cy1ba"]
 [ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action_normal.png" id="4_aqiim"]
 [ext_resource type="Texture2D" uid="uid://crtvhfoao7ixs" path="res://Assets/gui_assets/combat_action_pressed.png" id="6_cy1ba"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
@@ -85,7 +85,7 @@ anchor_mode = 0
 [node name="Background_Image" type="TextureRect" parent="Combat"]
 offset_right = 1080.0
 offset_bottom = 720.0
-texture = ExtResource("1_anr3a")
+texture = ExtResource("3_cy1ba")
 metadata/_edit_lock_ = true
 
 [node name="Sub_Menus" type="HBoxContainer" parent="Combat/Background_Image"]
@@ -431,10 +431,10 @@ text = "Green Slime"
 
 [node name="Enemy_Sprites" type="HBoxContainer" parent="Combat/Background_Image"]
 layout_mode = 0
-offset_left = 544.0
-offset_top = 457.0
-offset_right = 1025.0
-offset_bottom = 519.0
+offset_left = 566.0
+offset_top = 373.0
+offset_right = 1047.0
+offset_bottom = 435.0
 alignment = 2
 
 [node name="Player" type="Control" parent="Combat/Background_Image"]
@@ -444,10 +444,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = 105.0
-offset_right = -252.0
-offset_bottom = 145.0
+offset_left = -394.0
+offset_top = 24.0
+offset_right = -354.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_kbh2q")
