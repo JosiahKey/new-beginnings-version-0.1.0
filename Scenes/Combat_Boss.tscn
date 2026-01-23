@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://blj1iy4jv62a6" path="res://Scripts/combat_ui.gd" id="2_bo86c"]
 [ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="3_g6b7o"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="4_m4mlb"]
-[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action.png" id="5_ooosc"]
+[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action_normal.png" id="5_ooosc"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="6_cjblw"]
 [ext_resource type="Texture2D" uid="uid://dhrxutin3pvtc" path="res://Assets/gui_assets/combat_action_disabled.png" id="7_w6sab"]
 [ext_resource type="Script" uid="uid://by2hs38c3a488" path="res://Scripts/combat_player.gd" id="8_ioqr7"]

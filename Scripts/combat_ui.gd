@@ -63,7 +63,8 @@ func check_for_levelup(experience: float = 0.0):
 	
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
 		PlayerData.stat_data["Level"] += 1
-		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * log(PlayerData.stat_data["Exp_to_next_level"])))
+		PlayerData.stat_data["Exp_to_next_level"] = float(int(PlayerData.stat_data["Exp_to_next_level"] * (PlayerData.stat_data["Level"] ** 2)-(600 * PlayerData.stat_data["Level"])))
+		print(PlayerData.stat_data["Exp_to_next_level"])
 		exptween.tween_property(exp_bar, "value", exp_bar.max_value, 1.5).set_ease(Tween.EASE_OUT)
 		await exptween.finished
 		SignalBus.levelup.emit()
@@ -126,6 +127,14 @@ func update_enemy_info():
 func _on_action_button_2_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_heal_action()
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
+	players_turn = false
+
+
+func _on_action_button_3_pressed() -> void:
+	get_node("select").playing = true
+	$Background_Image/Player.player_aoe_action()
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	actions_container.visible = false
 	players_turn = false

@@ -30,9 +30,19 @@ func player_attack_action():
 		await get_tree().create_timer(0.3).timeout
 		SignalBus.enemy_selected.emit(target_enemy)
 		if roll_stat("Accuracy") == true:
-			SignalBus.combat_action.emit("on_hit", roll_damage())
+			SignalBus.combat_action.emit("on_hit", roll_damage(), "attack")
 		else:
-			SignalBus.combat_action.emit("on_miss", 0)
+			SignalBus.combat_action.emit("on_miss", 0, "attack")
+	player_finish_turn()
+
+func player_aoe_action():
+	await get_tree().create_timer(0.7).timeout
+	player_spr.play("attack")
+	await get_tree().create_timer(0.3).timeout
+	if roll_stat("Accuracy") == true:
+		SignalBus.combat_action.emit("on_hit", ceili(roll_damage()/3.0), "aoe")
+	else:
+		SignalBus.combat_action.emit("on_miss", 0, "aoe")
 	player_finish_turn()
 
 func player_heal_action():

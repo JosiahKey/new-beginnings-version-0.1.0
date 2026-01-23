@@ -18,7 +18,7 @@ var stat_data = {
 	"Total_equipped_damage_max": 0,
 	"Total_equipped_weight": 0,
 	"Experience": 0,
-	"Exp_to_next_level": 100,
+	"Exp_to_next_level": 600,
 	"Level": 1
 }
 
