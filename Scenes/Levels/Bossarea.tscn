@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chests/weapon_chest.tscn" id="4_epb5u"]
 [ext_resource type="PackedScene" uid="uid://3cb4sgkxpl3m" path="res://Scenes/Templates/chests/jewelry_chest.tscn" id="5_4sa3n"]
 [ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/chests/armor_chest.tscn" id="6_4sa3n"]
-[ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/enemy_interactable.tscn" id="8_qatuo"]
+[ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/boss_interactable.tscn" id="8_qatuo"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_7qclg")

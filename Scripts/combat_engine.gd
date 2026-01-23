@@ -19,7 +19,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
-		AudioManager.level_change()
+		AudioManager.pause()
+		AudioManager.change_to_precombat_song()
 		SignalBus.load_area_entered.emit("Home")
 		GameState.state = ""
 		#fade out

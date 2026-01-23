@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://b7ikkksxg1qr5"]
+[gd_scene load_steps=7 format=4 uid="uid://b7ikkksxg1qr5"]
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_c6mje"]
 [ext_resource type="Script" uid="uid://kyculvdik2sk" path="res://Scenes/Levels/level.gd" id="1_ok18h"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_05b6i"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_ok18h"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_05b6i"]
+[ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/boss_interactable.tscn" id="6_8a28h"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_ok18h")
@@ -34,3 +35,6 @@ scale = Vector2(5.632493, 3.1453347)
 position = Vector2(128, -952)
 scale = Vector2(12.040004, 1)
 next_level = "Overworld2"
+
+[node name="enemy_interactable" parent="." instance=ExtResource("6_8a28h")]
+position = Vector2(32, 56)
