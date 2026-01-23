@@ -61,14 +61,16 @@ func _update_equipped_stats():
 									PlayerData.equipment_data[i]]["Damage_min"]
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_max"]
-			if PlayerData.stat_data["Total_equipped_damage_min"] > PlayerData.stat_data["Total_equipped_damage_max"]:
-				PlayerData.stat_data["Total_equipped_damage_max"] = PlayerData.stat_data["Total_equipped_damage_min"]
 	
 	#if weapon has no damage
 	if PlayerData.stat_data["Total_equipped_damage_min"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_min"] = 1
 	if PlayerData.stat_data["Total_equipped_damage_max"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_max"] = 1
+	
+	#if min damage is too high
+	if PlayerData.stat_data["Total_equipped_damage_min"] > PlayerData.stat_data["Total_equipped_damage_max"]:
+		PlayerData.stat_data["Total_equipped_damage_max"] = PlayerData.stat_data["Total_equipped_damage_min"]
 	SignalBus.update_stat_panel.emit()
 	
 	#if current hp is higher than new hp max
