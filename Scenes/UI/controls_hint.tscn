@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cxo6u81p07oa8" path="res://Assets/gui_assets/main_panel_2.png" id="1_i6267"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q6l4"]
-bg_color = Color(0.14767182, 0.14767182, 0.14767176, 0.84313726)
+bg_color = Color(0.035175283, 0.17478547, 0.15475604, 0.84313726)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -36,6 +36,7 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="N/V/HBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
@@ -69,6 +70,7 @@ text = "-Open Inventory"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="N/V/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 32)
@@ -89,7 +91,8 @@ offset_right = 28.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Arrows"
+text = "WASD"
+horizontal_alignment = 1
 
 [node name="hint" type="Label" parent="N/V/HBoxContainer2"]
 layout_mode = 2
@@ -102,6 +105,7 @@ text = "-Move Character"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="N/V/HBoxContainer3"]
 custom_minimum_size = Vector2(64, 32)
@@ -122,7 +126,7 @@ offset_right = 8.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "'E'"
+text = "E"
 
 [node name="hint" type="Label" parent="N/V/HBoxContainer3"]
 layout_mode = 2
@@ -131,10 +135,11 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "-Interact with '!' blocks"
+text = "-Open Chest"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="N/V/HBoxContainer4"]
 custom_minimum_size = Vector2(64, 32)
@@ -169,6 +174,7 @@ text = "-Drag n Drop inventory items
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="N/V/HBoxContainer5"]
 custom_minimum_size = Vector2(64, 32)
@@ -189,7 +195,7 @@ offset_right = 8.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "'T'"
+text = "T"
 
 [node name="hint" type="Label" parent="N/V/HBoxContainer5"]
 layout_mode = 2
@@ -198,4 +204,4 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "close hint"
+text = "- Close Controls Hints"

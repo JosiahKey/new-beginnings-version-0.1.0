@@ -106,6 +106,7 @@ func combat_action(method: String, arg: Variant, action: String):
 			for s in selected_mult_enemies:
 				if arg != null:
 					Callable(s, method).call(arg)
+			selected_mult_enemies.clear()
 
 func clean_up():
 	action_queue = []

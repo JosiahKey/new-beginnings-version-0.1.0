@@ -15,6 +15,7 @@
 
 [node name="CharacterSheet" type="CanvasLayer"]
 layer = 3
+visible = false
 script = ExtResource("1_8t5v5")
 
 [node name="MenuRect" type="NinePatchRect" parent="."]

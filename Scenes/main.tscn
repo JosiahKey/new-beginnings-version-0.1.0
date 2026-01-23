@@ -14,10 +14,8 @@
 script = ExtResource("1_b4pd7")
 
 [node name="ControlsHint" parent="." instance=ExtResource("2_2jltt")]
-visible = false
 
 [node name="CharacterSheet" parent="." instance=ExtResource("2_sadeq")]
-layer = 3
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("4_21xkr")

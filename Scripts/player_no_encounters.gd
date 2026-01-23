@@ -17,13 +17,13 @@ func _physics_process(_delta):
 		var input_direction = Vector2.ZERO
 
 		# Check for input and set the input direction
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("move_up"):
 			input_direction.y -= 1
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("move_down"):
 			input_direction.y += 1
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("move_left"):
 			input_direction.x -= 1
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("move_right"):
 			input_direction.x += 1
 		
 		#Flip Sprite

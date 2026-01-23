@@ -49,7 +49,9 @@ func player_heal_action():
 	await get_tree().create_timer(0.7).timeout
 	player_spr.play("attack")
 	await get_tree().create_timer(0.3).timeout
-	on_heal(ceili(0.2 * PlayerData.stat_data["Total_hp"]))
+	randomize()
+	var heal_roll = randi_range(ceili(0.1 * PlayerData.stat_data["Total_hp"]),ceili(0.2 * PlayerData.stat_data["Total_hp"]))
+	on_heal(heal_roll)
 	player_finish_turn()
 
 func player_finish_turn():
