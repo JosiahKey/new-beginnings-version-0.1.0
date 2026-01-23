@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 		SignalBus.game_over.emit()
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
-			SignalBus.combat_victory.emit(CombatData.reward_data[0])
+			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 
 func enqueue(action: Callable):

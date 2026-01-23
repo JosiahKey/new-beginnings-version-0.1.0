@@ -40,7 +40,7 @@ func _ready() -> void:
 	armor_label.text = "Armor: " + str(int(PlayerData.stat_data["PDR"])) + "%"
 	evasion_label.text = "Evasion: " + str(int(PlayerData.stat_data["Evasion"])) + "%"
 
-func combat_victory(experience: int):
+func combat_victory(experience: int, loot: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	actions_container.visible = false
 	#play fanfare
@@ -50,7 +50,8 @@ func combat_victory(experience: int):
 	#victory dance
 	#reward popup + EXP gain animation
 	$Reward.visible = true
-	SignalBus.item_generated.emit()
+	for l in loot:
+		SignalBus.item_generated.emit()
 	check_for_levelup(experience)
 	SignalBus.update_stat_panel.emit()
 
@@ -69,6 +70,9 @@ func check_for_levelup(experience: float = 0.0):
 	else:
 		exptween.tween_property(exp_bar, "value", newexp, 1.5).set_ease(Tween.EASE_OUT)
 	$Reward/N/V/exp_reward/Lvl_Text/stat_label.text = "Level " + str(PlayerData.stat_data["Level"])
+	
+	await exptween.finished
+	SignalBus.exp_finished.emit()
 
 
 func _on_confirm_btn_pressed() -> void:

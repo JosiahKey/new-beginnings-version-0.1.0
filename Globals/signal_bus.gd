@@ -89,3 +89,6 @@ signal player_paused
 #combatdata to combatui
 @warning_ignore("unused_signal")
 signal num_enemies_changed
+#levelup to combatreward
+@warning_ignore("unused_signal")
+signal exp_finished

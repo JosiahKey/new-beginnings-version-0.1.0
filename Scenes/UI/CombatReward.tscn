@@ -54,6 +54,7 @@ offset_right = 138.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="N/V"]
 layout_mode = 2
@@ -123,27 +124,119 @@ stretch_margin_right = 100
 texture_under = SubResource("GradientTexture1D_khfr5")
 texture_progress = SubResource("GradientTexture1D_nm52r")
 
-[node name="item_reward" type="HBoxContainer" parent="N/V"]
+[node name="item_reward1" type="HBoxContainer" parent="N/V"]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Label2" type="Label" parent="N/V/item_reward"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "GET!"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("3_3dm5n")
-
-[node name="Label" type="Label" parent="N/V/item_reward"]
+[node name="Label" type="Label" parent="N/V/item_reward1"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward1/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
+
+[node name="item_reward2" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="N/V/item_reward2"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward2/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
+
+[node name="item_reward3" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="N/V/item_reward3"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward3/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
+
+[node name="item_reward4" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="N/V/item_reward4"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward4/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
+
+[node name="item_reward5" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="N/V/item_reward5"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward5/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
+
+[node name="item_reward6" type="HBoxContainer" parent="N/V"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="N/V/item_reward6"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "epic_axe"
+
+[node name="TextureRect" type="TextureRect" parent="N/V/item_reward6/Label"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -40.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = 23.0
+texture = ExtResource("3_3dm5n")
 
 [node name="confirm_reward" type="Button" parent="N/V"]
 visible = false

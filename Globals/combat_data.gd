@@ -10,14 +10,11 @@ var combatants_data: Dictionary = {
 func _ready() -> void:
 	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 
-var reward_data: Array = [0,0,0,0,0,0] #[exp, loot1, loot2, etc...]
+var reward_data: Array = [0,0] #[exp, amount of loot]
 
 func add_reward(experience: int, loot: int):
 	reward_data[0] += experience
-	for r in reward_data:
-		if r == 0:
-			r = loot
-			break
+	reward_data[1] += loot
 
 func add_combatant(new_combatant: Dictionary) -> String: #takes generate enemy as input
 	number_of_enemies += 1

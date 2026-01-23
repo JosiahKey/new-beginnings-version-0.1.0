@@ -46,7 +46,7 @@ func ready_enemy_turn():
 		if dead_flag == false:
 			CombatData.number_of_enemies -= 1
 			SignalBus.num_enemies_changed.emit()
-			CombatData.add_reward(CombatData.combatants_data[name]["EXP"], 1)
+			CombatData.add_reward(CombatData.combatants_data[name]["EXP"], CombatData.combatants_data[name]["Loot"])
 		dead_flag = true
 	
 	if selector.visible == true:
