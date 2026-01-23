@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://byotebi1xyoe7"]
+[gd_scene load_steps=30 format=3 uid="uid://byotebi1xyoe7"]
 
 [ext_resource type="Texture2D" uid="uid://nd5e0klyfh44" path="res://Assets/art_assets/combat_forest_background.png" id="1_anr3a"]
 [ext_resource type="Script" uid="uid://b6il1p7psq2ex" path="res://Scripts/combat_engine.gd" id="1_cy1ba"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action.png" id="4_aqiim"]
 [ext_resource type="Texture2D" uid="uid://betaefr4qj004" path="res://Assets/gui_assets/Cursor_Select.png" id="5_jcjnu"]
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
-[ext_resource type="Texture2D" uid="uid://dhrxutin3pvtc" path="res://Assets/gui_assets/combat_action_disabled.png" id="6_nm52r"]
 [ext_resource type="Script" uid="uid://by2hs38c3a488" path="res://Scripts/combat_player.gd" id="8_kbh2q"]
 [ext_resource type="PackedScene" uid="uid://bb7luid6qkj5q" path="res://Scenes/UI/CombatReward.tscn" id="9_nm52r"]
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
@@ -315,7 +314,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_nm52r")
+texture = ExtResource("4_aqiim")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -334,7 +333,6 @@ offset_right = 110.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
@@ -546,6 +544,7 @@ volume_db = -6.0
 bus = &"SFX"
 
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button" to="Combat" method="_on_action_button_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2" to="Combat" method="_on_action_button_2_pressed"]
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/back" to="Combat" method="_on_back_pressed"]
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/confirm_btn" to="Combat" method="_on_confirm_btn_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]

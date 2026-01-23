@@ -35,6 +35,13 @@ func player_attack_action():
 			SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
+func player_heal_action():
+	await get_tree().create_timer(0.7).timeout
+	player_spr.play("attack")
+	await get_tree().create_timer(0.3).timeout
+	on_heal(ceili(0.2 * PlayerData.stat_data["Total_hp"]))
+	player_finish_turn()
+
 func player_finish_turn():
 	await player_spr.animation_finished
 	player_turn_ind.visible = false
@@ -96,6 +103,26 @@ func on_miss():
 	text.type = "miss"
 	player_spr.add_child(text)
 	$player_miss.playing = true
+
+func on_heal(heal: int):
+	var adjusted_heal = heal
+	#heal damage
+	if(PlayerData.stat_data["Current_hp"] + heal > PlayerData.stat_data["Total_hp"]):
+		adjusted_heal = PlayerData.stat_data["Total_hp"] - PlayerData.stat_data["Current_hp"]
+		PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
+	else:
+		PlayerData.stat_data["Current_hp"] += heal
+	#update hp label
+	SignalBus.player_hp_changed.emit()
+	#floating text
+	var text = floating_text.instantiate()
+	text.amount = adjusted_heal
+	text.type = "heal"
+	player_spr.add_child(text)
+	#vfx 1shot
+	await player_spr.animation_finished
+	player_spr.play("idle")
+	#$player_heal.playing = true
 
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

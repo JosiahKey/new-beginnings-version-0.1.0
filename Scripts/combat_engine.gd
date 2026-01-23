@@ -103,3 +103,7 @@ func clean_up():
 	combat_finished = false
 	CombatData.clear_data()
 	self.queue_free()
+
+
+func _on_action_button_2_pressed() -> void:
+	pass # Replace with function body.

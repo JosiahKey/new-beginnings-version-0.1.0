@@ -122,3 +122,10 @@ func update_enemy_info():
 			enemies.append(CombatData.combatants_data[e.name]["enemy_name"])
 	for i in range(0,enemies.size()):
 		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
+
+func _on_action_button_2_pressed() -> void:
+	get_node("select").playing = true
+	$Background_Image/Player.player_heal_action()
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
+	players_turn = false
