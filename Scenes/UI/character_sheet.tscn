@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://jcu3o3spkgew" path="res://Audio/SFX/close-back.wav" id="11_b05b2"]
 
 [node name="CharacterSheet" type="CanvasLayer"]
-visible = false
+layer = 3
 script = ExtResource("1_8t5v5")
 
 [node name="MenuRect" type="NinePatchRect" parent="."]
@@ -56,6 +56,8 @@ stretch_mode = 0
 
 [node name="Inventory_Panel" parent="MenuRect" instance=ExtResource("7_0xlvb")]
 layout_mode = 1
+offset_top = 366.0
+offset_bottom = 524.0
 
 [node name="Equip_Panel" parent="MenuRect" instance=ExtResource("8_8hch5")]
 layout_mode = 1

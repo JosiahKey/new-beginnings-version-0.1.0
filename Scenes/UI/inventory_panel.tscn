@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dspadfqgqxia8" path="res://Scripts/UI/inventory_panel.gd" id="2_nlse4"]
 
 [node name="Inventory_Panel" type="NinePatchRect"]
-custom_minimum_size = Vector2(384, 128)
+custom_minimum_size = Vector2(384, 148)
 offset_left = 488.0
 offset_top = 376.0
 offset_right = 872.0
@@ -31,6 +31,6 @@ theme_override_constants/margin_bottom = 16
 [node name="Inventory_Grid" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = 12
-theme_override_constants/v_separation = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
 columns = 8

@@ -11,7 +11,7 @@ offset_bottom = 200.0
 script = ExtResource("1_gghw2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
+layer = 4
 
 [node name="Tooltip" type="NinePatchRect" parent="CanvasLayer"]
 unique_name_in_owner = true
