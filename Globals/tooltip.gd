@@ -13,12 +13,16 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 		if PlayerData.inv_data[slot]["Item"] != null and GameData.item_data.has(PlayerData.inv_data[slot]["Item"]):
 			item_id = PlayerData.inv_data[slot]["Item"]
 			valid = true
+			%Tooltip.show()
+			%Tooltip.position = Vector2i(slot_pos.position - Vector2i(328,200))
 		else:
 			valid = false
 	else: #origin equipment
 		if PlayerData.equipment_data[slot] != null and GameData.item_data.has(PlayerData.equipment_data[slot]):
 			item_id = PlayerData.equipment_data[slot]
 			valid = true
+			%Tooltip.show()
+			%Tooltip.position = Vector2i(slot_pos.position - Vector2i(308,200))
 		else:
 			valid = false
 	if valid:
@@ -51,8 +55,7 @@ func item_popup(slot_pos: Rect2i, slot: String, origin: String):
 					get_node("CanvasLayer/Tooltip/M/V/Stat" + str(ui_iterator) + "/Diff").text = "0       "
 					get_node("CanvasLayer/Tooltip/M/V/Stat" + str(ui_iterator) + "/Diff").add_theme_color_override("font_color", Color("003131ff"))
 				ui_iterator += 1
-		%Tooltip.show()
-		%Tooltip.position = Vector2i(slot_pos.position - Vector2i(328,200))
+		
 	else:
 		%Tooltip.hide()
 
@@ -72,6 +75,10 @@ func clear_text():
 	$CanvasLayer/Tooltip/M/V/Stat5/Diff.text = ""
 	$CanvasLayer/Tooltip/M/V/Stat6/Stat.text = ""
 	$CanvasLayer/Tooltip/M/V/Stat6/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat7/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat7/Diff.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat8/Stat.text = ""
+	$CanvasLayer/Tooltip/M/V/Stat8/Diff.text = ""
 
 func get_name_color(item_rarity: String) -> Color:
 	if(item_rarity == "common"):

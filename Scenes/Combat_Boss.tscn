@@ -507,5 +507,8 @@ stream = ExtResource("15_wyd8u")
 volume_db = -6.0
 bus = &"SFX"
 
+[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button" to="Combat" method="_on_action_button_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2" to="Combat" method="_on_action_button_2_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button3" to="Combat" method="_on_action_button_3_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]
 [connection signal="visibility_changed" from="Combat/Reward" to="Combat" method="_on_reward_visibility_changed"]

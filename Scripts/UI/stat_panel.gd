@@ -30,7 +30,7 @@ func _update_stat_panel():
 	spd_label.text = str(PlayerData.get_total_speed())
 	max_hp_label.text = str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(
 		PlayerData.stat_data["Total_hp"]))
-	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength())*10) + " - " + str(int(
+	dmg_label.text = str(int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()*10)) + " - " + str(int(
 						PlayerData.stat_data["Total_equipped_damage_max"]+ PlayerData.get_total_stength()*10))
 	weight_label.text = str(int(PlayerData.stat_data["Total_equipped_weight"]))
 	exp_bar_label.text = str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
