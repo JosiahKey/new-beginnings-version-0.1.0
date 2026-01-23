@@ -63,8 +63,10 @@ func check_for_levelup(experience: float = 0.0):
 	PlayerData.stat_data["Experience"] += experience
 	
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
+		var difference = PlayerData.stat_data["Experience"] - PlayerData.stat_data["Exp_to_next_level"]
 		PlayerData.stat_data["Level"] += 1
 		PlayerData.stat_data["Exp_to_next_level"] = float(int(600 * (PlayerData.stat_data["Level"] ** 2)-(600 * PlayerData.stat_data["Level"])))
+		PlayerData.stat_data["Experience"] = difference
 		exptween.tween_property(exp_bar, "value", exp_bar.max_value, 1.5).set_ease(Tween.EASE_OUT)
 		await exptween.finished
 		SignalBus.levelup.emit()

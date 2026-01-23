@@ -9,7 +9,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 1,
-	"EXP": 100,
+	"EXP": 150,
 	"Loot": 1
   },
   "10002": {
@@ -35,7 +35,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 6,
-	"EXP": 100,
+	"EXP": 150,
 	"Loot": 1
   },
   "10004": {
@@ -70,7 +70,7 @@
 	"Current_hp": 100,
 	"Damage_min": 10,
 	"Damage_max": 30,
-	"Accuracy": 65,
+	"Accuracy": 75,
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 8,
