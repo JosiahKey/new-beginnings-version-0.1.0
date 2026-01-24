@@ -15,6 +15,8 @@ extends CanvasLayer
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
 @onready var enemy_info := $Background_Image/Sub_Menus/Enemy_Panel/V
+@onready var banner_anim := $Background_Image/Turn_Banner/AnimationPlayer
+@onready var banner_label := $Background_Image/Turn_Banner/Label
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
@@ -92,8 +94,11 @@ func update_hp():
 
 func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
+		await get_tree().create_timer(0.5).timeout
 		players_turn = true
 		actions_container.visible = true
+		banner_label.text = "Player Turn"
+		banner_anim.play("fadeout")
 	else:
 		actions_container.visible = false
 

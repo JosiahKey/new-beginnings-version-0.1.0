@@ -6,4 +6,4 @@ extends Node
 ###would love to see a gamecontroller node that handles all inputs for this reason
 
 var state = ""
-var biome = ""
+var biome = "Plains"

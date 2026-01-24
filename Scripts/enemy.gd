@@ -3,7 +3,6 @@ extends Control
 @onready var sprite : AnimatedSprite2D
 @onready var hp_bar: TextureProgressBar
 @onready var emitter : GPUParticles2D
-@onready var enemy_turn_ind : GPUParticles2D
 @onready var selector: AnimatedSprite2D
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 
@@ -17,7 +16,6 @@ func _ready() -> void:
 	sprite = get_node("Enemy_Sprite")
 	hp_bar = get_node("Enemy_Hp")
 	emitter = get_node("Hit_Indicator")
-	enemy_turn_ind = get_node("Turn_Indicator")
 	selector = get_node("Enemy_Hp/Button/Container/Selector")
 
 func init():
@@ -32,13 +30,9 @@ func ready_enemy_turn():
 	sprite.play("default")
 	if CombatData.combatants_data[name]["Current_hp"] > 0:
 		SignalBus.turn_start.emit(name)
-		await get_tree().create_timer(0.5).timeout
-		enemy_turn_ind.visible = true
-		await get_tree().create_timer(1).timeout
 		enemy_action("attack")
 		await get_tree().create_timer(0.8).timeout
 		sprite.play("default")
-		enemy_turn_ind.visible = false
 	else:
 		self.visible = false
 		SignalBus.turn_start.emit(name)
@@ -73,7 +67,6 @@ func enemy_action(action:String):
 func roll_stat(stat: String) -> bool:
 	randomize()
 	var roll: int = randi_range(1,100)
-	print("enemy" + stat + "roll: " + str(roll) + "/ " + str(CombatData.combatants_data[name][stat]))
 	if roll <= CombatData.combatants_data[name][stat]:
 		return true
 	else:

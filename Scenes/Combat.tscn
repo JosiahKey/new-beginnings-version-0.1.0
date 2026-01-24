@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://byotebi1xyoe7"]
+[gd_scene load_steps=29 format=3 uid="uid://byotebi1xyoe7"]
 
 [ext_resource type="Script" uid="uid://b6il1p7psq2ex" path="res://Scripts/combat_engine.gd" id="1_cy1ba"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_lm3ry"]
@@ -70,6 +70,67 @@ scale_max = 2.0
 color = Color(0.8117647, 0.16862746, 0.21568628, 1)
 color_ramp = SubResource("GradientTexture1D_qsdwj")
 anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_cy1ba"]
+resource_name = "fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 3.999998),
+"update": 0,
+"values": [Color(0.62967473, 0.62967485, 0.62967455, 1), Color(0.62967473, 0.62967485, 0.62967455, 1), Color(0.6313726, 0.6313726, 0.6313726, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wpely"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6313726, 0.6313726, 0.6313726, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbh2q"]
+_data = {
+&"RESET": SubResource("Animation_wpely"),
+&"fadeout": SubResource("Animation_cy1ba")
+}
 
 [node name="Combat" type="Node2D"]
 process_mode = 1
@@ -489,6 +550,44 @@ bus = &"SFX"
 stream = ExtResource("10_khfr5")
 volume_db = -9.764
 bus = &"SFX"
+
+[node name="Turn_Banner" type="ColorRect" parent="Combat/Background_Image"]
+modulate = Color(0.6313726, 0.6313726, 0.6313726, 0)
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -240.0
+offset_right = -819.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 0.8627451)
+
+[node name="Label" type="Label" parent="Combat/Background_Image/Turn_Banner"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -20.0
+offset_right = 80.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 29
+text = "Player Turn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Combat/Background_Image/Turn_Banner"]
+libraries = {
+&"": SubResource("AnimationLibrary_kbh2q")
+}
+autoplay = "RESET"
 
 [node name="Reward" parent="Combat" instance=ExtResource("9_nm52r")]
 
