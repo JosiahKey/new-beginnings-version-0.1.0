@@ -31,6 +31,8 @@ func _process(_delta: float) -> void:
 		if !combat_finished:
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
+			if(GameState.biome == "Boss"):
+				GameState.biome = "Ruins"
 
 func enqueue(action: Callable):
 	action_queue.push_back(action)
