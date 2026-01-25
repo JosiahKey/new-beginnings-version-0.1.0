@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://c5yeuci4cfruq"]
+[gd_scene load_steps=4 format=4 uid="uid://c5yeuci4cfruq"]
 
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_svn12"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_ls5ny"]
-[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/chests/armor_chest.tscn" id="3_smuj1"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_v153m"]
 
 [node name="Level2" type="Node2D"]
@@ -22,12 +21,6 @@ next_level = "Level4"
 [node name="next_level2" parent="." instance=ExtResource("2_ls5ny")]
 position = Vector2(-24, 24)
 next_level = "Level1"
-
-[node name="interactable" parent="." instance=ExtResource("3_smuj1")]
-position = Vector2(248, 200)
-
-[node name="interactable2" parent="." instance=ExtResource("3_smuj1")]
-position = Vector2(168, -56)
 
 [node name="Player" parent="." instance=ExtResource("3_v153m")]
 position = Vector2(8, 24)

@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_ok4a3"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_8awh2"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_j58pu"]
-[ext_resource type="PackedScene" uid="uid://bghq5dipe8lag" path="res://Scenes/Templates/chests/armor_chest.tscn" id="4_is0u0"]
+[ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="5_8awh2"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_8awh2")
@@ -21,5 +21,7 @@ next_level = "Overworld_fromside"
 [node name="Player" parent="." instance=ExtResource("3_j58pu")]
 position = Vector2(-40, -24)
 
-[node name="interactable" parent="." instance=ExtResource("4_is0u0")]
+[node name="Chest" parent="." instance=ExtResource("5_8awh2")]
 position = Vector2(152, -40)
+rarity = ""
+type = "Jewelry"

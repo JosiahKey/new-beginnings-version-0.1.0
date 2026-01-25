@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1b533e8xok1"
-path="res://.godot/imported/chest.png-2f15ef20f9ea0e8e6f991f52ba477a1b.ctex"
+uid="uid://kjpb42w3stq0"
+path="res://.godot/imported/ring_epic.png-e3350d250361fc4fcb7566cd2aa9fc3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tile_assets/chest.png"
-dest_files=["res://.godot/imported/chest.png-2f15ef20f9ea0e8e6f991f52ba477a1b.ctex"]
+source_file="res://Assets/item_assets/ring_epic.png"
+dest_files=["res://.godot/imported/ring_epic.png-e3350d250361fc4fcb7566cd2aa9fc3c.ctex"]
 
 [params]
 

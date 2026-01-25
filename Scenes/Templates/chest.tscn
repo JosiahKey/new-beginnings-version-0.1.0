@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cya4pwohwa788"]
 
-[ext_resource type="Script" uid="uid://dnt5pblx8n8xw" path="res://Scripts/weapon_chest.gd" id="1_dv0lh"]
-[ext_resource type="Texture2D" uid="uid://bw517bsof53mt" path="res://Assets/tile_assets/weapon_chest.png" id="2_dv0lh"]
-[ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="3_utwcy"]
+[ext_resource type="Script" uid="uid://dnt5pblx8n8xw" path="res://Scripts/chest.gd" id="1_nv04r"]
+[ext_resource type="Texture2D" uid="uid://c1b533e8xok1" path="res://Assets/tile_assets/Armor_chest.png" id="2_xy74x"]
+[ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="3_vfuil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpm22"]
 size = Vector2(16, 16)
 
-[node name="WeaponChest" type="Area2D"]
+[node name="Chest" type="Area2D"]
 priority = 1
-script = ExtResource("1_dv0lh")
+script = ExtResource("1_nv04r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kpm22")
@@ -23,10 +23,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dv0lh")
+texture = ExtResource("2_xy74x")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_utwcy")
+stream = ExtResource("3_vfuil")
 volume_db = 3.192
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

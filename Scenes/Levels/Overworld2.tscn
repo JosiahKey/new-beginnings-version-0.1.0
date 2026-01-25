@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_ydu5t"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_0f4tk"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_ou03y"]
-[ext_resource type="PackedScene" uid="uid://3cb4sgkxpl3m" path="res://Scenes/Templates/chests/jewelry_chest.tscn" id="4_vu7l6"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="5_0f4tk"]
+[ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="6_ou03y"]
 
 [node name="Overworld2" type="Node2D"]
 script = ExtResource("1_ou03y")
@@ -28,9 +28,11 @@ position = Vector2(128, -968)
 scale = Vector2(12.039996, 1)
 next_level = "Overworld_fromtop"
 
-[node name="JewelryChest" parent="." instance=ExtResource("4_vu7l6")]
-position = Vector2(488, -1720)
-
 [node name="HealZone" parent="." instance=ExtResource("5_0f4tk")]
 position = Vector2(1048, -2208)
 scale = Vector2(3.986087, 1.5581474)
+
+[node name="Chest" parent="." instance=ExtResource("6_ou03y")]
+position = Vector2(424, -1752)
+rarity = "uncommon"
+type = "Weapon"

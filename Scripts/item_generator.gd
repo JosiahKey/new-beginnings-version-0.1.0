@@ -9,8 +9,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
 		generate_item("")
 
-func generate_item(type: String = ""):
-	var new_item = ItemGeneration(type)
+func generate_item(type: String = "", rarity: String = ""):
+	var new_item = ItemGeneration(type, rarity)
 	var item_id: int = new_item.keys()[0]
 	GameData.item_data.merge(new_item)
 	SignalBus.update_reward_item.emit(item_id)
@@ -21,11 +21,11 @@ func generate_item(type: String = ""):
 				SignalBus.item_added.emit()
 				break
 
-func ItemGeneration(type: String = "") -> Dictionary:
+func ItemGeneration(type: String = "", rarity: String = "") -> Dictionary:
 	var new_item: Dictionary = {}
 	var new_item_dict: Dictionary = {}
 	new_item["item_id"] = ItemDetermineType(type)
-	new_item["item_rarity"] = ItemDetermineRarity()
+	new_item["item_rarity"] = ItemDetermineRarity(rarity)
 	new_item["item_name"] = ItemDetermineName(new_item["item_id"], new_item["item_rarity"])
 	new_item["equipmentSlot"] = GameData.base_item_data[new_item["item_id"]]["equipmentSlot"]
 	new_item["Type"] = GameData.base_item_data[new_item["item_id"]]["Type"]
@@ -54,7 +54,9 @@ func ItemDetermineType(type: String = "") -> String:
 		new_item_type = specified_item_type[randi() % specified_item_type.size()]
 		return new_item_type
 
-func ItemDetermineRarity() -> String:
+func ItemDetermineRarity(rarity: String = "") -> String:
+	if rarity != "":
+		return rarity
 	var new_item_rarity: String
 	var item_rarities: Array = GameData.item_rarity_ditribution.keys()
 	randomize()
