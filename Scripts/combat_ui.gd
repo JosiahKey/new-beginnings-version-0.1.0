@@ -54,7 +54,10 @@ func combat_victory(experience: int, loot: int):
 	#reward popup + EXP gain animation
 	$Reward.visible = true
 	for l in loot:
-		SignalBus.item_generated.emit()
+		randomize()
+		var loot_roll = randi_range(1,100)
+		if loot_roll < 20:
+			SignalBus.item_generated.emit()
 	check_for_levelup(experience)
 	SignalBus.update_stat_panel.emit()
 

@@ -9,11 +9,8 @@ func _ready() -> void:
 	SignalBus.connect("reward", Callable(self, "show_reward"))
 	SignalBus.connect("game_over", Callable(self, "game_over"))
 
-func start_combat(type):
-	if type == "normal":
-		add_child(combat_scene.instantiate())
-	elif type == "Boss":
-		add_child(boss_scene.instantiate())
+func start_combat():
+	add_child(combat_scene.instantiate())
 
 func game_over():
 	get_tree().paused = true

@@ -16,6 +16,9 @@ func _ready() -> void:
 
 	generate_combatants()
 	roll_initiative()
+	
+	if(GameState.biome == "Boss"):
+		enemies.global_position += Vector2(40,-160)
 
 func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
@@ -29,6 +32,7 @@ func _process(_delta: float) -> void:
 		self.queue_free()
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
+			print("combat finished")
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 			if(GameState.biome == "Boss"):

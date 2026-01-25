@@ -91,7 +91,7 @@ func _on_encounter_timeout() -> void:
 	AudioManager.change_song_to_combat("pokemon")
 	SignalBus.combat_entered.emit()
 	await get_tree().create_timer(0.5).timeout
-	SignalBus.enemy_encountered.emit("normal")
+	SignalBus.enemy_encountered.emit()
 
 func pause_player():
 	randomize()

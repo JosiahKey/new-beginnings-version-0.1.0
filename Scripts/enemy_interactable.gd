@@ -7,5 +7,5 @@ func _on_next_level_entered(body):
 		SignalBus.combat_entered.emit()
 		await get_tree().create_timer(0.5).timeout
 		GameState.biome = "Boss"
-		SignalBus.enemy_encountered.emit("Boss")
+		SignalBus.enemy_encountered.emit()
 		queue_free()

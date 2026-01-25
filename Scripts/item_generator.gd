@@ -70,7 +70,6 @@ func ItemDetermineRarity(rarity: String = "") -> String:
 	return new_item_rarity
 
 func RandomizeStats(item: Dictionary) -> Dictionary:
-	print(item)
 	var result: Dictionary = item
 	var minimum_stats = 0
 	var item_stats = []
