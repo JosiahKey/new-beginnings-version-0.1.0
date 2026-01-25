@@ -19,13 +19,15 @@ var base_item_data = {}
 
 var item_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"] #Weight
 var item_stats_readable = ["Minimum Damage", "Maximum Damage", "Hit Chance", "Evasion", "Hp", "Armor", "Strength", "Speed"] #"Weight"
-var item_scaling_stats = ["Damage_min", "Damage_max", "Evasion", "Hp", "PDR", "Strength", "Speed"]
+var item_mitigation_stats = ["Evasion", "PDR"]
+var item_attribute_stats = ["Strength", "Speed"]
+var item_damage_stats = ["Damage_min", "Damage_max", "Hp"]
 var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
-var weapon_randomized_stats = ["Evasion", "Hp", "PDR", "Strength", "Speed"]
+var weapon_randomized_stats = ["Evasion", "PDR", "Strength", "Speed"]
 
-var item_rarity_ditribution = {"common": 80.0,
-	"uncommon": 15.0,
-	"rare": 3.0,
+var item_rarity_ditribution = {"common": 65.0,
+	"uncommon": 28.0,
+	"rare": 5.0,
 	"epic": 1.8,
 	"legendary": 0.2}
 

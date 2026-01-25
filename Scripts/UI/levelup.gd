@@ -14,26 +14,26 @@ func _input(event: InputEvent) -> void:
 		visible = true
 
 func _on_health_pressed() -> void:
-	label.text = "Max Health\n+50"
+	label.text = "Max Health\n+100"
 	choice = "Health"
 
 func _on_strength_pressed() -> void:
-	label.text = "Strength\n+1"
+	label.text = "Strength\n+2"
 	choice = "Strength"
 
 func _on_speed_pressed() -> void:
-	label.text = "Speed\n+1"
+	label.text = "Speed\n+2"
 	choice = "Speed"
 
 func _on_confirm_pressed() -> void:
 	PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 	if choice == "Health":
-		PlayerData.stat_data["Natural_hp"] += 50
-		PlayerData.stat_data["Current_hp"] += 50
+		PlayerData.stat_data["Natural_hp"] += 100
+		PlayerData.stat_data["Current_hp"] += 100
 	if choice == "Strength":
-		PlayerData.stat_data["Strength"] += 1
+		PlayerData.stat_data["Strength"] += 2
 	if choice == "Speed":
-		PlayerData.stat_data["Speed"] += 1
+		PlayerData.stat_data["Speed"] += 2
 
 	SignalBus.update_stat_panel.emit()
 	SignalBus.check_for_levelup.emit()
