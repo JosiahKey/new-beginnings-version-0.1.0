@@ -49,16 +49,25 @@ func get_total_speed() -> int:
 	return total
 
 func _load_inv_data():
-	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.READ)
-	var inv_data_json = JSON.parse_string(inv_data_file.get_as_text())
-	inv_data_file.close()
-	inv_data = inv_data_json
-	for k in inv_data.keys():
-		inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
+	if not FileAccess.file_exists("user://inv_data.json"):
+		var inv_data_file = FileAccess.open("res://Data/inv_data.json", FileAccess.READ)
+		var inv_data_json = JSON.parse_string(inv_data_file.get_as_text())
+		inv_data_file.close()
+		inv_data = inv_data_json
+		for k in inv_data.keys():
+			inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
+		_save_inv_data()
+	else:
+		var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.READ)
+		var inv_data_json = JSON.parse_string(inv_data_file.get_as_text())
+		inv_data_file.close()
+		inv_data = inv_data_json
+		for k in inv_data.keys():
+			inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
 
 
 func _save_inv_data():
-	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.READ)
+	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.WRITE)
 	var inv_data_json = JSON.stringify(inv_data)
 	inv_data_file.store_string(inv_data_json)
 	inv_data_file.close()
