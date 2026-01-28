@@ -1,7 +1,6 @@
 extends Control
 
 @onready var player_spr: AnimatedSprite2D = $Player_Sprite
-@onready var player_turn_ind :GPUParticles2D = $Player_Turn_Indicator
 @onready var emitter: GPUParticles2D = $Hit_Indicator
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 var player_stats: Dictionary = PlayerData.stat_data
@@ -16,7 +15,6 @@ func _ready() -> void:
 func ready_player_turn():
 	SignalBus.turn_start.emit(name)
 	player_spr.play("idle")
-	player_turn_ind.visible = true
 
 func player_attack_action():
 	var target_enemy = CombatData.selected_enemy
@@ -56,7 +54,6 @@ func player_heal_action():
 
 func player_finish_turn():
 	await player_spr.animation_finished
-	player_turn_ind.visible = false
 	player_spr.play("idle")
 	SignalBus.turn_finished.emit()
 
@@ -131,7 +128,6 @@ func on_heal(heal: int):
 	text.amount = adjusted_heal
 	text.type = "heal"
 	player_spr.add_child(text)
-	#vfx 1shot
 	await player_spr.animation_finished
 	player_spr.play("idle")
 	#$player_heal.playing = true

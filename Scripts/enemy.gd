@@ -107,7 +107,7 @@ func on_hit(damage):
 		$enemy_hit.playing = true
 		#check if dead
 		if CombatData.combatants_data[name]["Current_hp"] <= 0:
-			await get_tree().create_timer(1.0).timeout
+			await SignalBus.turn_finished
 			self.visible = false
 		await sprite.animation_finished
 		sprite.play("default")

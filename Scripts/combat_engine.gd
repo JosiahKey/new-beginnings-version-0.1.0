@@ -15,11 +15,10 @@ func _ready() -> void:
 	SignalBus.connect('combat_exited', Callable(self, "clean_up"))
 
 	generate_combatants()
-	await get_tree().create_timer(1.2).timeout
-	roll_initiative()
-	
 	if(GameState.biome == "Boss"):
 		enemies.global_position += Vector2(40,-160)
+	await get_tree().create_timer(1.2).timeout
+	roll_initiative()
 
 func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:

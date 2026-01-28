@@ -7,7 +7,6 @@ extends CanvasLayer
 @onready var armor_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Armor
 @onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
-@onready var player_turn_ind :GPUParticles2D = $Background_Image/Player/Player_Turn_Indicator
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
 @onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/Actions_Container
 @onready var damage_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/damage
