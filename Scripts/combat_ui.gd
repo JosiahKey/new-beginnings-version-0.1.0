@@ -19,6 +19,8 @@ extends CanvasLayer
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
+var num_of_heals = 3
+
 func _ready() -> void:
 	GameState.state = "Combat"
 	$Background_Image.texture = load("res://Assets/art_assets/battleback_"+ GameState.biome +".png")
@@ -134,11 +136,25 @@ func update_enemy_info():
 		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
 
 func _on_action_button_2_pressed() -> void:
-	get_node("select").playing = true
-	$Background_Image/Player.player_heal_action()
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
-	actions_container.visible = false
-	players_turn = false
+	var button = $Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2
+	var label = $Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2/Label
+	if num_of_heals > 1:
+		num_of_heals -= 1
+		label.text = "Heal - " + str(num_of_heals) + " left"
+		get_node("select").playing = true
+		$Background_Image/Player.player_heal_action()
+		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+		actions_container.visible = false
+		players_turn = false
+	else:
+		num_of_heals -= 1
+		label.text = "Heal - " + str(num_of_heals) + " left"
+		button.disabled = true
+		get_node("select").playing = true
+		$Background_Image/Player.player_heal_action()
+		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+		actions_container.visible = false
+		players_turn = false
 
 
 func _on_action_button_3_pressed() -> void:

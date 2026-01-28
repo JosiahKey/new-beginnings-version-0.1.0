@@ -17,7 +17,6 @@ func update_reward_items(item_id):
 	get_node("N/V/item_reward"+ str(ui_iterator) + "/Label/TextureRect").texture = load("res://Assets/item_assets/"+ item_name +".png")
 	get_node("N/V/item_reward"+ str(ui_iterator) + "/Label").text = GameData.item_data[item_id]["item_name"]
 	ui_iterator += 1
-	
 
 func _on_confirm_reward_pressed() -> void:
 	if(exp_finished_flag):

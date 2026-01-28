@@ -303,6 +303,7 @@ action_mode = 0
 texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
+texture_disabled = ExtResource("6_cy1ba")
 
 [node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2" unique_id=1232128544]
 layout_mode = 1
@@ -320,7 +321,7 @@ grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-text = "Heal"
+text = "Heal - 3 left"
 horizontal_alignment = 1
 
 [node name="action_button3" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Actions_Container" unique_id=132148017]
