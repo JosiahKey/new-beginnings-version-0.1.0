@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=28 format=3 uid="uid://d3wh3bj2hj5ht"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d3wh3bj2hj5ht"]
 
 [ext_resource type="Texture2D" uid="uid://bqdkfg1fk48dx" path="res://Assets/character_assets/demon-slime-Sheet.png" id="1_004j5"]
 
