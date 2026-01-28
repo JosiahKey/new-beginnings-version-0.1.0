@@ -10,7 +10,7 @@ var stat_data = {
 	"Bonus_strength": 0,
 	"Speed": 1,
 	"Bonus_speed": 0,
-	"Current_hp": 300,
+	"Current_hp": 200,
 	"Accuracy": 0,
 	"Evasion": 0,
 	"PDR": 0,

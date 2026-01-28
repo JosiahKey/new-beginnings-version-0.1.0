@@ -24,6 +24,7 @@ var item_attribute_stats = ["Strength", "Speed"]
 var item_damage_stats = ["Damage_min", "Damage_max", "Hp"]
 var item_randomized_stats = ["Damage_min", "Damage_max", "Accuracy", "Evasion", "Hp", "PDR", "Strength", "Speed"]
 var weapon_randomized_stats = ["Evasion", "PDR", "Strength", "Speed"]
+var common_randomized_stats = ["Damage_min", "Damage_max", "Evasion", "PDR", "Hp"]
 
 var item_rarity_ditribution = {"common": 65.0,
 	"uncommon": 28.0,

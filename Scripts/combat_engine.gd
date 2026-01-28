@@ -33,7 +33,6 @@ func _process(_delta: float) -> void:
 		self.queue_free()
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
-			print("combat finished")
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 			if(GameState.biome == "Boss"):
@@ -67,7 +66,6 @@ func roll_initiative():
 		else:
 			turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
 	turn_order.sort_custom(sort_descending)
-	print(turn_order)
 	for t in turn_order:
 		if t[0] == "player":
 			enqueue(Callable(player, "ready_player_turn"))

@@ -73,10 +73,16 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 	var result: Dictionary = item
 	var minimum_stats = 0
 	var item_stats = []
-	if(item["Type"] == "Weapon") or item["item_name"] == "dagger":
+	if(item["Type"] == "Weapon"):
 		for i in GameData.weapon_randomized_stats:
 			if item[i] != 0:
 				item_stats.append(i)
+	elif item["item_rarity"] == "common":
+		for i in GameData.common_randomized_stats:
+			if item[i] != 0:
+				item_stats.append(i)
+		item["Strength"] = 0
+		item["Speed"] = 0
 	else:
 		for i in GameData.item_randomized_stats:
 			if item[i] != 0:
@@ -84,12 +90,12 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 	
 	var total_number_of_stats = item_stats.size()
 	randomize()
-	if(item["item_rarity"] == "common"): minimum_stats = randi_range(1,2)
-	if(item["item_rarity"] == "uncommon"): minimum_stats = randi_range(2,3)
-	if(item["item_rarity"] == "rare"): minimum_stats = randi_range(3,4)
+	if(item["item_rarity"] == "common"): minimum_stats = 1
+	if(item["item_rarity"] == "uncommon"): minimum_stats = randi_range(1,2)
+	if(item["item_rarity"] == "rare"): minimum_stats = randi_range(2,3)
 	if(item["item_rarity"] == "epic"): minimum_stats = randi_range(4,5)
 	if(item["item_rarity"] == "legendary"): minimum_stats = randi_range(5,6)
-	if(item["Type"] == "Weapon") or item["item_name"] == "dagger": 
+	if(item["Type"] == "Weapon"): 
 			minimum_stats -= 1
 	while(total_number_of_stats > minimum_stats):
 		randomize()
