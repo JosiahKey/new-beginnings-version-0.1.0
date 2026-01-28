@@ -20,6 +20,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	max_hp_label.text = str(int(PlayerData.stat_data["Current_hp"]))+ " / " + str(int(
 		PlayerData.stat_data["Total_hp"]))
+	hp_bar.value = PlayerData.stat_data["Current_hp"]
 
 func _update_stat_panel():
 	PlayerData.stat_data["Total_hp"] = PlayerData.stat_data["Natural_hp"] + PlayerData.stat_data["Bonus_hp"]

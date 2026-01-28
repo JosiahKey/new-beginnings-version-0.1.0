@@ -61,7 +61,10 @@ func sort_descending(a, b):
 func roll_initiative():
 	var turn_order: Array[Array] = []
 	for c in CombatData.combatants_data.keys():
-		turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
+		if c == "player":
+			turn_order.push_front([c, int(PlayerData.get_total_speed())])
+		else:
+			turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
 	turn_order.sort_custom(sort_descending)
 	print(turn_order)
 	for t in turn_order:

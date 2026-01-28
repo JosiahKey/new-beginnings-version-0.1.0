@@ -18,7 +18,7 @@ func update_reward_item(item_id):
 			var stat_readable = GameData.item_stats_readable[i]
 			if GameData.item_data[item_id][stat_name] != 0:
 				var stat_value = GameData.item_data[item_id][stat_name]
-				get_node("N/V/item_stat" + str(ui_iterator)).text = stat_readable + ": +" + str(stat_value)
+				get_node("N/V/item_stat" + str(ui_iterator)).text = stat_readable + ": +" + str(int(stat_value))
 				ui_iterator += 1
 
 func _on_confirm_reward_pressed() -> void:
