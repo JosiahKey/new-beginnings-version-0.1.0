@@ -45,18 +45,18 @@ func _ready() -> void:
 
 func combat_victory(experience: int, loot: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
-	actions_container.visible = false
 	#play fanfare
 	AudioManager.pause()
 	get_node("fanfare").playing = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.0).timeout
 	#victory dance
 	#reward popup + EXP gain animation
 	$Reward.visible = true
+	actions_container.visible = false
 	for l in loot:
 		randomize()
 		var loot_roll = randi_range(1,100)
-		if loot_roll < 20:
+		if loot_roll < 30:
 			SignalBus.item_generated.emit()
 	check_for_levelup(experience)
 	SignalBus.update_stat_panel.emit()
