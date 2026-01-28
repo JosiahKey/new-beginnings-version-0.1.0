@@ -15,6 +15,7 @@ func _ready() -> void:
 	SignalBus.connect('combat_exited', Callable(self, "clean_up"))
 
 	generate_combatants()
+	await get_tree().create_timer(1.2).timeout
 	roll_initiative()
 	
 	if(GameState.biome == "Boss"):
