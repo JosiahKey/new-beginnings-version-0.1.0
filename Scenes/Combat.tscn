@@ -281,6 +281,8 @@ custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+tooltip_text = "this is some sample text
+i hope it goes well"
 action_mode = 0
 texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
@@ -422,83 +424,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "All In"
 horizontal_alignment = 1
-
-[node name="Info_Panels" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel" unique_id=144075751]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -73.0
-offset_right = 124.0
-offset_bottom = 73.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="Confirm" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels" unique_id=1155190251]
-custom_minimum_size = Vector2(248, 42)
-layout_mode = 2
-texture = ExtResource("2_lm3ry")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="H" type="HBoxContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm" unique_id=1909626965]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="back" type="Button" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H" unique_id=1366355233]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "back"
-
-[node name="confirm_btn" type="Button" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H" unique_id=1575963225]
-layout_mode = 2
-size_flags_vertical = 4
-text = "confirm"
-
-[node name="Info" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels" unique_id=1861480476]
-custom_minimum_size = Vector2(248, 100)
-layout_mode = 2
-texture = ExtResource("2_lm3ry")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info" unique_id=1810994605]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -38.5
-offset_right = 55.0
-offset_bottom = 38.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="damage" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer" unique_id=1448523847]
-layout_mode = 2
-text = "<damage range>"
-
-[node name="hit_chance" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer" unique_id=1995710480]
-layout_mode = 2
-text = "<chance to hit>"
 
 [node name="Enemy_Panel" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=1817255766]
 custom_minimum_size = Vector2(256, 128)
@@ -659,7 +584,5 @@ bus = &"SFX"
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button3" to="Combat" method="_on_action_button_3_pressed"]
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4" to="Combat" method="_on_action_button_4_pressed"]
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5" to="Combat" method="_on_action_button_5_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/back" to="Combat" method="_on_back_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/Info_Panels/Confirm/H/confirm_btn" to="Combat" method="_on_confirm_btn_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]
 [connection signal="visibility_changed" from="Combat/Reward" to="Combat" method="_on_reward_visibility_changed"]

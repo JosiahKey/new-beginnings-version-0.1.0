@@ -48,6 +48,15 @@ func get_total_speed() -> int:
 	var total = stat_data["Speed"] + stat_data["Bonus_speed"]
 	return total
 
+func get_min_damage() -> int:
+	return int(stat_data["Total_equipped_damage_min"] + get_total_stength()*10)
+
+func get_max_damage() -> int:
+	return int(stat_data["Total_equipped_damage_min"] + get_total_stength()*10)
+
+func get_total_hp() -> int:
+	return int(stat_data["Total_hp"])
+
 func _load_inv_data():
 	if not FileAccess.file_exists("user://inv_data.json"):
 		var dir = DirAccess.open("user://")

@@ -9,13 +9,17 @@ extends CanvasLayer
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
 @onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container
-@onready var damage_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/damage
-@onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
 @onready var enemy_info := $Background_Image/Sub_Menus/Enemy_Panel/V
 @onready var banner_anim := $Background_Image/Turn_Banner/AnimationPlayer
 @onready var banner_label := $Background_Image/Turn_Banner/Label
+@onready var action1 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button
+@onready var action2 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2
+@onready var action3 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button3
+@onready var action4 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4
+@onready var action5 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5
+
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
@@ -31,10 +35,6 @@ func _ready() -> void:
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	
-	damage_label.text = "Damage: "+ str(
-		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()*10)) + "-" + str(
-		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()*10))
-	hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
@@ -43,6 +43,21 @@ func _ready() -> void:
 	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
 	armor_label.text = "Armor: " + str(int(PlayerData.stat_data["PDR"])) + "%"
 	evasion_label.text = "Evasion: " + str(int(PlayerData.stat_data["Evasion"])) + "%"
+	set_tooltips()
+
+func set_tooltips():
+	action1.tooltip_text = "Attack one enemy once... or twice..."\
+	+ "\nDamage: " + str(PlayerData.get_min_damage()) + "-" + str(PlayerData.get_max_damage())\
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
+	action2.tooltip_text = "Recover HP \nHeal: 20% (" + str(int(PlayerData.get_total_hp()*0.2))\
+	+ ") - 25% (" + str(int(PlayerData.get_total_hp()*0.25)) + ") Max HP"
+	action3.tooltip_text = "Attack all enemies once for 1/3 damage"\
+	+ "\nDamage: " + str(int(PlayerData.get_min_damage()/3.0)) + "-" + str(int(PlayerData.get_max_damage()/3.0))\
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
+	action4.tooltip_text = "Don't do it you coward"
+	action5.tooltip_text = "Attack one enemy once for 2x damage with half accuracy"\
+	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]/2.0)) + "%"
 
 func combat_victory(experience: int, loot: int):
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
@@ -83,14 +98,6 @@ func check_for_levelup(experience: float = 0.0):
 	await exptween.finished
 	SignalBus.exp_finished.emit()
 
-
-func _on_confirm_btn_pressed() -> void:
-	get_node("select").playing = true
-	$Background_Image/Player.player_attack_action()
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
-	actions_container.visible = false
-	players_turn = false
-
 func update_hp():
 	var tween = get_tree().create_tween()
 	tween.tween_property(hp_bar, "value", PlayerData.stat_data["Current_hp"], 0.5)
@@ -105,17 +112,6 @@ func toggle_action_ui(combatant: String = ""):
 		banner_anim.play("fadeout")
 	else:
 		actions_container.visible = false
-
-func _on_back_pressed() -> void:
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
-
-func _on_action_button_pressed() -> void:
-	if players_turn== true:
-		damage_label.text = "Damage: "+ str(
-		int(PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength()*10)) + "-" + str(
-		int(PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength()*10))
-		hit_label.text = "Chance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
-		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = true
 
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:
@@ -133,8 +129,13 @@ func update_enemy_info():
 	for i in range(0,enemies.size()):
 		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
 
+func _on_action_button_pressed() -> void:
+	get_node("select").playing = true
+	$Background_Image/Player.player_attack_action()
+	actions_container.visible = false
+	players_turn = false
+
 func _on_action_button_2_pressed() -> void:
-	var button = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2
 	var label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
 	if num_of_heals > 1:
 		num_of_heals -= 1
@@ -144,34 +145,24 @@ func _on_action_button_2_pressed() -> void:
 		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 		actions_container.visible = false
 		players_turn = false
-	else:
-		num_of_heals -= 1
-		label.text = "Heal - " + str(num_of_heals) + " left"
-		button.disabled = true
-		get_node("select").playing = true
-		$Background_Image/Player.player_heal_action()
-		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
-		actions_container.visible = false
-		players_turn = false
+	if num_of_heals <= 0:
+		action2.disabled = true
 
 
 func _on_action_button_3_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_aoe_action()
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	actions_container.visible = false
 	players_turn = false
 
 func _on_action_button_4_pressed() -> void:
 	get_node("select").playing = true
-	$Background_Image/Player.player_run_action()
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	$Background_Image/Player.player_all_in_action()
 	actions_container.visible = false
 	players_turn = false
 
 func _on_action_button_5_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_all_in_action()
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	actions_container.visible = false
 	players_turn = false

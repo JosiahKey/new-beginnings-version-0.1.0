@@ -37,6 +37,7 @@ CombatData="*res://Globals/combat_data.gd"
 window/size/viewport_width=1080
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+mouse_cursor/tooltip_position_offset=Vector2(20, -20)
 
 [global_group]
 
@@ -45,6 +46,10 @@ PlayerCursor=""
 Any="any biome"
 Plains="plains biome"
 Woods="woods biome"
+
+[gui]
+
+timers/tooltip_delay_sec=0.0
 
 [input]
 
