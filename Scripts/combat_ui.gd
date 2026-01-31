@@ -120,9 +120,7 @@ func _on_action_button_pressed() -> void:
 func _on_reward_visibility_changed() -> void:
 	if $Reward.visible == false:
 		GameState.state = ""
-		#fade out
 		SignalBus.combat_exited.emit()
-		#cleanup
 		self.queue_free()
 
 func update_enemy_info():
@@ -165,7 +163,11 @@ func _on_action_button_3_pressed() -> void:
 	players_turn = false
 
 func _on_action_button_4_pressed() -> void:
-	pass # Replace with function body.
+	get_node("select").playing = true
+	$Background_Image/Player.player_run_action()
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
+	players_turn = false
 
 func _on_action_button_5_pressed() -> void:
 	get_node("select").playing = true

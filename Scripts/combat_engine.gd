@@ -22,11 +22,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
-		AudioManager.pause()
-		AudioManager.change_to_precombat_song()
-		GameState.state = ""
-		#fade out
-		SignalBus.combat_exited.emit()
+		clean_up()
 		PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 		self.queue_free()
 		SignalBus.load_area_entered.emit("Home")
@@ -117,6 +113,9 @@ func combat_action(method: String, arg: Variant, action: String):
 			selected_mult_enemies.clear()
 
 func clean_up():
+	AudioManager.pause()
+	AudioManager.change_to_precombat_song()
+	GameState.state = ""
 	action_queue = []
 	selected_enemy = null
 	combat_finished = false

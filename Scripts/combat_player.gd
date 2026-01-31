@@ -72,6 +72,9 @@ func player_all_in_action():
 			SignalBus.combat_action.emit("on_miss", 0, "attack")
 	player_finish_turn()
 
+func player_run_action():
+	SignalBus.combat_exited.emit()
+
 func player_finish_turn():
 	await player_spr.animation_finished
 	player_spr.play("idle")
