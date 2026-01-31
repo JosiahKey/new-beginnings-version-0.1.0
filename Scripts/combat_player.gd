@@ -52,6 +52,26 @@ func player_heal_action():
 	on_heal(heal_roll)
 	player_finish_turn()
 
+func player_all_in_action():
+	PlayerData.stat_data["Current_hp"] = 1
+	#update hp label
+	SignalBus.player_hp_changed.emit()
+	var target_enemy = CombatData.selected_enemy
+	target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
+	action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
+	
+	if(action_points <= 0): action_points = 1
+	for a in action_points:
+		await get_tree().create_timer(0.7).timeout
+		player_spr.play("attack")
+		await get_tree().create_timer(0.3).timeout
+		SignalBus.enemy_selected.emit(target_enemy)
+		if roll_stat("Accuracy", true) == true: #half accuracy flag set to true
+			SignalBus.combat_action.emit("on_hit", roll_damage() * 2, "attack") #double damage
+		else:
+			SignalBus.combat_action.emit("on_miss", 0, "attack")
+	player_finish_turn()
+
 func player_finish_turn():
 	await player_spr.animation_finished
 	player_spr.play("idle")
@@ -63,13 +83,19 @@ func roll_damage() -> int:
 	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
 	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
 
-func roll_stat(stat: String) -> bool:
+func roll_stat(stat: String, half_accuracy: bool = false) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if roll >= PlayerData.stat_data[stat]:
-		return false
+	if stat == "Accuracy" and half_accuracy == true:
+		if roll >= PlayerData.stat_data[stat]/2:
+			return false
+		else:
+			return true
 	else:
-		return true
+		if roll >= PlayerData.stat_data[stat]:
+			return false
+		else:
+			return true
 
 func on_hit(damage: int):
 	if(roll_stat("Evasion")):

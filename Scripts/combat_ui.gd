@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
-@onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/Actions_Container
+@onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container
 @onready var damage_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/damage
 @onready var hit_label := $Background_Image/Sub_Menus/Action_Panel/Info_Panels/Info/VBoxContainer/hit_chance
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
@@ -136,8 +136,8 @@ func update_enemy_info():
 		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
 
 func _on_action_button_2_pressed() -> void:
-	var button = $Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2
-	var label = $Background_Image/Sub_Menus/Action_Panel/Actions_Container/action_button2/Label
+	var button = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2
+	var label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
 	if num_of_heals > 1:
 		num_of_heals -= 1
 		label.text = "Heal - " + str(num_of_heals) + " left"
@@ -160,6 +160,16 @@ func _on_action_button_2_pressed() -> void:
 func _on_action_button_3_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_aoe_action()
+	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
+	actions_container.visible = false
+	players_turn = false
+
+func _on_action_button_4_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_action_button_5_pressed() -> void:
+	get_node("select").playing = true
+	$Background_Image/Player.player_all_in_action()
 	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	actions_container.visible = false
 	players_turn = false

@@ -24,12 +24,12 @@ func _process(_delta: float) -> void:
 	if PlayerData.stat_data["Current_hp"] <= 0:
 		AudioManager.pause()
 		AudioManager.change_to_precombat_song()
-		SignalBus.load_area_entered.emit("Home")
 		GameState.state = ""
 		#fade out
 		SignalBus.combat_exited.emit()
 		PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
 		self.queue_free()
+		SignalBus.load_area_entered.emit("Home")
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
