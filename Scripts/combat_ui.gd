@@ -56,7 +56,8 @@ func set_tooltips():
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()/3.0)) + "-" + str(int(PlayerData.get_max_damage()/3.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	action4.tooltip_text = "Don't do it you coward"
-	action5.tooltip_text = "Attack one enemy once for 2x damage with half accuracy"\
+	action5.tooltip_text = "Reduces HP to 1"\
+	+ "\nAttack one enemy once for 2x damage with half accuracy"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]/2.0)) + "%"
 
@@ -95,6 +96,7 @@ func check_for_levelup(experience: float = 0.0):
 	else:
 		exptween.tween_property(exp_bar, "value", newexp, 1.0).set_ease(Tween.EASE_OUT)
 	
+	level_label.text = "Level " + str(PlayerData.stat_data["Level"])
 	await exptween.finished
 	SignalBus.exp_finished.emit()
 
