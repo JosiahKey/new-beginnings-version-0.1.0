@@ -113,7 +113,7 @@ func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	elif GameData.item_attribute_stats.has(stat):
 		stat_value = randi_range(1,2) * int(GameData.base_item_data[item_id][stat])
 	elif GameData.item_damage_stats.has(stat):
-		stat_value = (ceili(randf_range(0.5, 1.5) * GameData.base_item_data[item_id][stat])) * GameData.base_item_data[item_id][item_rarity + "Multi"]
+		stat_value = (ceili(randf_range(0.8, 1.2) * GameData.base_item_data[item_id][stat])) * GameData.base_item_data[item_id][item_rarity + "Multi"]
 	else:
 		stat_value = GameData.base_item_data[item_id][stat]
 	return stat_value
