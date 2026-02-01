@@ -1,10 +1,10 @@
 {
   "10001": {
 	"enemy_name": "green_slime",
-	"Max_hp": 100,
-	"Current_hp": 100,
-	"Damage_min": 15,
-	"Damage_max": 25,
+	"Max_hp": 120,
+	"Current_hp": 120,
+	"Damage_min": 20,
+	"Damage_max": 30,
 	"Accuracy": 90,
 	"Evasion": 5,
 	"PDR": 0,
