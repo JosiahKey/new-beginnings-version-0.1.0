@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
 [ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
 [ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="10_s7a1o"]
-[ext_resource type="AudioStream" uid="uid://dymxemro140n1" path="res://Audio/SFX/fanfare.mp3" id="11_ym1s2"]
 
 [sub_resource type="Gradient" id="Gradient_mi7to"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
@@ -571,11 +570,6 @@ bus = &"SFX"
 
 [node name="select" type="AudioStreamPlayer" parent="Combat" unique_id=809260623]
 stream = ExtResource("10_s7a1o")
-volume_db = -6.0
-bus = &"SFX"
-
-[node name="fanfare" type="AudioStreamPlayer" parent="Combat" unique_id=721265631]
-stream = ExtResource("11_ym1s2")
 volume_db = -6.0
 bus = &"SFX"
 

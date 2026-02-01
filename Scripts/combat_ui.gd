@@ -1,9 +1,7 @@
 extends CanvasLayer
 
 @onready var hp_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
-@onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
 @onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
-@onready var level_label: Label = $Reward/N/V/exp_reward/Lvl_Text/stat_label
 @onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
 @onready var armor_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Armor
 @onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
@@ -30,8 +28,6 @@ func _ready() -> void:
 	GameState.state = "Combat"
 	$Background_Image.texture = load("res://Assets/art_assets/battleback_"+ GameState.biome +".png")
 
-	SignalBus.connect("combat_victory", Callable(self, "combat_victory"))
-	SignalBus.connect("check_for_levelup", Callable(self, "check_for_levelup")) 
 	SignalBus.connect("turn_start", Callable(self, "toggle_action_ui"))
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
@@ -39,8 +35,6 @@ func _ready() -> void:
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
-	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
-	exp_bar.value = PlayerData.stat_data["Experience"]
 	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
 	armor_label.text = "Armor: " + str(int(PlayerData.stat_data["PDR"])) + "%"
 	evasion_label.text = "Evasion: " + str(int(PlayerData.stat_data["Evasion"])) + "%"
@@ -60,45 +54,6 @@ func set_tooltips():
 	+ "\nAttack one enemy once for 2x damage with half accuracy"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]/2.0)) + "%"
-
-func combat_victory(experience: int, loot: int):
-	#play fanfare
-	AudioManager.pause()
-	get_node("fanfare").playing = true
-	await get_tree().create_timer(1.0).timeout
-	#victory dance
-	#reward popup + EXP gain animation
-	level_label.text = "Level " + str(PlayerData.stat_data["Level"])
-	$Reward.visible = true
-	actions_container.visible = false
-	for l in loot:
-		randomize()
-		var loot_roll = randi_range(1,100)
-		if loot_roll < 30:
-			SignalBus.item_generated.emit()
-	check_for_levelup(experience)
-	SignalBus.update_stat_panel.emit()
-
-func check_for_levelup(experience: float = 0.0):
-	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
-	var exptween = get_tree().create_tween()
-	var newexp = PlayerData.stat_data["Experience"] + experience
-	PlayerData.stat_data["Experience"] += experience
-	
-	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
-		var difference = PlayerData.stat_data["Experience"] - PlayerData.stat_data["Exp_to_next_level"]
-		PlayerData.stat_data["Level"] += 1
-		PlayerData.stat_data["Exp_to_next_level"] = float(int(600 * (PlayerData.stat_data["Level"] ** 2)-(600 * PlayerData.stat_data["Level"])))
-		PlayerData.stat_data["Experience"] = difference
-		exptween.tween_property(exp_bar, "value", exp_bar.max_value, 1.5).set_ease(Tween.EASE_OUT)
-		await exptween.finished
-		SignalBus.levelup.emit()
-	else:
-		exptween.tween_property(exp_bar, "value", newexp, 1.0).set_ease(Tween.EASE_OUT)
-	
-	level_label.text = "Level " + str(PlayerData.stat_data["Level"])
-	await exptween.finished
-	SignalBus.exp_finished.emit()
 
 func update_hp():
 	var tween = get_tree().create_tween()

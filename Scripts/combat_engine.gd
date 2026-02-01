@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 		SignalBus.load_area_entered.emit("Home")
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
+			$Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container.visible = false
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 			if(GameState.biome == "Boss"):
