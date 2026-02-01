@@ -94,23 +94,14 @@ func generate_combatants():
 func select_enemy(enemy: Control):
 	selected_enemy = enemy
 
-func combat_action(method: String, arg: Variant, action: String):
-	match action:
-		"attack":
-			if selected_enemy.visible == false:
-				for e in enemies.get_children():
-					if e.visible == true:
-						selected_enemy = e
-			if arg != null:
-				Callable(selected_enemy, method).call(arg)
-		"aoe":
-			for e in enemies.get_children():
-				if e.visible == true:
-					selected_mult_enemies.append(e)
-			for s in selected_mult_enemies:
-				if arg != null:
-					Callable(s, method).call(arg)
-			selected_mult_enemies.clear()
+func combat_action(method: String, arg: Variant):
+	if selected_enemy.visible == false:
+		for e in enemies.get_children():
+			if e.visible == true:
+				selected_enemy = e
+	if arg != null:
+		Callable(selected_enemy, method).call(arg)
+
 
 func clean_up():
 	AudioManager.pause()
