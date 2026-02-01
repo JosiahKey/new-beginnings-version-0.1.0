@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var hp_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
 @onready var exp_bar: TextureProgressBar = $Reward/N/V/exp_reward/expbar
 @onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
+@onready var level_label: Label = $Reward/N/V/exp_reward/Lvl_Text/stat_label
 @onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
 @onready var armor_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Armor
 @onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
@@ -66,6 +67,7 @@ func combat_victory(experience: int, loot: int):
 	await get_tree().create_timer(1.0).timeout
 	#victory dance
 	#reward popup + EXP gain animation
+	level_label.text = "Level " + str(PlayerData.stat_data["Level"])
 	$Reward.visible = true
 	actions_container.visible = false
 	for l in loot:
@@ -92,7 +94,6 @@ func check_for_levelup(experience: float = 0.0):
 		SignalBus.levelup.emit()
 	else:
 		exptween.tween_property(exp_bar, "value", newexp, 1.0).set_ease(Tween.EASE_OUT)
-	$Reward/N/V/exp_reward/Lvl_Text/stat_label.text = "Level " + str(PlayerData.stat_data["Level"])
 	
 	await exptween.finished
 	SignalBus.exp_finished.emit()
