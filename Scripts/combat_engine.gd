@@ -82,7 +82,7 @@ func generate_combatants():
 	if max_enemies == 1:
 		rand = 1
 	else:
-		rand = randi_range(2,max_enemies)
+		rand = max_enemies #randi_range(2,max_enemies)
 	
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
@@ -121,7 +121,3 @@ func clean_up():
 	combat_finished = false
 	CombatData.clear_data()
 	self.queue_free()
-
-
-func _on_action_button_2_pressed() -> void:
-	pass # Replace with function body.

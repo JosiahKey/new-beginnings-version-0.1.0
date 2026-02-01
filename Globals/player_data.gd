@@ -52,7 +52,7 @@ func get_min_damage() -> int:
 	return int(stat_data["Total_equipped_damage_min"] + get_total_stength()*10)
 
 func get_max_damage() -> int:
-	return int(stat_data["Total_equipped_damage_min"] + get_total_stength()*10)
+	return int(stat_data["Total_equipped_damage_max"] + get_total_stength()*10)
 
 func get_total_hp() -> int:
 	return int(stat_data["Total_hp"])

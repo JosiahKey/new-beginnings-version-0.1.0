@@ -60,7 +60,6 @@ func set_tooltips():
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]/2.0)) + "%"
 
 func combat_victory(experience: int, loot: int):
-	$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 	#play fanfare
 	AudioManager.pause()
 	get_node("fanfare").playing = true
@@ -137,12 +136,11 @@ func _on_action_button_pressed() -> void:
 
 func _on_action_button_2_pressed() -> void:
 	var label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
-	if num_of_heals > 1:
+	if num_of_heals >= 1:
 		num_of_heals -= 1
 		label.text = "Heal - " + str(num_of_heals) + " left"
 		get_node("select").playing = true
 		$Background_Image/Player.player_heal_action()
-		$Background_Image/Sub_Menus/Action_Panel/Info_Panels.visible = false
 		actions_container.visible = false
 		players_turn = false
 	if num_of_heals <= 0:
@@ -157,7 +155,7 @@ func _on_action_button_3_pressed() -> void:
 
 func _on_action_button_4_pressed() -> void:
 	get_node("select").playing = true
-	$Background_Image/Player.player_all_in_action()
+	$Background_Image/Player.player_run_action()
 	actions_container.visible = false
 	players_turn = false
 
