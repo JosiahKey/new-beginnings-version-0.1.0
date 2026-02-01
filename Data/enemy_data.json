@@ -70,7 +70,7 @@
 	"Current_hp": 220,
 	"Damage_min": 10,
 	"Damage_max": 30,
-	"Accuracy": 75,
+	"Accuracy": 85,
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 12,
