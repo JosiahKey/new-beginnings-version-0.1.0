@@ -80,7 +80,13 @@ func player_all_in_action():
 	player_finish_turn()
 
 func player_run_action():
-	SignalBus.combat_exited.emit()
+	randomize()
+	var roll = randi_range(1,100)
+	if roll > 50:
+		SignalBus.combat_exited.emit()
+	else:
+		on_miss()
+		player_finish_turn()
 
 func player_finish_turn():
 	await player_spr.animation_finished
