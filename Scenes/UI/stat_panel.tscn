@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2726ljvtct3q"]
+[gd_scene format=3 uid="uid://2726ljvtct3q"]
 
 [ext_resource type="Texture2D" uid="uid://cxo6u81p07oa8" path="res://Assets/gui_assets/main_panel_2.png" id="1_pvx7h"]
 [ext_resource type="Script" uid="uid://cohlc0ajtk8di" path="res://Scripts/UI/stat_panel.gd" id="2_ld0t3"]
@@ -28,7 +28,7 @@ colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wqaui"]
 gradient = SubResource("Gradient_rr5wj")
 
-[node name="Stat_Panel" type="NinePatchRect"]
+[node name="Stat_Panel" type="NinePatchRect" unique_id=310271862]
 custom_minimum_size = Vector2(384, 256)
 offset_right = 384.0
 offset_bottom = 256.0
@@ -40,7 +40,7 @@ patch_margin_bottom = 12
 script = ExtResource("2_ld0t3")
 metadata/_edit_lock_ = true
 
-[node name="M" type="MarginContainer" parent="."]
+[node name="M" type="MarginContainer" parent="." unique_id=2010922065]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,23 +52,23 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="V" type="VBoxContainer" parent="M"]
+[node name="V" type="VBoxContainer" parent="M" unique_id=672200321]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="Stat_Grid" type="GridContainer" parent="M/V"]
+[node name="Stat_Grid" type="GridContainer" parent="M/V" unique_id=1097170375]
 layout_mode = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 12
 columns = 4
 
-[node name="Health_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Health_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=2058150330]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Health_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Health_Text" unique_id=2143583191]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -77,12 +77,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Health"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Health_Points_Bar" type="TextureProgressBar" parent="M/V/Stat_Grid"]
+[node name="Health_Points_Bar" type="TextureProgressBar" parent="M/V/Stat_Grid" unique_id=1773318064]
 z_index = 1
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
@@ -91,7 +92,7 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_pvx7h")
 texture_progress = SubResource("GradientTexture1D_paqma")
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Health_Points_Bar"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Health_Points_Bar" unique_id=1024902111]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
 anchors_preset = 15
@@ -104,12 +105,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Accuracy_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Accuracy_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1969680146]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Accuracy_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Accuracy_Text" unique_id=1962173416]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -118,17 +119,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Accuracy"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Accuracy_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Accuracy_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1910643882]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Accuracy_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Accuracy_Stat_Label" unique_id=858873223]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,12 +142,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Evasion_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Evasion_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=446847905]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Evasion_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Evasion_Text" unique_id=296848884]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -154,17 +156,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Evasion"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Evasion_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Evasion_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1389057778]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Evasion_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Evasion_Stat_Label" unique_id=603168082]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,12 +179,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="PDR_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="PDR_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=561037658]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/PDR_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/PDR_Text" unique_id=1661919721]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -190,17 +193,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Armor"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="PDR_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="PDR_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=510163141]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/PDR_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/PDR_Stat_Label" unique_id=765601737]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -212,12 +216,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Strength_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Strength_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1720641689]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Strength_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Strength_Text" unique_id=1126199665]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -226,17 +230,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Strength"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Strength_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Strength_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=582158732]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Strength_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Strength_Stat_Label" unique_id=761235490]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,12 +253,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Speed_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Speed_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1913393196]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Speed_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Speed_Text" unique_id=1368730835]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -262,17 +267,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Speed"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Speed_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Speed_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1162801893]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Speed_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Speed_Stat_Label" unique_id=1853368923]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,12 +290,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Weight_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Weight_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1626632928]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Weight_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Weight_Text" unique_id=314902093]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -298,17 +304,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Weight"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Weight_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Weight_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1941909695]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Weight_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Weight_Stat_Label" unique_id=2109499499]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,12 +327,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Damage_Text" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Damage_Text" type="ColorRect" parent="M/V/Stat_Grid" unique_id=1230668753]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 1)
 
-[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Damage_Text"]
+[node name="stat_label" type="Label" parent="M/V/Stat_Grid/Damage_Text" unique_id=1853785570]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -334,17 +341,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Damage_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid"]
+[node name="Damage_Stat_Label" type="ColorRect" parent="M/V/Stat_Grid" unique_id=175182118]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0.34509805)
 
-[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Damage_Stat_Label"]
+[node name="stat_num" type="Label" parent="M/V/Stat_Grid/Damage_Stat_Label" unique_id=446680360]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -356,11 +364,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="H" type="HBoxContainer" parent="M/V"]
+[node name="H" type="HBoxContainer" parent="M/V" unique_id=883276278]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Level" type="NinePatchRect" parent="M/V/H"]
+[node name="Level" type="NinePatchRect" parent="M/V/H" unique_id=529741765]
 custom_minimum_size = Vector2(72, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -370,7 +378,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="M/V/H/Level"]
+[node name="Label" type="Label" parent="M/V/H/Level" unique_id=913029784]
 texture_filter = 5
 layout_mode = 1
 anchors_preset = 8
@@ -391,12 +399,12 @@ theme_override_font_sizes/font_size = 22
 text = "1"
 horizontal_alignment = 1
 
-[node name="Exp_Text" type="ColorRect" parent="M/V/H"]
+[node name="Exp_Text" type="ColorRect" parent="M/V/H" unique_id=1809101264]
 custom_minimum_size = Vector2(37.685, 32)
 layout_mode = 2
 color = Color(0.09019608, 0.14901961, 0.07058824, 0)
 
-[node name="stat_label" type="Label" parent="M/V/H/Exp_Text"]
+[node name="stat_label" type="Label" parent="M/V/H/Exp_Text" unique_id=270206726]
 z_as_relative = false
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 1
@@ -405,12 +413,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 text = "EXP"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Exp_Bar" type="TextureProgressBar" parent="M/V/H"]
+[node name="Exp_Bar" type="TextureProgressBar" parent="M/V/H" unique_id=10060797]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
@@ -422,7 +431,7 @@ stretch_margin_right = 100
 texture_under = SubResource("GradientTexture1D_fyws4")
 texture_progress = SubResource("GradientTexture1D_wqaui")
 
-[node name="exp_bar_label" type="Label" parent="M/V/H/Exp_Bar"]
+[node name="exp_bar_label" type="Label" parent="M/V/H/Exp_Bar" unique_id=101964659]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -16,6 +16,7 @@ extends NinePatchRect
 func _ready() -> void:
 	SignalBus.connect("update_stat_panel", Callable(self, "_update_stat_panel"))
 	_update_stat_panel()
+	set_tooltips()
 
 func _process(_delta: float) -> void:
 	max_hp_label.text = str(int(PlayerData.stat_data["Current_hp"]))+ " / " + str(int(
@@ -40,3 +41,14 @@ func _update_stat_panel():
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
 	lvl_label.text = str(PlayerData.stat_data["Level"])
+
+func set_tooltips():
+	$M/V/Stat_Grid/Health_Text/stat_label.tooltip_text = "Maximum HP\n When you reach 0 it's Game Over"
+	$M/V/Stat_Grid/Accuracy_Text/stat_label.tooltip_text = "Chance To Hit an enemy when you attack\nNote: this does not account\nfor enemy evasion chance"
+	$M/V/Stat_Grid/Evasion_Text/stat_label.tooltip_text = "Chance to Evade an enemy's attack"
+	$M/V/Stat_Grid/PDR_Text/stat_label.tooltip_text = "Armor reduces all incoming\ndamage by this percentage"
+	$M/V/Stat_Grid/Strength_Text/stat_label.tooltip_text = "Strength increases your minimum and\nmaximum damage by 10 per point"
+	$M/V/Stat_Grid/Speed_Text/stat_label.tooltip_text = "Speed determines how many\ntimes you attack and which\ncombatant strikes first.\nYour Speed must be 4 higher\nthan your target to attack twice."
+	$M/V/Stat_Grid/Weight_Text/stat_label.tooltip_text = "NOT IMPLEMENTED YET\nit will restrict your speed\nand be mitigated by strength"
+	$M/V/Stat_Grid/Damage_Text/stat_label.tooltip_text = "When you attack you will deal damage within this range"
+	$M/V/H/Exp_Text/stat_label.tooltip_text = "Experience Points are needed to level\nup and gain additional stats"

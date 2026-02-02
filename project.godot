@@ -37,7 +37,7 @@ CombatData="*res://Globals/combat_data.gd"
 window/size/viewport_width=1080
 window/size/viewport_height=720
 window/stretch/mode="viewport"
-mouse_cursor/tooltip_position_offset=Vector2(20, -20)
+mouse_cursor/tooltip_position_offset=Vector2(10, -20)
 
 [global_group]
 
