@@ -3,11 +3,17 @@ extends Area2D
 @onready var sprite_ref := $TextureRect
 @export var rarity: String = ""
 @export var type: String = ""
+const TYPES = ["Weapon", "Armor", "Jewelry"]
 var in_range: bool = false
 var collected: bool = false
 
 func _ready() -> void:
-	sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
+	if type == "":
+		randomize()
+		type = TYPES[randi_range(0,TYPES.size()-1)]
+		sprite_ref.texture = load("res://Assets/tile_assets/Armor_chest.png")
+	else:
+		sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):

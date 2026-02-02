@@ -30,7 +30,7 @@ func player_attack_action():
 		if roll_stat("Accuracy") == true:
 			SignalBus.combat_action.emit("on_hit", roll_damage())
 		else:
-			SignalBus.combat_action.emit("on_miss", 0, "attack")
+			SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
 func player_aoe_action():
