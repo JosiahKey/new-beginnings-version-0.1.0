@@ -40,15 +40,15 @@
   },
   "10004": {
 	"enemy_name": "wasp",
-	"Max_hp": 100,
-	"Current_hp": 100,
+	"Max_hp": 50,
+	"Current_hp": 50,
 	"Damage_min": 10,
-	"Damage_max": 30,
-	"Accuracy": 65,
-	"Evasion": 5,
+	"Damage_max": 20,
+	"Accuracy": 80,
+	"Evasion": 25,
 	"PDR": 0,
-	"Speed": 1,
-	"EXP": 50,
+	"Speed": 13,
+	"EXP": 500,
 	"Loot": 1
   },
   "10005": {
@@ -74,7 +74,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 12,
-	"EXP": 500,
+	"EXP": 600,
 	"Loot": 1
   },
   "10007": {
@@ -100,20 +100,20 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 14,
-	"EXP": 3000,
+	"EXP": 4000,
 	"Loot": 3
   },
   "10009": {
 	"enemy_name": "werewolf",
-	"Max_hp": 100,
-	"Current_hp": 100,
-	"Damage_min": 10,
-	"Damage_max": 30,
-	"Accuracy": 65,
+	"Max_hp": 500,
+	"Current_hp": 500,
+	"Damage_min": 50,
+	"Damage_max": 80,
+	"Accuracy": 50,
 	"Evasion": 5,
 	"PDR": 0,
-	"Speed": 1,
-	"EXP": 50,
+	"Speed": 8,
+	"EXP": 2000,
 	"Loot": 2
   },
   "10010": {
@@ -126,7 +126,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 5,
-	"EXP": 2000,
+	"EXP": 3000,
 	"Loot": 2
   },
   "10011": {

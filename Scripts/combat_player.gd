@@ -60,7 +60,10 @@ func player_heal_action():
 	player_finish_turn()
 
 func player_all_in_action():
-	PlayerData.stat_data["Current_hp"] = 1
+	if (PlayerData.stat_data["Current_hp"] - PlayerData.stat_data["Total_hp"]*0.2) >= 1:
+		PlayerData.stat_data["Current_hp"] -= PlayerData.stat_data["Total_hp"]*0.2
+	else:
+		PlayerData.stat_data["Current_hp"] = 1
 	#update hp label
 	SignalBus.player_hp_changed.emit()
 	var target_enemy = CombatData.selected_enemy
@@ -74,9 +77,9 @@ func player_all_in_action():
 		await get_tree().create_timer(0.3).timeout
 		SignalBus.enemy_selected.emit(target_enemy)
 		if roll_stat("Accuracy", true) == true: #half accuracy flag set to true
-			SignalBus.combat_action.emit("on_hit", roll_damage() * 2, "attack") #double damage
+			SignalBus.combat_action.emit("on_hit", roll_damage() * 2) #double damage
 		else:
-			SignalBus.combat_action.emit("on_miss", 0, "attack")
+			SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
 func player_run_action():
@@ -86,6 +89,7 @@ func player_run_action():
 		SignalBus.combat_exited.emit()
 	else:
 		on_miss()
+		player_spr.play("attack")
 		player_finish_turn()
 
 func player_finish_turn():
@@ -97,13 +101,13 @@ func roll_damage() -> int:
 	randomize()
 	return randi_range(\
 	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
-	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
+	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10) - 1
 
-func roll_stat(stat: String, half_accuracy: bool = false) -> bool:
+func roll_stat(stat: String, reduced_accuracy: bool = false) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if stat == "Accuracy" and half_accuracy == true:
-		if roll >= PlayerData.stat_data[stat]/2:
+	if stat == "Accuracy" and reduced_accuracy == true:
+		if roll >= PlayerData.stat_data[stat]-20:
 			return false
 		else:
 			return true

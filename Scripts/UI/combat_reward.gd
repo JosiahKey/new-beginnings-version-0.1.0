@@ -31,6 +31,7 @@ func combat_victory(experience: int, loot: int):
 	exp_text.text = "+"+str(experience)
 	self.visible = true
 	for l in loot:
+		print("loot roll")
 		randomize()
 		var loot_roll = randi_range(1,100)
 		if loot_roll < 30:

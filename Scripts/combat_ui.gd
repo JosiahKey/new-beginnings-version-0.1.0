@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var heal_label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
 @onready var hp_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
 @onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
 @onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
@@ -22,7 +23,7 @@ extends CanvasLayer
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
 
-var num_of_heals = 3
+var num_of_heals = 2
 
 func _ready() -> void:
 	GameState.state = "Combat"
@@ -32,6 +33,7 @@ func _ready() -> void:
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	
+	heal_label.text = "Heal - " + str(num_of_heals) + " left"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
@@ -50,10 +52,10 @@ func set_tooltips():
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()/3.0)) + "-" + str(int(PlayerData.get_max_damage()/3.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	action4.tooltip_text = "Don't do it you coward"
-	action5.tooltip_text = "Reduces HP to 1"\
-	+ "\nAttack one enemy once for 2x damage with half accuracy"\
+	action5.tooltip_text = "Reduces HP by 20% of max HP"\
+	+ "\nAttack one enemy once for 2x damage with 20% less accuracy"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
-	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]/2.0)) + "%"
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-20)) + "%"
 
 func update_hp():
 	var tween = get_tree().create_tween()
@@ -93,10 +95,9 @@ func _on_action_button_pressed() -> void:
 	players_turn = false
 
 func _on_action_button_2_pressed() -> void:
-	var label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
 	if num_of_heals >= 1:
 		num_of_heals -= 1
-		label.text = "Heal - " + str(num_of_heals) + " left"
+		heal_label.text = "Heal - " + str(num_of_heals) + " left"
 		get_node("select").playing = true
 		$Background_Image/Player.player_heal_action()
 		actions_container.visible = false
