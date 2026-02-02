@@ -4,6 +4,7 @@ extends Control
 @onready var hp_bar: TextureProgressBar
 @onready var emitter : GPUParticles2D
 @onready var selector: AnimatedSprite2D
+@onready var button:= $Enemy_Hp/Button
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 
 var dead_flag = false
@@ -25,6 +26,7 @@ func init():
 	hp_bar.max_value = CombatData.combatants_data[name]["Max_hp"]
 	hp_bar.value = CombatData.combatants_data[name]["Max_hp"]
 	CombatData.combatants_data[name]["Current_hp"] = CombatData.combatants_data[name]["Max_hp"]
+	button.tooltip_text = GameData.get_readable_enemy_info(CombatData.combatants_data[name])
 
 func ready_enemy_turn():
 	sprite.play("default")

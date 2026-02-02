@@ -84,3 +84,13 @@ func generate_enemy() -> Dictionary:
 			result = enemy_data[f]
 	
 	return result
+
+func get_readable_enemy_info(enemy: Dictionary) -> String:
+	var output_string = enemy["enemy_name"] + "
+	HP: " + str(int(enemy["Current_hp"])) + "
+	Damage: " + str(int(enemy["Damage_min"])) + "-" + str(int(enemy["Damage_max"])) + "
+	Hit Chance: " + str(int(enemy["Accuracy"])) + "%
+	Evade Chance: " + str(int(enemy["Evasion"])) + "%
+	Armor: " + str(int(enemy["PDR"])) + "
+	Speed: " + str(int(enemy["Speed"]))
+	return output_string

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://bpwmim1g1j6xx"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bpwmim1g1j6xx"]
 
 [ext_resource type="Texture2D" uid="uid://cmvex2vgb00wb" path="res://Assets/character_assets/red-ogre-Sheet.png" id="1_imete"]
 

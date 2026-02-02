@@ -474,6 +474,7 @@ offset_left = 566.0
 offset_top = 373.0
 offset_right = 1047.0
 offset_bottom = 435.0
+mouse_filter = 0
 alignment = 2
 
 [node name="Player" type="Control" parent="Combat/Background_Image" unique_id=40468200]
