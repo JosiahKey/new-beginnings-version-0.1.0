@@ -169,6 +169,8 @@ func on_heal(heal: int):
 		PlayerData.stat_data["Current_hp"] += heal
 	#update hp label
 	SignalBus.player_hp_changed.emit()
+	#sfx
+	$player_heal.playing = true
 	#floating text
 	var text = floating_text.instantiate()
 	text.amount = adjusted_heal
@@ -176,7 +178,7 @@ func on_heal(heal: int):
 	player_spr.add_child(text)
 	await player_spr.animation_finished
 	player_spr.play("idle")
-	#$player_heal.playing = true
+	
 
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

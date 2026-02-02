@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
 [ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
 [ext_resource type="AudioStream" uid="uid://bxc03ed7q2rm7" path="res://Audio/SFX/accept-select.wav" id="10_s7a1o"]
+[ext_resource type="AudioStream" uid="uid://cs76cljh7ateh" path="res://Audio/SFX/heal.wav" id="13_cy1ba"]
 
 [sub_resource type="Gradient" id="Gradient_mi7to"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
@@ -516,8 +517,13 @@ stream = ExtResource("9_snhto")
 volume_db = -2.922
 bus = &"SFX"
 
-[node name="player_miss" type="AudioStreamPlayer" parent="Combat/Background_Image/Player" unique_id=875012986 groups=["Plains"]]
+[node name="player_miss" type="AudioStreamPlayer" parent="Combat/Background_Image/Player" unique_id=875012986]
 stream = ExtResource("10_khfr5")
+volume_db = -9.764
+bus = &"SFX"
+
+[node name="player_heal" type="AudioStreamPlayer" parent="Combat/Background_Image/Player" unique_id=161417122]
+stream = ExtResource("13_cy1ba")
 volume_db = -9.764
 bus = &"SFX"
 
