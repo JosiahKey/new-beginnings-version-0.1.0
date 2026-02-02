@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_ok4a3"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_8awh2"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_j58pu"]
+[ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="5_8awh2"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="6_j58pu"]
 
 [node name="Level1" type="Node2D" unique_id=1520943422]
@@ -24,3 +25,36 @@ position = Vector2(-664, 888)
 [node name="HealZone" parent="." unique_id=1541330013 instance=ExtResource("6_j58pu")]
 position = Vector2(-728, 840)
 scale = Vector2(2.399995, 2.3999999)
+
+[node name="Chest" parent="." unique_id=685858449 instance=ExtResource("5_8awh2")]
+position = Vector2(-792, 424)
+
+[node name="Chest2" parent="." unique_id=596900727 instance=ExtResource("5_8awh2")]
+position = Vector2(-712, 24)
+
+[node name="Chest3" parent="." unique_id=1489131882 instance=ExtResource("5_8awh2")]
+position = Vector2(-232, 216)
+
+[node name="Chest4" parent="." unique_id=1528712993 instance=ExtResource("5_8awh2")]
+position = Vector2(-104, -24)
+
+[node name="Chest5" parent="." unique_id=1396106161 instance=ExtResource("5_8awh2")]
+position = Vector2(-72, -24)
+
+[node name="Chest6" parent="." unique_id=443488553 instance=ExtResource("5_8awh2")]
+position = Vector2(-40, -24)
+
+[node name="Chest7" parent="." unique_id=806305180 instance=ExtResource("5_8awh2")]
+position = Vector2(200, 472)
+
+[node name="Chest8" parent="." unique_id=1808097005 instance=ExtResource("5_8awh2")]
+position = Vector2(680, 376)
+
+[node name="Chest9" parent="." unique_id=988500919 instance=ExtResource("5_8awh2")]
+position = Vector2(328, -264)
+
+[node name="Chest10" parent="." unique_id=1579090051 instance=ExtResource("5_8awh2")]
+position = Vector2(344, -264)
+
+[node name="Chest11" parent="." unique_id=2014838222 instance=ExtResource("5_8awh2")]
+position = Vector2(360, -264)

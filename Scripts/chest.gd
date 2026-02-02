@@ -11,9 +11,7 @@ func _ready() -> void:
 	if type == "":
 		randomize()
 		type = TYPES[randi_range(0,TYPES.size()-1)]
-		sprite_ref.texture = load("res://Assets/tile_assets/Armor_chest.png")
-	else:
-		sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
+	sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):
