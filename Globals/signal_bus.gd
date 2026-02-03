@@ -92,3 +92,9 @@ signal num_enemies_changed
 #levelup to combatreward
 @warning_ignore("unused_signal")
 signal exp_finished
+#combat_engine to equip_panel
+@warning_ignore("unused_signal")
+signal player_died
+#equip_panel to combat_engine
+@warning_ignore("unused_signal")
+signal gameover_item_deleted

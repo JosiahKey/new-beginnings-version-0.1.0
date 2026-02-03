@@ -70,7 +70,6 @@ func _load_inv_data():
 		for k in inv_data.keys():
 			inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
 
-
 func _save_inv_data():
 	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.WRITE)
 	var inv_data_json = JSON.stringify(inv_data)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bo5qufg8u75ox"]
+[gd_scene format=3 uid="uid://bo5qufg8u75ox"]
 
 [ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
 [ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Scripts/UI/equip_panel.gd" id="2_h71av"]
@@ -31,7 +31,7 @@ draw_center = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jhxf"]
 draw_center = false
 
-[node name="Equip_Panel" type="NinePatchRect"]
+[node name="Equip_Panel" type="NinePatchRect" unique_id=1253132426]
 custom_minimum_size = Vector2(320, 448)
 offset_left = 88.0
 offset_top = 64.0
@@ -45,7 +45,7 @@ patch_margin_right = 25
 patch_margin_bottom = 36
 script = ExtResource("2_h71av")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2085987119]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -63,7 +63,7 @@ patch_margin_right = 8
 patch_margin_bottom = 2
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="NinePatchRect"]
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=2028469115]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,7 +80,7 @@ theme_override_colors/font_color = Color(0.300985, 0.33972, 0.161804, 1)
 text = "Equipment"
 metadata/_edit_lock_ = true
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=800570701]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,257 +98,257 @@ theme_override_constants/v_separation = 15
 columns = 2
 metadata/_edit_lock_ = true
 
-[node name="Head" type="TextureRect" parent="GridContainer"]
+[node name="Head" type="TextureRect" parent="GridContainer" unique_id=961040780]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("4_7lqjh")
 
-[node name="Head" type="PanelContainer" parent="GridContainer/Head"]
+[node name="Head" type="PanelContainer" parent="GridContainer/Head" unique_id=131053505]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Head/Head"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Head/Head" unique_id=585776165]
 layout_mode = 2
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Head/Head"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Head/Head" unique_id=263350788]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Shoulders" type="TextureRect" parent="GridContainer"]
+[node name="Shoulders" type="TextureRect" parent="GridContainer" unique_id=1541237703]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("6_srij6")
 
-[node name="Shoulders" type="PanelContainer" parent="GridContainer/Shoulders"]
+[node name="Shoulders" type="PanelContainer" parent="GridContainer/Shoulders" unique_id=366937396]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpgkg")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Shoulders/Shoulders"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Shoulders/Shoulders" unique_id=1273876171]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Shoulders/Shoulders"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Shoulders/Shoulders" unique_id=15345058]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Neck" type="TextureRect" parent="GridContainer"]
+[node name="Neck" type="TextureRect" parent="GridContainer" unique_id=1777932795]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("7_xifeu")
 
-[node name="Neck" type="PanelContainer" parent="GridContainer/Neck"]
+[node name="Neck" type="PanelContainer" parent="GridContainer/Neck" unique_id=1757922487]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g71uc")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Neck/Neck"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Neck/Neck" unique_id=93586978]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 expand_mode = 1
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Neck/Neck"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Neck/Neck" unique_id=996923155]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Chest" type="TextureRect" parent="GridContainer"]
+[node name="Chest" type="TextureRect" parent="GridContainer" unique_id=35228621]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("8_2bf2l")
 
-[node name="Chest" type="PanelContainer" parent="GridContainer/Chest"]
+[node name="Chest" type="PanelContainer" parent="GridContainer/Chest" unique_id=392978465]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i4ujh")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Chest/Chest"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Chest/Chest" unique_id=1701155542]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Chest/Chest"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Chest/Chest" unique_id=1290600245]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Mainhand" type="TextureRect" parent="GridContainer"]
+[node name="Mainhand" type="TextureRect" parent="GridContainer" unique_id=1852669482]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("9_555pk")
 
-[node name="Mainhand" type="PanelContainer" parent="GridContainer/Mainhand"]
+[node name="Mainhand" type="PanelContainer" parent="GridContainer/Mainhand" unique_id=255190075]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Mainhand/Mainhand"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Mainhand/Mainhand" unique_id=250675249]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Mainhand/Mainhand"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Mainhand/Mainhand" unique_id=772293996]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Offhand" type="TextureRect" parent="GridContainer"]
+[node name="Offhand" type="TextureRect" parent="GridContainer" unique_id=859000673]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("10_26kvj")
 
-[node name="Offhand" type="PanelContainer" parent="GridContainer/Offhand"]
+[node name="Offhand" type="PanelContainer" parent="GridContainer/Offhand" unique_id=1159774228]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Offhand/Offhand"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Offhand/Offhand" unique_id=1244606556]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Offhand/Offhand"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Offhand/Offhand" unique_id=862695132]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Ring1" type="TextureRect" parent="GridContainer"]
+[node name="Ring1" type="TextureRect" parent="GridContainer" unique_id=721176336]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("11_8ufpo")
 
-[node name="Ring1" type="PanelContainer" parent="GridContainer/Ring1"]
+[node name="Ring1" type="PanelContainer" parent="GridContainer/Ring1" unique_id=178055713]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Ring1/Ring1"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Ring1/Ring1" unique_id=174549889]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Ring1/Ring1"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Ring1/Ring1" unique_id=284985051]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Arms" type="TextureRect" parent="GridContainer"]
+[node name="Arms" type="TextureRect" parent="GridContainer" unique_id=41532978]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("12_57vyr")
 
-[node name="Arms" type="PanelContainer" parent="GridContainer/Arms"]
+[node name="Arms" type="PanelContainer" parent="GridContainer/Arms" unique_id=144820249]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Arms/Arms"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Arms/Arms" unique_id=2147201703]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Arms/Arms"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Arms/Arms" unique_id=861848927]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Waist" type="TextureRect" parent="GridContainer"]
+[node name="Waist" type="TextureRect" parent="GridContainer" unique_id=321972207]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("12_etgwp")
 
-[node name="Waist" type="PanelContainer" parent="GridContainer/Waist"]
+[node name="Waist" type="PanelContainer" parent="GridContainer/Waist" unique_id=1408951746]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Waist/Waist"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Waist/Waist" unique_id=248576239]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Waist/Waist"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Waist/Waist" unique_id=1164222721]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Legs" type="TextureRect" parent="GridContainer"]
+[node name="Legs" type="TextureRect" parent="GridContainer" unique_id=2055226754]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("13_15rjk")
 
-[node name="Legs" type="PanelContainer" parent="GridContainer/Legs"]
+[node name="Legs" type="PanelContainer" parent="GridContainer/Legs" unique_id=2133092244]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Legs/Legs"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Legs/Legs" unique_id=1287095090]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Legs/Legs"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Legs/Legs" unique_id=351412491]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="Feet" type="TextureRect" parent="GridContainer"]
+[node name="Feet" type="TextureRect" parent="GridContainer" unique_id=1535761139]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 texture = ExtResource("14_6qtr7")
 
-[node name="Feet" type="PanelContainer" parent="GridContainer/Feet"]
+[node name="Feet" type="PanelContainer" parent="GridContainer/Feet" unique_id=1129965569]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4jhxf")
 
-[node name="Icon" type="TextureRect" parent="GridContainer/Feet/Feet"]
+[node name="Icon" type="TextureRect" parent="GridContainer/Feet/Feet" unique_id=1648085101]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("5_emeak")
 
-[node name="Highlight" type="NinePatchRect" parent="GridContainer/Feet/Feet"]
+[node name="Highlight" type="NinePatchRect" parent="GridContainer/Feet/Feet" unique_id=484132641]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_cet54")
 
-[node name="equip" type="AudioStreamPlayer" parent="."]
+[node name="equip" type="AudioStreamPlayer" parent="." unique_id=1757196557]
 stream = ExtResource("15_h2ivs")
 volume_db = 1.011
 bus = &"SFX"

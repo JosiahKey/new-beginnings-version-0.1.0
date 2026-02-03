@@ -6,6 +6,7 @@ func _ready() -> void:
 	SignalBus.connect("item_equipped", Callable(self, "_update_equipped_stats"))
 	SignalBus.connect("highlight_slot", Callable(self, "highlight_slot"))
 	SignalBus.connect("unhighlight_slot", Callable(self, "unhighlight_slot"))
+	SignalBus.connect("player_died", Callable(self, "delete_random_item"))
 	PlayerData.stat_data["Total_equipped_weight"] = 0
 	PlayerData.stat_data["Total_equipped_damage_min"] = 0
 	PlayerData.stat_data["Total_equipped_damage_max"] = 0
@@ -37,8 +38,8 @@ func _update_equipped_stats():
 
 #no mainhand equipped
 	if PlayerData.equipment_data["Mainhand"] == 0:
-		PlayerData.stat_data["Total_equipped_damage_min"] = 1
-		PlayerData.stat_data["Total_equipped_damage_max"] = 1
+		PlayerData.stat_data["Total_equipped_damage_min"] = 0
+		PlayerData.stat_data["Total_equipped_damage_max"] = 0
 		PlayerData.stat_data["Accuracy"] = 100
 
 	for i in PlayerData.equipment_data.keys():
@@ -64,9 +65,9 @@ func _update_equipped_stats():
 	
 	#if weapon has no damage
 	if PlayerData.stat_data["Total_equipped_damage_min"] == 0:
-		PlayerData.stat_data["Total_equipped_damage_min"] = 1
+		PlayerData.stat_data["Total_equipped_damage_min"] = 0
 	if PlayerData.stat_data["Total_equipped_damage_max"] == 0:
-		PlayerData.stat_data["Total_equipped_damage_max"] = 1
+		PlayerData.stat_data["Total_equipped_damage_max"] = 0
 	
 	#if min damage is too high
 	if PlayerData.stat_data["Total_equipped_damage_min"] > PlayerData.stat_data["Total_equipped_damage_max"]:
@@ -82,3 +83,17 @@ func highlight_slot(slot: String):
 
 func unhighlight_slot(slot: String):
 	get_node("GridContainer/" + slot + "/" + slot + "/Highlight").visible = false
+
+func delete_random_item():
+	var equipped_items = []
+	for k in PlayerData.equipment_data.keys():
+		if PlayerData.equipment_data[k] != 0:
+			equipped_items.append(k)
+	if equipped_items.size()-1 >= 0:
+		randomize()
+		var i = randi_range(0, equipped_items.size()-1)
+		PlayerData.equipment_data[equipped_items[i]] = 0
+		_update_equipped_items()
+		_update_equipped_stats()
+		SignalBus.gameover_item_deleted.emit(grid_ref.get_node(equipped_items[i]+ "/" + equipped_items[i] + "/Icon").texture)
+		grid_ref.get_node(equipped_items[i]+ "/" + equipped_items[i] + "/Icon").texture = null

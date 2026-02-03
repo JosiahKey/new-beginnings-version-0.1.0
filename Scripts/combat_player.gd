@@ -101,7 +101,7 @@ func roll_damage() -> int:
 	randomize()
 	return randi_range(\
 	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
-	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10) - 1
+	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
 
 func roll_stat(stat: String, reduced_accuracy: bool = false) -> bool:
 	randomize()
