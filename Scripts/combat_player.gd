@@ -107,7 +107,7 @@ func roll_stat(stat: String, reduced_accuracy: bool = false) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
 	if stat == "Accuracy" and reduced_accuracy == true:
-		if roll >= PlayerData.stat_data[stat]-20:
+		if roll >= PlayerData.stat_data[stat]-5:
 			return false
 		else:
 			return true

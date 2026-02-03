@@ -606,6 +606,7 @@ theme_override_font_sizes/font_size = 22
 text = "Your "
 
 [node name="Texture_Rect" type="TextureRect" parent="Combat/GameOver/ColorRect/VBoxContainer/HBoxContainer" unique_id=174892455]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("14_wpely")
 
