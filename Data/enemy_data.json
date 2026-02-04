@@ -16,8 +16,8 @@
 	"enemy_name": "purple_slime",
 	"Max_hp": 280,
 	"Current_hp": 280,
-	"Damage_min": 30,
-	"Damage_max": 50,
+	"Damage_min": 35,
+	"Damage_max": 55,
 	"Accuracy": 90,
 	"Evasion": 5,
 	"PDR": 0,
@@ -45,7 +45,7 @@
 	"Damage_min": 10,
 	"Damage_max": 20,
 	"Accuracy": 80,
-	"Evasion": 25,
+	"Evasion": 20,
 	"PDR": 0,
 	"Speed": 13,
 	"EXP": 500,
@@ -74,7 +74,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 12,
-	"EXP": 600,
+	"EXP": 800,
 	"Loot": 1
   },
   "10007": {
@@ -87,7 +87,7 @@
 	"Evasion": 15,
 	"PDR": 0,
 	"Speed": 11,
-	"EXP": 1000,
+	"EXP": 2000,
 	"Loot": 1
   },
   "10008": {
@@ -100,7 +100,7 @@
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 14,
-	"EXP": 4000,
+	"EXP": 6000,
 	"Loot": 3
   },
   "10009": {
@@ -122,7 +122,7 @@
 	"Current_hp": 700,
 	"Damage_min": 50,
 	"Damage_max": 100,
-	"Accuracy": 50,
+	"Accuracy": 60,
 	"Evasion": 5,
 	"PDR": 0,
 	"Speed": 5,
