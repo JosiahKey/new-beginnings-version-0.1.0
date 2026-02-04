@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://uomdeh2vx4y3"]
+
+[ext_resource type="Script" uid="uid://e6a027xwk3rq" path="res://Scripts/UI/quest_reward.gd" id="1_qbi37"]
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_8qfcy"]
+
+[node name="QuestReward" type="CanvasLayer" unique_id=567832847]
+process_mode = 3
+layer = 2
+script = ExtResource("1_qbi37")
+
+[node name="N" type="NinePatchRect" parent="." unique_id=330929522]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8qfcy")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="N" unique_id=1844528493]
+custom_minimum_size = Vector2(320, 261)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -165.0
+offset_right = 160.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="V" type="VBoxContainer" parent="N/ScrollContainer" unique_id=1009500830]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="confirm_reward" type="Button" parent="N" unique_id=622505951]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = -56.0
+offset_right = 262.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Leave"
+
+[connection signal="pressed" from="N/confirm_reward" to="." method="_on_confirm_reward_pressed"]

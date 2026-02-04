@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="7_uvsdt"]
 [ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/boss_interactable.tscn" id="8_vfw3i"]
+[ext_resource type="PackedScene" uid="uid://byuypvtfev2ix" path="res://Scenes/Templates/npc.tscn" id="9_l62pr"]
 
 [node name="LevelHome" type="Node2D" unique_id=1759322811]
 script = ExtResource("1_l62pr")
@@ -28,15 +29,16 @@ next_level = "Overworld_fromhome"
 position = Vector2(-64, -184.00002)
 scale = Vector2(11.119999, 7.182379)
 
-[node name="Chest" parent="." unique_id=1657578153 instance=ExtResource("7_uvsdt")]
-position = Vector2(120, -424)
-rarity = "common"
-type = "Weapon"
-
 [node name="Chest3" parent="." unique_id=1638587771 instance=ExtResource("7_uvsdt")]
 position = Vector2(248, -232)
 rarity = "common"
-type = "Armor"
+type = "Weapon"
 
 [node name="enemy_interactable" parent="." unique_id=1605016964 instance=ExtResource("8_vfw3i")]
 position = Vector2(-152, -504)
+
+[node name="NPC" parent="." unique_id=685858449 instance=ExtResource("9_l62pr")]
+position = Vector2(120, -424)
+rarity = "common"
+type = "Armor"
+quantity = 5

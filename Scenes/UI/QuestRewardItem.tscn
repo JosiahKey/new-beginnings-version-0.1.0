@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bt4pbyfo0vkr5"]
+
+[ext_resource type="Script" uid="uid://cccfsbuococ56" path="res://Scripts/UI/quest_reward_item.gd" id="1_b8cju"]
+[ext_resource type="ButtonGroup" uid="uid://bjw5hxqyhyvnk" path="res://Resources/quest_reward_button_group.tres" id="2_41cpf"]
+[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="2_b8cju"]
+
+[node name="quest_reward_item_1" type="MarginContainer" unique_id=153131287]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 301.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_b8cju")
+
+[node name="button" type="Button" parent="." unique_id=2017441551]
+custom_minimum_size = Vector2(50, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_colors/icon_pressed_color = Color(0.009317499, 0.009317501, 0.009317499, 1)
+toggle_mode = true
+button_group = ExtResource("2_41cpf")
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1330439888]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_b8cju")
+
+[node name="Label" type="Label" parent="." unique_id=753054535]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "epic_axe"
+
+[connection signal="pressed" from="button" to="." method="_on_pressed"]
