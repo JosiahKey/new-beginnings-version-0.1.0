@@ -98,3 +98,6 @@ signal player_died
 #equip_panel to combat_engine
 @warning_ignore("unused_signal")
 signal gameover_item_deleted
+#chest to itemgenerator
+@warning_ignore("unused_signal")
+signal reward_generated

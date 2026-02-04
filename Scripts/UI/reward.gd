@@ -1,26 +1,21 @@
 extends CanvasLayer
 
-func _ready() -> void:
-	SignalBus.connect("update_reward_item", Callable(self, "update_reward_item"))
+@onready var reward_item := preload("res://Scenes/UI/reward_item.tscn")
+@onready var reward_list := $N/ScrollContainer/V
+var ui_iterator = 0
 
-func update_reward_item(item_id):
+func _ready() -> void:
+	SignalBus.connect("update_reward_item", Callable(self, "add_reward_item"))
+
+func add_reward_item(item_id):
 	var item_name = GameData.item_data[item_id]["item_name"]
-	$N/V/item_reward/TextureRect.texture = load("res://Assets/item_assets/"+ item_name +".png")
-	$N/V/item_reward/Label.text = GameData.item_data[item_id]["item_name"]
-	
-	#clear out old stats
-	for i in range(1,6):
-			get_node("N/V/item_stat" + str(i)).text = ""
-	
-	var ui_iterator = 1
-	for i in range(GameData.item_stats.size()):
-			var stat_name = GameData.item_stats[i]
-			var stat_readable = GameData.item_stats_readable[i]
-			if GameData.item_data[item_id][stat_name] != 0:
-				var stat_value = GameData.item_data[item_id][stat_name]
-				get_node("N/V/item_stat" + str(ui_iterator)).text = stat_readable + ": +" + str(int(stat_value))
-				ui_iterator += 1
+	var new_reward = reward_item.instantiate()
+	reward_list.add_child(new_reward, true)
+	reward_list.get_child(ui_iterator).set_icon(load("res://Assets/item_assets/"+ item_name +".png"))
+	reward_list.get_child(ui_iterator).set_readable_label(item_name)
+	reward_list.get_child(ui_iterator).set_item_id(item_id)
+	ui_iterator += 1
 
 func _on_confirm_reward_pressed() -> void:
 		get_tree().paused = false
-		visible = false
+		queue_free()

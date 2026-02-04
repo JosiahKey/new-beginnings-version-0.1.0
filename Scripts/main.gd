@@ -3,6 +3,7 @@ extends Node2D
 @onready var combat_scene = preload("res://Scenes/Combat.tscn")
 @onready var boss_scene = preload("res://Scenes/Combat_Boss.tscn")
 @onready var game_over_scene = preload("res://Scenes/UI/game_over.tscn")
+@onready var reward_scene = preload("res://Scenes/UI/Reward.tscn")
 
 func _ready() -> void:
 	SignalBus.connect("enemy_encountered", Callable(self, "start_combat"))
@@ -18,7 +19,7 @@ func game_over():
 
 func show_reward():
 	get_tree().paused = true
-	$Reward.visible = true
+	add_child(reward_scene.instantiate())
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("hidehint"):

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://h6i72uii1lk6" path="res://Scripts/UI/combat_reward.gd" id="1_uyyed"]
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="2_dtlc1"]
-[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="3_3dm5n"]
 [ext_resource type="AudioStream" uid="uid://dymxemro140n1" path="res://Audio/SFX/fanfare.mp3" id="4_dtlc1"]
 
 [sub_resource type="Gradient" id="Gradient_ld0t3"]
@@ -48,10 +47,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -16.0
-offset_right = 138.0
-offset_bottom = 16.0
+offset_left = -176.0
+offset_top = -172.0
+offset_right = 176.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -141,128 +140,17 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 text = "+1000"
 
-[node name="item_reward1" type="HBoxContainer" parent="N/V" unique_id=2082455747]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward1" unique_id=150344682]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward1/Label" unique_id=947801126]
-custom_minimum_size = Vector2(32, 32)
+[node name="confirm_reward" type="Button" parent="N" unique_id=1536248794]
 layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="item_reward2" type="HBoxContainer" parent="N/V" unique_id=483330483]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward2" unique_id=163329714]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward2/Label" unique_id=797479892]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="item_reward3" type="HBoxContainer" parent="N/V" unique_id=580932378]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward3" unique_id=273428378]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward3/Label" unique_id=114059291]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="item_reward4" type="HBoxContainer" parent="N/V" unique_id=1957474574]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward4" unique_id=507915783]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward4/Label" unique_id=2001398882]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="item_reward5" type="HBoxContainer" parent="N/V" unique_id=1719933488]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward5" unique_id=320993807]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward5/Label" unique_id=1292298930]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="item_reward6" type="HBoxContainer" parent="N/V" unique_id=624024919]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Label" type="Label" parent="N/V/item_reward6" unique_id=1053292001]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward6/Label" unique_id=1380067931]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -40.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = 23.0
-texture = ExtResource("3_3dm5n")
-
-[node name="confirm_reward" type="Button" parent="N/V" unique_id=1536248794]
-visible = false
-layout_mode = 2
-text = "Confirm"
+offset_left = 435.0
+offset_top = 345.0
+offset_right = 555.0
+offset_bottom = 376.0
+text = "Leave"
 
 [node name="fanfare" type="AudioStreamPlayer" parent="." unique_id=1614410548]
 stream = ExtResource("4_dtlc1")
 volume_db = -6.0
 bus = &"SFX"
 
-[connection signal="pressed" from="N/V/confirm_reward" to="." method="_on_confirm_reward_pressed"]
+[connection signal="pressed" from="N/confirm_reward" to="." method="_on_confirm_reward_pressed"]

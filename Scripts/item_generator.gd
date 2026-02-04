@@ -4,16 +4,22 @@ extends Node2D
 # in any script file just testing it here for now
 func _ready() -> void:
 	SignalBus.connect("item_generated", Callable(self, "generate_item"))
+	SignalBus.connect("reward_generated", Callable(self, "generate_reward"))
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
-		generate_item("")
+		generate_item("","legendary","")
 
-func generate_item(type: String = "", rarity: String = ""):
-	var new_item = ItemGeneration(type, rarity)
+func generate_reward(type: String = "", rarity: String = "", slot: String = ""):
+	var new_item = ItemGeneration(type, rarity, slot)
 	var item_id: int = new_item.keys()[0]
 	GameData.item_data.merge(new_item)
 	SignalBus.update_reward_item.emit(item_id)
+
+func generate_item(type: String = "", rarity: String = "", slot: String = ""):
+	var new_item = ItemGeneration(type, rarity, slot)
+	var item_id: int = new_item.keys()[0]
+	GameData.item_data.merge(new_item)
 	for i in PlayerData.inv_data.keys():
 			if PlayerData.inv_data[i]["Item"] == 0:
 				PlayerData.inv_data[i]["Item"] = item_id
@@ -21,10 +27,10 @@ func generate_item(type: String = "", rarity: String = ""):
 				SignalBus.item_added.emit()
 				break
 
-func ItemGeneration(type: String = "", rarity: String = "") -> Dictionary:
+func ItemGeneration(type: String = "", rarity: String = "", slot: String = "") -> Dictionary:
 	var new_item: Dictionary = {}
 	var new_item_dict: Dictionary = {}
-	new_item["item_id"] = ItemDetermineType(type)
+	new_item["item_id"] = ItemDetermineType(type,slot)
 	new_item["item_rarity"] = ItemDetermineRarity(rarity)
 	new_item["item_name"] = ItemDetermineName(new_item["item_id"], new_item["item_rarity"])
 	new_item["equipmentSlot"] = GameData.base_item_data[new_item["item_id"]]["equipmentSlot"]
@@ -38,14 +44,23 @@ func ItemGeneration(type: String = "", rarity: String = "") -> Dictionary:
 	new_item_dict[item_rarity_id] = new_item
 	return new_item_dict
 
-func ItemDetermineType(type: String = "") -> String:
+func ItemDetermineType(type: String = "", slot: String = "") -> String:
 	var new_item_type: String
 	var item_types: Array = GameData.base_item_data.keys()
-	if type == "":
+	if type == "" and slot == "":
 		randomize()
 		new_item_type = item_types[randi() % item_types.size()]
 		return new_item_type
-	else:
+	elif slot != "":#slot specified
+		print("slot specified")
+		var specified_item_slot: Array = []
+		for i in GameData.base_item_data.keys():
+			if GameData.base_item_data[i]["equipmentSlot"] == slot:
+				specified_item_slot.append(i)
+		randomize()
+		new_item_type = specified_item_slot[randi() % specified_item_slot.size()]
+		return new_item_type
+	else:#type specified, slot not specified
 		var specified_item_type: Array = []
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["Type"] == type:

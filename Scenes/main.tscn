@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw7hxlrxq4724"]
+[gd_scene format=3 uid="uid://cw7hxlrxq4724"]
 
 [ext_resource type="Script" uid="uid://dgjfxf658upag" path="res://Scripts/main.gd" id="1_b4pd7"]
 [ext_resource type="PackedScene" uid="uid://2a4avmrkge65" path="res://Scenes/UI/controls_hint.tscn" id="2_2jltt"]
@@ -8,28 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://b7ikkksxg1qr5" path="res://Scenes/Levels/Overworld.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://e2io5n8exj2y" path="res://Scenes/UI/levelup.tscn" id="8_344ge"]
-[ext_resource type="PackedScene" uid="uid://dkfc1qsx443uo" path="res://Scenes/UI/Reward.tscn" id="9_ynf5e"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=966228652]
 script = ExtResource("1_b4pd7")
 
-[node name="ControlsHint" parent="." instance=ExtResource("2_2jltt")]
+[node name="ControlsHint" parent="." unique_id=928449705 instance=ExtResource("2_2jltt")]
 
-[node name="CharacterSheet" parent="." instance=ExtResource("2_sadeq")]
+[node name="CharacterSheet" parent="." unique_id=1456391668 instance=ExtResource("2_sadeq")]
 
-[node name="LevelManager" type="Node2D" parent="."]
+[node name="LevelManager" type="Node2D" parent="." unique_id=761683930]
 script = ExtResource("4_21xkr")
 
-[node name="Level3" parent="LevelManager" instance=ExtResource("5_6bp64")]
+[node name="Level3" parent="LevelManager" unique_id=1587627212 instance=ExtResource("5_6bp64")]
 
-[node name="item_generator" type="Node2D" parent="."]
+[node name="item_generator" type="Node2D" parent="." unique_id=1569101262]
 script = ExtResource("3_2jltt")
 
-[node name="SceneTransition" parent="." instance=ExtResource("5_kry3j")]
+[node name="SceneTransition" parent="." unique_id=1497138975 instance=ExtResource("5_kry3j")]
 
-[node name="Levelup" parent="." instance=ExtResource("8_344ge")]
+[node name="Levelup" parent="." unique_id=1711787560 instance=ExtResource("8_344ge")]
 process_mode = 3
 layer = 4
 visible = false
-
-[node name="Reward" parent="." instance=ExtResource("9_ynf5e")]

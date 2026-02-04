@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dpkk1b02mgb65"]
+
+[ext_resource type="Script" uid="uid://bk75wlowy28eb" path="res://Scripts/UI/reward_item.gd" id="1_f2eli"]
+[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="1_xvkd8"]
+
+[node name="reward_item_1" type="MarginContainer" unique_id=153131287]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 301.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_f2eli")
+
+[node name="button" type="Button" parent="." unique_id=2017441551]
+custom_minimum_size = Vector2(50, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "Get"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1330439888]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_xvkd8")
+
+[node name="Label" type="Label" parent="." unique_id=753054535]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "epic_axe"
+
+[connection signal="pressed" from="button" to="." method="_on_pressed"]

@@ -2,12 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="1_kjnfn"]
 [ext_resource type="Script" uid="uid://duyo5rwjf7p2i" path="res://Scripts/UI/reward.gd" id="1_l4iwl"]
-[ext_resource type="Texture2D" uid="uid://cdmyjvw50eh83" path="res://Assets/item_assets/axe_epic.png" id="2_l4iwl"]
 
 [node name="Reward" type="CanvasLayer" unique_id=567832847]
 process_mode = 3
 layer = 2
-visible = false
 script = ExtResource("1_l4iwl")
 
 [node name="N" type="NinePatchRect" parent="." unique_id=330929522]
@@ -29,77 +27,40 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="V" type="VBoxContainer" parent="N" unique_id=1009500830]
+[node name="ScrollContainer" type="ScrollContainer" parent="N" unique_id=1844528493]
+custom_minimum_size = Vector2(320, 261)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -16.0
-offset_right = 138.0
-offset_bottom = 16.0
+offset_left = -160.0
+offset_top = -165.0
+offset_right = 160.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="item_reward" type="HBoxContainer" parent="N/V" unique_id=2053033253]
+[node name="V" type="VBoxContainer" parent="N/ScrollContainer" unique_id=1009500830]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 8
-alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="N/V/item_reward" unique_id=1970265784]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("2_l4iwl")
+[node name="confirm_reward" type="Button" parent="N" unique_id=622505951]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = -56.0
+offset_right = 262.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Leave"
 
-[node name="Label" type="Label" parent="N/V/item_reward" unique_id=420209506]
-layout_mode = 2
-size_flags_vertical = 8
-text = "epic_axe"
-
-[node name="item_stat1" type="Label" parent="N/V" unique_id=1641825250]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat2" type="Label" parent="N/V" unique_id=902489797]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat3" type="Label" parent="N/V" unique_id=1550425898]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat4" type="Label" parent="N/V" unique_id=1632667302]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat5" type="Label" parent="N/V" unique_id=762101780]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat6" type="Label" parent="N/V" unique_id=1946525409]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat7" type="Label" parent="N/V" unique_id=1205467642]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="item_stat8" type="Label" parent="N/V" unique_id=107392995]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="confirm_reward" type="Button" parent="N/V" unique_id=622505951]
-layout_mode = 2
-text = "Confirm"
-
-[connection signal="pressed" from="N/V/confirm_reward" to="." method="_on_confirm_reward_pressed"]
+[connection signal="pressed" from="N/confirm_reward" to="." method="_on_confirm_reward_pressed"]

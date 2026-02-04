@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_e4el6"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_xwnh7"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_e4el6"]
-[ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="6_3x1e7"]
 
 [node name="Level3" type="Node2D" unique_id=836921793]
 script = ExtResource("1_xwnh7")
@@ -36,8 +35,3 @@ scale = Vector2(2.3999956, 2.3599806)
 position = Vector2(128, -952)
 scale = Vector2(12, 1)
 next_level = "Overworld2"
-
-[node name="Chest" parent="." unique_id=685858449 instance=ExtResource("6_3x1e7")]
-position = Vector2(-648, -1128)
-rarity = "uncommon"
-type = "Weapon"

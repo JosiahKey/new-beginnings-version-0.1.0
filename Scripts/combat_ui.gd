@@ -53,7 +53,7 @@ func set_tooltips():
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	action4.tooltip_text = "Don't do it you coward"
 	action5.tooltip_text = "Reduces HP by 20% of max HP"\
-	+ "\nAttack one enemy once for 2x damage with 20% less accuracy"\
+	+ "\nAttack one enemy once for 2x damage with 5% less accuracy"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-5)) + "%"
 
