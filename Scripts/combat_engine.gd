@@ -118,6 +118,7 @@ func clean_up():
 func _on_button_pressed() -> void:
 	clean_up()
 	PlayerData.stat_data["Current_hp"] = PlayerData.stat_data["Total_hp"]
+	GameState.game_over_reset_flags()
 	self.queue_free()
 	SignalBus.load_area_entered.emit("Home")
 

@@ -53,9 +53,9 @@ func set_tooltips():
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]+5)) + "%"
 	action4.tooltip_text = "Don't do it you coward"
 	action5.tooltip_text = "Reduces HP by 10% of max HP"\
-	+ "\nAttack one enemy once for 3x damage with 40% less accuracy"\
-	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*3.0)) + "-" + str(int(PlayerData.get_max_damage()*3.0))\
-	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-40)) + "%"
+	+ "\nAttack one enemy once for 25 bonus damage\nper strength with 20% less accuracy"\
+	+ "\nDamage: " + str(int(PlayerData.get_min_damage()+ PlayerData.get_total_stength() * 25)) + "-" + str(int(PlayerData.get_max_damage()+ PlayerData.get_total_stength() * 25))\
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-20)) + "%"
 
 func update_hp():
 	var tween = get_tree().create_tween()

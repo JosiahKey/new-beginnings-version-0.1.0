@@ -20,6 +20,9 @@ func _on_area_exited(area: Area2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
 		if in_range and !collected:
+			if GameState.quest1_blachsmith_flag == true:
+				type = "Weapon"
+				rarity = "rare"
 			SignalBus.reward.emit("quest")
 			for i in quantity:
 				SignalBus.reward_generated.emit(type, rarity)

@@ -18,11 +18,12 @@ func add_reward_item(item_id):
 	ui_iterator += 1
 
 func _on_confirm_reward_pressed() -> void:
-	for i in PlayerData.inv_data.keys():
-			if PlayerData.inv_data[i]["Item"] == 0:
-				PlayerData.inv_data[i]["Item"] = btns.get_pressed_button().get_parent().get_item_id()
-				SignalBus.item_collected.emit()
-				SignalBus.item_added.emit()
-				break
-	get_tree().paused = false
-	queue_free()
+	if btns.get_pressed_button() != null:
+		for i in PlayerData.inv_data.keys():
+				if PlayerData.inv_data[i]["Item"] == 0:
+					PlayerData.inv_data[i]["Item"] = btns.get_pressed_button().get_parent().get_item_id()
+					SignalBus.item_collected.emit()
+					SignalBus.item_added.emit()
+					break
+		get_tree().paused = false
+		queue_free()

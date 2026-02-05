@@ -7,3 +7,7 @@ extends Node
 
 var state = ""
 var biome = "Plains"
+var quest1_blachsmith_flag = false
+
+func game_over_reset_flags():
+	quest1_blachsmith_flag = false
