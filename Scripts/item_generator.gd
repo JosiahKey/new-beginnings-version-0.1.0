@@ -123,6 +123,8 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	var stat_value: int
 	randomize()
+	if GameData.base_item_data[item_id]["Type"] == "Jewelry" && stat == "Accurecy":
+		stat_value = randi_range(2,6) * int(GameData.base_item_data[item_id][stat])
 	if GameData.item_mitigation_stats.has(stat):
 		stat_value = randi_range(2,6) * int(GameData.base_item_data[item_id][stat])
 	elif GameData.item_attribute_stats.has(stat):
