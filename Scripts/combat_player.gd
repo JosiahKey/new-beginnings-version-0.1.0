@@ -44,7 +44,7 @@ func player_aoe_action():
 			pass
 		else:
 			SignalBus.enemy_selected.emit(e)
-			if roll_stat("Accuracy") == true:
+			if roll_stat("Accuracy", +5) == true:
 				SignalBus.combat_action.emit("on_hit", ceili(roll_damage()/3.0))
 			else:
 				SignalBus.combat_action.emit("on_miss", 0)
@@ -60,26 +60,21 @@ func player_heal_action():
 	player_finish_turn()
 
 func player_all_in_action():
-	if (PlayerData.stat_data["Current_hp"] - PlayerData.stat_data["Total_hp"]*0.2) >= 1:
-		PlayerData.stat_data["Current_hp"] -= PlayerData.stat_data["Total_hp"]*0.2
+	if (PlayerData.stat_data["Current_hp"] - PlayerData.stat_data["Total_hp"]*0.1) >= 1:
+		PlayerData.stat_data["Current_hp"] -= PlayerData.stat_data["Total_hp"]*0.1
 	else:
 		PlayerData.stat_data["Current_hp"] = 1
 	#update hp label
 	SignalBus.player_hp_changed.emit()
 	var target_enemy = CombatData.selected_enemy
-	target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
-	action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
-	
-	if(action_points <= 0): action_points = 1
-	for a in action_points:
-		await get_tree().create_timer(0.7).timeout
-		player_spr.play("attack")
-		await get_tree().create_timer(0.3).timeout
-		SignalBus.enemy_selected.emit(target_enemy)
-		if roll_stat("Accuracy", true) == true: #half accuracy flag set to true
-			SignalBus.combat_action.emit("on_hit", roll_damage() * 2) #double damage
-		else:
-			SignalBus.combat_action.emit("on_miss", 0)
+	await get_tree().create_timer(0.7).timeout
+	player_spr.play("attack")
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.enemy_selected.emit(target_enemy)
+	if roll_stat("Accuracy", -20) == true: 
+		SignalBus.combat_action.emit("on_hit", roll_damage() + PlayerData.get_total_stength() * 25)
+	else:
+		SignalBus.combat_action.emit("on_miss", 0)
 	player_finish_turn()
 
 func player_run_action():
@@ -103,11 +98,11 @@ func roll_damage() -> int:
 	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
 	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
 
-func roll_stat(stat: String, reduced_accuracy: bool = false) -> bool:
+func roll_stat(stat: String, adjusted_accuracy: int = 0) -> bool:
 	randomize()
 	var roll: int = randi_range(0,100)
-	if stat == "Accuracy" and reduced_accuracy == true:
-		if roll >= PlayerData.stat_data[stat]-5:
+	if stat == "Accuracy" and adjusted_accuracy != 0:
+		if roll >= PlayerData.stat_data[stat]+adjusted_accuracy:
 			return false
 		else:
 			return true

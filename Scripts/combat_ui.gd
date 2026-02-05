@@ -48,14 +48,14 @@ func set_tooltips():
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	action2.tooltip_text = "Recover HP \nHeal: 20% (" + str(int(PlayerData.get_total_hp()*0.2))\
 	+ ") - 25% (" + str(int(PlayerData.get_total_hp()*0.25)) + ") Max HP"
-	action3.tooltip_text = "Attack all enemies once for 1/3 damage"\
+	action3.tooltip_text = "Attack all enemies once for 1/3 damage\n and 5% increased hit chance"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()/3.0)) + "-" + str(int(PlayerData.get_max_damage()/3.0))\
-	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]+5)) + "%"
 	action4.tooltip_text = "Don't do it you coward"
-	action5.tooltip_text = "Reduces HP by 20% of max HP"\
-	+ "\nAttack one enemy once for 2x damage with 5% less accuracy"\
-	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*2.0)) + "-" + str(int(PlayerData.get_max_damage()*2.0))\
-	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-5)) + "%"
+	action5.tooltip_text = "Reduces HP by 10% of max HP"\
+	+ "\nAttack one enemy once for 3x damage with 40% less accuracy"\
+	+ "\nDamage: " + str(int(PlayerData.get_min_damage()*3.0)) + "-" + str(int(PlayerData.get_max_damage()*3.0))\
+	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-40)) + "%"
 
 func update_hp():
 	var tween = get_tree().create_tween()
