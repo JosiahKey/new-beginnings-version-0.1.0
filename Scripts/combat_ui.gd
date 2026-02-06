@@ -53,7 +53,7 @@ func set_tooltips():
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]+5)) + "%"
 	action4.tooltip_text = "Don't do it you coward"
 	action5.tooltip_text = "Reduces HP by 10% of max HP"\
-	+ "\nAttack one enemy once for 25 bonus damage\nper strength with 20% less accuracy"\
+	+ "\nAttack one enemy once for 25 bonus damage\nper 1 strength with 20% less accuracy"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()+ PlayerData.get_total_stength() * 25)) + "-" + str(int(PlayerData.get_max_damage()+ PlayerData.get_total_stength() * 25))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]-20)) + "%"
 
@@ -104,7 +104,6 @@ func _on_action_button_2_pressed() -> void:
 		players_turn = false
 	if num_of_heals <= 0:
 		action2.disabled = true
-
 
 func _on_action_button_3_pressed() -> void:
 	get_node("select").playing = true

@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
-		generate_item("","legendary","")
+		generate_item("Jewelry","legendary","")
 
 func generate_reward(type: String = "", rarity: String = "", slot: String = ""):
 	var new_item = ItemGeneration(type, rarity, slot)
@@ -123,9 +123,9 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	var stat_value: int
 	randomize()
-	if GameData.base_item_data[item_id]["Type"] == "Jewelry" && stat == "Accurecy":
+	if GameData.base_item_data[item_id]["Type"] == "Jewelry" and stat == "Accuracy":
 		stat_value = randi_range(2,6) * int(GameData.base_item_data[item_id][stat])
-	if GameData.item_mitigation_stats.has(stat):
+	elif GameData.item_mitigation_stats.has(stat):
 		stat_value = randi_range(2,6) * int(GameData.base_item_data[item_id][stat])
 	elif GameData.item_attribute_stats.has(stat):
 		stat_value = randi_range(1,2) * int(GameData.base_item_data[item_id][stat])
@@ -133,6 +133,7 @@ func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 		stat_value = (ceili(randf_range(0.8, 1.2) * GameData.base_item_data[item_id][stat])) * GameData.base_item_data[item_id][item_rarity + "Multi"]
 	else:
 		stat_value = GameData.base_item_data[item_id][stat]
+	print(stat + ": "+ str(stat_value))
 	return stat_value
 
 func ItemDetermineUniqueId(item :Dictionary) -> int:

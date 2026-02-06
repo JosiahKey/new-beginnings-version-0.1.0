@@ -173,7 +173,10 @@ func on_heal(heal: int):
 	player_spr.add_child(text)
 	await player_spr.animation_finished
 	player_spr.play("idle")
-	
 
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("run_away"):
+		SignalBus.combat_exited.emit()
