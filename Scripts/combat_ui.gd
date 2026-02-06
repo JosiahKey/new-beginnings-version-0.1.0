@@ -47,7 +47,7 @@ func set_tooltips():
 	+ "\nDamage: " + str(PlayerData.get_min_damage()) + "-" + str(PlayerData.get_max_damage())\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"])) + "%"
 	action2.tooltip_text = "Recover HP \nHeal: 20% (" + str(int(PlayerData.get_total_hp()*0.2))\
-	+ ") - 25% (" + str(int(PlayerData.get_total_hp()*0.25)) + ") Max HP"
+	+ ") - 25% (" + str(int(PlayerData.get_total_hp()*0.25)) + ") Max HP\n2 per combat"
 	action3.tooltip_text = "Attack all enemies once for 1/3 damage\n and 5% increased hit chance"\
 	+ "\nDamage: " + str(int(PlayerData.get_min_damage()/3.0)) + "-" + str(int(PlayerData.get_max_damage()/3.0))\
 	+ "\nChance to hit: " + str(int(PlayerData.stat_data["Accuracy"]+5)) + "%"
