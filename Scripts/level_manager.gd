@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var Level_List:= {
 	"Sidearea": preload("res://Scenes/Levels/Sidearea.tscn"),
-	"Level2": preload("res://Scenes/Levels/Level2.tscn"),
+	"Level2": preload("res://Scenes/Biomes/Cave/Level1.tscn"),
 	"Overworld": preload("res://Scenes/Levels/Overworld.tscn"),
 	"Level4": preload("res://Scenes/Levels/Level4.tscn"),
 	"Bossarea": preload("res://Scenes/Levels/Bossarea.tscn"),
@@ -16,8 +16,17 @@ extends Node2D
 
 func _ready() -> void:
 	SignalBus.connect("load_area_entered", Callable(self, "load_level"))
+	SignalBus.connect("new_load_area_entered", Callable(self, "new_load_level"))
 
 func load_level(next_level: String) -> void:
 	if(get_child_count() > 0 and GameState.state != "Combat"):
 		get_child(0).queue_free()
 	call_deferred("add_child", Level_List[next_level].instantiate())
+
+func new_load_level(next_level: String) -> void:
+	print(next_level)
+	var level_res = load("res://Scenes/Biomes/Cave/" + next_level + ".tscn")
+	if(get_child_count() > 0 and GameState.state != "Combat"):
+		get_child(0).queue_free()
+	call_deferred("add_child", level_res.instantiate())
+	
