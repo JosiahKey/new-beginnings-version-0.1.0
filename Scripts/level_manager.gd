@@ -25,7 +25,8 @@ func load_level(next_level: String) -> void:
 
 func new_load_level(next_level: String) -> void:
 	print(next_level)
-	var level_res = load("res://Scenes/Biomes/Cave/" + next_level + ".tscn")
+	#var level_res = load("res://Scenes/Biomes/Cave/" + next_level + ".tscn")
+	var level_res = load("res://Scenes/Biomes/Cave/Level1.tscn")
 	if(get_child_count() > 0 and GameState.state != "Combat"):
 		get_child(0).queue_free()
 	call_deferred("add_child", level_res.instantiate())

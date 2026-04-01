@@ -12,6 +12,13 @@ priority = 1
 script = ExtResource("1_nv04r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114332045]
+process_physics_priority = 1
+shape = SubResource("RectangleShape2D_kpm22")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=970568456]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1908491791]
+process_physics_priority = 1
 shape = SubResource("RectangleShape2D_kpm22")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=649510081]
@@ -31,4 +38,3 @@ volume_db = 3.192
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
-[connection signal="body_entered" from="." to="." method="_on_next_level_entered"]
