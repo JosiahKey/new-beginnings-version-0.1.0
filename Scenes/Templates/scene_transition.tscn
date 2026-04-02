@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b71ies8xw4egj"]
+[gd_scene format=3 uid="uid://b71ies8xw4egj"]
 
 [ext_resource type="Script" uid="uid://0inx6gn0swgc" path="res://Scripts/UI/scene_transition.gd" id="1_slsty"]
 
@@ -67,33 +67,33 @@ _data = {
 &"fadeout": SubResource("Animation_6bp64")
 }
 
-[node name="SceneTransition" type="CanvasLayer"]
+[node name="SceneTransition" type="CanvasLayer" unique_id=1185384364]
 process_mode = 3
 layer = 2
 script = ExtResource("1_slsty")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=695592505]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.02788795, 0.0818736, 0.059677817, 1)
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1602197253]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.5254902, 0.5254902, 0.5254902, 0.80784315)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6bp64")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1964278261]
+libraries/ = SubResource("AnimationLibrary_6bp64")
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1623036210]
 volume_db = -16.36

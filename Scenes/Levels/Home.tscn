@@ -23,7 +23,7 @@ script = ExtResource("3_dp85m")
 [node name="overworld" parent="." unique_id=979339752 instance=ExtResource("3_uvsdt")]
 position = Vector2(56, 40)
 scale = Vector2(2.9999988, 1)
-randomize = true
+world_map = true
 
 [node name="HealZone" parent="." unique_id=571608562 instance=ExtResource("4_vfw3i")]
 position = Vector2(-64, -184.00002)

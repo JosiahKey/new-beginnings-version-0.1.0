@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://blwckghasknp4" path="res://Scenes/Levels/Home.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://e2io5n8exj2y" path="res://Scenes/UI/levelup.tscn" id="8_344ge"]
+[ext_resource type="Script" uid="uid://c5tdymmpntos3" path="res://Scripts/UI/world_map.gd" id="9_hptm8"]
+[ext_resource type="Texture2D" uid="uid://ds0newm2w4w55" path="res://Assets/art_assets/World_Map.png" id="9_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=966228652]
 script = ExtResource("1_b4pd7")
@@ -18,6 +20,7 @@ visible = false
 [node name="CharacterSheet" parent="." unique_id=1456391668 instance=ExtResource("2_sadeq")]
 
 [node name="LevelManager" type="Node2D" parent="." unique_id=761683930]
+process_mode = 3
 script = ExtResource("4_21xkr")
 
 [node name="LevelHome" parent="LevelManager" unique_id=1759322811 instance=ExtResource("5_344ge")]
@@ -25,9 +28,50 @@ script = ExtResource("4_21xkr")
 [node name="item_generator" type="Node2D" parent="." unique_id=1569101262]
 script = ExtResource("3_2jltt")
 
+[node name="World_Map" type="CanvasLayer" parent="." unique_id=1639148990]
+process_mode = 3
+layer = 4
+visible = false
+script = ExtResource("9_hptm8")
+
+[node name="Background" type="TextureRect" parent="World_Map" unique_id=358719733]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_ynf5e")
+
+[node name="Level1" type="Button" parent="World_Map/Background" unique_id=2097819971]
+z_index = 4
+layout_mode = 0
+offset_left = 127.0
+offset_top = 279.0
+offset_right = 291.0
+offset_bottom = 367.0
+text = "Caves"
+
+[node name="Level2" type="Button" parent="World_Map/Background" unique_id=96743836]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 108.0
+offset_right = 391.0
+offset_bottom = 196.0
+text = "Forrest(N/A)"
+
+[node name="Level3" type="Button" parent="World_Map/Background" unique_id=2118683594]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 101.0
+offset_right = 686.0
+offset_bottom = 189.0
+text = "River(N/A)"
+
 [node name="SceneTransition" parent="." unique_id=1497138975 instance=ExtResource("5_kry3j")]
 
 [node name="Levelup" parent="." unique_id=1711787560 instance=ExtResource("8_344ge")]
 process_mode = 3
 layer = 4
 visible = false
+
+[connection signal="pressed" from="World_Map/Background/Level1" to="World_Map" method="_on_level_1_pressed"]
+[connection signal="pressed" from="World_Map/Background/Level2" to="World_Map" method="_on_level_2_pressed"]
+[connection signal="pressed" from="World_Map/Background/Level3" to="World_Map" method="_on_level_3_pressed"]

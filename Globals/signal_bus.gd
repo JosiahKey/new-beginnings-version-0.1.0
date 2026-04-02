@@ -2,9 +2,6 @@ extends Node
 #next level to levelmanager
 @warning_ignore("unused_signal")
 signal load_area_entered
-#next level to levelmanager
-@warning_ignore("unused_signal")
-signal new_load_area_entered
 #interactable to item generator
 @warning_ignore("unused_signal")
 signal item_generated
@@ -104,3 +101,6 @@ signal gameover_item_deleted
 #chest to itemgenerator
 @warning_ignore("unused_signal")
 signal reward_generated
+#anywhere to world_map
+@warning_ignore("unused_signal")
+signal world_map_entered
