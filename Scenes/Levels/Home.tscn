@@ -26,8 +26,8 @@ scale = Vector2(2.9999988, 1)
 world_map = true
 
 [node name="HealZone" parent="." unique_id=571608562 instance=ExtResource("4_vfw3i")]
-position = Vector2(-64, -184.00002)
-scale = Vector2(11.119999, 7.182379)
+position = Vector2(-64, -192)
+scale = Vector2(11.159998, 7.982379)
 
 [node name="Chest3" parent="." unique_id=1638587771 instance=ExtResource("7_uvsdt")]
 position = Vector2(248, -232)
