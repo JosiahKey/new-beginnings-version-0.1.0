@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="1_ou3bu"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_fvfg2"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_wo0x8"]
-[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="4_0q5hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvfg2"]
 size = Vector2(17, 32)
@@ -31,7 +30,6 @@ tile_set = ExtResource("1_ou3bu")
 
 [node name="Player" parent="." unique_id=69129058 instance=ExtResource("3_wo0x8")]
 position = Vector2(-8, 24)
-script = ExtResource("4_0q5hg")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=1331298835]
 

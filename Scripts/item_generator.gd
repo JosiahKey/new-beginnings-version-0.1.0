@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debuggenerateitem"):
-		generate_item("Jewelry","legendary","")
+		generate_item("","rare","")
 
 func generate_reward(type: String = "", rarity: String = "", slot: String = ""):
 	var new_item = ItemGeneration(type, rarity, slot)

@@ -3,8 +3,11 @@ extends Node2D
 @onready var player = $Player
 @onready var spawns = $Spawns
 @onready var exits = $Exits
+@export var biome: String = ""
 
 func _ready() -> void:
+	if biome != "":
+		GameState.biome = biome
 	randomize()
 	var all_spawns = spawns.get_children()
 	var random_spawn = all_spawns[randi()% all_spawns.size()]
