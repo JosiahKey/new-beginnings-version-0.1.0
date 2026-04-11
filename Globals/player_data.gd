@@ -40,14 +40,14 @@ var abilities_data = {
 	10001: { "Ability_rarity": "common", 
 	"Ability_name": "attack_common", 
 	"Type": "Single_attack", 
-	"Damage_min_mod": 0.0, 
-	"Damage_max_mod": 0.0, 
-	"Accuracy_mod": 100.0, 
-	"Evasion_mod": 0, 
-	"Hp_mod": 0, 
-	"PDR_mod": 20, 
-	"Strength_mod": 0, 
-	"Speed_mod": 0.0 
+	"Damage_min_flat": 0.0, 
+	"Damage_max_flat": 0.0, 
+	"Accuracy_flat": 100.0, 
+	"Evasion_flat": 0, 
+	"Hp_flat": 0, 
+	"PDR_flat": 20, 
+	"Strength_flat": 0, 
+	"Speed_flat": 0.0 
 	},
 }
 

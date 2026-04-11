@@ -31,6 +31,7 @@ GameState="*res://Globals/game_state.gd"
 Tooltip="*res://Globals/tooltip.tscn"
 AudioManager="*res://Globals/audio_manager.tscn"
 CombatData="*res://Globals/combat_data.gd"
+AbilitiesData="*uid://6vk5xwhoiiam"
 
 [debug]
 

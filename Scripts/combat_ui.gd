@@ -33,6 +33,7 @@ func _ready() -> void:
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	SignalBus.connect("action_button_pressed", Callable(self, "toggle_action_ui"))
+	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 	
 	heal_label.text = "Heal - " + str(num_of_heals) + " left"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
@@ -65,11 +66,12 @@ func update_hp():
 
 func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
-		await get_tree().create_timer(0.5).timeout
-		players_turn = true
-		actions_container.visible = true
-		banner_label.text = "Player Turn"
-		banner_anim.play("fadeout")
+		if enemy_sprites_container.get_child_count() != 0:
+			await get_tree().create_timer(0.5).timeout
+			players_turn = true
+			actions_container.visible = true
+			banner_label.text = "Player Turn"
+			banner_anim.play("fadeout")
 	else:
 		actions_container.visible = false
 
@@ -105,6 +107,12 @@ func _on_action_button_2_pressed() -> void:
 		players_turn = false
 	if num_of_heals <= 0:
 		action2.disabled = true
+
+func select_enemy(enemy: Control):
+	var nodes = get_tree().get_nodes_in_group("selector")
+	for n in nodes:
+		n.visible = false
+	enemy.get_node("Enemy_Hp/Button/Container/Selector").visible = true
 
 func _on_action_button_3_pressed() -> void:
 	get_node("select").playing = true

@@ -8,7 +8,7 @@ var combatants_data: Dictionary = {
 }
 
 func _ready() -> void:
-	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
+	pass
 
 var reward_data: Array = [0,0] #[exp, amount of loot]
 
@@ -22,13 +22,6 @@ func add_combatant(new_combatant: Dictionary) -> String: #takes generate enemy a
 	var new_dict: Dictionary = {new_id : new_combatant.duplicate()}
 	combatants_data.merge(new_dict)
 	return new_id
-
-func select_enemy(enemy: Control):
-	var nodes = get_tree().get_nodes_in_group("selector")
-	for n in nodes:
-		n.visible = false
-	enemy.get_node("Enemy_Hp/Button/Container/Selector").visible = true
-	selected_enemy = enemy
 
 func clear_data():
 	combatants_data = {"player" : PlayerData.stat_data,}

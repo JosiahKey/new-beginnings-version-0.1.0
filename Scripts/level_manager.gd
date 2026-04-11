@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var floor = 0
+@export var floor_check = 0
 
 @onready var home = preload("res://Scenes/Levels/Home.tscn")
 
@@ -15,10 +15,10 @@ func load_level() -> void:
 		call_deferred("add_child", level_res.instantiate())
 
 func _checkpoint_floor() -> bool:
-	if floor >= 5:
+	if floor_check >= 5:
 		call_deferred("add_child", home.instantiate())
-		floor = 0
+		floor_check = 0
 		return true
 	else:
-		floor += 1
+		floor_check += 1
 		return false

@@ -22,7 +22,6 @@ func _ready() -> void:
 func init():
 	sprite.sprite_frames = load("res://Resources/" + CombatData.combatants_data[str(name)]["enemy_name"] + ".tres")
 	sprite.play("default")
-	SignalBus.enemy_selected.emit(self)
 	hp_bar.max_value = CombatData.combatants_data[name]["Max_hp"]
 	hp_bar.value = CombatData.combatants_data[name]["Max_hp"]
 	CombatData.combatants_data[name]["Current_hp"] = CombatData.combatants_data[name]["Max_hp"]
@@ -44,9 +43,6 @@ func ready_enemy_turn():
 			SignalBus.num_enemies_changed.emit()
 			CombatData.add_reward(CombatData.combatants_data[name]["EXP"], CombatData.combatants_data[name]["Loot"])
 		dead_flag = true
-	
-	if selector.visible == true:
-		SignalBus.enemy_selected.emit(self)
 
 func enemy_action(action:String):
 	match action:

@@ -1,11 +1,45 @@
 extends Node
 
+var abilities_data = {
+	10001: {"Ability_name": "Single_attack",  
+	"Ability_rarity": "common", 
+	"Ability_requirements": [0,0,0], 
+	"Damage_min_flat": 0, 
+	"Damage_max_flat": 0, 
+	"Damage_multiply": 1, 
+	"Accuracy_flat": 0,
+	"Accuracy_multiply": 1,
+	"Evasion_flat": 0, 
+	"Evasion_multiply": 1, 
+	"Hp_flat": 0, 
+	"Hp_multiply": 1, 
+	"PDR_flat": 0, 
+	"PDR_multiply": 1, 
+	"Strength_flat": 0, 
+	"Strength_multiply": 1, 
+	"Speed_flat": 0,
+	"Speed_multiply": 1,
+	},
+	10002: {"Ability_name": "Aoe_attack",  
+	"Ability_rarity": "common", 
+	"Ability_requirements": [0,0,0], 
+	"Damage_min_flat": 0, 
+	"Damage_max_flat": 0, 
+	"Damage_multiply": 0.3, 
+	"Accuracy_flat": 5,
+	"Accuracy_multiply": 1,
+	"Evasion_flat": 0, 
+	"Evasion_multiply": 1, 
+	"Hp_flat": 0, 
+	"Hp_multiply": 1, 
+	"PDR_flat": 0, 
+	"PDR_multiply": 1, 
+	"Strength_flat": 0, 
+	"Strength_multiply": 1, 
+	"Speed_flat": 0,
+	"Speed_multiply": 1,
+	},
+}
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
