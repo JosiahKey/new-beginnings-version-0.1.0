@@ -75,6 +75,7 @@ func roll_stat(stat: String) -> bool:
 		return false
 
 func on_hit(damage):
+	print("enemy_onhit called")
 	if roll_stat("Evasion"):
 		var text = floating_text.instantiate()
 		text.amount = "Evaded"

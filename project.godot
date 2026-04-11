@@ -32,6 +32,10 @@ Tooltip="*res://Globals/tooltip.tscn"
 AudioManager="*res://Globals/audio_manager.tscn"
 CombatData="*res://Globals/combat_data.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1080

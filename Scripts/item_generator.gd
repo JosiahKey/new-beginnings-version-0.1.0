@@ -52,7 +52,6 @@ func ItemDetermineType(type: String = "", slot: String = "") -> String:
 		new_item_type = item_types[randi() % item_types.size()]
 		return new_item_type
 	elif slot != "":#slot specified
-		print("slot specified")
 		var specified_item_slot: Array = []
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["equipmentSlot"] == slot:
@@ -133,7 +132,6 @@ func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 		stat_value = (ceili(randf_range(0.8, 1.2) * GameData.base_item_data[item_id][stat])) * GameData.base_item_data[item_id][item_rarity + "Multi"]
 	else:
 		stat_value = GameData.base_item_data[item_id][stat]
-	print(stat + ": "+ str(stat_value))
 	return stat_value
 
 func ItemDetermineUniqueId(item :Dictionary) -> int:

@@ -87,11 +87,6 @@ func player_run_action():
 		player_spr.play("attack")
 		player_finish_turn()
 
-func player_finish_turn():
-	await player_spr.animation_finished
-	player_spr.play("idle")
-	SignalBus.turn_finished.emit()
-
 func roll_damage() -> int:
 	randomize()
 	return randi_range(\
@@ -173,6 +168,28 @@ func on_heal(heal: int):
 	player_spr.add_child(text)
 	await player_spr.animation_finished
 	player_spr.play("idle")
+
+func player_action():
+	#var target_enemy = CombatData.selected_enemy
+	#target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
+	#action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
+	
+	#if(action_points <= 0): action_points = 1
+	#for a in action_points:
+	#await get_tree().create_timer(0.7).timeout
+	player_spr.play("attack")
+	#await get_tree().create_timer(0.3).timeout
+		#SignalBus.enemy_selected.emit(target_enemy)
+		#if roll_stat("Accuracy") == true:
+			#SignalBus.combat_action.emit("on_hit", roll_damage())
+		#else:
+			#SignalBus.combat_action.emit("on_miss", 0)
+	#player_finish_turn()
+
+func player_finish_turn():
+	await player_spr.animation_finished
+	player_spr.play("idle")
+	SignalBus.turn_finished.emit()
 
 func _on_player_sprite_animation_finished() -> void:
 	player_spr.play("idle")

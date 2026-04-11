@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b7m0o5gah5l8t" path="res://Assets/VFX/floaty_32.png" id="6_g4qrr"]
 [ext_resource type="Texture2D" uid="uid://biimfctegb3ig" path="res://Assets/gui_assets/combat_action_hover.png" id="7_wpely"]
 [ext_resource type="Script" uid="uid://by2hs38c3a488" path="res://Scripts/combat_player.gd" id="8_kbh2q"]
+[ext_resource type="PackedScene" uid="uid://b2rn7yh3e6om5" path="res://Scenes/UI/action_button.tscn" id="8_nnvvn"]
 [ext_resource type="PackedScene" uid="uid://bb7luid6qkj5q" path="res://Scenes/UI/CombatReward.tscn" id="9_nm52r"]
 [ext_resource type="AudioStream" uid="uid://cvprkcd8i55u2" path="res://Audio/SFX/player_hit.wav" id="9_snhto"]
 [ext_resource type="AudioStream" uid="uid://c5hy6rnq7jcwc" path="res://Audio/SFX/player_miss.wav" id="10_khfr5"]
@@ -426,6 +427,9 @@ theme_override_constants/outline_size = 6
 text = "All In"
 horizontal_alignment = 1
 
+[node name="action_button_test" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=288203476 instance=ExtResource("8_nnvvn")]
+layout_mode = 2
+
 [node name="Enemy_Panel" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=1817255766]
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
@@ -615,12 +619,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "has been lost"
 
-[node name="Button" type="Button" parent="Combat/GameOver/ColorRect/VBoxContainer" unique_id=922509460]
+[node name="GameOverButton" type="Button" parent="Combat/GameOver/ColorRect/VBoxContainer" unique_id=922509460]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Combat/GameOver/ColorRect/VBoxContainer/Button" unique_id=1169201474]
+[node name="Label" type="Label" parent="Combat/GameOver/ColorRect/VBoxContainer/GameOverButton" unique_id=1169201474]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -660,5 +664,5 @@ bus = &"SFX"
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4" to="Combat" method="_on_action_button_4_pressed"]
 [connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5" to="Combat" method="_on_action_button_5_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]
-[connection signal="pressed" from="Combat/GameOver/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Combat/GameOver/ColorRect/VBoxContainer/GameOverButton" to="." method="_on_button_pressed"]
 [connection signal="visibility_changed" from="Combat/Reward" to="Combat" method="_on_reward_visibility_changed"]

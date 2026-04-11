@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b2rn7yh3e6om5"]
+
+[ext_resource type="Texture2D" uid="uid://bs1lptkd53ppl" path="res://Assets/gui_assets/combat_action_normal.png" id="1_j14fd"]
+[ext_resource type="Texture2D" uid="uid://crtvhfoao7ixs" path="res://Assets/gui_assets/combat_action_pressed.png" id="2_deqf0"]
+[ext_resource type="Texture2D" uid="uid://biimfctegb3ig" path="res://Assets/gui_assets/combat_action_hover.png" id="3_lqqds"]
+[ext_resource type="Script" uid="uid://dmqobdxkw5k6k" path="res://Scripts/UI/action_button.gd" id="4_deqf0"]
+
+[node name="action_button_test" type="TextureButton" unique_id=288203476]
+custom_minimum_size = Vector2(220, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("1_j14fd")
+texture_pressed = ExtResource("2_deqf0")
+texture_hover = ExtResource("3_lqqds")
+script = ExtResource("4_deqf0")
+
+[node name="Label" type="Label" parent="." unique_id=1431952398]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -11.5
+offset_right = 110.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Test"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

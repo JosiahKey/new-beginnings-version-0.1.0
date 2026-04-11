@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var enemies = $Combat/Background_Image/Enemy_Sprites
+@onready var enemies_ref = $Combat/Background_Image/Enemy_Sprites
 @onready var player = $Combat/Background_Image/Player
 @onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var action_queue = []
@@ -15,10 +15,11 @@ func _ready() -> void:
 	SignalBus.connect("combat_action", Callable(self, "combat_action"))
 	SignalBus.connect("combat_exited", Callable(self, "clean_up"))
 	SignalBus.connect("gameover_item_deleted", Callable(self, "set_deleted_item_texture"))
+	SignalBus.connect("player_action_selected", Callable(self, "attack_action"))
 
 	generate_combatants()
 	if(GameState.biome == "Boss"):
-		enemies.global_position += Vector2(40,-160)
+		enemies_ref.global_position += Vector2(40,-160)
 	await get_tree().create_timer(1.2).timeout
 	roll_initiative()
 
@@ -69,7 +70,7 @@ func roll_initiative():
 		if t[0] == "player":
 			enqueue(Callable(player, "ready_player_turn"))
 		else:
-			enqueue(Callable(enemies.get_node(t[0]), "ready_enemy_turn"))
+			enqueue(Callable(enemies_ref.get_node(t[0]), "ready_enemy_turn"))
 	
 	for t in turn_order:
 		if t[0] != "player":
@@ -89,9 +90,9 @@ func generate_combatants():
 		rand = max_enemies #randi_range(2,max_enemies)
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
-		enemies.add_child(new_node.duplicate(), true)
+		enemies_ref.add_child(new_node.duplicate(), true)
 		selected_enemy = new_node
-	for c in enemies.get_children():
+	for c in enemies_ref.get_children():
 		c.init()
 
 func select_enemy(enemy: Control):
@@ -99,7 +100,7 @@ func select_enemy(enemy: Control):
 
 func combat_action(method: String, arg: Variant):
 	if selected_enemy.visible == false:
-		for e in enemies.get_children():
+		for e in enemies_ref.get_children():
 			if e.visible == true:
 				selected_enemy = e
 	if arg != null:
@@ -114,6 +115,58 @@ func clean_up():
 	combat_finished = false
 	CombatData.clear_data()
 	self.queue_free()
+
+######################
+func attack_action(attack_all: bool = false):
+	var target_enemy = CombatData.selected_enemy
+	var target_spd = CombatData.combatants_data[target_enemy.name]["Speed"]
+	var action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
+	
+	if attack_all:
+		await get_tree().create_timer(0.7).timeout
+		$Combat/Background_Image/Player.player_action()
+		var all_enemies = enemies_ref.get_children()
+		for e in all_enemies:
+			if e.visible == false:
+				pass
+			else:
+				SignalBus.enemy_selected.emit(e)
+				if roll_stat("Accuracy", +5) == true:
+					SignalBus.combat_action.emit("on_hit", ceili(roll_damage()/3.0))
+				else:
+					SignalBus.combat_action.emit("on_miss", 0)
+	else:
+		if(action_points <= 0): action_points = 1
+		for a in action_points:
+			await get_tree().create_timer(0.7).timeout
+			$Combat/Background_Image/Player.player_action()
+			SignalBus.enemy_selected.emit(target_enemy)
+			if roll_stat("Accuracy") == true:
+				combat_action("on_hit", roll_damage())
+			else:
+				combat_action("on_miss", 0)
+	$Combat/Background_Image/Player.player_finish_turn()
+	
+func roll_stat(stat: String, adjusted_accuracy: int = 0) -> bool:
+	randomize()
+	var roll: int = randi_range(0,100)
+	if stat == "Accuracy" and adjusted_accuracy != 0:
+		if roll >= PlayerData.stat_data[stat]+adjusted_accuracy:
+			return false
+		else:
+			return true
+	else:
+		if roll >= PlayerData.stat_data[stat]:
+			return false
+		else:
+			return true
+
+func roll_damage() -> int:
+	randomize()
+	return randi_range(\
+	PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10,\
+	PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10)
+#####################
 
 func _on_button_pressed() -> void:
 	clean_up()

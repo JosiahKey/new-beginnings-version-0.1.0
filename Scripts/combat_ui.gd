@@ -32,6 +32,7 @@ func _ready() -> void:
 	SignalBus.connect("turn_start", Callable(self, "toggle_action_ui"))
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
+	SignalBus.connect("action_button_pressed", Callable(self, "toggle_action_ui"))
 	
 	heal_label.text = "Heal - " + str(num_of_heals) + " left"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
