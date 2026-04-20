@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	SignalBus.action_button_pressed.emit("")
-	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10002])
+	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10003])

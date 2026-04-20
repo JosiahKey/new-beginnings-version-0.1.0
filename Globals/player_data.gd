@@ -2,15 +2,17 @@ extends Node
 
 var inv_data = {}
 
+#should have getters and setters for all the stats so that the 
+#functions don't have to guess how to handle the stats
 var stat_data = {
 	"Natural_hp": 200,
 	"Bonus_hp": 0,
 	"Total_hp": 0,
+	"Current_hp": 200,
 	"Strength": 1,
 	"Bonus_strength": 0,
 	"Speed": 1,
 	"Bonus_speed": 0,
-	"Current_hp": 200,
 	"Accuracy": 0,
 	"Evasion": 0,
 	"PDR": 0,
@@ -71,6 +73,19 @@ func get_max_damage() -> int:
 
 func get_total_hp() -> int:
 	return int(stat_data["Total_hp"])
+
+func get_total_stat(stat:String) -> int:
+	match stat:
+		"Hp":
+			return get_total_hp()
+		"Strength":
+			return get_total_stength()
+		"Speed": 
+			return get_total_speed()
+		_:
+			push_error("No stat of name: " + stat)
+			return 0
+
 
 func _load_inv_data():
 	if not FileAccess.file_exists("user://inv_data.json"):

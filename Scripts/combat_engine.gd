@@ -90,9 +90,9 @@ func generate_combatants():
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies_ref.add_child(new_node.duplicate(), true)
-		selected_enemy = new_node
 	for c in enemies_ref.get_children():
 		c.init()
+		selected_enemy = c
 
 func select_enemy(enemy: Control):
 	selected_enemy = enemy
@@ -121,12 +121,13 @@ func combat_action(ability: Dictionary):
 	var action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
 	if(action_points <= 0): action_points = 1
 	
-	match ability["Ability_name"]:
+	match ability["Ability_type"]:
 		"Aoe_attack":
 			#play attack animation
 			await get_tree().create_timer(0.7).timeout
 			$Combat/Background_Image/Player.player_action()
 			var all_enemies = enemies_ref.get_children()
+			change_hp(ability)
 			for e in all_enemies:
 				if e.visible:
 					if roll_to_hit(ability) == true:
@@ -138,18 +139,24 @@ func combat_action(ability: Dictionary):
 				#play attack animation
 				await get_tree().create_timer(0.7).timeout
 				$Combat/Background_Image/Player.player_action()
-				SignalBus.enemy_selected.emit(target_enemy)
+				
+				change_hp(ability)
 				if roll_to_hit(ability) == true:
 					target_enemy.on_hit(roll_damage(ability))
 				else:
 					target_enemy.on_miss(0)
 	$Combat/Background_Image/Player.player_finish_turn()
-	
+
+func change_hp(ability: Dictionary) -> void:
+	if (PlayerData.stat_data["Current_hp"] + ceili(PlayerData.get_total_hp() * ability["Hp_change_multi"])) >= 1:
+		PlayerData.stat_data["Current_hp"] += ceili(PlayerData.get_total_hp() * ability["Hp_change_multi"])
+	else:
+		PlayerData.stat_data["Current_hp"] = 1
+	SignalBus.player_hp_changed.emit()
+
 func roll_to_hit(ability: Dictionary) -> bool:
 	randomize()
-	var adjusted_accuracy = (PlayerData.stat_data["Accuracy"]\
-		+ ability["Accuracy_flat"])\
-		* ability["Accuracy_multiply"]
+	var adjusted_accuracy = PlayerData.stat_data["Accuracy"] + ability["Accuracy_flat"]
 	var roll: int = randi_range(0,100)
 	if roll >= adjusted_accuracy:
 		return false
@@ -158,15 +165,16 @@ func roll_to_hit(ability: Dictionary) -> bool:
 
 func roll_damage(ability: Dictionary) -> int:
 	randomize()
-	var damage_min = PlayerData.stat_data["Total_equipped_damage_min"] + PlayerData.get_total_stength() * 10
-	var damage_max = PlayerData.stat_data["Total_equipped_damage_max"] + PlayerData.get_total_stength() * 10
-	for a in ability:
-		if a.contains("_flat"):
-			damage_min += ability[a]
-			damage_min += ability[a]
-		if a.contains("_multiply"):
-			damage_min = damage_min * ability[a]
-			damage_max = damage_max * ability[a]
+	var damage_min = PlayerData.get_min_damage()
+	var damage_max = PlayerData.get_max_damage()
+	if ability["Damage_min_flat"] != 0:
+		damage_min += ability["Damage_min_flat"]
+	if ability["Stat_damage_multiplier"] != 0:
+		damage_min += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
+		damage_max += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
+	if ability["Final_damage_multiplier"] != 0:
+		damage_min = ceili(damage_min * ability["Final_damage_multiplier"])
+		damage_max = ceili(damage_min * ability["Final_damage_multiplier"])
 	return randi_range(damage_min, damage_max)
 #####################
 
