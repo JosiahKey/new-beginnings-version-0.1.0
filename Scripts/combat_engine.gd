@@ -121,8 +121,8 @@ func combat_action(ability: Dictionary):
 	var action_points = 1 + floori(float(PlayerData.get_total_speed() - target_spd) / 4.0)
 	if(action_points <= 0): action_points = 1
 	
-	match ability["Ability_type"]:
-		"Aoe_attack":
+	match ability["Ability_target"]:
+		"All_enemies":
 			#play attack animation
 			await get_tree().create_timer(0.7).timeout
 			$Combat/Background_Image/Player.player_action()
@@ -134,7 +134,7 @@ func combat_action(ability: Dictionary):
 						e.on_hit(ceili(roll_damage(ability)))
 					else:
 						e.on_miss(0)
-		"Single_attack":
+		"Single_target":
 			for a in action_points:
 				#play attack animation
 				await get_tree().create_timer(0.7).timeout
@@ -145,6 +145,10 @@ func combat_action(ability: Dictionary):
 					target_enemy.on_hit(roll_damage(ability))
 				else:
 					target_enemy.on_miss(0)
+		"Self_target":
+			await get_tree().create_timer(0.7).timeout
+			$Combat/Background_Image/Player.player_action()
+			$Combat/Background_Image/Player.on_heal(roll_to_buff(ability))
 	$Combat/Background_Image/Player.player_finish_turn()
 
 func change_hp(ability: Dictionary) -> void:
@@ -153,6 +157,11 @@ func change_hp(ability: Dictionary) -> void:
 	else:
 		PlayerData.stat_data["Current_hp"] = 1
 	SignalBus.player_hp_changed.emit()
+
+func roll_to_buff(ability: Dictionary) -> int:
+	return randi_range(\
+		ceili(PlayerData.get_total_hp() * (ability["Hp_change_multi"] - 0.05)),\
+		ceili(PlayerData.get_total_hp() * (ability["Hp_change_multi"] + 0.05)))
 
 func roll_to_hit(ability: Dictionary) -> bool:
 	randomize()
@@ -172,7 +181,7 @@ func roll_damage(ability: Dictionary) -> int:
 	if ability["Stat_damage_multiplier"] != 0:
 		damage_min += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
 		damage_max += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
-	if ability["Final_damage_multiplier"] != 0:
+	if ability["Final_damage_multiplier"] != 1:
 		damage_min = ceili(damage_min * ability["Final_damage_multiplier"])
 		damage_max = ceili(damage_min * ability["Final_damage_multiplier"])
 	return randi_range(damage_min, damage_max)

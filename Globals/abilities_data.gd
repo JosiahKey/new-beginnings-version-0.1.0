@@ -1,7 +1,7 @@
 extends Node
 
 var abilities_data = {
-	10001: {"Ability_type": "Single_attack",  
+	10001: {"Ability_target": "Single_target",  
 	"Ability_rarity": "common", 
 	"Ability_requirements": [0,0,0], 
 	"Damage_min_flat": 0,
@@ -11,7 +11,7 @@ var abilities_data = {
 	"Accuracy_flat": 0,
 	"Hp_change": 0,
 	},
-	10002: {"Ability_type": "Aoe_attack",  
+	10002: {"Ability_target": "All_enemies",  
 	"Ability_rarity": "common", 
 	"Ability_requirements": [0,0,0], 
 	"Damage_min_flat": 0, 
@@ -21,7 +21,7 @@ var abilities_data = {
 	"Accuracy_flat": 5,
 	"Hp_change": 0,
 	},
-	10003: {"Ability_type": "Single_attack",  
+	10003: {"Ability_target": "Single_target",  
 	"Ability_rarity": "common", 
 	"Ability_requirements": [0,0,0], 
 	"Damage_min_flat": 0, 
@@ -30,6 +30,16 @@ var abilities_data = {
 	"Final_damage_multiplier": 1,
 	"Accuracy_flat": -20,
 	"Hp_change_multi": -0.1,
+	},
+	10004: {"Ability_target": "Self_target", 
+	"Ability_rarity": "common", 
+	"Ability_requirements": [0,0,0], 
+	"Damage_min_flat": 0, 
+	"Damage_scaling_stat": "Strength",
+	"Stat_damage_multiplier" : 0,
+	"Final_damage_multiplier": 1,
+	"Accuracy_flat": 0,
+	"Hp_change_multi": 0.2,
 	},
 }
 
