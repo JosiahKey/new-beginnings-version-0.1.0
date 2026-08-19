@@ -91,34 +91,40 @@ func update_enemy_info():
 	for i in range(0,enemies.size()):
 		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
 
-func _on_action_button_pressed() -> void:
-	get_node("select").playing = true
-	$Background_Image/Player.player_attack_action()
-	actions_container.visible = false
-	players_turn = false
-
-func _on_action_button_2_pressed() -> void:
-	if num_of_heals >= 1:
-		num_of_heals -= 1
-		heal_label.text = "Heal - " + str(num_of_heals) + " left"
-		get_node("select").playing = true
-		$Background_Image/Player.player_heal_action()
-		actions_container.visible = false
-		players_turn = false
-	if num_of_heals <= 0:
-		action2.disabled = true
-
 func select_enemy(enemy: Control):
 	var nodes = get_tree().get_nodes_in_group("selector")
 	for n in nodes:
 		n.visible = false
 	enemy.get_node("Enemy_Hp/Button/Container/Selector").visible = true
 
+func _on_action_button_pressed() -> void:
+	#get_node("select").playing = true
+	#$Background_Image/Player.player_attack_action()
+	#actions_container.visible = false
+	#players_turn = false
+	SignalBus.action_button_pressed.emit("")
+	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10001])
+
+func _on_action_button_2_pressed() -> void:
+	if num_of_heals >= 1:
+		num_of_heals -= 1
+		heal_label.text = "Heal - " + str(num_of_heals) + " left"
+		#get_node("select").playing = true
+		#$Background_Image/Player.player_heal_action()
+		#actions_container.visible = false
+		#players_turn = false
+		SignalBus.action_button_pressed.emit("")
+		SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10004])
+	if num_of_heals <= 0:
+		action2.disabled = true
+
 func _on_action_button_3_pressed() -> void:
-	get_node("select").playing = true
-	$Background_Image/Player.player_aoe_action()
-	actions_container.visible = false
-	players_turn = false
+	#get_node("select").playing = true
+	#$Background_Image/Player.player_aoe_action()
+	#actions_container.visible = false
+	#players_turn = false
+	SignalBus.action_button_pressed.emit("")
+	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10002])
 
 func _on_action_button_4_pressed() -> void:
 	get_node("select").playing = true
@@ -127,7 +133,9 @@ func _on_action_button_4_pressed() -> void:
 	players_turn = false
 
 func _on_action_button_5_pressed() -> void:
-	get_node("select").playing = true
-	$Background_Image/Player.player_all_in_action()
-	actions_container.visible = false
-	players_turn = false
+	#get_node("select").playing = true
+	#$Background_Image/Player.player_all_in_action()
+	#actions_container.visible = false
+	#players_turn = false
+	SignalBus.action_button_pressed.emit("")
+	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10003])
