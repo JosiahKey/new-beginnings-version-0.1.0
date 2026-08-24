@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://crxwghqaiydw1"]
+
+[ext_resource type="Texture2D" uid="uid://kb2xiykt63iv" path="res://Assets/character_assets/RockBoy.png" id="1_21ttl"]
+[ext_resource type="Texture2D" uid="uid://07l2yvhcf2vs" path="res://Assets/character_assets/rockboy_movement_sheet.png" id="2_d386f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljgne"]
+atlas = ExtResource("2_d386f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu06a"]
+atlas = ExtResource("2_d386f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i38vu"]
+atlas = ExtResource("2_d386f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akuui"]
+atlas = ExtResource("2_d386f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbn27"]
+atlas = ExtResource("2_d386f")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_endjp"]
+atlas = ExtResource("2_d386f")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diwxe"]
+atlas = ExtResource("2_d386f")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buvl2"]
+atlas = ExtResource("2_d386f")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_21ttl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljgne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu06a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i38vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akuui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbn27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_endjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diwxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buvl2")
+}],
+"loop": false,
+"name": &"run",
+"speed": 10.0
+}]

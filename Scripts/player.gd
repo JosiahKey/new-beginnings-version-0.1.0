@@ -39,9 +39,9 @@ func _physics_process(_delta):
 			timer.paused = false
 		
 		#Flip Sprite
-		if input_direction.x > 0:
+		if input_direction.x > 0 or input_direction.y > 0:
 			player_sprite.flip_h = false
-		elif input_direction.x < 0:
+		if input_direction.x < 0 or input_direction.y < 0:
 			player_sprite.flip_h = true
 		
 		#Play anime

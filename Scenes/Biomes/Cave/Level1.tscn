@@ -5,18 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="2_fvfg2"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="3_wo0x8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvfg2"]
-size = Vector2(17, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo0x8"]
-size = Vector2(17, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q5hg"]
-size = Vector2(32, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqi40"]
-size = Vector2(32, 16)
-
 [node name="Level" type="Node2D" unique_id=533129907]
 script = ExtResource("1_fvfg2")
 
@@ -44,52 +32,6 @@ position = Vector2(72, 24)
 
 [node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=1438244474]
 position = Vector2(72, -56)
-
-[node name="Exits" type="Node2D" parent="." unique_id=1106859996]
-
-[node name="Exit1" type="StaticBody2D" parent="Exits" unique_id=1590451843]
-position = Vector2(144, -112)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit1" unique_id=1378540292]
-position = Vector2(8, 16)
-shape = SubResource("RectangleShape2D_fvfg2")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Exits/Exit1" unique_id=827518764]
-tile_map_data = PackedByteArray("AAAAAAAAAQAGAAEAAAAAAAEAAQAGAAEAAAA=")
-tile_set = ExtResource("1_ou3bu")
-
-[node name="Exit2" type="StaticBody2D" parent="Exits" unique_id=252049617]
-position = Vector2(240, 192)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit2" unique_id=428745410]
-position = Vector2(8, 16)
-shape = SubResource("RectangleShape2D_wo0x8")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Exits/Exit2" unique_id=1624404520]
-tile_map_data = PackedByteArray("AAAAAAAAAQAGAAEAAAAAAAEAAQAGAAEAAAA=")
-tile_set = ExtResource("1_ou3bu")
-
-[node name="Exit3" type="StaticBody2D" parent="Exits" unique_id=1489990322]
-position = Vector2(256, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit3" unique_id=1763360605]
-position = Vector2(16, 8)
-shape = SubResource("RectangleShape2D_0q5hg")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Exits/Exit3" unique_id=1294145159]
-tile_map_data = PackedByteArray("AAAAAAAAAQAGAAEAAAABAAAAAQAGAAEAAAA=")
-tile_set = ExtResource("1_ou3bu")
-
-[node name="Exit4" type="StaticBody2D" parent="Exits" unique_id=1389243252]
-position = Vector2(-48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit4" unique_id=1444956444]
-position = Vector2(16, 8)
-shape = SubResource("RectangleShape2D_aqi40")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Exits/Exit4" unique_id=543678394]
-tile_map_data = PackedByteArray("AAAAAAAAAQAGAAEAAAABAAAAAQAGAAEAAAA=")
-tile_set = ExtResource("1_ou3bu")
 
 [node name="Load_Zones" type="Node2D" parent="." unique_id=1174864192]
 

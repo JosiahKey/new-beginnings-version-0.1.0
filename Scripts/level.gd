@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var spawns = $Spawns
-@onready var exits = $Exits
+@onready var exits = $Load_Zones
 @export var biome: String = ""
 
 func _ready() -> void:
@@ -14,4 +14,4 @@ func _ready() -> void:
 	player.global_position = random_spawn.get_global_position()
 	var all_exits = exits.get_children()
 	var random_exit = all_exits[randi()% all_exits.size()]
-	random_exit.queue_free()
+	random_exit.disable()

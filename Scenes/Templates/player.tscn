@@ -1,39 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvqnvqyxj217n"]
+[gd_scene format=3 uid="uid://dvqnvqyxj217n"]
 
 [ext_resource type="Script" uid="uid://cii4fjooekrwo" path="res://Scripts/player.gd" id="1_67o87"]
-[ext_resource type="SpriteFrames" uid="uid://dwbt0ujgfb83s" path="res://Resources/AnimatedKnight.tres" id="2_xqijt"]
+[ext_resource type="SpriteFrames" uid="uid://crxwghqaiydw1" path="res://Resources/rockboy_sprite_frames.tres" id="2_xh3qn"]
 [ext_resource type="AudioStream" uid="uid://dtgxsp8il4ipd" path="res://Audio/SFX/walk.wav" id="3_xh3qn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c841m"]
-radius = 7.0
-height = 18.0
+radius = 3.813253
+height = 7.626506
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4e8i"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=856621255 groups=["Player"]]
 process_mode = 1
+z_index = 3
 script = ExtResource("1_67o87")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1607733233]
 position = Vector2(0, 0.835)
 scale = Vector2(0.83, 0.83)
 shape = SubResource("CapsuleShape2D_c841m")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
-sprite_frames = ExtResource("2_xqijt")
-animation = &"attack"
-autoplay = "idle"
-metadata/_edit_lock_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496399918]
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("2_xh3qn")
+animation = &"idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1278307328]
 zoom = Vector2(2, 2)
 limit_enabled = false
 metadata/_edit_lock_ = true
 
-[node name="R_highlight" type="ColorRect" parent="."]
+[node name="R_highlight" type="ColorRect" parent="." unique_id=1160800297]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -45,13 +44,13 @@ grow_vertical = 2
 color = Color(1, 1, 0.227451, 0.258824)
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="R_highlight" groups=["PlayerCursor"]]
+[node name="Area2D" type="Area2D" parent="R_highlight" unique_id=1143680777 groups=["PlayerCursor"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="R_highlight/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="R_highlight/Area2D" unique_id=126866496]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_x4e8i")
 
-[node name="L_highlight" type="ColorRect" parent="."]
+[node name="L_highlight" type="ColorRect" parent="." unique_id=1280768192]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -66,13 +65,13 @@ grow_vertical = 2
 color = Color(1, 1, 0.227451, 0.258824)
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="L_highlight" groups=["PlayerCursor"]]
+[node name="Area2D" type="Area2D" parent="L_highlight" unique_id=1831567500 groups=["PlayerCursor"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="L_highlight/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="L_highlight/Area2D" unique_id=913945618]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_x4e8i")
 
-[node name="U_highlight" type="ColorRect" parent="."]
+[node name="U_highlight" type="ColorRect" parent="." unique_id=5264616]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -87,13 +86,13 @@ grow_vertical = 0
 color = Color(1, 1, 0.227451, 0.258824)
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="U_highlight" groups=["PlayerCursor"]]
+[node name="Area2D" type="Area2D" parent="U_highlight" unique_id=277884879 groups=["PlayerCursor"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="U_highlight/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="U_highlight/Area2D" unique_id=1322097874]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_x4e8i")
 
-[node name="D_highlight" type="ColorRect" parent="."]
+[node name="D_highlight" type="ColorRect" parent="." unique_id=648411372]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -105,17 +104,17 @@ grow_horizontal = 2
 color = Color(1, 1, 0.227451, 0.258824)
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="D_highlight" groups=["PlayerCursor"]]
+[node name="Area2D" type="Area2D" parent="D_highlight" unique_id=1289418141 groups=["PlayerCursor"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="D_highlight/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="D_highlight/Area2D" unique_id=1705601132]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_x4e8i")
 
-[node name="walk" type="AudioStreamPlayer" parent="."]
+[node name="walk" type="AudioStreamPlayer" parent="." unique_id=291415628]
 stream = ExtResource("3_xh3qn")
 volume_db = -3.506
 bus = &"SFX"
 
-[node name="Encounter" type="Timer" parent="."]
+[node name="Encounter" type="Timer" parent="." unique_id=1530088419]
 
 [connection signal="timeout" from="Encounter" to="." method="_on_encounter_timeout"]
